@@ -35,12 +35,18 @@ All numbers are only comparable **within this run** (same judge, same policy).
 Every clip is H3 `t2va`: 1344×768, 16:9, 24 fps, 5 s, 10 inference steps, one candidate — about 50 s per clip.
 Each evaluation = 1 H3 request, so the run billed **65 requests** (search 45/60, promotion 12/12, test 8/8).
 
-RSI touches **none** of these services. It only edits seven text fields in the harness config; the services and
+RSI touches **none** of these services. It only edits six text fields in the harness config; the services and
 the reward weights stay frozen.
 
 ---
 
 ## 2. How RSI improves the harness — watch these clips in order
+
+**Scope.** This document covers the **text-only** half: H3 and the judges stay frozen while RSI searches the six
+text components. The *harness-only* Context-IR path — a frozen compiler in front of H3 plus weight training
+(actor GRPO + H3 DiffusionNFT/FlowGRPO), with **no harness search at all** — is
+[verl-omni RFC #500](https://github.com/verl-project/verl-omni/issues/500). The RSI half is
+[#748](https://github.com/verl-project/verl-omni/issues/748), which these clips support.
 
 ### What gets rewritten: six text components
 
