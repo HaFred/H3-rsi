@@ -3,10 +3,9 @@
 This run shows the full loop, on real hardware:
 
 1. the **base harness** drives the H3 server to generate the baseline video;
-2. the **RSI framework** scores that video with a frozen policy and rewrites the harness prompts;
+2. **self-improvement**: the **RSI framework** scores that video with a frozen policy and rewrites the harness prompts;
 3. the **optimized harness** drives H3 again and produces a better video on the same task;
-4. the framework **keeps iterating** — candidates that don't win the validation split are dropped — and the
-   winner is gated on a held-out promotion split before it becomes the champion.
+4. **recursiveness**: the framework **keeps iterating**, building each new edit on an earlier candidate. Candidates that are not the best on any validation task are never built on again. The winner is gated on a held-out promotion split before it becomes the champion.
 
 Run `101214_1strun`, 2026-10-12 14:20 → 16:54 UTC. **The optimized harness was accepted and promoted to
 `gepa-base.1`.**
@@ -28,7 +27,7 @@ All numbers are only comparable **within this run** (same judge, same policy).
 | --- | --- | --- | --- |
 | Video generation | MiniMax-H3 fl2va, SGLang `450837e`, TP2, `--performance-mode memory` | `http://localhost:30010` | GPU 6,7 |
 | Production text (runs the harness agents) | `neohorse-1-4B` (vLLM, thinking off) | `http://localhost:8000` | GPU 5 |
-| Reflection text (GEPA mutator) | `Qwen/Qwen3.5-9B` | `http://127.0.0.1:8001` | GPU 5 |
+| Reflection text ([GEPA](https://github.com/gepa-ai/gepa) mutator) | `Qwen/Qwen3.5-9B` | `http://127.0.0.1:8001` | GPU 5 |
 | Decision (critic gates, story axis) | `NeoHorse-Jev-4B` | `http://localhost:8085` | GPU 5 |
 | Frame judge (video axis, 60% of score) | `UnifiedReward-2.0-qwen3vl-2b` | `http://localhost:8090` | GPU 5 |
 
@@ -449,34 +448,48 @@ in `rsi_harness/agents/*.py`.
 
 ## 4. The loop in detail (13 iterations)
 
-Step 4 of your flow — "keep iterating" — is this ledger. GEPA picks a program, the reflection model rewrites
-**one** component, the candidate is tried on a 2-task minibatch, and only if it wins there does it get a full
-validation run (2 real H3 clips).
+Step 4 of your flow — "keep iterating" — is this ledger. Each iteration GEPA picks a **parent** from the Pareto
+front, the reflection model rewrites **one** of the parent's components, the new candidate is tried on a 2-task
+minibatch, and only if it wins there does it get a full validation run (2 real H3 clips). If it passes, it gets
+the next program number.
 
-| Iter | Selected program | Component proposed | Minibatch | Full val | Val score | Clip from that iteration |
-| --- | --- | --- | --- | --- | --- | --- |
-| 0 | — | — (base program) | — | yes | 0.6588 | <a href="https://github.com/HaFred/H3-rsi/blob/main/evaluations/2c86b2f9b7b60ba40a8e9a49bf815b70cdb0e4b4b27c365d2a386ef5107cd854/video.mp4"><img src="https://github.com/HaFred/H3-rsi/raw/main/evaluations/2c86b2f9b7b60ba40a8e9a49bf815b70cdb0e4b4b27c365d2a386ef5107cd854/preview.webp" width="190" alt="base val-001"></a><br><sub>base val-001</sub> |
-| 1 | 0 | `script` | **accepted** | yes | 0.6567 | <a href="https://github.com/HaFred/H3-rsi/blob/main/evaluations/228a7fe756a8c04f2b7dc6d27c9a485d8eec263396087c8d909683d125afd3c9/video.mp4"><img src="https://github.com/HaFred/H3-rsi/raw/main/evaluations/228a7fe756a8c04f2b7dc6d27c9a485d8eec263396087c8d909683d125afd3c9/preview.webp" width="190" alt="script-v1 train-003"></a><br><sub>script-v1 train-003</sub> |
-| 2 | 1 | `storyboard` | skipped | no | — | — |
-| 3 | 1 | `director` | skipped | no | — | — |
-| 4 | 0 | `storyboard` | **accepted** | yes | 0.5274 | <a href="https://github.com/HaFred/H3-rsi/blob/main/evaluations/631d708ac3df6588b1e37f60b3541a534089d4bbb6e4b19ead030ff9c347b776/video.mp4"><img src="https://github.com/HaFred/H3-rsi/raw/main/evaluations/631d708ac3df6588b1e37f60b3541a534089d4bbb6e4b19ead030ff9c347b776/preview.webp" width="190" alt="train-001"></a><br><sub>train-001</sub> |
-| 5 | 0 | `director` | skipped | no | — | — |
-| 6 | 1 | `memory` | skipped | no | — | — |
-| 7 | 0 | `memory` | **accepted** | yes | 0.6285 | <a href="https://github.com/HaFred/H3-rsi/blob/main/evaluations/408a9efa4063f15afcf790f0a0613a53d74c62d351793674f1cfe3b7e50f9fae/video.mp4"><img src="https://github.com/HaFred/H3-rsi/raw/main/evaluations/408a9efa4063f15afcf790f0a0613a53d74c62d351793674f1cfe3b7e50f9fae/preview.webp" width="190" alt="train-002"></a><br><sub>train-002</sub> |
-| 8 | 1 | `script` | skipped | no | — | — |
-| 9 | 1 | `storyboard` | skipped | no | — | — |
-| 10 | 4 | `director` | **accepted** | yes | **0.6749** | <a href="https://github.com/HaFred/H3-rsi/blob/main/evaluations/b2f33fd8e5b9a326f9a066d57667edd5ee70bc854e10b84dca9ece6ec39e2850/video.mp4"><img src="https://github.com/HaFred/H3-rsi/raw/main/evaluations/b2f33fd8e5b9a326f9a066d57667edd5ee70bc854e10b84dca9ece6ec39e2850/preview.webp" width="190" alt="best val-001"></a><br><sub>best val-001</sub> |
-| 11 | 4 | `memory` | skipped | no | — | — |
-| 12 | 4 | `script` | skipped | no | — | — |
-| 13 | 4 | `storyboard` | skipped | no | — | — |
+This is the same run as §2, not a second one. The base → +`script` → +`director` steps in §2 are rows **0, 1 and
+10** below: iteration 10 rewrote `director` on top of iteration 1's `script`, so the second edit builds on the
+first. Parents are read from the `reflective_dataset` events in [`events.jsonl`](https://github.com/HaFred/H3-rsi/blob/main/events.jsonl).
+
+| Iter | Parent | Component proposed | Minibatch | Full val | Val score: search / raw R | New program | Clip from that iteration |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 0 | — | — (base program) | — | yes | 0.6588 / 0.6588 | **0** · `d16c2e95` | <a href="https://github.com/HaFred/H3-rsi/blob/main/evaluations/2c86b2f9b7b60ba40a8e9a49bf815b70cdb0e4b4b27c365d2a386ef5107cd854/video.mp4"><img src="https://github.com/HaFred/H3-rsi/raw/main/evaluations/2c86b2f9b7b60ba40a8e9a49bf815b70cdb0e4b4b27c365d2a386ef5107cd854/preview.webp" width="190" alt="base val-001"></a><br><sub>base val-001</sub> |
+| 1 | 0 | `script` | **accepted** | yes | 0.6567 / 0.6631 | **1** · `d58fde46` | <a href="https://github.com/HaFred/H3-rsi/blob/main/evaluations/228a7fe756a8c04f2b7dc6d27c9a485d8eec263396087c8d909683d125afd3c9/video.mp4"><img src="https://github.com/HaFred/H3-rsi/raw/main/evaluations/228a7fe756a8c04f2b7dc6d27c9a485d8eec263396087c8d909683d125afd3c9/preview.webp" width="190" alt="script-v1 train-003"></a><br><sub>script-v1 train-003</sub> |
+| 2 | 1 | `storyboard` | skipped | no | — | — | <a href="https://github.com/HaFred/H3-rsi/blob/main/evaluations/631d708ac3df6588b1e37f60b3541a534089d4bbb6e4b19ead030ff9c347b776/video.mp4"><img src="https://github.com/HaFred/H3-rsi/raw/main/evaluations/631d708ac3df6588b1e37f60b3541a534089d4bbb6e4b19ead030ff9c347b776/preview.webp" width="190" alt="rejected storyboard train-001"></a><br><sub>rejected storyboard train-001</sub> |
+| 3 | 1 | `director` | skipped | no | — | — | — |
+| 4 | 0 | `storyboard` | **accepted** | yes | 0.5274 / 0.5953 | **2** · `db013ff2` | — |
+| 5 | 0 | `director` | skipped | no | — | — | — |
+| 6 | 1 | `memory` | skipped | no | — | — | — |
+| 7 | 0 | `memory` | **accepted** | yes | 0.6285 / 0.6442 | **3** · `0461809f` | <a href="https://github.com/HaFred/H3-rsi/blob/main/evaluations/408a9efa4063f15afcf790f0a0613a53d74c62d351793674f1cfe3b7e50f9fae/video.mp4"><img src="https://github.com/HaFred/H3-rsi/raw/main/evaluations/408a9efa4063f15afcf790f0a0613a53d74c62d351793674f1cfe3b7e50f9fae/preview.webp" width="190" alt="train-002"></a><br><sub>train-002</sub> |
+| 8 | 1 | `script` | skipped | no | — | — | — |
+| 9 | 1 | `storyboard` | skipped | no | — | — | — |
+| 10 | **1** | `director` | **accepted** | yes | **0.6749 / 0.6749** | **4** · `4ddd73aa` (winner) | <a href="https://github.com/HaFred/H3-rsi/blob/main/evaluations/b2f33fd8e5b9a326f9a066d57667edd5ee70bc854e10b84dca9ece6ec39e2850/video.mp4"><img src="https://github.com/HaFred/H3-rsi/raw/main/evaluations/b2f33fd8e5b9a326f9a066d57667edd5ee70bc854e10b84dca9ece6ec39e2850/preview.webp" width="190" alt="best val-001"></a><br><sub>best val-001</sub> |
+| 11 | 4 | `memory` | skipped | no | — | — | — |
+| 12 | 4 | `script` | skipped | no | — | — | — |
+| 13 | 4 | `storyboard` | skipped | no | — | — | — |
+
+"Search" is the score GEPA compares: total R minus the axis-regression penalty (see
+[S is total R](#s-is-total-r--but-gepa-searches-a-penalized-form-of-it)). "Raw R" is the plain validation mean.
 
 - 13 reflection calls, 5 candidates kept, 62 metric calls, 45 H3 requests (the remainder were cache hits on
   already-scored cases). Search took 2317 s (≈39 min).
-- Iterations 1, 4 and 7 passed the minibatch and then **lost** on full validation (0.6567, 0.5274, 0.6285 are all
-  below the 0.6588 baseline) — the loop rejecting its own ideas, which is why the ledger matters as much as the
-  final number.
-- The winner came from iteration 10, where `director` was rewritten on top of the already-accepted `script`.
-- `memory` was accepted twice on minibatches but never became the best program; the champion's `memory` is empty.
+- Iterations 1, 4 and 7 passed the minibatch, but none beat the base's mean search score. They ended
+  differently. The `storyboard` and `memory` candidates (programs 2 and 3) were not the best on either validation
+  task, so GEPA never chose them as a parent: the loop discarding its own ideas. The `script` candidate (program
+  1) beat the base on `val-002` (0.6937 vs 0.6743), so it stayed on the Pareto front. On raw R it beat the base
+  outright (0.6631 vs 0.6588); only the penalty for its story dip on `val-001` put its search score below.
+- The winner came from iteration 10, which rewrote `director` on top of program 1's `script`. Iterations 11–13
+  tried to improve the winner further and none passed the minibatch, so the search ended there.
+- `memory` was accepted on a minibatch once (iteration 7) but was never chosen as a parent; the champion's
+  `memory` is empty.
+- The iteration-4 `storyboard` candidate has no clip in this repo. The `train-001` thumbnail that used to sit on
+  its row came from iteration 2's rejected `storyboard` (`15743000`), so it now sits on row 2.
 
 ---
 
