@@ -117,14 +117,14 @@ row — a separate per-row "source" column would repeat identical text down the 
 
 | Step | What RSI changed in the harness | What the harness then asked H3 for | Clip | Total R | video · *UnifiedReward* `:8090` | story · *Jev* `:8085` | editing · *local, no model* | last-frame alignment · 1–5 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| **0. Base** | — (seed harness) | 3 shots of **2.0 / 2.0 / 1.0 s** | <a href="evaluations/edb00ad03c2e77bc2b759d587f1a1f2c0706fcf90405d129cae6ee19daa4771b/video.mp4"><img src="evaluations/edb00ad03c2e77bc2b759d587f1a1f2c0706fcf90405d129cae6ee19daa4771b/preview.webp" width="280" alt="base train-001"></a> | 0.6348 | 0.477 | 0.793 | 1.000 | 2.87 |
-| **1. after `script`** | timed shot list instead of a free script | 3 shots of **1.67 / 1.67 / 1.67 s** | <a href="evaluations/0aa979018910a10da8a371e18edc03464f18690acf534c0948e629736dd44170/video.mp4"><img src="evaluations/0aa979018910a10da8a371e18edc03464f18690acf534c0948e629736dd44170/preview.webp" width="280" alt="+script train-001"></a> | 0.6628 | 0.541 (**+0.064**) | 0.753 | 1.000 | 2.87 |
-| **2. after `director`** | full subject/appearance spec per shot | same 1.7 / 1.7 / 1.6 s, richer shot text | <a href="evaluations/93d21889efd4bd045da797839dc3add5758da0c7d097d3ca06c15a666ff43810/video.mp4"><img src="evaluations/93d21889efd4bd045da797839dc3add5758da0c7d097d3ca06c15a666ff43810/preview.webp" width="280" alt="+director train-001"></a> | 0.6659 | 0.556 (**+0.015**) | 0.730 | 1.000 | 3.14 |
+| **0. Base** | — (seed harness) | 3 shots of **2.0 / 2.0 / 1.0 s** | <a href="evaluations/edb00ad03c2e77bc2b759d587f1a1f2c0706fcf90405d129cae6ee19daa4771b/video.mp4"><img src="evaluations/edb00ad03c2e77bc2b759d587f1a1f2c0706fcf90405d129cae6ee19daa4771b/preview.webp" width="400" alt="base train-001"></a> | 0.6348 | 0.477 | 0.793 | 1.000 | 2.87 |
+| **1. after `script`** | timed shot list instead of a free script | 3 shots of **1.67 / 1.67 / 1.67 s** | <a href="evaluations/0aa979018910a10da8a371e18edc03464f18690acf534c0948e629736dd44170/video.mp4"><img src="evaluations/0aa979018910a10da8a371e18edc03464f18690acf534c0948e629736dd44170/preview.webp" width="400" alt="+script train-001"></a> | 0.6628 | 0.541 (**+0.064**) | 0.753 | 1.000 | 2.87 |
+| **2. after `director`** | full subject/appearance spec per shot | same 1.7 / 1.7 / 1.6 s, richer shot text | <a href="evaluations/93d21889efd4bd045da797839dc3add5758da0c7d097d3ca06c15a666ff43810/video.mp4"><img src="evaluations/93d21889efd4bd045da797839dc3add5758da0c7d097d3ca06c15a666ff43810/preview.webp" width="400" alt="+director train-001"></a> | 0.6659 | 0.556 (**+0.015**) | 0.730 | 1.000 | 3.14 |
 
 > **About the clips.** Every clip cell in this document plays **inline**: it is a 480 px / 12 fps animated WebP
 > preview that loops, linked to the full-rate 124-frame `video.mp4` (click to open GitHub's player). GitHub's
 > markdown sanitizer strips `<video>`/`<iframe>` tags, so an animated image is the only way to get motion inside a
-> README. Preview width is scaled per table density (`280 px` for the single-clip narrative tables, `170 px` for
+> README. Preview width is scaled per table density (`400 px` for the single-clip narrative tables, `170 px` for
 > the base/optimized pairs, `190 px` for the iteration ledger).
 
 **Harness Delta for the Steps**
@@ -257,9 +257,9 @@ The same progression repeats on `train-003` (`"A child in a green jacket catches
 
 | Step | Shot lengths | Clip | Total R | video · *UnifiedReward* | story · *Jev* | editing · *local* | last-frame alignment |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Base | 2.0 / 1.0 / 2.0 s | <a href="evaluations/1d567d7950bb08c98d03069d0ce5ab05f02e455a2d18cbd816242214118a1b94/video.mp4"><img src="evaluations/1d567d7950bb08c98d03069d0ce5ab05f02e455a2d18cbd816242214118a1b94/preview.webp" width="280" alt="base train-003"></a> | 0.6348 | 0.533 | 0.661 | 1.000 | 2.87 |
-| after `script` | 1.6 / 1.6 / 1.8 s | <a href="evaluations/228a7fe756a8c04f2b7dc6d27c9a485d8eec263396087c8d909683d125afd3c9/video.mp4"><img src="evaluations/228a7fe756a8c04f2b7dc6d27c9a485d8eec263396087c8d909683d125afd3c9/preview.webp" width="280" alt="+script train-003"></a> | 0.6664 | 0.547 | 0.753 | 1.000 | 3.00 |
-| after `director` | 1.6 / 1.6 / 1.8 s | <a href="evaluations/6fdaee36ff9e3547feee88d2bdd89dfa8011085010805314e1062370e3c58a08/video.mp4"><img src="evaluations/6fdaee36ff9e3547feee88d2bdd89dfa8011085010805314e1062370e3c58a08/preview.webp" width="280" alt="+director train-003"></a> | 0.6773 | 0.571 | 0.739 | 1.000 | 3.12 |
+| Base | 2.0 / 1.0 / 2.0 s | <a href="evaluations/1d567d7950bb08c98d03069d0ce5ab05f02e455a2d18cbd816242214118a1b94/video.mp4"><img src="evaluations/1d567d7950bb08c98d03069d0ce5ab05f02e455a2d18cbd816242214118a1b94/preview.webp" width="400" alt="base train-003"></a> | 0.6348 | 0.533 | 0.661 | 1.000 | 2.87 |
+| after `script` | 1.6 / 1.6 / 1.8 s | <a href="evaluations/228a7fe756a8c04f2b7dc6d27c9a485d8eec263396087c8d909683d125afd3c9/video.mp4"><img src="evaluations/228a7fe756a8c04f2b7dc6d27c9a485d8eec263396087c8d909683d125afd3c9/preview.webp" width="400" alt="+script train-003"></a> | 0.6664 | 0.547 | 0.753 | 1.000 | 3.00 |
+| after `director` | 1.6 / 1.6 / 1.8 s | <a href="evaluations/6fdaee36ff9e3547feee88d2bdd89dfa8011085010805314e1062370e3c58a08/video.mp4"><img src="evaluations/6fdaee36ff9e3547feee88d2bdd89dfa8011085010805314e1062370e3c58a08/preview.webp" width="400" alt="+director train-003"></a> | 0.6773 | 0.571 | 0.739 | 1.000 | 3.12 |
 
 ---
 
