@@ -34,22 +34,23 @@ All numbers are only comparable **within this run** (same judge, same policy).
 Every clip is H3 `t2va`: 1344×768, 16:9, 24 fps, 5 s, 10 inference steps, one candidate — about 50 s per clip.
 Each evaluation = 1 H3 request, so the run billed **65 requests** (search 45/60, promotion 12/12, test 8/8).
 
-RSI touches **none** of these services. It only edits six text fields in the harness config; the services and
+RSI touches **none** of these services. It only edits text fields in the harness config (four in this run); the services and
 the reward weights stay frozen.
 
 ---
 
 ## 2. How RSI improves the harness — watch these clips in order
 
-**Scope.** This document covers the **text-only** half: H3 and the judges stay frozen while RSI searches the six
+**Scope.** This document covers the **text-only** half: H3 and the judges stay frozen while RSI searches the harness
 text components. The *harness-only* Context-IR path — a frozen compiler in front of H3 plus weight training
 (actor GRPO + H3 DiffusionNFT/FlowGRPO), with **no harness search at all** — is
 [verl-omni RFC #500](https://github.com/verl-project/verl-omni/issues/500). The RSI half is
 [#748](https://github.com/verl-project/verl-omni/issues/748), which these clips support.
 
-### What gets rewritten: six text components
+### What gets rewritten: text components
 
-The harness is a YAML config, but RSI can rewrite only six text fields inside it. Everything else — reward
+The harness is a YAML config, but RSI can rewrite only six text fields inside it, and this run searched four of
+them (see below). Everything else — reward
 weights, tool routing, workflow order, generation parameters — is inherited from the base and held fixed, so the
 search cannot buy score by touching the rules instead of the prompts.
 
@@ -63,8 +64,13 @@ search cannot buy score by touching the rules instead of the prompts.
 | `memory` | **not a prompt**: a shared list of heuristics appended to *every* agent's system prompt |
 
 The five `prompts.*` entries are the system prompts of the five workflow agents (`script → storyboard →
-director → critic → editor`); `memory` is appended to all of them. Those six fields are the entire search space
-(see [Where the prompts live](#where-the-prompts-live) for what each one is at every step).
+director → critic → editor`); `memory` is appended to all of them. Those six fields are the most the codec will
+let RSI change.
+
+**This run searched four of them:** `run_config.resolved.yaml` sets `components: [script, storyboard, director,
+memory]`, so `prompts.critic` and `prompts.editor` stayed at the base text for the whole run. Those two agents run
+after H3: their output never reaches H3 or the score, so rewriting them could not move the reward. See
+[Where the prompts live](#where-the-prompts-live) for what each field is at every step.
 
 ### What does the searching: GEPA
 
@@ -73,11 +79,11 @@ on per-case feedback, and a Pareto front decide what survives. This run used `ge
 
 | Setting | Value | What it means here |
 | --- | --- | --- |
-| the candidate | the six fields above | one candidate = one complete harness |
+| the candidate | the four searched fields above | one candidate = one complete harness |
 | the score | real end-to-end reward | a candidate is judged by driving H3 to generate an actual clip and running the frozen policy over it, so text that merely *looks* better cannot win |
 | the proposer | reflection LM, `Qwen3.5-9B` on `:8001` | shown the current component text plus that minibatch's per-case feedback, and asked to rewrite **one** component |
 | `candidate_selection_strategy` | `pareto` | selection is from the Pareto front, which keeps every candidate that is best on **at least one** case — so a component that helps one task but not another is not discarded |
-| `module_selector` | `round_robin` | which of the six components to rewrite cycles, rather than always the same one |
+| `module_selector` | `round_robin` | which of the four searched components to rewrite cycles, rather than always the same one |
 | `reflection_minibatch_size` | `2` | a proposal is first tried on 2 tasks |
 | `max_metric_calls` | `60` | search budget, in evaluator calls |
 | `use_merge` | `false` | GEPA's option to combine components from different candidates is off |
@@ -321,11 +327,11 @@ iterations 1, 4 and 7 passed the minibatch and were then rejected on full valida
 in §1 a real search rather than a staged one.
 
 Two scope limits are worth stating plainly, since they bound how much the word "self-improving" should carry.
-The candidate codec (`rsi_harness/optimization/codec.py`) lets the LM change **only** the six text fields
-(`prompts.{script,storyboard,director,critic,editor}` and `memory`); reward weights, routing, workflow and
-generation parameters are inherited from the base and cannot be searched at all. And `memory` — the field that
-would accumulate state *within* a run — won two minibatches but never a full validation, so the champion's
-`memory` is empty. What actually recurs here is the harness version: the promoted champion seeds the next run.
+The candidate codec (`rsi_harness/optimization/codec.py`) lets the LM change **only** six text fields
+(`prompts.{script,storyboard,director,critic,editor}` and `memory`), and this run searched four of them; reward
+weights, routing, workflow and generation parameters are inherited from the base and cannot be searched at all.
+And `memory` — the field that would accumulate state *within* a run — passed one minibatch and got a full
+validation run, but was never the best on a validation task, so the champion's `memory` is empty. What actually recurs here is the harness version: the promoted champion seeds the next run.
 
 **What to look for, in order:**
 
@@ -422,7 +428,7 @@ A clip is produced by three different kinds of prompt, and it helps to keep them
 | Prompt | What it is | Where to find it |
 | --- | --- | --- |
 | **Task prompt** — the seed | the one-line idea: the user prompt handed to the script agent, and the text the visual judge scores the clip against | the codebase's `benchmarks/tasks_gepa_v1.jsonl`. This repo carries the same text verbatim inside every `evaluations/<key>/outcome.json`, as the first line of `feedback` (`Task requirement: …`) |
-| **System prompts** — the harness | the six text components RSI searches, `prompts.{script,storyboard,director,critic,editor}` and `memory` | [`base.yaml`](https://github.com/HaFred/H3-rsi/blob/main/base.yaml) (seed), [`best.yaml`](https://github.com/HaFred/H3-rsi/blob/main/best.yaml), [`champion/gepa-base.1.yaml`](https://github.com/HaFred/H3-rsi/blob/main/champion/gepa-base.1.yaml), and each `candidates/<hash>/harness.yaml` |
+| **System prompts** — the harness | the six text components RSI may change, `prompts.{script,storyboard,director,critic,editor}` and `memory` (this run searched `script`, `storyboard`, `director`, `memory`) | [`base.yaml`](https://github.com/HaFred/H3-rsi/blob/main/base.yaml) (seed), [`best.yaml`](https://github.com/HaFred/H3-rsi/blob/main/best.yaml), [`champion/gepa-base.1.yaml`](https://github.com/HaFred/H3-rsi/blob/main/champion/gepa-base.1.yaml), and each `candidates/<hash>/harness.yaml` |
 | **Derived prompts** — per clip | what the storyboard and director agents were actually asked, and the final prompt sent to H3 | each `evaluations/<key>/trajectory.json` — `script`, `storyboard`, `director_prompt` |
 
 **Only the seed is shared between steps; everything downstream of it is rewritten.** For `train-001` the script
