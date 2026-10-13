@@ -1,0 +1,131 @@
+{
+  "artifact": {
+    "audio_path": null,
+    "backend": "minimax_h3",
+    "cached": false,
+    "duration_seconds": 5.0,
+    "meta": {
+      "endpoint": "http://localhost:30010",
+      "request_hash": "b4493287964971b8d417620599a0c69b6f994cbc7fb5542223378da284e0cdea",
+      "status": "completed",
+      "video_id": "1577aef5-3479-485b-8a49-18e3e5ed5fe6"
+    },
+    "seed": 0,
+    "task_id": "test-002",
+    "video_path": "outputs/101214_1strun/evaluations/46da8e301312ae856e5e163fa6a14628358f86a5f4dea66074dd395b73090357/b4493287964971b8d417620599a0c69b6f994cbc7fb5542223378da284e0cdea.mp4"
+  },
+  "breakdown": {
+    "details": {
+      "editing": {
+        "length_cv": 0.875,
+        "mean_seconds": 0.9,
+        "num_shots": 3,
+        "std_seconds": 0.787,
+        "total_seconds": 2.7
+      },
+      "harness_hash": "2e347be9390a9685",
+      "human": {
+        "human_missing": true,
+        "reason": "no artifact-specific labels"
+      },
+      "mode": "local",
+      "story": {
+        "completeness": 0.5074,
+        "completeness_level": 2.0295609831809998,
+        "consistency": 0.9643
+      },
+      "video": {
+        "av": {
+          "skipped": true
+        },
+        "av_alignment": 0.0,
+        "unified": {
+          "frame_std": 0.0369,
+          "malformed_frames": 0,
+          "n_frames": 6,
+          "sample_response": "Alignment Score (1-5): 2.402600049972534\nCoherence Score (1-5): 2.8203999996185303\nStyle Score (1-5): 2.41129994392395"
+        },
+        "unified_reward": 0.4605347249242995
+      }
+    },
+    "editing": 0.4,
+    "human": 0.0,
+    "story": 0.6901508003473282,
+    "total": 0.5088585350414117,
+    "video": 0.4605347249242995,
+    "weights": {
+      "editing": 0.15,
+      "human": 0.0,
+      "story": 0.25,
+      "video": 0.6
+    }
+  },
+  "critic_report": "### Physics\n*   **Wrench mechanics:** A wrench on a stationary rear brake bolt does not require \"torque\" application in the sense of rotating a wheel; the bolt is likely already tightened or requires a specific pull/press, not a twisting torque that would generate a violent *CLANK* sound from a stationary frame. The description implies the wrench \"biting\" into the bolt while the bike is \"stationary\" and \"unmoving,\" which is mechanically ambiguous unless the brake rotor is spinning (contradicting \"stationary motorcycle\").\n*   **Sweat dynamics:** The shot shows the sweat bead \"rolling rapidly,\" \"catching the light,\" and then \"sliding down.\" In a 2-second shot where the camera is static and the hand is gripping, the subject's face is barely visible at the top edge. A bead reaching the jawline and mixing with grease in full view requires the head to tilt or move significantly, which contradicts the \"static\" camera and the tight framing.\n*   **Lighting shadow consistency:** Shot 1 has \"deep shadows in the creases of the knuckles.\" Shot 2 and 3 describe the \"harsh, single-source work lamp\" creating high contrast. However, the lighting direction on the face in Shot 1 (catching the sweat bead before sliding down) conflicts with the deep shadows described in the knuckles if the light is strictly single-source; the angle of the bead's reflection suggests a different light vector than the knuckle shadows.\n*   **Rag motion:** In a 0.2-second medium shot, the description of \"wiping palms vigorously, smearing fresh oil onto the already darkened denim\" implies a significant motion blur or travel across the frame. In a static medium shot lasting only 2 frames (0.2s), the hand likely won't travel far enough to visibly smear oil across the chest unless the arm swings wildly, which the \"static\" framing doesn't account for.\n\n### Subject Consistency\n*   **T-shirt visibility:** The script mentions a \"stained mechanic's jumpsuit\" but never explicitly mentions a t-shirt underneath. The generation description introduces \"the white of the protagonist's t-shirt underneath the jumpsuit\" as a stark contrast element. This is an unscripted visual element added by the generation, contradicting the script's minimal costume description.\n*   **Facial expression vs. action:** The script describes the protagonist looking at the machine with \"quiet satisfaction\" after tightening the bolt. The generation describes the face as \"brow smooth, eyes crinkling slightly.\" While plausible, the juxtaposition of a grease-slicked hand (Shot 1) and a suddenly \"smooth brow\" and \"crinkling eyes\" in Shot 3 (0.04-0.05s) creates a disconnect between the grime of the work and the cleanliness of the face, unless the wipe in Shot 2 was exhaustive enough to cover the brow entirely, which isn't stated.\n*   **Tool placement:** The script says the wrench is \"resting against the bike's frame\" in Shot 3. The generation describes it \"resting casually.\" The transition from \"gripping a wrench\" (Shot 1) to \"hands... drop out of frame\" and the wrench \"resting casually\" in the next shot implies the protagonist placed it there. The script implies the bolt tightening *was* the action, so the wrench placement is consistent, but the \"casual\" descriptor adds an unnecessary narrative beat not in the script.\n\n### Story Clarity\n*   **Motivation for the wipe:** The script shows the mechanic tightening a bolt, then wiping hands, then looking satisfied. The generation describes the wipe as \"rapid, thorough, smearing fresh oil,\" which heightens the grime rather than alleviating it. There is no diegetic reason given in the audio or visual for why the protagonist *must* wipe their hands immediately after tightening the bolt (e.g., about to start the engine), making the action feel gratuitous rather than functional.\n*   **The Cello Note:** The non-diegetic music (single cello note) at 0:04 serves no narrative purpose. It is an emotional beat (\"internal reflection\") that is not supported by the script's dialogue or action beats. The script ends with \"Cut to black\" based on visual satisfaction; the audio adds a layer of melodrama that contradicts the minimalist, grounded tone of the script.\n*   **Ambiguous task:** The script is vague on *what* the bolt does. Is it the brake cable, the axle, or the wheel nut? The generation tries to resolve this by calling it a \"hex bolt of the stationary motorcycle's rear brake assembly,\" but a \"hex bolt\" on a \"rear brake\" on a stationary bike is unclear without more context, leaving the viewer unsure of the specific mechanical task being performed.\n\n###",
+  "director_prompt": "integrated_multimodal_description\n[Shot 1] 0:00–0:02 — Extreme Close-Up. The frame is dominated by a grease-slicked hand, skin glistening under the harsh, single-source work light that casts deep shadows in the creases of the knuckles. The protagonist grips a rust-stained steel wrench, fingers caked in black oil, the nail of the index finger pressing hard against the metal handle. A coarse, oil-soaked rag hangs from the wrist. The camera is static, locked off, as the wrench bites into the hex bolt of the stationary motorcycle's rear brake assembly. A sharp metallic *CLANK* echoes through the tight frame. As the torque is applied, a bead of sweat rolls rapidly from the protagonist's brow, which intrudes at the top edge of the shot, catching the light before sliding down the cheek, mixing with the grease on the jawline. The background is a blur of dark, indistinct metal and shadow, isolating the hand and the bike frame.\n\n[Shot 2] 0:02–0:04 — Medium Shot. The camera pulls back slightly, revealing the protagonist from the waist up, clad in a stained mechanic's jumpsuit. The denim is heavy with patches of dried and fresh oil, the fabric frayed at the cuffs. They lift a coarse, grey-brown rag, the fibers matted with grime, and begin to wipe their palms vigorously. The motion is rapid, thorough, smearing fresh oil onto the already darkened denim of the sleeves and chest. The lighting remains that harsh, directional work lamp, creating high contrast: the white of the protagonist's t-shirt underneath the jumpsuit is stark against the black grease. The garage environment surrounds them: a stainless steel vacuum cleaner sits in the periphery, hissing softly, while the low, rhythmic thrum of the air compressor vibrates slightly in the stillness of the air. The motorcycle's rear fender and the wheel, untouched and cold, occupy the lower right foreground.\n\n[Shot 3] 0:04–0:05 — Extreme Close-Up. The focus shifts to the wrench, now resting casually against the cold, painted chrome frame of the motorcycle, the hex bolt gleaming perfectly secure and shiny. The protagonist's hands, still smeared with oil, drop out of frame. We see the protagonist's face briefly at the top of the shot, stepping back. Their expression is one of quiet, earned satisfaction; the brow is smooth, the eyes crinkling slightly at the corners as they look at the machine. The wrench gives a soft, sympathetic *clink* against the metal frame. The lighting softens imperceptibly for a fraction of a second, highlighting the dust motes dancing in the beam. The shot holds on the bond between the tool and the machine, then the screen cuts to pure black.\n\noverall_soundscape\nThe audio begins with the sharp, singular impact of the wrench biting the bolt—a dry, metallic *CLANK* that anchors the scene. This is immediately underpinned by the ambient garage: a low-frequency hum, the distant hiss of a vacuum cleaner cycling on a nearby shelf, and the steady, mechanical thrum of the air compressor filling the room. These sounds are muffled and intimate, as if heard through the thick walls of the garage itself. There is no crowd noise, no wind, and no music yet. The silence is heavy, broken only by the friction of the mechanic's work and the breathing of the protagonist, which becomes audible as a soft, steady exhale during the middle shot.\n\nnon_diegetic_music\nAt the precise moment the wrench rests against the frame in Shot 3 (0:04), a single, resonant cello note swells, low and warm, emerging from beneath the ambient garage noise. It is not a full orchestra, but a solitary instrument, playing a minimalist, sustained tone that hangs in the air, echoing the protagonist's silent satisfaction. The cello fades slowly over the final second, blending into the soft *clink* of the tool, leaving only the room's natural decay and then total silence as the cut to black. The music serves as an internal reflection, a quiet acknowledgment of the job well done, separate from the diegetic sounds of the workshop.",
+  "editor_notes": "The best candidate to keep is **Shot 1**, as it best anchors the scene in grounded reality by showing the wrench on the stationary bolt and the sweat dynamics, despite the lighting inconsistencies, because these physical details are the only ones that survive the physics critique without forcing narrative logic. You should **shorten the wipe sequence (Shot 2)** significantly to resolve the motion blur and smearing contradiction, or delete it entirely if the \"grit\" isn't essential, while **keeping the final satisfied look (Shot 3)** but trimming the \"casual\" wrench placement description to strictly match the script's implied narrative closure.",
+  "error": null,
+  "harness_hash": "2e347be9390a9685",
+  "harness_version": "gepa-base",
+  "meta": {
+    "cost": 10.0,
+    "critic_gates": {
+      "physics_ok": false,
+      "physics_p": 0.23884102702140808,
+      "subject_ok": false,
+      "subject_p": 0.25300168991088867
+    },
+    "effective": {
+      "backend": "minimax_h3",
+      "decision": "http",
+      "declared": {
+        "backend": "minimax_h3",
+        "decision": "http",
+        "text_llm": "openai"
+      },
+      "text_llm": "openai"
+    },
+    "target": {
+      "aspect_ratio": "16:9",
+      "duration_seconds": 5.0,
+      "frame_rate": 24.0,
+      "num_inference_steps": 10,
+      "seed": 0,
+      "short_edge": 768
+    },
+    "task_type": "t2va",
+    "warnings": [],
+    "workflow": [
+      "script",
+      "storyboard",
+      "director",
+      "critic",
+      "editor"
+    ]
+  },
+  "script": "**SHOT 1 (0:00-0:2)**\nClose-up on a grease-slicked hand gripping a wrench. *CLANK.* The bolt tightens on the stationary motorcycle's rear brake. Sweat beads on the protagonist's brow. The engine is dead, the bike unmoving.\n\n**SHOT 2 (0:2-0.4)**\nMedium shot. The protagonist, wearing a stained mechanic's jumpsuit, lifts a rag. They wipe their palms vigorously, smearing more oil onto the denim. The garage hums around them—distant vacuum hiss, the low thrum of the air compressor.\n\n**SHOT 3 (0.4-0:5)**\nExtreme close-up on the wrench resting against the bike's frame. The bolt is secure. The protagonist steps back, looking at the machine with quiet satisfaction. The wrench clinks softly on the metal. Cut to black.",
+  "split": "test",
+  "storyboard": [
+    {
+      "action": "Close-up on a grease-slicked hand gripping a wrench; the bolt tightens on the stationary motorcycle's rear brake with a CLANK; sweat beads form on the protagonist's brow.",
+      "camera": "static",
+      "index": 1,
+      "seconds": 2,
+      "shot_size": "close"
+    },
+    {
+      "action": "The protagonist, in a stained mechanic's jumpsuit, lifts a rag and wipes their palms vigorously, smearing oil onto the denim, while the garage hums with distant vacuum hiss and air compressor thrum.",
+      "camera": "static",
+      "index": 2,
+      "seconds": 0.2,
+      "shot_size": "medium"
+    },
+    {
+      "action": "Extreme close-up on the wrench resting against the bike's frame with the secure bolt; the protagonist steps back looking at the machine with quiet satisfaction as the wrench clinks softly on the metal, then cut to black.",
+      "camera": "static",
+      "index": 3,
+      "seconds": 0.5,
+      "shot_size": "extreme close"
+    }
+  ],
+  "task_id": "test-002"
+}

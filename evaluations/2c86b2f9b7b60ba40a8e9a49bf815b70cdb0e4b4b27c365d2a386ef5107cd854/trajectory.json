@@ -1,0 +1,131 @@
+{
+  "artifact": {
+    "audio_path": null,
+    "backend": "minimax_h3",
+    "cached": false,
+    "duration_seconds": 5.0,
+    "meta": {
+      "endpoint": "http://localhost:30010",
+      "request_hash": "4698772d7af48939b4cfa0b66526028988e8c0be33c2af7b8635646eba5f934e",
+      "status": "completed",
+      "video_id": "8625b266-7996-41b7-998b-1fe835403369"
+    },
+    "seed": 0,
+    "task_id": "val-001",
+    "video_path": "outputs/101214_1strun/evaluations/2c86b2f9b7b60ba40a8e9a49bf815b70cdb0e4b4b27c365d2a386ef5107cd854/4698772d7af48939b4cfa0b66526028988e8c0be33c2af7b8635646eba5f934e.mp4"
+  },
+  "breakdown": {
+    "details": {
+      "editing": {
+        "length_cv": 0.283,
+        "mean_seconds": 1.667,
+        "num_shots": 3,
+        "std_seconds": 0.471,
+        "total_seconds": 5.0
+      },
+      "harness_hash": "2e347be9390a9685",
+      "human": {
+        "human_missing": true,
+        "reason": "no artifact-specific labels"
+      },
+      "mode": "local",
+      "story": {
+        "completeness": 0.6301,
+        "completeness_level": 2.5203618928790092,
+        "consistency": 0.9118
+      },
+      "video": {
+        "av": {
+          "skipped": true
+        },
+        "av_alignment": 0.0,
+        "unified": {
+          "frame_std": 0.0099,
+          "malformed_frames": 0,
+          "n_frames": 6,
+          "sample_response": "Alignment Score (1-5): 2.402600049972534\nCoherence Score (1-5): 3.702899932861328\nStyle Score (1-5): 3.0032999515533447"
+        },
+        "unified_reward": 0.5127944482697381
+      }
+    },
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.742773150280118,
+    "total": 0.6433699565318723,
+    "video": 0.5127944482697381,
+    "weights": {
+      "editing": 0.15,
+      "human": 0.0,
+      "story": 0.25,
+      "video": 0.6
+    }
+  },
+  "critic_report": "### Physics\n*   **Clay behavior on release:** The clay retains a \"perfect cylindrical shape\" for a heartbeat before \"gently cradling itself.\" Real wet clay released from a wheel collapses, springs back slightly, or flows; it does not maintain a rigid cylinder for a second while hanging in air.\n*   **Surface drying speed:** The bowl's surface shifts from \"wet and slick\" to \"matte, earthy brown\" with a \"fine, granular texture\" visible within 2 seconds (0:00–0:02). Water evaporates from a clay surface that slowly; the visual texture change is instantaneous and unrealistic for that timeframe.\n*   **Reflection physics:** In Shot 3, the surface becomes a \"mirror of absolute stillness, reflecting the amber light without any distortion.\" Wet clay is semi-translucent and diffusive, not a specular mirror surface.\n*   **Motor silence:** The motor reaches \"perfect, silent stillness\" at 0:03. Even with the load removed, a pottery wheel motor has inertia; it should coasts to a halt over 3–5 seconds, not drop to zero decibels instantly.\n\n### Subject Consistency\n*   **Hand tremor contradiction:** Shot 2 explicitly states the potter's hand trembles \"at the edge of the shelf.\" Shot 3 describes the tremor \"passing\" and the clay being still, but implies the hands are no longer interacting with the bowl. The transition from a trembling hand placing the bowl to a completely still room where the tremor has vanished is jarring without establishing the tremor was purely in the *fingers* rather than the *shoulder/arm*.\n*   **Potter's face appearance:** The generation description introduces a specific character (\"grey-streaked beard,\" \"rough-spun tunic,\" \"eyes closed in reverence\") in Shot 2, but the script and storyboard never establish the potter's age, gender, or facial features prior to this shot, creating a sudden character reveal.\n*   **Camera movement:** The storyboard and script specify \"static\" for all shots, yet the generation description for Shot 3 states \"The camera hovers inches above the surface,\" implying a subtle dolly or handheld movement not authorized by the static camera directive.\n\n### Story Clarity\n*   **Missing context:** The sequence is a single moment of completion. There is no indication of what the bowl is for, who the potter is, or why this specific moment matters beyond \"it is done.\"\n*   **Ambiguous resolution:** The \"exhale\" of the room and the cello's resolution suggest a narrative arc of relief, but the script provides no prior tension or stakes. The audience is left wondering what the \"tremor\" represents emotionally without narrative setup.\n\n### Pacing\n*   **Shot 3 duration mismatch:** The script allocates Shot 3 from 0:03 to 0:05 (2 seconds). The description spends significant time detailing the drying texture, the dust motes, and the motor settling, which likely stretches the visual beyond the allotted 2 seconds if rendered at the described detail level.\n*   **Rushed transition:** The cut from the trembling hand (0:02) to the hands being \"no longer visible\" (0:03) happens in a single second. The emotional weight of the \"ghost of the spin\" is lost because the visual resolution (hands gone) is too abrupt for the 1-second hold.\n\n### Audio\n*   **Sound design contradiction:** The script and storyboard specify the motor hums softly and slows to a rest, then becomes silent. The generation description adds \"crisp, dry sound of wet clay hitting wood—a soft, thudding *thump* that echoes\" and \"rhythmic scratching of the potter's feet.\" These are intrusively loud and specific sounds that clash with the intended \"heavy silence\" and \"perfect, silent stillness.\"\n*   **Music timing:** The cello enters at 0:01 (\"As the clay is released\"). However, Shot 1 (0:00–0:02) is entirely dedicated to the release. Introducing music *after* the release action begins disrupts the immersion of the slow-motion moment, which typically requires a silence or ambient pad to emphasize the slowness.\n*   **Frequency conflict:** The description calls the music \"heavy, organic, and deeply intimate\" with a \"low-frequency drone,\" yet the overall soundscape includes a \"crisp, dry\" clay thud and rhythmic foot scratching. The \"crisp\" high-frequency elements of the foot scratching and clay hit compete with the \"low-frequency\" drone, creating an muddy texture rather than the intended clarity.",
+  "director_prompt": "integrated_multimodal_description\n[Shot 1] 0:00-0:02 — Slow-motion close-up. Warm amber workshop light filters through a single high window, illuminating floating dust motes that drift like slow gold snow. In the foreground, the small clay bowl is wet and slick, its surface reflecting the amber glow with a soft, distorted sheen. The wheel's motor hums softly, a low vibration that ripples through the wooden base. As the clay is released, it retains its perfect cylindrical shape for a heartbeat, then gently cradles itself. The potter's hands—calloused, stained with permanent earth-tones, skin weathered like old parchment—hover just above the clay, fingers splayed but motionless, trembling slightly with the residual energy of the spin. The background is a blur of soft wood grain and muted shadows, keeping the focus entirely on the wet clay and the stillness of the hands.\n[Shot 2] 0:02-0:03 — Medium shot. The potter, a figure of quiet intensity with a grey-streaked beard and rough-spun tunic, carefully places the bowl onto a rough-hewn wooden shelf. The shelf is dark oak, varnished to a deep, matte finish, contrasting with the vibrant orange-brown of the wet clay. The bowl sits perfectly balanced, its curve catching the ambient glow from the side, highlighting the smooth texture of the terracotta material. For a split second, the potter's right hand trembles visibly at the edge of the shelf, the skin flushing slightly, a ghost of the wheel's spin still vibrating in their fingers. The potter's face is partially shadowed, eyes closed in reverence, then opening slowly as they step back. The lighting is low-key, with deep shadows in the corners of the room, emphasizing the warmth of the clay.\n[Shot 3] 0:03-0:05 — Extreme close-up. The camera hovers inches above the surface of the resting bowl. The tremor in the clay has passed; the surface is now a mirror of absolute stillness, reflecting the amber light without any distortion. The potter's hands are no longer visible, replaced by the dust motes continuing their lazy dance in the air. The room seems to exhale, the heavy silence of the space pressing down before breaking with the gentle, mechanical whir of the motor finally reaching perfect, silent stillness. The bowl rests whole, a monolithic curve of earth, its texture shifting from the sheen of wet clay to a matte, earthy brown as the surface begins to dry. The light catches the rim, revealing the fine, granular texture of the clay body.\n\noverall_soundscape\nThe soundscape is anchored by the deep, resonant hum of the pottery wheel's motor, which starts as a low, vibrating bass note. As the clay is released, the hum fades into a soft, decaying reverb, mimicking the slowing motion of the wheel. This is intercut with the crisp, dry sound of wet clay hitting wood—a soft, thudding *thump* that echoes slightly in the enclosed space. A faint, rhythmic scratching of the potter's feet on the dusty wooden floor adds a subtle grounding texture. As the tremor passes and the bowl rests, the ambient sound drops to near silence, replaced only by the gentle, almost imperceptible whir of the motor settling into its final idle state, followed by the soft, natural rustle of dust settling on the shelf.\n\nnon_diegetic_music\nA solitary cello line, played with a warm, bowed tone, enters softly at 0:01, mirroring the slow release of the clay. The melody is minimal, a single, sustained note that dips slightly in pitch to match the wheel's deceleration, then holds steady. At 0:03, as the tremor passes, the cello adds a second, harmonizing line an octave higher, creating a sense of resolution and stillness. The instrumentation is sparse, featuring only the cello and a very soft, low-frequency drone that underscores the weight of the room. There are no drums or high-frequency instruments; the music feels heavy, organic, and deeply intimate, swelling gently at the end to match the visual \"exhale\" of the room.",
+  "editor_notes": "Since no candidate videos or scores were provided in your request, I cannot identify a specific winner to select; however, based on the critic's detailed report, the best candidate would be the one that most faithfully renders the clay's imperfect collapse, the motor's gradual coasting, and the static camera framing while minimizing the intrusive \"crisp\" sound design. To improve the final edit, you should extend Shot 3 to allow the drying texture and motor settling to breathe naturally without rushing the visual details, and significantly shorten the transition between Shot 2 and Shot 3 by adding a brief beat where the trembling hand is still visible but receding, thereby resolving the abrupt cut and grounding the emotional weight of the tremor.",
+  "error": null,
+  "harness_hash": "2e347be9390a9685",
+  "harness_version": "gepa-base",
+  "meta": {
+    "cost": 10.0,
+    "critic_gates": {
+      "physics_ok": false,
+      "physics_p": 0.011652565561234951,
+      "subject_ok": false,
+      "subject_p": 0.2046942263841629
+    },
+    "effective": {
+      "backend": "minimax_h3",
+      "decision": "http",
+      "declared": {
+        "backend": "minimax_h3",
+        "decision": "http",
+        "text_llm": "openai"
+      },
+      "text_llm": "openai"
+    },
+    "target": {
+      "aspect_ratio": "16:9",
+      "duration_seconds": 5.0,
+      "frame_rate": 24.0,
+      "num_inference_steps": 10,
+      "seed": 0,
+      "short_edge": 768
+    },
+    "task_type": "t2va",
+    "warnings": [],
+    "workflow": [
+      "script",
+      "storyboard",
+      "director",
+      "critic",
+      "editor"
+    ]
+  },
+  "script": "**FADE IN:**\n\n**SHOT 1 (0:00-0:02)**\n*Slow-motion close-up. The wet clay of the small bowl is gently released from the spinning wheel. The wheel's motor hums softly, gradually slowing as the clay comes to a rest. Dust motes dance in the warm, amber workshop light. The potter's hands, calloused and still, hover for a heartbeat.*\n\n**SHOT 2 (0:02-0:03)**\n*Medium shot. The potter places the bowl onto the wooden shelf. It sits perfectly balanced, the curve of the clay catching the soft ambient glow. For a split second, the potter's hand trembles slightly at the edge of the shelf—a ghost of the wheel's spin still vibrating in their fingers.*\n\n**SHOT 3 (0:03-0:05)**\n*Extreme close-up on the bowl. The tremor passes. The clay is still. The room holds its breath, then exhalates with the gentle whir of the motor finally reaching a perfect, silent stillness. The bowl rests, whole.*\n\n**CUT TO BLACK.**",
+  "split": "validation",
+  "storyboard": [
+    {
+      "action": "Slow motion close-up of wet clay being released from the spinning wheel; the wheel's motor hums softly and slows to a rest; dust motes dance in warm amber light; potter's calloused hands hover momentarily above.",
+      "camera": "static",
+      "index": 1,
+      "seconds": 2,
+      "shot_size": "close"
+    },
+    {
+      "action": "Medium shot of the potter placing the finished bowl onto a wooden shelf; the clay catches the ambient glow; the potter's hand trembles slightly at the edge of the shelf.",
+      "camera": "static",
+      "index": 2,
+      "seconds": 1,
+      "shot_size": "medium"
+    },
+    {
+      "action": "Extreme close-up on the resting bowl; the tremor passes and the clay is still; the room exhales as the motor reaches perfect silent stillness; the bowl sits whole.",
+      "camera": "static",
+      "index": 3,
+      "seconds": 2,
+      "shot_size": "close"
+    }
+  ],
+  "task_id": "val-001"
+}

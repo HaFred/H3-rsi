@@ -1,0 +1,26 @@
+{
+  "axis_scores": {
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.681362,
+    "video": 0.47796
+  },
+  "cache_hit": false,
+  "cache_key": "4dc7b1061308e4d5524ce111e7a3a20a147b83d976334af78d8414cea3604235",
+  "candidate_hash": "4ddd73aa8fa203c6aaef003092483f3f4d4c90210a62dfc352b1cd7f862b5f5d",
+  "case_id": "test:test-002:seed0",
+  "elapsed_seconds": 48.25,
+  "errors": [],
+  "feedback": "Task requirement: A mechanic tightens a bolt on a stationary motorcycle then wipes their hands with a cloth. Keep the same motorcycle and clothing throughout. Include tool sounds and garage ambience.\nTotal score 0.607 with fixed weights {'video': 0.6, 'story': 0.25, 'editing': 0.15}: video=0.478, story=0.681, editing=1.000.\nVisual judge (UnifiedReward on 6 frames, alignment/coherence/style vs the task text): frame_std=0.0468. Last judge response: Alignment Score (1-5): 2.571500062942505\nCoherence Score (1-5): 3.1212000846862793\nStyle Score (1-5): 2.6015000343322754\nStory judge: completeness=0.4849, completeness_level=1.9395, consistency=0.9761 (completeness of the script; consistency between script and H3 prompt).\nShot pacing: num_shots=3, mean_seconds=1.667, std_seconds=0.094, total_seconds=5.0, length_cv=0.057\nCritic gates: physics_p=0.0527, subject_p=0.1388",
+  "finished_at": "2026-10-12T16:52:28+00:00",
+  "h3_requests": 1,
+  "phase": "test",
+  "policy_hash": "dd489936d9ea8f3d633e4b5e58df0931fc1f0be14f0d4ad929ca804fc7b07124",
+  "score": 0.607116,
+  "seed": 0,
+  "split": "test",
+  "task_id": "test-002",
+  "trajectory_path": "outputs/101214_1strun/evaluations/4dc7b1061308e4d5524ce111e7a3a20a147b83d976334af78d8414cea3604235/trajectory.json",
+  "valid": true,
+  "video_path": "outputs/101214_1strun/evaluations/4dc7b1061308e4d5524ce111e7a3a20a147b83d976334af78d8414cea3604235/video.mp4"
+}

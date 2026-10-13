@@ -1,0 +1,26 @@
+{
+  "axis_scores": {
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.737345,
+    "video": 0.550594
+  },
+  "cache_hit": false,
+  "cache_key": "d83296894e58c66d069a7285ffc49b69f816bcd8c68bc9ecab2928abe51de19e",
+  "candidate_hash": "4ddd73aa8fa203c6aaef003092483f3f4d4c90210a62dfc352b1cd7f862b5f5d",
+  "case_id": "promotion:promotion-006:seed0",
+  "elapsed_seconds": 49.91,
+  "errors": [],
+  "feedback": "Task requirement: A florist trims the stem of a white rose and places it into a glass vase on the counter. Keep the florist and rose consistent. Include the snip of shears and water settling.\nTotal score 0.665 with fixed weights {'video': 0.6, 'story': 0.25, 'editing': 0.15}: video=0.551, story=0.737, editing=1.000.\nVisual judge (UnifiedReward on 6 frames, alignment/coherence/style vs the task text): frame_std=0.0251. Last judge response: Alignment Score (1-5): 2.7911999225616455\nCoherence Score (1-5): 3.8203001022338867\nStyle Score (1-5): 3.3350000381469727\nStory judge: completeness=0.5702, completeness_level=2.2807, consistency=0.9881 (completeness of the script; consistency between script and H3 prompt).\nShot pacing: num_shots=3, mean_seconds=1.67, std_seconds=0.0, total_seconds=5.01, length_cv=0.0\nCritic gates: physics_p=0.0845, subject_p=0.0532",
+  "finished_at": "2026-10-12T16:31:58+00:00",
+  "h3_requests": 1,
+  "phase": "promotion",
+  "policy_hash": "dd489936d9ea8f3d633e4b5e58df0931fc1f0be14f0d4ad929ca804fc7b07124",
+  "score": 0.664693,
+  "seed": 0,
+  "split": "promotion",
+  "task_id": "promotion-006",
+  "trajectory_path": "outputs/101214_1strun/evaluations/d83296894e58c66d069a7285ffc49b69f816bcd8c68bc9ecab2928abe51de19e/trajectory.json",
+  "valid": true,
+  "video_path": "outputs/101214_1strun/evaluations/d83296894e58c66d069a7285ffc49b69f816bcd8c68bc9ecab2928abe51de19e/video.mp4"
+}

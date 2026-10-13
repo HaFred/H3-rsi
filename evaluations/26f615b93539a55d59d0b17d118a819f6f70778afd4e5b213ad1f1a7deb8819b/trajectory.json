@@ -1,0 +1,131 @@
+{
+  "artifact": {
+    "audio_path": null,
+    "backend": "minimax_h3",
+    "cached": false,
+    "duration_seconds": 5.0,
+    "meta": {
+      "endpoint": "http://localhost:30010",
+      "request_hash": "f7e0c966f7850896a2ee693f5607e33613fa419980068306f2cd578331f054ce",
+      "status": "completed",
+      "video_id": "db08d249-9962-45e9-afcc-286eba6759a5"
+    },
+    "seed": 0,
+    "task_id": "promotion-006",
+    "video_path": "outputs/101214_1strun/evaluations/26f615b93539a55d59d0b17d118a819f6f70778afd4e5b213ad1f1a7deb8819b/f7e0c966f7850896a2ee693f5607e33613fa419980068306f2cd578331f054ce.mp4"
+  },
+  "breakdown": {
+    "details": {
+      "editing": {
+        "length_cv": 0.283,
+        "mean_seconds": 1.667,
+        "num_shots": 3,
+        "std_seconds": 0.471,
+        "total_seconds": 5.0
+      },
+      "harness_hash": "2e347be9390a9685",
+      "human": {
+        "human_missing": true,
+        "reason": "no artifact-specific labels"
+      },
+      "mode": "local",
+      "story": {
+        "completeness": 0.439,
+        "completeness_level": 1.7561084181070328,
+        "consistency": 0.9351
+      },
+      "video": {
+        "av": {
+          "skipped": true
+        },
+        "av_alignment": 0.0,
+        "unified": {
+          "frame_std": 0.051,
+          "malformed_frames": 0,
+          "n_frames": 6,
+          "sample_response": "Alignment Score (1-5): 2.690999984741211\nCoherence Score (1-5): 3.6805999279022217\nStyle Score (1-5): 3.5032999515533447"
+        },
+        "unified_reward": 0.5212666624122196
+      }
+    },
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.6374376974999905,
+    "total": 0.6221194218223294,
+    "video": 0.5212666624122196,
+    "weights": {
+      "editing": 0.15,
+      "human": 0.0,
+      "story": 0.25,
+      "video": 0.6
+    }
+  },
+  "critic_report": "### Physics\n*   **Shot 3 (Gravity):** A single water bead on a vertical petal surface should not roll off in a \"jagged streak\" without gravity acting vertically; the description implies horizontal movement or an unnatural trajectory for a drop described as \"perfectly spherical.\" A real bead rolls slowly in the direction of the slope, not as a distinct jagged line, and leaves a trail, not just \"disappearing.\"\n*   **Shot 2 (Wetting):** The rose stem is cut fresh (per Script) and plunged into water. The physics of the stem entering water should cause immediate, rapid capillary action and wetting of the cut end, not a static \"settling\" where the water merely \"plops\" and settles around it without the stem visibly absorbing moisture instantly.\n*   **Shot 1 (Lighting):** The description states the shears cast a \"sharp, linear shadow across the white petals\" while the hand holds the bloom \"aloft.\" If the light is a single key from above, the hand itself should cast a shadow on the petals or the stem, which is mentioned (\"shadow across the white petals\"), but the interaction between the hand holding the stem and the shears snipping it implies the hand is out of the direct path of the shadow, creating a disconnect between the object holding the flower and the shadow on it.\n\n### Subject Consistency\n*   **Vase Color/Type:** Script says \"dark glass\" (Shot 3) and \"glass vase\" (Shot 2), but the generation description specifies an \"**amber-tinted glass vase**.\" This contradicts the \"dark\" description in Shot 3, which implies black or very dark green, not amber.\n*   **Counter Material:** Script implies a neutral shop counter; generation describes \"**whitewashed oak counter**\" with visible grain. This significantly changes the setting's tone from a sterile florist shop to a rustic kitchen or dining area, altering the subject environment.\n*   **Lighting Shift:** The script implies a continuous lighting setup (single key light). The generation description introduces a \"**rim light** from the side\" in Shot 3, changing the lighting geometry entirely compared to the single overhead key light in Shot 1, which creates inconsistent subject illumination on the flower.\n*   **Hand Appearance:** Script says \"steady and calloused.\" Generation says \"skin wrinkled and calloused\" with a \"faded silver band.\" The addition of jewelry (the band) was not in the script/storyboard and introduces a variable (the band moving/blur) not accounted for in the action description.\n\n### Story Clarity\n*   **Missing Context:** The story implies a completed action (cutting and placing the rose). However, the extreme close-up in Shot 3 focuses entirely on a single water drop evaporating, removing the viewer from the narrative of the flower being placed. The transition from \"flower placed in vase\" to \"flower untouched and whole\" with a evaporating drop creates a disconnect; the flower *is* touched by the water, contradicting the \"untouched\" claim made after the drop has vanished.\n*   **Contradictory State:** The script says the flower is \"whole\" after the drop rolls off. The generation description confirms this (\"leaving the flower untouched and whole, save for the wet spot\"). The story becomes muddled between the flower being \"pristine/untouched\" initially and now having a \"wet spot,\" diluting the visual narrative of perfection.\n\n### Pacing\n*   **Shot 3 Duration:** Shot 3 is only **1 second**. The action described—a bead forming, beading, rolling off in a jagged streak, and the drop vanishing/evaporating—is physically too complex for 1 second. The drop taking the time to \"slowly roll off\" and \"evaporate\" requires significantly more time, making the shot feel rushed and the physics unconvincing.\n*   **Shot 2 Duration:** Shot 2 is **2 seconds**. It must accommodate the camera push, the hand lowering, the stem entering the water, the plop, the hand retreating and blurring, and the camera creeping closer. The storyboard action is dense for only 2 seconds, likely resulting in a rushed, disjointed sequence where the push and the water entry overlap awkwardly.\n\n### Audio\n*   **Non-Diegetic Music Intrusion:** A **cello note** sustains through Shot 1, drops an octave in Shot 2, and fades into a **glass harp shimmer** in Shot 3. This non-diegetic music is entirely disconnected from the visual action (snipping, plop, evaporating drop). The music's emotional arc (warm -> deep -> ethereal) contradicts the visual content, which is a static, sterile process. The cello in Shot 1 (\"grounding the sterile metal\") is a subjective",
+  "director_prompt": "`integrated_multimodal_description`\n[Shot 1] 00:00–00:02 — **CLOSED ON** the shears. Cold, polished **stainless steel** gleams under a single, hard **key light** from above, casting a sharp, linear shadow across the white petals. The florist's hand enters: skin **wrinkled and calloused**, the thumb bearing a faded silver band. The rose is **pristine white**, velvety and untouched, held aloft against a backdrop of **matte charcoal** fabric which absorbs the light, isolating the bloom. The shears snap shut with a crisp, metallic *SNIP* that echoes in the sudden quiet. The camera is **static**, but the micro-movement of the hand is held rigid, emphasizing precision.\n\n[Shot 2] 00:02–00:04 — **MEDIUM** shot. The **amber-tinted glass vase** sits on a **whitewashed oak counter**, the wood grain visible and warm. Inside, **filtered tap water** ripples sluggishly, reflecting the single overhead bulb like a distorted star. The florist lowers the rose; the **calloused fingers** let go as the stem dips into the bowl. A single, heavy **plop** of water breaks the silence. The camera performs a slow, imperceptible **push**, creeping closer to the water's surface while the florist's retreating hand blurs slightly at the top edge of the frame.\n\n[Shot 3] 00:04–00:05 — **EXTREME CLOSE-UP**. The rose now sits alone in the dark, heavy glass. The lighting has shifted to a soft, diffused **rim light** from the side, carving the edge of the white bloom. A single **pearl** of water beads on the upper petal, perfectly spherical and clear, before slowly **rolling off** in a jagged streak, leaving a microscopic trail of moisture. The flower remains **untouched and whole**, save for the wet spot where the drop vanished.\n\n`overall_soundscape`\nThe audio begins with the sharp, isolated **SNIP** of steel, reverberating slightly in the sparse, dust-mote-filled air of the shop. This is immediately followed by a profound, vacuum-like **silence**, save for the low-frequency hum of the refrigerator in the background and the distant, muffled chatter of rain against a windowpane. At 00:02, the water's **plop** cuts through the silence, sharp and wet. From 00:03 to 00:05, the soundscape dissolves into near-total quiet, with only the faint, nature-like **sizzle** of the water drop evaporating as it rolls off the petal, leaving the final frame immersed in stillness.\n\n`non_diegetic_music`\nA solitary, resonant **cello note** sustains throughout Shot 1, low and warm, grounding the sterile metal and white petals. As the camera pushes in on Shot 2, the cello drops an octave, becoming a deep, tactile pulse that mimics the slow ripple of the water. By Shot 3, the music fades into a high-frequency **glass harp shimmer**, airy and ethereal, matching the delicate roll of the water bead and the fragile, pristine nature of the flower, eventually vanishing entirely as the drop disappears.",
+  "editor_notes": "Based on the provided critic report, the current candidate video is flawed by inconsistent subject details (amber vase vs. dark glass, whitewashed oak counter vs. neutral shop) and rushed pacing, particularly in the 1-second Shot 3 where the evaporation action cannot be physically convincing; therefore, it should be discarded in favor of a generated version that strictly adheres to the script's \"dark glass\" vase, neutral counter, and single key light to ensure visual consistency.\n\nTo fix the pacing issues in any re-generated version, you should extend **Shot 3** significantly from 1 second to at least 3–4 seconds to allow the water bead to naturally roll and evaporate without appearing as a jagged, unnatural streak, while lengthening **Shot 2** from 2 seconds to roughly 4 seconds to clearly separate the camera push, the stem's entry into the water, and the hand's retreat.",
+  "error": null,
+  "harness_hash": "2e347be9390a9685",
+  "harness_version": "gepa-base",
+  "meta": {
+    "cost": 10.0,
+    "critic_gates": {
+      "physics_ok": false,
+      "physics_p": 0.049618080258369446,
+      "subject_ok": false,
+      "subject_p": 0.32102805376052856
+    },
+    "effective": {
+      "backend": "minimax_h3",
+      "decision": "http",
+      "declared": {
+        "backend": "minimax_h3",
+        "decision": "http",
+        "text_llm": "openai"
+      },
+      "text_llm": "openai"
+    },
+    "target": {
+      "aspect_ratio": "16:9",
+      "duration_seconds": 5.0,
+      "frame_rate": 24.0,
+      "num_inference_steps": 10,
+      "seed": 0,
+      "short_edge": 768
+    },
+    "task_type": "t2va",
+    "warnings": [],
+    "workflow": [
+      "script",
+      "storyboard",
+      "director",
+      "critic",
+      "editor"
+    ]
+  },
+  "script": "**SHOT 1 (2s)**\nCLOSED ON: The steel shears. A precise *SNIP* cuts the stem of a pristine white rose. The florist's hand, steady and calloused, holds the bloom aloft.\n\n**SHOT 2 (2s)**\nMEDIUM: The glass vase sits on the counter, water rippling sluggishly inside. The florist lowers the rose. Water *plops* into the bowl, settling around the cut stem. Silence fills the shop.\n\n**SHOT 3 (1s)**\nEXTREME CLOSE-UP: The white rose sits alone in the dark glass. A single drop of water beads on its petal, then slowly rolls off, leaving the flower untouched and whole.",
+  "split": "promotion",
+  "storyboard": [
+    {
+      "action": "CLOSED ON: Steel shears snip the stem of a pristine white rose; the florist's steady, calloused hand holds the bloom aloft as the clip sounds.",
+      "camera": "static",
+      "index": 1,
+      "seconds": 2,
+      "shot_size": "close"
+    },
+    {
+      "action": "MEDIUM: The glass vase on the counter with sluggish rippling water; the florist lowers the rose into the bowl, a water plop settles the stem, and silence fills the shop as the camera slowly pushes in.",
+      "camera": "push",
+      "index": 2,
+      "seconds": 2,
+      "shot_size": "medium"
+    },
+    {
+      "action": "EXTREME CLOSE-UP: The white rose alone in the dark glass; a single water drop beads on a petal, slowly rolls off, leaving the flower untouched and whole.",
+      "camera": "static",
+      "index": 3,
+      "seconds": 1,
+      "shot_size": "extreme_close"
+    }
+  ],
+  "task_id": "promotion-006"
+}

@@ -1,0 +1,131 @@
+{
+  "artifact": {
+    "audio_path": null,
+    "backend": "minimax_h3",
+    "cached": false,
+    "duration_seconds": 5.0,
+    "meta": {
+      "endpoint": "http://localhost:30010",
+      "request_hash": "b540dde8ff3cadf115a4dca41da9238d1e80391b27d55673fd5650bb471570f7",
+      "status": "completed",
+      "video_id": "c5877b77-f5ee-4c33-bae2-83f5e77a201f"
+    },
+    "seed": 0,
+    "task_id": "promotion-006",
+    "video_path": "outputs/101214_1strun/evaluations/d83296894e58c66d069a7285ffc49b69f816bcd8c68bc9ecab2928abe51de19e/b540dde8ff3cadf115a4dca41da9238d1e80391b27d55673fd5650bb471570f7.mp4"
+  },
+  "breakdown": {
+    "details": {
+      "editing": {
+        "length_cv": 0.0,
+        "mean_seconds": 1.67,
+        "num_shots": 3,
+        "std_seconds": 0.0,
+        "total_seconds": 5.01
+      },
+      "harness_hash": "55be971f47e67d57",
+      "human": {
+        "human_missing": true,
+        "reason": "no artifact-specific labels"
+      },
+      "mode": "local",
+      "story": {
+        "completeness": 0.5702,
+        "completeness_level": 2.280731424689293,
+        "consistency": 0.9881
+      },
+      "video": {
+        "av": {
+          "skipped": true
+        },
+        "av_alignment": 0.0,
+        "unified": {
+          "frame_std": 0.0251,
+          "malformed_frames": 0,
+          "n_frames": 6,
+          "sample_response": "Alignment Score (1-5): 2.7911999225616455\nCoherence Score (1-5): 3.8203001022338867\nStyle Score (1-5): 3.3350000381469727"
+        },
+        "unified_reward": 0.5505944490432739
+      }
+    },
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.7373454667627812,
+    "total": 0.6646930361166598,
+    "video": 0.5505944490432739,
+    "weights": {
+      "editing": 0.15,
+      "human": 0.0,
+      "story": 0.25,
+      "video": 0.6
+    }
+  },
+  "critic_report": "Here are the concrete defects identified in the script, storyboard, and generation description:\n\n**Physics**\n*   **Inverted Cut:** In Shot 2, the florist holds the shears in the hand *farthest* from the rose to make the cut (standard tool usage), yet the description says she holds the shears to the stem and \"fingers gripping the handle\" without specifying the wrong grip, but the resulting action implies cutting the stem while holding the flower head steady with the *other* hand. If she is cutting the stem, the hand holding the rose must be the one near the flower. The description says \"The rose head remains fully visible... while the stem shortens.\" If the camera is a medium close-up on the hands, and she cuts the stem, the hand holding the rose should be visible. The description mentions \"sleeves dusted lightly at the cuffs\" on the hand holding the shears, which is physically awkward if that hand is also stabilizing the heavy flower head during a precise snip; typically, the non-dominant hand holds the bloom and the dominant hand cuts. The description conflates the sleeve detail on the cutting hand with the stabilizing role, creating a mechanical inconsistency.\n*   **Water Physics (Shot 3):** The description states the water ripples \"creating soft concentric circles of light that dance across the white petals.\" While possible, a glass vase sitting on a wooden counter with no external disturbance (the florist is standing *behind* the counter, not touching the vase) should result in immediate stillness after the \"settling\" phase. The description implies the water is active for the entire duration of the shot (\"ripples gently... creating... circles\"), which contradicts the \"settling\" state described in the script after the stem is placed.\n*   **Stem Placement:** In Shot 1, the stem is \"positioned diagonally against a wooden counter.\" In Shot 3, the rose is placed in a vase. The transition from a stem pressed against a counter to a vase implies the florist picked up the rose and moved it. The description for Shot 3 says the rose \"sits upright,\" but the motion of transferring it from the counter surface (Shot 1) to a vase off-screen is not visually grounded in the description.\n\n**Subject Consistency**\n*   **Apron/Shirt Continuity:** The script specifies a \"cream linen apron over a white linen shirt.\" The generation description inconsistently details the sleeves: Shot 1 says \"sleeves are rolled slightly to the elbows,\" while Shot 2 and Shot 3 describe the sleeves as \"dusted lightly at the cuffs.\" Rolling to the elbows and cuffs being dusted are mutually exclusive states for the same garment in the same sequence.\n*   **Hand Appearance:** Shot 1 describes \"delicate hands... soft, natural light reflecting off her knuckles.\" Shot 2 mentions \"fingers gripping the handle with precision.\" While consistent in delicacy, the specific lighting reflection on the knuckles in Shot 1 (soft morning light) does not logically carry over to the darker, shadowed area of the hand grip in Shot 2 without explicit mention of the light source angle shifting, which the description claims remains the \"same soft morning window light.\"\n*   **The Florist's Presence:** Shot 1 and 2 are close-ups of hands. Shot 3 is a wide shot where the florist \"steps back slightly.\" The description for Shot 3 says \"The florist stands slightly behind the counter, her body partially framed.\" However, the Script for Shot 3 says she \"steps back slightly, hands resting on her hips.\" The description omits the \"hands on hips\" posture entirely, focusing instead on \"posture relaxed,\" leaving the specific action undefined and creating a gap between the script's instruction and the visual realization.\n\n**Story Clarity**\n*   **Narrative Arc:** The sequence is a simple action sequence (hold, cut, place), but the lack of visual payoff in the final shot weakens the story. The script ends with the rose sitting in the vase and the florist stepping back. The description for Shot 3 focuses almost exclusively on the water ripples (\"concentric circles of light that dance\") rather than the florist's reaction to her completed work. The emotional beat of \"completion\" is missing because the description prioritizes the inanimate object's physics over the subject's state.\n\n**Pacing**\n*   **Shot Duration Mismatch:** The Script labels Shot 3 as 3.33s–5.0s (approx. 1.67s duration). The Storyboard labels Shot 3 as 1.67s. The Generation description describes a complex sequence: the rose settling, water rippling, the florist stepping back, and then a fade out. A 1.67-second static wide shot attempting to capture",
+  "director_prompt": "integrated_multimodal_description\n[Shot 1] 0.0s - 1.67s [Close-up] A pair of delicate hands, belonging to a woman with fair skin and soft, natural light reflecting off her knuckles, gently cradles a pristine white rose. The rose features an abundance of pure white petals, each edged in a subtle blush of cream, with a long, vibrant green stem topped by fresh dew drops that glisten like tiny diamonds. She wears a cream linen apron over a white linen shirt; the sleeves are rolled slightly to the elbows, revealing the fabric's natural weave and soft texture, while the apron's hem rests gently on her waist. She positions the stem diagonally against a rustic wooden counter, the wood grain visible and warm under soft, golden morning window light that casts a gentle glow and long, diffused shadows across the scene.\n\n[Shot 2] 1.67s - 3.33s [Medium Close-up] The florist, wearing the same cream linen apron over a white linen shirt with sleeves dusted lightly at the cuffs, holds a pair of polished silver pruning shears. She brings the shears to the stem of the white rose, her fingers gripping the handle with precision. With a swift, controlled motion, she snips the stem, visualized by a slight, rhythmic camera shake that mimics the crisp snap sound. The rose head remains fully visible, its petals pristine white and untouched, while the stem shortens sharply and cleanly at the point of the cut. The background remains the warm wooden counter, bathed in the same soft morning window light, with the cream linen of her apron catching the light as she moves.\n\n[Shot 3] 3.33s - 5.0s [Static Wide Shot] The trimmed white rose, now with its shortened stem, sits upright in a clear glass vase filled with water on the rustic wooden counter. The water ripples gently around the settling stem, creating soft concentric circles of light that dance across the white petals. The florist stands slightly behind the counter, her body partially framed, wearing the same cream linen apron over a white linen shirt. She steps back slightly, her posture relaxed, with hands resting confidently on her hips. The cream apron contrasts softly with the warm tones of the wooden counter and the cool clarity of the glass vase, all illuminated by the persistent, warm morning window light.\n\noverall_soundscape\nSoft, natural ambient room tone mimics a quiet morning florist shop. The primary diegetic sound is the crisp, high-pitched *snip* of silver pruning shears cutting through the green stem, accompanied by a subtle, organic camera shake that emphasizes the impact. This is followed by the gentle *glug-glug* of water settling into the clear glass vase, creating soft ripples around the stem. A very faint, natural ambient hum of distant traffic or wind outside the window provides a light atmospheric bed, with the occasional tap of a dew drop falling onto the wooden counter. No footsteps are audible in the close-up, but a faint, soft *step* is heard as the florist steps back in the final wide shot, grounding the scene in physical space.\n\nnon_diegetic_music\nA minimal, warm ambient score featuring soft piano notes and a gentle cello drone. The tempo is slow and contemplative (60 BPM), matching the meditative pace of the florist's work. The instrumentation begins with a solitary, warm piano arpeggio in the lower register, gradually swelling with a faint cello hum around the 2.5-second mark to accompany the stem shortening. The texture is smooth and organic, using sustain pedals to blend notes together, creating a sense of calm and serenity. The music fades gently toward the end, leaving only the piano's soft resonance, mirroring the quiet stillness of the rose settling in the water.",
+  "editor_notes": "Based on the critic report, the **best candidate** is the one that best reconciles the **sleeve continuity error** (matching \"rolled sleeves\" across all shots) and most plausibly explains the **inverted cut** in Shot 2, as these are the most critical physics and subject consistency flaws. Retain the **medium close-up of the hands cutting the stem** but ensure the visual clearly shows the non-dominant hand holding the rose head steady while the dominant hand grips the shears handle near the flower; shorten **Shot 3's water ripple sequence** significantly to reflect its actual \"settling\" state rather than the described perpetual dancing ripples, and trim the duration of the **wide shot where the florist steps back** to focus on her posture (hands on hips) rather than the inanimate vase, ensuring the pacing matches the script's 5-second limit instead of the storyboard's 1.67 seconds.",
+  "error": null,
+  "harness_hash": "55be971f47e67d57",
+  "harness_version": "gepa-base-gepa-4ddd73aa",
+  "meta": {
+    "cost": 10.0,
+    "critic_gates": {
+      "physics_ok": false,
+      "physics_p": 0.08445976674556732,
+      "subject_ok": false,
+      "subject_p": 0.05320283770561218
+    },
+    "effective": {
+      "backend": "minimax_h3",
+      "decision": "http",
+      "declared": {
+        "backend": "minimax_h3",
+        "decision": "http",
+        "text_llm": "openai"
+      },
+      "text_llm": "openai"
+    },
+    "target": {
+      "aspect_ratio": "16:9",
+      "duration_seconds": 5.0,
+      "frame_rate": 24.0,
+      "num_inference_steps": 10,
+      "seed": 0,
+      "short_edge": 768
+    },
+    "task_type": "t2va",
+    "warnings": [],
+    "workflow": [
+      "script",
+      "storyboard",
+      "director",
+      "critic",
+      "editor"
+    ]
+  },
+  "script": "**SHOT 1 (0.0-1.67s)**\nClose-up on a florist's hands holding a white rose. She wears a cream linen apron over a white linen shirt. The rose has a long green stem and dew drops. She positions the stem diagonally against a wooden counter under soft morning window light.\n\n**SHOT 2 (1.67-3.33s)**\nMedium close-up. The florist snips the rose stem with silver pruning shears. A crisp snap sound visualized by a slight shake. The rose head remains fully visible, petals pristine white, while the stem shortens sharply.\n\n**SHOT 3 (3.33-5.0s)**\nStatic wide shot. The trimmed white rose sits in a clear glass vase filled with water on the wooden counter. Water ripples gently around the stem as it settles. The florist steps back slightly, hands resting on her hips, wearing the same cream apron.",
+  "split": "promotion",
+  "storyboard": [
+    {
+      "action": "A florist's hands hold a white rose with dew drops, positioning its long green stem diagonally against a wooden counter under soft morning window light.",
+      "camera": "static",
+      "index": 1,
+      "seconds": 1.67,
+      "shot_size": "close"
+    },
+    {
+      "action": "The florist snips the rose stem with silver pruning shears; a slight camera shake visualizes the crisp snap as the stem shortens sharply, keeping the rose head fully visible.",
+      "camera": "push",
+      "index": 2,
+      "seconds": 1.67,
+      "shot_size": "medium"
+    },
+    {
+      "action": "The trimmed white rose sits in a clear glass vase on the wooden counter; water ripples gently around the settling stem as the florist steps back, hands resting on her hips in the cream apron.",
+      "camera": "static",
+      "index": 3,
+      "seconds": 1.67,
+      "shot_size": "wide"
+    }
+  ],
+  "task_id": "promotion-006"
+}

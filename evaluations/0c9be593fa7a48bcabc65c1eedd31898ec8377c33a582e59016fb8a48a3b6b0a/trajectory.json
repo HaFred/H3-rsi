@@ -1,0 +1,131 @@
+{
+  "artifact": {
+    "audio_path": null,
+    "backend": "minimax_h3",
+    "cached": false,
+    "duration_seconds": 5.0,
+    "meta": {
+      "endpoint": "http://localhost:30010",
+      "request_hash": "8f04b770d44793f2fabda65628625fc0c9cf80ed40ffbba205046799de1dffe2",
+      "status": "completed",
+      "video_id": "4761817c-dfb1-4d8f-96f9-102dcae28663"
+    },
+    "seed": 0,
+    "task_id": "test-004",
+    "video_path": "outputs/101214_1strun/evaluations/0c9be593fa7a48bcabc65c1eedd31898ec8377c33a582e59016fb8a48a3b6b0a/8f04b770d44793f2fabda65628625fc0c9cf80ed40ffbba205046799de1dffe2.mp4"
+  },
+  "breakdown": {
+    "details": {
+      "editing": {
+        "length_cv": 0.283,
+        "mean_seconds": 1.667,
+        "num_shots": 3,
+        "std_seconds": 0.471,
+        "total_seconds": 5.0
+      },
+      "harness_hash": "2e347be9390a9685",
+      "human": {
+        "human_missing": true,
+        "reason": "no artifact-specific labels"
+      },
+      "mode": "local",
+      "story": {
+        "completeness": 0.5202,
+        "completeness_level": 2.080919861793518,
+        "consistency": 0.955
+      },
+      "video": {
+        "av": {
+          "skipped": true
+        },
+        "av_alignment": 0.0,
+        "unified": {
+          "frame_std": 0.0278,
+          "malformed_frames": 0,
+          "n_frames": 6,
+          "sample_response": "Alignment Score (1-5): 2.801300048828125\nCoherence Score (1-5): 3.202199935913086\nStyle Score (1-5): 2.6126999855041504"
+        },
+        "unified_reward": 0.4923263920678033
+      }
+    },
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.6941336572170258,
+    "total": 0.6189292495449384,
+    "video": 0.4923263920678033,
+    "weights": {
+      "editing": 0.15,
+      "human": 0.0,
+      "story": 0.25,
+      "video": 0.6
+    }
+  },
+  "critic_report": "Here are the concrete defects found in the script, storyboard, and generated video description:\n\n**Physics**\n*   **Gravity/Plate Handling:** In Shot 1, the description states the hand lifts the plate \"slightly\" before the frame holds. A ceramic plate cannot be lifted \"slightly\" by a single gloved finger without the rim visibly tilting or wobbly; the description implies a stable lift that contradicts the physics of a single-finger grip on a plate rim.\n*   **Sound Transmission:** In Shot 3, the description claims sound transmission through the narrow gap is muffled, yet explicitly describes hearing a \"dry click\" of a nod from across the gap. Human vocalization (nodding involves laryngeal movement) does not travel through a kitchen pass-through slit as a distinct, audible \"click\" while being muffled; this violates acoustic physics.\n*   **Lighting Consistency:** Shot 1 is dominated by warm under-cabinet light, while Shot 2 immediately shifts to \"harsher white glow of overhead fixtures.\" While possible, the description frames it as a jarring shift that doesn't account for the camera moving from a tight close-up to a medium shot where ambient fill light should naturally blend the two sources rather than swapping completely.\n\n**Subject Consistency**\n*   **Hand Dominance Error:** The script and storyboard consistently refer to the chef's \"right hand\" or \"left hand\" in specific ways, but the generation description creates a contradiction. The script says the left hand places the strawberry and the right hand picks up the plate. The description says the left hand places it, but then says the *right* hand grips the rim. More critically, in Shot 3, the description says \"Elias's face... peers over the counter edge.\" In a standard pass-through interaction, the chef is behind the counter; peering *over* the edge to see the other side implies the camera angle or character positioning is physically awkward, forcing the character to lean far into the \"pass\" rather than standing behind their station.\n*   **\"Microscopic\" Nod:** The description uses the word \"microscopic\" twice to describe the nod. A \"microscopic\" nod is a nod so small it is barely perceptible, bordering on non-existent. The description then says the small hand gives the *same* microscopic nod back. Physically, a second person reaching through a gap to touch fruit cannot coordinate a perfectly identical microscopic nod with the chef unless they are looking directly at each other's faces, which the setup (one behind counter, one reaching through) makes highly improbable without the chef leaning dangerously close.\n*   **Attire Detail Discrepancy:** The description notes Elias wears a \"charcoal-grey chef's coat with a white double-breasted jacket.\" This is a layered description (coat + jacket), but the visual of a chef wearing a grey coat *over* a white jacket while wearing a white hat looks like a costume error rather than standard chef attire, creating a visual inconsistency with the \"crisp, professional\" tone implied by the script.\n\n**Story Clarity**\n*   **Ambiguous Narrative Arc:** The script establishes Elias watching an \"empty space,\" implying someone left or someone is missing. Shot 3 resolves this with a small hand reaching through. However, the description says the small hand gives a \"knowing nod\" back. If the space was empty in Shot 2, the appearance of a person in Shot 3 is a non-linear jump that the description tries to smooth over with the \"nod,\" but the transition from \"empty space\" to \"person reaching through\" is not clearly established as a flashback or a supernatural element, leaving the story's logic fuzzy.\n*   **Unclear Relationship:** The description mentions the small hand has \"short fingernails\" and is \"pale,\" but provides no context for who this is. Without establishing the character's identity or relationship to Elias earlier (or later), the emotional weight of the \"knowing nod\" remains unanchored.\n\n**Pacing**\n*   **Overly Long Shot 2:** Shot 2 is allocated 2 seconds (0:02–0:04). The description packs too much action into this window: the camera pushes in, Elias walks, the lighting shifts, he stops, his posture rigidifies, he stares, and the strawberry glistens. The description attempts to convey a full walk-and-stop sequence plus a lighting change within a 2-second window, which feels dragged out and lacks rhythmic urgency.\n*   **Rushed Resolution:** Shot 3 is only 1 second. The description attempts to cover: sliding the plate, the hand reaching, brushing, the chef nodding, the hand nodding back, the plate being pulled back, the hand retracting, the image holding, and fading to black. This is an information dump; the sequence is too dense for the allotted time,",
+  "director_prompt": "integrated_multimodal_description\n[Shot 1] 0:00–0:02 | Extreme Close Up. The frame is dominated by stainless steel counter textures and warm, golden under-cabinet lighting that casts deep shadows. Chef Elias wears a crisp, charcoal-grey chef's coat with a white double-breasted jacket; his face is partially obscured by a tight-fitting, clean white chef's hat and a thin, dark mustache. His left hand, clad in a pristine white latex glove, delicately places a glistening, ruby-red strawberry atop a slice of velvet-matte black chocolate. The sugar crystals on the fruit catch the light, while the chocolate surface shows a subtle sheen of melted cocoa butter. The camera is static, holding the frame tight on the hand and the plate. As the strawberry settles, the background blurs into the bokeh of copper pots and steam rising faintly. Elias's gloved fingers then grip the ceramic plate's rim with steady, deliberate precision, lifting it slightly before the frame holds.\n\n[Shot 2] 0:02–0:04 | Medium Shot. The camera begins a slow, smooth push-in (dolly) toward Elias as he walks across the floor. The lighting shifts to the cooler, harsher white glow of the overhead kitchen fixtures, contrasting with the warm amber of the earlier shot. Elias's attire remains consistent: the charcoal-grey coat, white jacket, white hat, and dark mustache are clearly visible as he moves. His white latex glove is still on his right hand, now holding the plate. The linoleum floor beneath his feet reflects the overhead lights, showing the texture of the scuffed, industrial surface. Soft, muffled footsteps echo as he moves toward the pass-through window. He stops, the motion halting completely; his posture is rigid yet gentle. He stares across the narrow gap at the empty counter on the other side. The strawberry on the plate glistens intensely under the direct beam of the ventilation fan's light, a singular red jewel against the black chocolate and the dark uniform of the chef.\n\n[Shot 3] 0:04–0:05 | Extreme Close Up. The camera is static, focused intensely on the gap between the two counters. Elias's gloved right hand slides the plate through the narrow slit. On the other side, a small, pale hand—unadorned, with short fingernails—reaches through. The fingers brush the strawberry with a tentative, careful motion. Elias's face, framed by the white hat and dark mustache, peers over the counter edge for a split second, eyes crinkling in a microscopic, knowing nod. The small hand gives the same microscopic nod back. Then, Elias's gloved hand pulls the plate back through the gap with a gentle, fluid motion. The small hand retracts. The image holds on the empty gap for a fraction of a second before fading to black, leaving only the faint hum of the ventilation fan visible in the darkness.\n\noverall_soundscape\nThe soundscape is intimate and textural, dominated by the ambient hum of the commercial kitchen. A low, steady 60Hz vibration from the ventilation fan provides the baseline, accompanied by the distant, muffled clatter of stainless steel pots and the soft hiss of steam escaping from a nearby pot. In Shot 1, a sharp, metallic *schlick* sound underscores the moment the strawberry touches the chocolate, followed by the soft, solid *thud* of the plate being lifted. In Shot 2, the sound of Elias's shoes—likely leather or a durable synthetic—crepiting softly against the scratched linoleum fills the space, fading as he stops and the room goes silent except for his own breathing, which is audible and shallow in the quiet. In Shot 3, the transmission of sound through the narrow gap is muffled; we hear the soft friction of the plate sliding through the metal, the delicate *rustle* of skin-on-skin contact as the small hand brushes the fruit, and the faint, dry *click* of the small hand nodding back, cut abruptly by the sudden silence as the plate is pulled away and the screen fades.\n\nnon_diegetic_music\nA sparse, melancholic cello solo enters at 0:00, playing a single, sustained low note that resonates with the weight of the chocolate and the solitude of the kitchen. The melody is minimal, using long, drawn-out bow strokes with little vibrato, evoking a sense of quiet nostalgia and precision. As Elias walks toward the window (0:02), the cello adds a second, higher harmonic layer, weaving around the fan's hum rather than overpowering it. The music swells slightly when he pauses, creating a moment of emotional intimacy with the empty space across from him. By Shot 3, as the small hand reaches through, the cello drops out entirely, leaving only the final, reson",
+  "editor_notes": "The best candidate is the one that prioritizes the physical plausibility of the single-finger plate lift and the acoustic impossibility of the \"microscopic\" nod through a gap, as these are the most glaring physics fails. Keep the close-up of the hand gripping the plate rim steady rather than tilting it, and shorten the medium shot of Elias walking to just the moment he stops and stares, cutting the earlier transit to fit the 2-second window; additionally, compress the final shot by merging the hand's approach and the mutual nod into a single, rhythmic beat instead of listing every micro-movement sequentially.",
+  "error": null,
+  "harness_hash": "2e347be9390a9685",
+  "harness_version": "gepa-base",
+  "meta": {
+    "cost": 10.0,
+    "critic_gates": {
+      "physics_ok": false,
+      "physics_p": 0.015952399000525475,
+      "subject_ok": false,
+      "subject_p": 0.44130316376686096
+    },
+    "effective": {
+      "backend": "minimax_h3",
+      "decision": "http",
+      "declared": {
+        "backend": "minimax_h3",
+        "decision": "http",
+        "text_llm": "openai"
+      },
+      "text_llm": "openai"
+    },
+    "target": {
+      "aspect_ratio": "16:9",
+      "duration_seconds": 5.0,
+      "frame_rate": 24.0,
+      "num_inference_steps": 10,
+      "seed": 0,
+      "short_edge": 768
+    },
+    "task_type": "t2va",
+    "warnings": [],
+    "workflow": [
+      "script",
+      "storyboard",
+      "director",
+      "critic",
+      "editor"
+    ]
+  },
+  "script": "**EXT. CAKE SHOP - NIGHT**\n\n**SHOT 1 (0:00-0:02)**\nClose up. Chef Elias's gloved hand places a fresh strawberry atop a velvet chocolate slice. Kitchen sizzle UNDERSCORES the precision. He picks up the plate, his movements steady.\n\n**SHOT 2 (0:02-0:04)**\nMedium shot. Elias walks toward the pass-through window. Soft footsteps echo on the linoleum. He pauses, watching the empty space across from him. The strawberry glistens under the hum of the ventilation fan.\n\n**SHOT 3 (0:04-0:05)**\nExtreme Close Up. Elias slides the plate through the gap. A single, small hand reaches through on the other side, fingers brushing the strawberry. He gives a microscopic nod, then pulls the plate back. Cut to black.",
+  "split": "test",
+  "storyboard": [
+    {
+      "action": "Chef Elias's gloved hand places a fresh strawberry atop a velvet chocolate slice; kitchen sizzle underscores the precision. He picks up the plate with steady movements.",
+      "camera": "static",
+      "index": 1,
+      "seconds": 2,
+      "shot_size": "close"
+    },
+    {
+      "action": "Elias walks toward the pass-through window; soft footsteps echo on linoleum. He pauses, watching the empty space across from him as the strawberry glistens under the ventilation fan.",
+      "camera": "push",
+      "index": 2,
+      "seconds": 2,
+      "shot_size": "medium"
+    },
+    {
+      "action": "Elias slides the plate through the gap. A small hand reaches through, fingers brushing the strawberry. The other hand gives a microscopic nod, then pulls the plate back. Cut to black.",
+      "camera": "static",
+      "index": 3,
+      "seconds": 1,
+      "shot_size": "extreme_close"
+    }
+  ],
+  "task_id": "test-004"
+}

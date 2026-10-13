@@ -1,0 +1,26 @@
+{
+  "axis_scores": {
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.739409,
+    "video": 0.570822
+  },
+  "cache_hit": false,
+  "cache_key": "6fdaee36ff9e3547feee88d2bdd89dfa8011085010805314e1062370e3c58a08",
+  "candidate_hash": "4ddd73aa8fa203c6aaef003092483f3f4d4c90210a62dfc352b1cd7f862b5f5d",
+  "case_id": "train:train-003:seed0",
+  "elapsed_seconds": 51.42,
+  "errors": [],
+  "feedback": "Task requirement: A child in a green jacket catches a fallen paper kite in a quiet park. Keep the kite and clothing consistent. Include wind and distant birds.\nTotal score 0.677 with fixed weights {'video': 0.6, 'story': 0.25, 'editing': 0.15}: video=0.571, story=0.739, editing=1.000.\nVisual judge (UnifiedReward on 6 frames, alignment/coherence/style vs the task text): frame_std=0.0209. Last judge response: Alignment Score (1-5): 3.1217000484466553\nCoherence Score (1-5): 3.690999984741211\nStyle Score (1-5): 3.312000036239624\nStory judge: completeness=0.5881, completeness_level=2.3523, consistency=0.9664 (completeness of the script; consistency between script and H3 prompt).\nShot pacing: num_shots=3, mean_seconds=1.667, std_seconds=0.094, total_seconds=5.0, length_cv=0.057\nCritic gates: physics_p=0.0485, subject_p=0.034",
+  "finished_at": "2026-10-12T14:56:47+00:00",
+  "h3_requests": 1,
+  "phase": "search",
+  "policy_hash": "dd489936d9ea8f3d633e4b5e58df0931fc1f0be14f0d4ad929ca804fc7b07124",
+  "score": 0.677346,
+  "seed": 0,
+  "split": "train",
+  "task_id": "train-003",
+  "trajectory_path": "outputs/101214_1strun/evaluations/6fdaee36ff9e3547feee88d2bdd89dfa8011085010805314e1062370e3c58a08/trajectory.json",
+  "valid": true,
+  "video_path": "outputs/101214_1strun/evaluations/6fdaee36ff9e3547feee88d2bdd89dfa8011085010805314e1062370e3c58a08/video.mp4"
+}

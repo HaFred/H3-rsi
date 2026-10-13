@@ -1,0 +1,131 @@
+{
+  "artifact": {
+    "audio_path": null,
+    "backend": "minimax_h3",
+    "cached": false,
+    "duration_seconds": 5.0,
+    "meta": {
+      "endpoint": "http://localhost:30010",
+      "request_hash": "be750a5b3c5f580fbfce6ec89dfd924f65e9e34293b862320fc46685ac5513e2",
+      "status": "completed",
+      "video_id": "43a8a0d6-7c9c-425a-ad8d-835d0683ae2f"
+    },
+    "seed": 0,
+    "task_id": "test-001",
+    "video_path": "outputs/101214_1strun/evaluations/998b4be4e3bc7ed0294ed65a9c7fe78dc79c8dbcd480970f849084bbd25565f3/be750a5b3c5f580fbfce6ec89dfd924f65e9e34293b862320fc46685ac5513e2.mp4"
+  },
+  "breakdown": {
+    "details": {
+      "editing": {
+        "length_cv": 0.057,
+        "mean_seconds": 1.667,
+        "num_shots": 3,
+        "std_seconds": 0.094,
+        "total_seconds": 5.0
+      },
+      "harness_hash": "55be971f47e67d57",
+      "human": {
+        "human_missing": true,
+        "reason": "no artifact-specific labels"
+      },
+      "mode": "local",
+      "story": {
+        "completeness": 0.6102,
+        "completeness_level": 2.4409725815057755,
+        "consistency": 0.9851
+      },
+      "video": {
+        "av": {
+          "skipped": true
+        },
+        "av_alignment": 0.0,
+        "unified": {
+          "frame_std": 0.0221,
+          "malformed_frames": 0,
+          "n_frames": 6,
+          "sample_response": "Alignment Score (1-5): 3.003200054168701\nCoherence Score (1-5): 3.4026999473571777\nStyle Score (1-5): 3.3429999351501465"
+        },
+        "unified_reward": 0.5798638893498315
+      }
+    },
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.7601995848119258,
+    "total": 0.6879682298128803,
+    "video": 0.5798638893498315,
+    "weights": {
+      "editing": 0.15,
+      "human": 0.0,
+      "story": 0.25,
+      "video": 0.6
+    }
+  },
+  "critic_report": "### Physics\n*   **Soil displacement:** In Shot 2, the gardener presses soil with palms to create \"subtle ripples.\" Soil compacted by palms does not ripple like liquid; it fractures or settles into a matte surface. Ripples imply a fluid medium or a very specific, high-magnitude force not described.\n*   **Seedling placement:** In Shot 1, the gardener nuds a \"pot\" into the earth. The script immediately corrects this to a \"seedling,\" but the generation description momentarily conflates them (\"nudge the pot into the earth\"). If the object is a seedling, it cannot be a pot; if it is a pot, it is not a seedling.\n*   **Bird interaction:** In Shot 3, the blue jay lands \"next to the gardener's hand\" in an extreme close-up of the soil mound. Unless the bird is hovering at impossible proximity (feather-to-feather), it would be occluded by the hands or the plant entirely in this framing.\n*   **Petals trajectory:** Stray petals fall vertically in Shot 3. Without a visible wind vector established in the shot, vertical descent contradicts the \"dappled sunlight filtering through leaves\" context which implies a breeze moving leaves (mentioned in audio).\n\n### Subject Consistency\n*   **Camera movement mismatch:** The storyboard specifies Shot 2 as a \"push\" (camera moves in), but the generation description for Shot 2 claims the camera \"slowly pushes in slightly.\" However, the script for Shot 3 lists the camera as \"static,\" while the generation description for Shot 3 states the scene \"holds,\" creating a contradiction between the storyboard's active push in Shot 2 and the static nature of Shot 3 which should logically follow.\n*   **Attire continuity:** The script and storyboard consistently mention a \"weathered canvas apron.\" The generation description for Shot 3 notes the apron is \"visible in the blurred background.\" In an extreme close-up of soil and a seedling, a full apron is improbable to be visible unless the camera pulls back significantly, which contradicts the \"extreme close-up\" framing.\n*   **Hand position logic:** In Shot 3, the hands rest \"gently on either side\" of the plant while the bird lands next to the hand. The description says the hands \"rest gently,\" implying a lack of motion, yet the bird's action (landing and chattering) requires the hands to remain perfectly still while the bird navigates the immediate space, creating a tense compositional conflict not addressed.\n\n### Story Clarity\n*   **Narrative ambiguity:** The sequence of shots (placing seedling -> pressing soil -> extreme close up of soil) is visually coherent but narratively hollow. There is no character motivation, dialogue, or stakes. The \"story\" is purely atmospheric, leaving the viewer asking *why* the gardener is doing this without any emotional payoff or context beyond the music.\n*   **The \"Pot\" error:** The generation description erroneously describes nudging a \"pot\" in Shot 1 before correcting to \"seedling.\" This introduces a momentary confusion about the object being planted, weakening the clarity of the action.\n\n### Pacing\n*   **Shot duration mismatch:** The script lists Shot 3 from 3.2s to 5.0s (1.8s duration). The storyboard lists Shot 3 as 1.8 seconds. The generation description repeats the 1.8s timing. While consistent between storyboard and gen, this breaks the total runtime. The total script duration is 5.0s, but the sum of the storyboard shots is 1.6 + 1.6 + 1.8 = 5.0s. This is actually consistent, but the abrupt cut from a medium shot (Shot 2) to an extreme close-up (Shot 3) after only 1.8 seconds of the latter feels jarring and lacks a transitional beat.\n*   **Rhythm of action:** The extreme close-up in Shot 3 (1.8s) contains three distinct events: hands resting, petals falling, and the bird landing/chattering. These occur simultaneously or in rapid succession within a very short window, creating a cluttered rhythm rather than a deliberate, slow contemplative pace suggested by the music (70 BPM).\n\n### Audio\n*   **Diegetic contradiction:** The audio description mentions \"distant, muffled splash of water as the blue jay dips into the birdbath\" in Shot 2. However, the visual storyboard and script do not clearly define the birdbath's location relative to the low-angle shot; a low-angle shot of a gardener's back often obscures background elements unless specifically framed, making the splash sound spatially ungrounded.\n*   **Lack of spatial audio:** The sound design lists specific diegetic sounds",
+  "director_prompt": "integrated_multimodal_description\n[Shot 1] 0.0s - 1.6s [Close-up, Side Profile] In the soft, golden light of late afternoon, a gardener kneels in a sun-dappled garden. The gardener has short, neatly trimmed hair and is dressed in a weathered canvas apron in a muted beige tone, worn over casual clothing, with thick beige gardening gloves on their hands. They gently place a small, vibrant green seedling into a patch of dark, rich loam. Soft soil particles shift slightly as their gloved fingers carefully nudge the pot into the earth. A blue jay perches on a nearby dry twig nearby, observing quietly. The lighting is warm and golden, filtering through surrounding foliage to create a gentle, dappled atmosphere.\n\n[Shot 2] 1.6s - 3.2s [Medium Shot, Low Angle] The same gardener, still wearing the beige gardening gloves and the weathered canvas apron, is now seen from a low angle as they slowly press the soil around the base of the green seedling with both palms. The dark earth compacts gently, creating subtle ripples on the surface. In the background, a blue jay hovers briefly before diving into a birdbath. Sunlight filters through the leaves above, casting shifting dappled shadows across the gardener's back and the surrounding grass. The camera slowly pushes in slightly to emphasize the texture of the soil and the gardener's careful movements.\n\n[Shot 3] 3.2s - 5.0s [Extreme Close-Up] An extreme close-up focuses on the soil mound and the small green seedling. The gardener's gloved hands, clad in the same beige gardening gloves, rest gently on either side of the tiny plant. The soil has settled into a smooth, rounded mound. A few stray petals drift down from above, landing softly near the base. The blue jay lands next to the gardener's hand, chattering softly. The scene holds in the warm, golden light, with the gardener's weathered canvas apron visible in the blurred background, maintaining visual continuity with the previous shots.\n\noverall_soundscape\nThe audio landscape is dominated by the soft, organic sounds of a quiet garden at golden hour. There is a gentle rustling of leaves as the breeze moves through the trees, accompanied by the distant, muffled splash of water as the blue jay dips into the birdbath. The primary diegetic sound is the soft, dry crunch of soil particles shifting and compacting as the gardener's gloved palms press around the seedling. A few stray petals falling are heard as a soft, quiet rustle. The background features a low-level ambient hum of nature, with the faint, natural chirp of insects, keeping the overall volume intimate and peaceful, allowing the focus to remain on the careful interaction between the gardener and the plant.\n\nnon_diegetic_music\nA gentle, contemplative instrumental piece in a warm, major key. The music begins with a soft, woodwind melody (perhaps a flute or alto saxophone) that is sparse and airy, mimicking the open feel of the garden. As the gardener presses the soil, a subtle cello line enters, adding emotional depth and grounding the scene. The tempo is slow and relaxed (approximately 70 BPM), with a swelling orchestral pad in the background that creates a sense of warmth and tenderness. The music builds slightly in the final shot as the blue jay lands, introducing a delicate, high-pitched harp glissando to underscore the moment of connection, before fading out softly into the ambient garden tones.",
+  "editor_notes": "The best candidate is the one that most faithfully executes the \"weathered canvas apron\" and \"seedling\" continuity while smoothing the jarring transition between Shot 2's medium push and Shot 3's extreme close-up; specifically, keep the clear, steady shot of the gardener's hands pressing soil (Shot 2) as the emotional anchor, but trim its duration slightly to create a tighter rhythmic bridge into the brief, intimate bird-and-petal close-up of Shot 3. Shorten the initial seedling planting shot (Shot 1) to reduce the confusion caused by the \"pot\" vs. \"seedling\" description error, and eliminate the cluttered, simultaneous events in Shot 3 by isolating the bird's landing into its own 1.8-second beat rather than packing it into a rapid sequence, ensuring the visual narrative flows from macro action to micro detail without feeling rushed or incoherent.",
+  "error": null,
+  "harness_hash": "55be971f47e67d57",
+  "harness_version": "gepa-base-gepa-4ddd73aa",
+  "meta": {
+    "cost": 10.0,
+    "critic_gates": {
+      "physics_ok": false,
+      "physics_p": 0.09368034452199936,
+      "subject_ok": true,
+      "subject_p": 0.7046523690223694
+    },
+    "effective": {
+      "backend": "minimax_h3",
+      "decision": "http",
+      "declared": {
+        "backend": "minimax_h3",
+        "decision": "http",
+        "text_llm": "openai"
+      },
+      "text_llm": "openai"
+    },
+    "target": {
+      "aspect_ratio": "16:9",
+      "duration_seconds": 5.0,
+      "frame_rate": 24.0,
+      "num_inference_steps": 10,
+      "seed": 0,
+      "short_edge": 768
+    },
+    "task_type": "t2va",
+    "warnings": [],
+    "workflow": [
+      "script",
+      "storyboard",
+      "director",
+      "critic",
+      "editor"
+    ]
+  },
+  "script": "**SHOT 1 (0.0s-1.6s)**\nClose-up, side profile of a gardener kneeling in a sun-dappled garden at golden hour. The gardener wears beige gardening gloves and a weathered canvas apron. They gently place a small, vibrant green seedling into a patch of dark, rich loam. Soft soil particles shift slightly as their gloved fingers nudge the pot. A blue jay perches on a nearby twig, observing quietly.\n\n**SHOT 2 (1.6s-3.2s)**\nMedium shot, low angle. The same gardener, still in beige gloves and canvas apron, slowly presses the soil around the base of the green seedling with their palms. The dark earth compacts gently, creating subtle ripples. The blue jay hovers briefly before dipping into a birdbath in the background. Sunlight filters through leaves, casting dappled shadows on the gardener's back.\n\n**SHOT 3 (3.2s-5.0s)**\nExtreme close-up of the soil and seedling. The gardener's gloved hands (beige gloves) rest gently on either side of the small green plant. The soil settles into a smooth, rounded mound. A few stray petals fall from above. The blue jay lands next to the gardener's hand, chattering softly as the scene holds in warm, golden light.",
+  "split": "test",
+  "storyboard": [
+    {
+      "action": "Side profile of a gardener in a beige canvas apron and gloves kneeling in a sun-dappled garden; they gently place a small green seedling into dark loam while a blue jay perches on a nearby twig observing.",
+      "camera": "static",
+      "index": 1,
+      "seconds": 1.6,
+      "shot_size": "close"
+    },
+    {
+      "action": "Low-angle medium shot of the same gardener pressing soil around the base of the seedling with their palms; the blue jay hovers briefly before dipping into a background birdbath, with dappled sunlight filtering through leaves onto the gardener's back.",
+      "camera": "push",
+      "index": 2,
+      "seconds": 1.6,
+      "shot_size": "medium"
+    },
+    {
+      "action": "Extreme close-up of the soil mound and seedling; the gardener's beige-gloved hands rest gently on either side of the plant as stray petals fall; the blue jay lands next to the gardener's hand, chattering softly in warm golden light.",
+      "camera": "static",
+      "index": 3,
+      "seconds": 1.8,
+      "shot_size": "close"
+    }
+  ],
+  "task_id": "test-001"
+}

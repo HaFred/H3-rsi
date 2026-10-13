@@ -1,0 +1,58 @@
+{
+  "accepted": true,
+  "base": {
+    "axis_means": {
+      "editing": 1.0,
+      "human": 0.0,
+      "story": 0.712465,
+      "video": 0.4709595
+    },
+    "h3_requests": 6,
+    "invalid": {},
+    "mean": 0.6106918333333334,
+    "per_case": {
+      "promotion:promotion-001:seed0": 0.636827,
+      "promotion:promotion-002:seed0": 0.568613,
+      "promotion:promotion-003:seed0": 0.593327,
+      "promotion:promotion-004:seed0": 0.604207,
+      "promotion:promotion-005:seed0": 0.639058,
+      "promotion:promotion-006:seed0": 0.622119
+    }
+  },
+  "base_version": "gepa-base",
+  "best": {
+    "axis_means": {
+      "editing": 1.0,
+      "human": 0.0,
+      "story": 0.7473299999999999,
+      "video": 0.5266626666666666
+    },
+    "h3_requests": 6,
+    "invalid": {},
+    "mean": 0.6528301666666666,
+    "per_case": {
+      "promotion:promotion-001:seed0": 0.653362,
+      "promotion:promotion-002:seed0": 0.65276,
+      "promotion:promotion-003:seed0": 0.652131,
+      "promotion:promotion-004:seed0": 0.658922,
+      "promotion:promotion-005:seed0": 0.635113,
+      "promotion:promotion-006:seed0": 0.664693
+    }
+  },
+  "decided_at": "2026-10-12T16:31:58+00:00",
+  "details": {
+    "axis_below_floor": {},
+    "axis_deltas": {
+      "editing": 0.0,
+      "story": 0.034865,
+      "video": 0.055703
+    },
+    "axis_regressions": {},
+    "delta": 0.04213833333333317,
+    "primary_axis": "video",
+    "primary_delta": 0.055703,
+    "regressions": {}
+  },
+  "promoted_version": "gepa-base.1",
+  "reason": "primary axis video delta +0.0557 >= 0.02, no axis regressions"
+}

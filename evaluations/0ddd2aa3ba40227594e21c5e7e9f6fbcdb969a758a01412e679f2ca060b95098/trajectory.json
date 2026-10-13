@@ -1,0 +1,131 @@
+{
+  "artifact": {
+    "audio_path": null,
+    "backend": "minimax_h3",
+    "cached": false,
+    "duration_seconds": 5.0,
+    "meta": {
+      "endpoint": "http://localhost:30010",
+      "request_hash": "36fa0135f43b88c6d97e53561b725348ced12903b3e68387173a825eec714288",
+      "status": "completed",
+      "video_id": "fbe6dbfa-0858-4bcc-b3c6-289cfecaa39a"
+    },
+    "seed": 0,
+    "task_id": "promotion-005",
+    "video_path": "outputs/101214_1strun/evaluations/0ddd2aa3ba40227594e21c5e7e9f6fbcdb969a758a01412e679f2ca060b95098/36fa0135f43b88c6d97e53561b725348ced12903b3e68387173a825eec714288.mp4"
+  },
+  "breakdown": {
+    "details": {
+      "editing": {
+        "length_cv": 0.057,
+        "mean_seconds": 1.667,
+        "num_shots": 3,
+        "std_seconds": 0.094,
+        "total_seconds": 5.0
+      },
+      "harness_hash": "55be971f47e67d57",
+      "human": {
+        "human_missing": true,
+        "reason": "no artifact-specific labels"
+      },
+      "mode": "local",
+      "story": {
+        "completeness": 0.6965,
+        "completeness_level": 2.7861732952296734,
+        "consistency": 0.9913
+      },
+      "video": {
+        "av": {
+          "skipped": true
+        },
+        "av_alignment": 0.0,
+        "unified": {
+          "frame_std": 0.0364,
+          "malformed_frames": 0,
+          "n_frames": 6,
+          "sample_response": "Alignment Score (1-5): 2.3015999794006348\nCoherence Score (1-5): 3.4128000736236572\nStyle Score (1-5): 3.0220999717712402"
+        },
+        "unified_reward": 0.46916527416970993
+      }
+    },
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.8144570278003812,
+    "total": 0.6351134214519213,
+    "video": 0.46916527416970993,
+    "weights": {
+      "editing": 0.15,
+      "human": 0.0,
+      "story": 0.25,
+      "video": 0.6
+    }
+  },
+  "critic_report": "### Physics\n*   **Shot 1:** A \"close-up tracking shot\" following a skater down a quarter-pipe is physically inconsistent; to maintain the subject in a close frame while tracking the motion of a wheelie/turn down a ramp, the camera would need to be inches from the board, resulting in a distorted, extreme macro view rather than a functional tracking shot.\n*   **Shot 3:** The board \"locks rigidly into place beside his left foot\" immediately after being pulled underneath him to a halt. In reality, the front truck/wheel acts as a pivot; the board cannot lock instantly against the side of the foot without the skater's boot striking it or the board sliding forward again until the weight is fully transferred to the front foot. The transition from \"tipping low\" to \"locked rigidly beside\" happens too quickly and unnaturally.\n*   **Shot 2/3:** The red wheels are described as \"kicking up microscopic dust particles\" in Shot 2, yet stationary \"microscopic dust\" is not visible in Shot 3 as the board stops. While plausible, the sudden cessation of all wheel movement without a visible skid or friction burn mark contradicts the physics of a smooth catch where the wheels still spin while stationary relative to the ground until the skater stops rolling.\n\n### Subject Consistency\n*   **Hand/Board Interaction:** In Shot 2, the left hand reaches out; in Shot 3, the hand closes around the brown grip tape. However, the board was described as \"tipping low near the ground\" in Shot 2. For the hand to close \"firmly\" and pull it \"smoothly underneath him to a complete halt\" in a single continuous motion, the board must have been significantly higher off the ground in Shot 2. The description implies the board was already nearly touching the pavement while the hand was still open, making the catch mechanically difficult and visually inconsistent with the \"smooth\" execution described.\n*   **Camera Movement Logic:** Shot 1 is a \"tracking shot\" from behind/above. Shot 3 is a \"low-angle close-up.\" The transition between these two implies a cut, but the storyboard/action description suggests a continuous flow where the camera angle shifts drastically. If it is a continuous take, the camera operator would have to be dragged or mounted on a rig that violently re-orients from behind the skater to a ground-level eye-in-head position instantly, which is not described as a camera move but as a scene change.\n\n### Story Clarity\n*   **Ambiguity of the Trick:** The script describes a landing and a catch, but the specific trick (e.g., a slide, a walk-the-dog, a manual) is never identified by name or distinct visual cue other than \"landing the trick.\" The reliance on \"landing the trick\" in Shot 2 without showing the rotation of the board or the pop of the trick makes the specific skill unclear.\n*   **Lack of Context:** The scene is purely functional (skate down, catch, stop). There is no narrative beat or character motivation established, leaving the \"story\" entirely implicit. The golden hour lighting and calm expression are aesthetic choices that do not clarify the plot or the character's internal state beyond \"he succeeded.\"\n\n### Pacing\n*   **Shot Duration Mismatch:** Shot 1 is timed 0.0s–1.6s (1.6s), Shot 2 is 1.6s–3.2s (1.6s), and Shot 3 is 3.2s–5.0s (1.8s). The jump in Shot 3 is disproportionately long compared to the first two. A catch-and-stop sequence typically resolves within 1.0s–1.5s. Extending Shot 3 to 1.8s forces the description to fill extra time with static details (\"settling silence,\" \"fading echo\"), which slows the pacing artificially and dilutes the impact of the catch.\n*   **Rhythm of Action:** The transition from the blur of the wheels in Shot 1 to the \"microscopic dust\" in Shot 2 to the \"settling silence\" in Shot 3 creates a rhythmic pacing that feels more like a music video edit than a documentary capture. The sound design (rumble -> thud -> squelch -> silence) is overly synchronized with the visual cuts, creating a staccato rhythm that feels forced rather than organic to the action.\n\n### Audio\n*   **Sound-Image Dissonance:** The sound description mentions \"distant, indistinct murmurs of other skaters\" in an ambient room tone, yet the visual description emphasizes a pristine, isolated golden-hour moment with \"smooth concrete\" and \"no scuff marks\" visible in the final shot. The presence of other skaters' noise contradicts the visual isolation and the \"peaceful completion\"",
+  "director_prompt": "integrated_multimodal_description\n[Shot 1] 0.0s - 1.6s [Close-up Tracking Shot] The camera tracks smoothly from behind and slightly above, following Leo as he rides a black skateboard with red wheels down a smooth concrete quarter-pipe ramp. Leo is a young man with cropped dark hair, wearing a bright orange hoodie with visible black drawstrings and the hood resting naturally on his shoulders. Golden hour sunlight bathes the scene in warm, honeyed light, casting long, dramatic shadows across the curved concrete surface. As Leo approaches the bottom of the ramp, the red wheels blur slightly with speed, contrasting against the matte grey concrete. The texture of the concrete is visible as fine-grained and slightly worn.\n\n[Shot 2] 1.6s - 3.2s [Medium Shot] The camera holds a medium shot at the base of the ramp. Leo, the young man with cropped dark hair and the bright orange hoodie, has just landed the trick and is shifting his weight forward. His left arm extends fully, hand open with fingers splayed, reaching toward the black skateboard which is tipping low near the ground. The orange hoodie flares outward slightly with the dynamic motion of the landing, the fabric wrinkling and stretching. The red wheels of the skateboard spin rapidly against the smooth pavement, kicking up microscopic dust particles illuminated by the warm evening sun. The concrete at the base shows subtle texture and minor scuff marks from the board's impact.\n\n[Shot 3] 3.2s - 5.0s [Low-Angle Close-Up] The camera angle shifts to a low close-up, emphasizing the catch. Leo's hand closes firmly around the brown grip tape of the black skateboard, pulling the board smoothly underneath him to a complete halt. The board locks rigidly into place beside his left foot, the red wheels coming to a sudden, stationary stop. Leo stands steady with a calm, composed expression, his cropped dark hair catching the golden hour light. The bright orange hoodie remains a vibrant focal point against the neutral, textured concrete background, which now appears flatter and more uniform due to the low angle.\n\noverall_soundscape\nThe soundscape is grounded in the physical environment of a skatepark during late afternoon. It begins with the rhythmic, staccato crackle of the red wheels rolling swiftly over the smooth concrete, accompanied by the soft, continuous hum of wind rustling lightly around Leo's orange hoodie. As he reaches the base of the ramp, the rolling sound transitions into a heavier, thudding impact as his skateboard strikes the pavement during the landing, creating a sharp, metallic crunch. This is followed by the fleshy, squelching sound of his hand making contact with the rough grip tape of the board. The ambient room tone includes distant, indistinct murmurs of other skaters and the occasional squeak of wheels on concrete, keeping the scene feeling alive and natural. The final seconds feature the settling silence of the stationary wheels, with only the soft rustle of fabric and the fading echo of the landing remaining.\n\nnon_diegetic_music\nA low, atmospheric electronic score underpins the sequence, beginning with a soft, ambient drone that mimics the warmth of the golden hour light. As Leo drops into the trick, a subtle, rhythmic bassline enters, syncing with the blur of the wheels and the impact of the landing, adding a sense of kinetic energy without overpowering the diegetic sounds. The tempo builds slightly as he extends his hand, then resolves into a calm, major-key resolve as he catches the board. The instrumentation features a gentle, swelling synth pad that mirrors the emotional release of the successful landing, fading into a quiet, sustained chord as he stands still, leaving the listener with a sense of peaceful completion. The overall mood is cool yet energetic, balancing the raw physicality of the skate trick with the serene beauty of the setting.",
+  "editor_notes": "**Best Candidate: Shot 2**\nShot 2 is the strongest candidate because it effectively captures the dynamic motion of the skater landing and executing the trick with appropriate blur and kinetic energy, whereas Shot 1's tracking physics are impossible to maintain and Shot 3's catch occurs with unnatural rigidity and no visible wheel friction. To fix the pacing and narrative flow, keep Shot 2 as the primary action sequence to establish the trick's clarity, and significantly shorten Shot 3 to roughly 1.0–1.2 seconds so the \"settling silence\" feels like a natural, immediate aftermath rather than an artificially stretched pause.",
+  "error": null,
+  "harness_hash": "55be971f47e67d57",
+  "harness_version": "gepa-base-gepa-4ddd73aa",
+  "meta": {
+    "cost": 10.0,
+    "critic_gates": {
+      "physics_ok": false,
+      "physics_p": 0.010812368243932724,
+      "subject_ok": true,
+      "subject_p": 0.841344952583313
+    },
+    "effective": {
+      "backend": "minimax_h3",
+      "decision": "http",
+      "declared": {
+        "backend": "minimax_h3",
+        "decision": "http",
+        "text_llm": "openai"
+      },
+      "text_llm": "openai"
+    },
+    "target": {
+      "aspect_ratio": "16:9",
+      "duration_seconds": 5.0,
+      "frame_rate": 24.0,
+      "num_inference_steps": 10,
+      "seed": 0,
+      "short_edge": 768
+    },
+    "task_type": "t2va",
+    "warnings": [],
+    "workflow": [
+      "script",
+      "storyboard",
+      "director",
+      "critic",
+      "editor"
+    ]
+  },
+  "script": "**SHOT 1 (0.0s-1.6s)** A close-up tracking shot follows Leo, a young man with cropped dark hair and an orange hoodie, riding a black skateboard with red wheels down a smooth concrete quarter-pipe ramp. Golden hour sunlight casts long shadows; the board's wheels blur slightly with speed as he approaches the bottom.\n\n**SHOT 2 (1.6s-3.2s)** Medium shot at the ramp's base. Leo lands the landing, shifting weight forward. His left hand extends, fingers splayed, reaching for the board which is tipping low near the ground. The orange hoodie flares slightly with the motion, and the red wheels spin rapidly against the pavement.\n\n**SHOT 3 (3.2s-5.0s)** Low-angle close-up on the catch. Leo's hand closes firmly around the grip tape, pulling the board smoothly underneath him to a halt. The board locks in place beside his foot, red wheels stationary, Leo standing steady with a calm expression, orange hoodie still visible against the concrete.",
+  "split": "promotion",
+  "storyboard": [
+    {
+      "action": "Tracking shot following Leo in an orange hoodie riding a black skateboard with red wheels down a concrete quarter-pipe ramp toward the bottom.",
+      "camera": "tracking",
+      "index": 1,
+      "seconds": 1.6,
+      "shot_size": "close"
+    },
+    {
+      "action": "Leo lands the trick at the ramp's base, shifts weight forward, extends his left hand to reach the tipping board; orange hoodie flares with motion.",
+      "camera": "static",
+      "index": 2,
+      "seconds": 1.6,
+      "shot_size": "medium"
+    },
+    {
+      "action": "Leo's hand closes around the grip tape, he pulls the board underneath to a halt, board locks beside his foot with stationary red wheels, Leo stands steady calmly.",
+      "camera": "static",
+      "index": 3,
+      "seconds": 1.8,
+      "shot_size": "close"
+    }
+  ],
+  "task_id": "promotion-005"
+}

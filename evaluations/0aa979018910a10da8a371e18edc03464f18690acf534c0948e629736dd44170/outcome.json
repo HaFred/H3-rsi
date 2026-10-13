@@ -1,0 +1,26 @@
+{
+  "axis_scores": {
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.752787,
+    "video": 0.540978
+  },
+  "cache_hit": false,
+  "cache_key": "0aa979018910a10da8a371e18edc03464f18690acf534c0948e629736dd44170",
+  "candidate_hash": "d58fde464b7f6e72b223770db9e3f50d6d9aa4babb138b75d4c77d27fadda30f",
+  "case_id": "train:train-001:seed0",
+  "elapsed_seconds": 50.44,
+  "errors": [],
+  "feedback": "Task requirement: A person in a yellow raincoat picks up a red umbrella on a wet street. Keep the same person and umbrella throughout. Include footsteps and dripping water.\nTotal score 0.663 with fixed weights {'video': 0.6, 'story': 0.25, 'editing': 0.15}: video=0.541, story=0.753, editing=1.000.\nVisual judge (UnifiedReward on 6 frames, alignment/coherence/style vs the task text): frame_std=0.0406. Last judge response: Alignment Score (1-5): 2.8701999187469482\nCoherence Score (1-5): 3.740799903869629\nStyle Score (1-5): 3.4026999473571777\nStory judge: completeness=0.5938, completeness_level=2.3751, consistency=0.9913 (completeness of the script; consistency between script and H3 prompt).\nShot pacing: num_shots=3, mean_seconds=1.67, std_seconds=0.0, total_seconds=5.01, length_cv=0.0\nCritic gates: physics_p=0.0049, subject_p=0.5086",
+  "finished_at": "2026-10-12T14:30:50+00:00",
+  "h3_requests": 1,
+  "phase": "search",
+  "policy_hash": "dd489936d9ea8f3d633e4b5e58df0931fc1f0be14f0d4ad929ca804fc7b07124",
+  "score": 0.662783,
+  "seed": 0,
+  "split": "train",
+  "task_id": "train-001",
+  "trajectory_path": "outputs/101214_1strun/evaluations/0aa979018910a10da8a371e18edc03464f18690acf534c0948e629736dd44170/trajectory.json",
+  "valid": true,
+  "video_path": "outputs/101214_1strun/evaluations/0aa979018910a10da8a371e18edc03464f18690acf534c0948e629736dd44170/video.mp4"
+}

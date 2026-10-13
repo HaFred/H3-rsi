@@ -1,0 +1,131 @@
+{
+  "artifact": {
+    "audio_path": null,
+    "backend": "minimax_h3",
+    "cached": false,
+    "duration_seconds": 5.0,
+    "meta": {
+      "endpoint": "http://localhost:30010",
+      "request_hash": "30df06f4a211a2cab8f2bb834adc73f88bc39e7dc72da6afc50544f33f783bf0",
+      "status": "completed",
+      "video_id": "2e43908e-f4d0-4b49-87cd-d9f99dd8fa2e"
+    },
+    "seed": 0,
+    "task_id": "promotion-002",
+    "video_path": "outputs/101214_1strun/evaluations/8d0f9415cf512c7700575fb55ac5bc352a45b155218090862277f7479e7657d7/30df06f4a211a2cab8f2bb834adc73f88bc39e7dc72da6afc50544f33f783bf0.mp4"
+  },
+  "breakdown": {
+    "details": {
+      "editing": {
+        "length_cv": 0.283,
+        "mean_seconds": 1.667,
+        "num_shots": 3,
+        "std_seconds": 0.471,
+        "total_seconds": 5.0
+      },
+      "harness_hash": "2e347be9390a9685",
+      "human": {
+        "human_missing": true,
+        "reason": "no artifact-specific labels"
+      },
+      "mode": "local",
+      "story": {
+        "completeness": 0.6048,
+        "completeness_level": 2.419089801609516,
+        "consistency": 0.8305
+      },
+      "video": {
+        "av": {
+          "skipped": true
+        },
+        "av_alignment": 0.0,
+        "unified": {
+          "frame_std": 0.1064,
+          "malformed_frames": 0,
+          "n_frames": 6,
+          "sample_response": "Alignment Score (1-5): 1.3029000186920166\nCoherence Score (1-5): 2.6126999855041504\nStyle Score (1-5): 2.308300018310547"
+        },
+        "unified_reward": 0.4080833334392972
+      }
+    },
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.6950519572943449,
+    "total": 0.5686129893871645,
+    "video": 0.4080833334392972,
+    "weights": {
+      "editing": 0.15,
+      "human": 0.0,
+      "story": 0.25,
+      "video": 0.6
+    }
+  },
+  "critic_report": "### Physics\n*   **Gravity/Placement:** In Shot 1, Elara lifts the book from the shelf and places it on the desk, but the camera immediately cuts to a medium shot where she is standing *behind* the desk opening it. The motion of placing the book down is not shown completing before the cut; the transition implies the book is already open, but the physical act of retrieving a thick hardcover and immediately opening it to specific pages in one continuous action (even with a cut) lacks the logical gap of her settling the book.\n*   **Lighting Consistency:** The shaft of light in Shot 2 illuminates dust motes. In Shot 3, the tear on the cheek reflects light, yet the \"single shaft of light\" described in Shot 2 should create a very specific, high-contrast silhouette. The final shot shows the tear landing on pages described as \"cream-colored\" in Shot 2, but the script calls them \"blue pages.\" The lighting angle shifts from coming from a \"high window\" (right side) in Shot 1 to illuminating the face/cheek from an undefined direction in Shot 3 without a setup shot.\n*   **Tear Physics:** The tear is described as \"large\" and \"catching the light\" as it falls, yet it lands and creates a \"small, dark wet spot\" instantly. A visible, glistening tear of that magnitude usually takes longer to lose momentum or creates a streak rather than an immediate dot, especially given the macro focus.\n\n### Subject Consistency\n*   **Hand/Glove Mismatch:** In Shot 2, the script says \"Her fingers flip the pages.\" The generation description clarifies: \"She places her bare left hand on the open blue book and begins flipping the pages rapidly.\" However, Shot 3 shows the \"gloved thumb of her right hand is visible at the very bottom edge, holding the book steady.\" If the left hand (bare) flipped the pages, the right hand (gloved) holding it steady is consistent with the description, but the script explicitly states \"Her fingers\" (implying the active hand shown in the previous shot) flipped the pages. The script's ambiguity regarding *which* fingers flipped the pages conflicts with the specific hand assignment in the generation.\n*   **Reflection vs. Reality:** In Shot 3, the description states the glossy cover reflects Elara's \"dark, wide [eyes].\" However, the shot is an extreme close-up of the cheek and tear. Unless the camera pulls back or the reflection is intentionally framed to show the whole eye, the reflection of the \"dark, wide\" eyes may appear distorted or incomplete in a macro shot of the book cover, creating a disconnect between the emotional state described and the visual evidence.\n*   **Clothing/Accessories:** In Shot 2, the description mentions a \"faint silver locket chain resting at her collarbone.\" In Shot 3, the collarbone area is not visible, only the cheek and the gloved thumb. This is a minor continuity note, but the presence of the bare left hand and silver chain in Shot 2 is not referenced again, making the subject feel incomplete in the final shot.\n\n### Story Clarity\n*   **Ambiguous Cause:** The script states she flips pages \"rapidly,\" then stops, and a tear falls. The story implies the reading triggered the emotion. However, the generation description clarifies she was flipping \"rapidly\" and then the camera cuts to her stopping. The disconnect between the rapid flipping (which usually suggests agitation or skipping) and the sudden, quiet tear without any visible change in the book's content (no text shown) leaves the emotional trigger visually undefined.\n*   **Missing Context:** The script sets up a library scene with a specific book. The generation description adds details (gold leaf lettering, tarnished to bronze) that are irrelevant to the emotional beat, potentially distracting from the core narrative of \"reading triggers grief.\" The story relies entirely on the audience inferring the book's content from the character's reaction, which is weak without a shot of the actual text or a title.\n\n### Pacing\n*   **Rushed Transition:** Shot 2 (2 seconds) shows rapid page flipping, followed immediately by Shot 3 (1 second) where she stops and a tear falls. The 1-second duration for the emotional release and tear fall is insufficient to let the viewer process the shift from agitation (flipping) to sorrow (tear), making the emotional payoff feel cut off rather than earned.\n*   **Static Camera Repetition:** All three shots use \"static\" cameras. While intended to create intimacy, the lack of any camera movement (even a slight zoom or tilt) to accompany the rapid page flipping in Shot 2 makes the action feel jarring and ungrounded, disrupting the flow of the pacing.\n\n### Audio\n*   **Inconsistent Sound Design:**",
+  "director_prompt": "integrated_multimodal_description\n[Shot 1] (0:00–0:02) Extreme close-up on a weathered, blue hardcover spine with gold leaf lettering that has tarnished to a dull bronze. The lighting is soft, diffused daylight coming from a high window, casting a gentle shadow on the right. Elara's hand enters the frame—she wears a worn, cream-colored leather glove with visible stitching and a slight crease at the knuckle. Her gloved fingers slide down the spine, gripping the bottom edge, and lift the book from a dark oak shelf. The wood grain of the shelf is prominent. She lowers the book onto a scarred, worn wooden desk, the surface showing a map-like pattern of old scratches. The glove's thumb rests lightly on the book's shoulder. The camera is static, locked off on the shelf edge.\n\n[Shot 2] (0:02–0:04) Medium shot, low angle at the desk level. Elara, a woman with sharp cheekbones and dark hair pulled back in a messy bun, stands behind the desk. She is wearing the same cream leather glove on her right hand; her left hand is bare, with pale skin and a faint silver locket chain resting at her collarbone. She places her bare left hand on the open blue book and begins flipping the pages rapidly, one by one. The book is thick, with cream-colored paper that curls at the edges. A single, narrow shaft of sunlight cuts through the dusty library air, illuminating swirling dust motes. Elara's face is partially in shadow, highlighting the intensity of her concentration. The camera is static, keeping the desk and her torso in frame.\n\n[Shot 3] (0:04–0:05) Extreme close-up, macro focus. The glossy cover of the open blue book fills the frame, reflecting Elara's eyes—dark, wide, and filled with emotion. The reflection is slightly distorted by the curvature of the cover. Just above the reflection, Elara's bare cheek enters the frame; the skin is smooth but glistening with moisture. A single, large tear traces a path down her cheek, catching the light as it falls. It lands on the blue pages below the reflection, creating a small, dark wet spot on the cream paper. The gloved thumb of her right hand is visible at the very bottom edge, holding the book steady. The camera is static, trembling only imperceptibly as the tear hits the page.\n\noverall_soundscape\nThe library is hushed and heavy, not silent. The air hums with the faint, distant creak of settling timber and the soft rustle of other pages turning elsewhere in the stacks. As the book is placed on the desk, a low, dry groan of the wood shelf. In the second shot, this is layered with the sharp, crisp *snap* of paper, each page flip distinct and dry, accompanied occasionally by the faint, melodic *ting* of distant wind chimes hanging far away in the atrium. By the final shot, all ambient noise drops away into a vacuum of silence, leaving only the echo of the last paper snap, lingering in the stillness as the tear falls.\n\nnon_diegetic_music\nA solitary, melancholic cello line. The melody begins softly in the low register, barely audible, matching the slow breath of the protagonist. It consists of long, drawn-out notes with a slight vibrato, playing a descending minor pentatonic motif. There is no rhythm, no percussion, and no harmony—just the cello's warm, woody timbre bleeding into the silence. As the tear falls in the final shot, the cello holds a single, suspended note, fading into the quiet like a memory dissolving into dust.",
+  "editor_notes": "The best candidate to keep is **Shot 2**, as it effectively establishes the library atmosphere, the tactile action of reading, and the visual cue of the book's pages, serving as the strongest narrative anchor despite its brevity. You should **retain Shot 2 in its current duration** while **extending Shot 3** to at least 3–4 seconds to allow the emotional transition from agitation to grief and the tear's fall to be visually processed, and consider **trimming Shot 1** slightly to create a tighter, more focused lead-in that emphasizes the retrieval action before the cut.",
+  "error": null,
+  "harness_hash": "2e347be9390a9685",
+  "harness_version": "gepa-base",
+  "meta": {
+    "cost": 10.0,
+    "critic_gates": {
+      "physics_ok": false,
+      "physics_p": 0.3873288631439209,
+      "subject_ok": false,
+      "subject_p": 0.43113961815834045
+    },
+    "effective": {
+      "backend": "minimax_h3",
+      "decision": "http",
+      "declared": {
+        "backend": "minimax_h3",
+        "decision": "http",
+        "text_llm": "openai"
+      },
+      "text_llm": "openai"
+    },
+    "target": {
+      "aspect_ratio": "16:9",
+      "duration_seconds": 5.0,
+      "frame_rate": 24.0,
+      "num_inference_steps": 10,
+      "seed": 0,
+      "short_edge": 768
+    },
+    "task_type": "t2va",
+    "warnings": [],
+    "workflow": [
+      "script",
+      "storyboard",
+      "director",
+      "critic",
+      "editor"
+    ]
+  },
+  "script": "**INT. LIBRARY - DAY (5 seconds)**\n\n**SHOT 1 (0:00-0:02)**\nClose up on a dusty, blue hardcover spine. ELARA's gloved hand slides it from the shelf. She places it gently on her worn wooden desk.\n*Sound:* Soft shelf creak, quiet hush of the library.\n\n**SHOT 2 (0:02-0:04)**\nMedium shot. Elara opens the blue book. Her fingers flip the pages rapidly, one by one. Dust motes dance in the single shaft of light hitting the desk.\n*Sound:* Sharp, crisp *snap* of paper, layered with distant wind chimes.\n\n**SHOT 3 (0:04-0:05)**\nExtreme close up on her eyes, reflected in the glossy cover of the open book. She stops flipping. A single tear rolls down her cheek, landing on the blue pages.\n*Sound:* Silence. Just the *snap* echoing.\n\n**FADE OUT.**",
+  "split": "promotion",
+  "storyboard": [
+    {
+      "action": "Close-up on a dusty blue hardcover spine. Elara's gloved hand slides the book from the shelf and places it gently on a worn wooden desk.",
+      "camera": "static",
+      "index": 0,
+      "seconds": 2,
+      "shot_size": "close"
+    },
+    {
+      "action": "Medium shot of Elara at the desk. She opens the blue book and flips pages rapidly one by one. Dust motes dance in a shaft of light hitting the desk.",
+      "camera": "static",
+      "index": 1,
+      "seconds": 2,
+      "shot_size": "medium"
+    },
+    {
+      "action": "Extreme close-up on Elara's eyes reflected in the glossy open book cover. She stops flipping; a single tear rolls down her cheek, landing on the blue pages.",
+      "camera": "static",
+      "index": 2,
+      "seconds": 1,
+      "shot_size": "extreme_close"
+    }
+  ],
+  "task_id": "promotion-002"
+}

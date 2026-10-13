@@ -1,0 +1,26 @@
+{
+  "axis_scores": {
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.76994,
+    "video": 0.525482
+  },
+  "cache_hit": false,
+  "cache_key": "b2f33fd8e5b9a326f9a066d57667edd5ee70bc854e10b84dca9ece6ec39e2850",
+  "candidate_hash": "4ddd73aa8fa203c6aaef003092483f3f4d4c90210a62dfc352b1cd7f862b5f5d",
+  "case_id": "validation:val-001:seed0",
+  "elapsed_seconds": 50.11,
+  "errors": [],
+  "feedback": "Task requirement: A potter lifts a small clay bowl from a spinning wheel and sets it on a shelf. Keep the bowl shape and workshop consistent. Include the wheel motor and soft room ambience.\nTotal score 0.658 with fixed weights {'video': 0.6, 'story': 0.25, 'editing': 0.15}: video=0.525, story=0.770, editing=1.000.\nVisual judge (UnifiedReward on 6 frames, alignment/coherence/style vs the task text): frame_std=0.0222. Last judge response: Alignment Score (1-5): 2.5134999752044678\nCoherence Score (1-5): 3.4010000228881836\nStyle Score (1-5): 3.051300048828125\nStory judge: completeness=0.6265, completeness_level=2.5061, consistency=0.985 (completeness of the script; consistency between script and H3 prompt).\nShot pacing: num_shots=3, mean_seconds=1.667, std_seconds=0.125, total_seconds=5.0, length_cv=0.075\nCritic gates: physics_p=0.0143, subject_p=0.6363",
+  "finished_at": "2026-10-12T14:55:06+00:00",
+  "h3_requests": 1,
+  "phase": "search",
+  "policy_hash": "dd489936d9ea8f3d633e4b5e58df0931fc1f0be14f0d4ad929ca804fc7b07124",
+  "score": 0.657774,
+  "seed": 0,
+  "split": "validation",
+  "task_id": "val-001",
+  "trajectory_path": "outputs/101214_1strun/evaluations/b2f33fd8e5b9a326f9a066d57667edd5ee70bc854e10b84dca9ece6ec39e2850/trajectory.json",
+  "valid": true,
+  "video_path": "outputs/101214_1strun/evaluations/b2f33fd8e5b9a326f9a066d57667edd5ee70bc854e10b84dca9ece6ec39e2850/video.mp4"
+}

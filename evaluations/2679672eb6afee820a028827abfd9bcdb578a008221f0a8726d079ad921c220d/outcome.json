@@ -1,0 +1,26 @@
+{
+  "axis_scores": {
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.752297,
+    "video": 0.523428
+  },
+  "cache_hit": false,
+  "cache_key": "2679672eb6afee820a028827abfd9bcdb578a008221f0a8726d079ad921c220d",
+  "candidate_hash": "4ddd73aa8fa203c6aaef003092483f3f4d4c90210a62dfc352b1cd7f862b5f5d",
+  "case_id": "promotion:promotion-003:seed0",
+  "elapsed_seconds": 50.32,
+  "errors": [],
+  "feedback": "Task requirement: A barista pours steamed milk into a cup and slides it across the counter to a customer. Keep the apron and cup consistent. Include the steam wand hiss and a ceramic clink.\nTotal score 0.652 with fixed weights {'video': 0.6, 'story': 0.25, 'editing': 0.15}: video=0.523, story=0.752, editing=1.000.\nVisual judge (UnifiedReward on 6 frames, alignment/coherence/style vs the task text): frame_std=0.0634. Last judge response: Alignment Score (1-5): 2.2021000385284424\nCoherence Score (1-5): 3.1201000213623047\nStyle Score (1-5): 3.003200054168701\nStory judge: completeness=0.6077, completeness_level=2.4307, consistency=0.9692 (completeness of the script; consistency between script and H3 prompt).\nShot pacing: num_shots=3, mean_seconds=1.667, std_seconds=0.094, total_seconds=5.0, length_cv=0.057\nCritic gates: physics_p=0.0419, subject_p=0.2388",
+  "finished_at": "2026-10-12T16:29:29+00:00",
+  "h3_requests": 1,
+  "phase": "promotion",
+  "policy_hash": "dd489936d9ea8f3d633e4b5e58df0931fc1f0be14f0d4ad929ca804fc7b07124",
+  "score": 0.652131,
+  "seed": 0,
+  "split": "promotion",
+  "task_id": "promotion-003",
+  "trajectory_path": "outputs/101214_1strun/evaluations/2679672eb6afee820a028827abfd9bcdb578a008221f0a8726d079ad921c220d/trajectory.json",
+  "valid": true,
+  "video_path": "outputs/101214_1strun/evaluations/2679672eb6afee820a028827abfd9bcdb578a008221f0a8726d079ad921c220d/video.mp4"
+}

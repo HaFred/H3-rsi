@@ -1,0 +1,131 @@
+{
+  "artifact": {
+    "audio_path": null,
+    "backend": "minimax_h3",
+    "cached": false,
+    "duration_seconds": 5.0,
+    "meta": {
+      "endpoint": "http://localhost:30010",
+      "request_hash": "daa14e31dd8f6004434f9307467819e59c52d762dda05b7b3a3aab0fbbb85bdf",
+      "status": "completed",
+      "video_id": "b0132726-160d-4486-b1c9-e110ec175fe0"
+    },
+    "seed": 0,
+    "task_id": "val-001",
+    "video_path": "outputs/101214_1strun/evaluations/b2f33fd8e5b9a326f9a066d57667edd5ee70bc854e10b84dca9ece6ec39e2850/daa14e31dd8f6004434f9307467819e59c52d762dda05b7b3a3aab0fbbb85bdf.mp4"
+  },
+  "breakdown": {
+    "details": {
+      "editing": {
+        "length_cv": 0.075,
+        "mean_seconds": 1.667,
+        "num_shots": 3,
+        "std_seconds": 0.125,
+        "total_seconds": 5.0
+      },
+      "harness_hash": "55be971f47e67d57",
+      "human": {
+        "human_missing": true,
+        "reason": "no artifact-specific labels"
+      },
+      "mode": "local",
+      "story": {
+        "completeness": 0.6265,
+        "completeness_level": 2.5061378106474876,
+        "consistency": 0.985
+      },
+      "video": {
+        "av": {
+          "skipped": true
+        },
+        "av_alignment": 0.0,
+        "unified": {
+          "frame_std": 0.0222,
+          "malformed_frames": 0,
+          "n_frames": 6,
+          "sample_response": "Alignment Score (1-5): 2.5134999752044678\nCoherence Score (1-5): 3.4010000228881836\nStyle Score (1-5): 3.051300048828125"
+        },
+        "unified_reward": 0.5254819479253557
+      }
+    },
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.7699402991682291,
+    "total": 0.6577742435472708,
+    "video": 0.5254819479253557,
+    "weights": {
+      "editing": 0.15,
+      "human": 0.0,
+      "story": 0.25,
+      "video": 0.6
+    }
+  },
+  "critic_report": "### Physics\n*   **Rotation direction mismatch:** The script and storyboard both specify the wheel rim spinning **counter-clockwise**, but the generation description for Shot 1 describes the rim as \"rendered as a soft motion blur against the static clay\" without confirming the direction, while Shot 3 describes the blur \"gradually slowing to a complete stop\" which is physically implausible for a heavy metal rim on a spinning wheel in 1.5 seconds (it should decelerate over seconds, not instantly halt with the shot cut).\n*   **Object permanence/continuity:** In Shot 2, the description states the hands \"gently set the unglazed terracotta bowl onto a rustic wooden shelf.\" However, the shelf is described as holding \"two identical finished terracotta bowls.\" If the bowl being placed is \"unglazed\" and the others are \"finished,\" the visual description fails to distinguish the texture/state difference, making the placement action physically ambiguous regarding the objects' identities.\n*   **Implied mass friction:** The audio description includes \"the soft, rhythmic creak of the wooden shelf supporting the weight of the clay.\" A small, unglazed terracotta bowl has negligible mass; no creaking should occur, creating a physics-defying sound for the object's weight.\n\n### Subject Consistency\n*   **Sleeve detail inconsistency:** The script mentions \"faded blue denim sleeves,\" the storyboard mentions \"faded blue denim sleeves,\" but the generation description adds specific details (\"frayed cuffs\") not present in the source material, while Shot 3 claims \"faded blue denim sleeves no longer visible,\" which is a tautology that adds no new consistency check.\n*   **Floor material conflict:** The script sets the scene in a \"wood-fired\" pottery studio with a \"grey concrete floor.\" Shot 2 places the shelf on the \"grey concrete floor.\" However, pottery studios typically have dust; the description in Shot 1 notes \"floating dust motes,\" yet Shot 3 describes the atmosphere as \"quiet, cozy\" with no mention of the inevitable dust accumulation on the shelves or floor, creating a tonal inconsistency with the \"rough, organic\" nature of the clay.\n*   **Wheel state contradiction:** The script describes the wheel motor humming in the background of Shot 2. The audio description confirms the hum. However, Shot 3 states the wheel's blur \"gradually slows to a complete stop\" within the shot. If the wheel stopped completely during the static wide shot (3.5s-5.0s), the background hum described in Shot 2 would have ceased, creating a continuity error in the diegetic soundscape.\n\n### Story Clarity\n*   **Narrative purpose:** The sequence shows a potter placing a bowl on a shelf next to two finished ones, then fading out. There is no indication of *why* this matters (e.g., is it a finished product? a work in progress?). The story is purely atmospheric with no clear subject or narrative arc beyond \"making pottery.\"\n*   **Ambiguity of the third bowl:** The script places the lifted bowl onto the shelf next to two others. The final shot shows three bowls. It is unclear if the lifted bowl is the third one placed, or if the \"two identical finished bowls\" were already there and the lifted one is a duplicate. The description in Shot 2 says \"set the unglazed terracotta bowl onto a rustic wooden shelf... alongside two identical finished terracotta bowls,\" implying the lifted bowl is the third, but the visual distinction between \"unglazed\" and \"finished\" is not rendered, leaving the viewer unsure if the three bowls on the shelf are truly identical in state.\n\n### Pacing\n*   **Rushed deceleration:** Shot 3 (3.5s-5.0s) requires the spinning wheel's blur to \"gradually slow to a complete stop\" within 1.5 seconds. This is an unnatural physical process for a heavy wheel; it would require a much longer duration or a distinct mechanical stop to appear realistic, making the pacing feel rushed and artificial.\n*   **Lack of transition:** The cut from Shot 1 (close-up of hands lifting) to Shot 2 (hands placing) is abrupt. There is no establishing beat or bridge between the lifting action and the placement action, causing the pacing to feel disjointed rather than fluid.\n\n### Audio\n*   **Mismatched diegetic sounds:** The audio description includes \"the subtle, dry slap of bare feet on the grey concrete floor.\" The script and storyboard never mention the potter's feet or bare feet, making this a non-diegetic intrusion that contradicts the visual context of the hands-only focus.\n*   **Over-dubbed silence:** The audio description states the scene culminates in \"complete silence of the room as the wheel comes to a rest.\" However, the script explicitly mentions",
+  "director_prompt": "integrated_multimodal_description\n[Shot 1] 0.0s - 1.8s [Close-up, Static] A detailed close-up focuses on a pair of potter's hands, weathered and gentle, clad in faded blue denim sleeves with frayed cuffs, as they carefully lift a small, unglazed terracotta bowl from a wood-fired spinning wheel. The wheel's heavy metal rim spins slowly counter-clockwise, rendered as a soft motion blur against the static clay. Soft golden afternoon light filters through a dusty workshop window, casting a warm, hazy glow that illuminates floating dust motes dancing in the air around the rough, organic rim of the terracotta bowl. The clay retains a matte, earthy texture with subtle fingerprints from the clay.\n\n[Shot 2] 1.8s - 3.5s [Medium Shot, Tracking] The camera smoothly tracks the potter's hands—still wearing the faded blue denim sleeves with frayed cuffs—as they gently set the unglazed terracotta bowl onto a rustic wooden shelf. On the shelf, two identical finished terracotta bowls sit in perfect alignment. In the background, through a dark opening, the wheel's metal gears are faintly visible, and the motor hums softly. The room is bathed in warm amber light, creating a striking contrast between the bowl's earthy orange hue and the cool grey concrete floor beneath the wooden shelf.\n\n[Shot 3] 3.5s - 5.0s [Static Wide Shot] A static wide shot reveals the completed rustic wooden shelf, displaying three perfectly aligned terracotta bowls that catch the soft ambient room light. The potter's hands, previously in frame, step out of view. In the background, the spinning wheel's faint metal blur gradually slows to a complete stop. The final composition emphasizes the smooth, consistent shapes of the three bowls and the quiet, cozy atmosphere of the pottery studio, with the faded blue denim sleeves no longer visible, leaving only the stillness of the craft.\n\noverall_soundscape\nThe audio landscape is defined by the warm, resonant hum of the wood-fired wheel's motor, which is most prominent in the background during the first two shots and gradually fades into a low, airy silence as the wheel stops in the final shot. Diegetic sounds include the soft, rhythmic creak of the wooden shelf supporting the weight of the clay, the gentle rustle of the potter's denim sleeves as they move, and the subtle, dry slap of bare feet on the grey concrete floor. Ambient workshop tones include the low-level hiss of the kiln venting heat and the soft, natural settling of dust motes illuminated by the golden light, culminating in the complete silence of the room as the wheel comes to a rest.\n\nnon_diegetic_music\nA soft, meditative ambient score underpins the sequence, featuring a single cello playing long, warm, resonant notes that mimic the earthy tones of the terracotta and the depth of the clay. The tempo is slow and deliberate (approx. 60 BPM), with a gentle, swelling arpeggio of a soft piano or harp entering during the placement of the bowl (Shot 2) to emphasize the care and precision of the action. The music maintains a cozy, intimate mood, avoiding sudden dynamic shifts, and gently fades into a solo cello hum as the wheel stops in the final shot, leaving a lingering sense of peaceful completion.",
+  "editor_notes": "The best candidate to retain is **Shot 2**, as it effectively captures the central narrative beat of the potter placing the unglazed bowl next to the finished ones while maintaining consistent subject matter and atmosphere; Shot 1 should be kept only as a brief establishing close-up of the hands, while Shot 3 must be significantly shortened or reworked to remove the physically implausible rapid deceleration of the wheel blur and the contradictory silence.\n\nTo achieve a coherent edit, you should **keep** the core visual of Shot 2 (placing the bowl) and optionally retain a short fragment of Shot 1 (lifting the bowl) to bridge the action, but you must **shorten** or rewrite Shot 3 to either show the wheel spinning steadily without implying an instant stop or extend its duration to make the slow deceleration feel natural rather than rushed, thereby resolving the continuity errors in the diegetic soundscape.",
+  "error": null,
+  "harness_hash": "55be971f47e67d57",
+  "harness_version": "gepa-base",
+  "meta": {
+    "cost": 10.0,
+    "critic_gates": {
+      "physics_ok": false,
+      "physics_p": 0.014294249936938286,
+      "subject_ok": true,
+      "subject_p": 0.6362796425819397
+    },
+    "effective": {
+      "backend": "minimax_h3",
+      "decision": "http",
+      "declared": {
+        "backend": "minimax_h3",
+        "decision": "http",
+        "text_llm": "openai"
+      },
+      "text_llm": "openai"
+    },
+    "target": {
+      "aspect_ratio": "16:9",
+      "duration_seconds": 5.0,
+      "frame_rate": 24.0,
+      "num_inference_steps": 10,
+      "seed": 0,
+      "short_edge": 768
+    },
+    "task_type": "t2va",
+    "warnings": [],
+    "workflow": [
+      "script",
+      "storyboard",
+      "director",
+      "critic",
+      "editor"
+    ]
+  },
+  "script": "**SHOT 1 (0.0s-1.8s)** A close-up of a potter's hands, wearing faded blue denim sleeves, gently lifting a small, unglazed terracotta bowl from a wood-fired spinning wheel. The wheel's metal rim spins slowly counter-clockwise, blurred by motion. Soft golden afternoon light filters through a dusty workshop window, illuminating floating dust motes. The clay bowl retains a rough, organic rim texture.\n\n**SHOT 2 (1.8s-3.5s)** Medium shot tracking the potter's hands as they carefully place the terracotta bowl onto a rustic wooden shelf next to two identical finished bowls. The wheel motor in the background hums softly, its metal gears visible through a dark opening. The room is bathed in warm amber light, with the bowl's earthy orange hue contrasting against the grey concrete floor.\n\n**SHOT 3 (3.5s-5.0s)** Static wide shot of the completed shelf: the three terracotta bowls sit perfectly aligned, catching the soft room ambience. The potter's hands step out of frame, leaving only the spinning wheel's faint blur in the background. The final shot emphasizes the smooth, consistent shape of the bowls and the quiet, cozy atmosphere of the pottery studio as the wheel slows to a stop.",
+  "split": "validation",
+  "storyboard": [
+    {
+      "action": "A close-up of a potter's hands in faded blue denim sleeves gently lifts an unglazed terracotta bowl from a spinning wood-fired wheel. The metal rim blurs counter-clockwise. Golden afternoon light illuminates dust motes and the rough clay rim.",
+      "camera": "static",
+      "index": 1,
+      "seconds": 1.8,
+      "shot_size": "close"
+    },
+    {
+      "action": "The camera tracks the potter's hands placing the terracotta bowl onto a rustic wooden shelf alongside two identical finished bowls. In the background, the wheel's motor hums and gears are visible through a dark opening. Warm amber light contrasts the bowl's earthy orange hue against the grey concrete floor.",
+      "camera": "tracking",
+      "index": 2,
+      "seconds": 1.7,
+      "shot_size": "medium"
+    },
+    {
+      "action": "A static wide shot of the completed shelf showing three perfectly aligned terracotta bowls. The potter's hands exit the frame. The spinning wheel's faint blur in the background slows to a stop, emphasizing the smooth shape of the bowls and the quiet, cozy atmosphere of the studio.",
+      "camera": "static",
+      "index": 3,
+      "seconds": 1.5,
+      "shot_size": "wide"
+    }
+  ],
+  "task_id": "val-001"
+}

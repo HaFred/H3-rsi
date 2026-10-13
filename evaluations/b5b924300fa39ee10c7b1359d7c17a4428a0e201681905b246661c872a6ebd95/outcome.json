@@ -1,0 +1,26 @@
+{
+  "axis_scores": {
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.730679,
+    "video": 0.523021
+  },
+  "cache_hit": false,
+  "cache_key": "b5b924300fa39ee10c7b1359d7c17a4428a0e201681905b246661c872a6ebd95",
+  "candidate_hash": "d16c2e959f5bed4c8d2e8a5f911fd061363d02b0c2c4b1e7f425fb035658e122",
+  "case_id": "test:test-001:seed0",
+  "elapsed_seconds": 49.7,
+  "errors": [],
+  "feedback": "Task requirement: A gardener kneels, plants a small seedling and gently presses the soil. Keep the same gloves and plant throughout. Include soft soil movements and garden birds.\nTotal score 0.646 with fixed weights {'video': 0.6, 'story': 0.25, 'editing': 0.15}: video=0.523, story=0.731, editing=1.000.\nVisual judge (UnifiedReward on 6 frames, alignment/coherence/style vs the task text): frame_std=0.0475. Last judge response: Alignment Score (1-5): 2.5134999752044678\nCoherence Score (1-5): 3.680500030517578\nStyle Score (1-5): 3.020900011062622\nStory judge: completeness=0.5662, completeness_level=2.2646, consistency=0.9775 (completeness of the script; consistency between script and H3 prompt).\nShot pacing: num_shots=3, mean_seconds=1.667, std_seconds=0.471, total_seconds=5.0, length_cv=0.283\nCritic gates: physics_p=0.0392, subject_p=0.1225",
+  "finished_at": "2026-10-12T16:48:20+00:00",
+  "h3_requests": 1,
+  "phase": "test",
+  "policy_hash": "dd489936d9ea8f3d633e4b5e58df0931fc1f0be14f0d4ad929ca804fc7b07124",
+  "score": 0.646482,
+  "seed": 0,
+  "split": "test",
+  "task_id": "test-001",
+  "trajectory_path": "outputs/101214_1strun/evaluations/b5b924300fa39ee10c7b1359d7c17a4428a0e201681905b246661c872a6ebd95/trajectory.json",
+  "valid": true,
+  "video_path": "outputs/101214_1strun/evaluations/b5b924300fa39ee10c7b1359d7c17a4428a0e201681905b246661c872a6ebd95/video.mp4"
+}

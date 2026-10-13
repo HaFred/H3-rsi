@@ -1,0 +1,113 @@
+version: gepa-base
+parent_version: null
+backend: minimax_h3
+text_llm: openai
+decision: http
+prompts:
+  script: 'You are a screenwriter. Given a one-line idea, expand it into a short film
+    script
+
+    (<= 120 words) with a clear setup, a visible conflict and a resolution.
+
+    Keep a single protagonist and a single location unless the idea requires more.
+
+    '
+  storyboard: 'You are a storyboard artist. Given a script, output a JSON list of
+    shots. Each shot has
+
+    `index`, `seconds`, `shot_size` (wide/medium/close), `camera` (static/push/pan),
+    `action`.
+
+    Total duration must match the target. Keep subject appearance consistent across
+    shots.
+
+    '
+  director: 'You are a film director writing a prompt for MiniMax-H3. Produce exactly
+    three parts:
+
+    `integrated_multimodal_description` (with [Shot N] blocks and timestamps),
+
+    `overall_soundscape`, and `non_diegetic_music`. Be concrete about lighting, materials,
+
+    and motion. Repeat the protagonist''s appearance in every shot.
+
+    '
+  critic: 'You are a film critic. Given a script, storyboard and video, list concrete
+    defects under
+
+    these axes: physics, subject consistency, story clarity, pacing, audio. Be specific
+    and
+
+    short. Do not praise.
+
+    '
+  editor: 'You are an editor. Given candidate videos and their scores, pick the best
+    one and explain
+
+    in two sentences which shots to keep and which to shorten.
+
+    '
+memory:
+- Exclude non-visual sensory details like smell, taste, or touch that confuse video
+  models.
+- Define character appearance with specific color and texture descriptors in every
+  shot.
+- Explicitly maintain background and object continuity across all shots using consistent
+  identifiers.
+- Describe lighting conditions concretely (e.g., "volumetric", "rim light") rather
+  than abstract mood.
+- Ensure physics of movement are described as observable actions (e.g., "water cascades"
+  not "feels cool").
+- Limit shot duration and complexity to prioritize clear visual action over narrative
+  pacing.
+- Summarize the environment's visual texture (e.g., "worn oak", "wet pavement") before
+  describing action.
+- Avoid ambiguous camera angles; specify static, pan, or zoom explicitly for each
+  shot.
+- Keep H3 prompts concise to prevent truncation of critical visual context instructions.
+- Re-state subject attributes in later shots to reinforce visual consistency for the
+  generator.
+- Translate abstract story beats into tangible visual objects and spatial relationships.
+- Ensure the visual prompt matches the script's explicit visual requirements before
+  generation.
+workflow:
+- script
+- storyboard
+- director
+- critic
+- editor
+tool_routing:
+  enabled_tools:
+  - video_generate
+  - frame_judge
+  - av_check
+  strategy: fixed
+  task_type_router:
+    enabled: false
+    default: t2va
+planning:
+  strategy: hierarchical
+  max_shots: 3
+  min_shot_seconds: 1.5
+  num_candidates: 1
+critic:
+  gate_thresholds:
+    physics_ok: 0.6
+    subject_consistent: 0.6
+  rubric: []
+  video_subweights:
+    unified_reward: 1.0
+    av_alignment: 0.0
+reward_weights:
+  video: 0.6
+  story: 0.25
+  editing: 0.15
+  human: 0.0
+target_defaults:
+  short_edge: 768
+  aspect_ratio: '16:9'
+  duration_seconds: 5.0
+  frame_rate: 24.0
+  num_inference_steps: 10
+  seed: 0
+notes: Frozen GEPA smoke baseline; prompts and memory are the only search components.

@@ -1,0 +1,26 @@
+{
+  "axis_scores": {
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.688381,
+    "video": 0.524553
+  },
+  "cache_hit": false,
+  "cache_key": "ee06ed72226772933316f2622235b92f33d78d599504f40934105e3539f217a3",
+  "candidate_hash": "d16c2e959f5bed4c8d2e8a5f911fd061363d02b0c2c4b1e7f425fb035658e122",
+  "case_id": "promotion:promotion-001:seed0",
+  "elapsed_seconds": 51.82,
+  "errors": [],
+  "feedback": "Task requirement: A train conductor checks a pocket watch then raises one hand on an empty platform. Keep the uniform and watch consistent. Include distant train and platform ambience.\nTotal score 0.637 with fixed weights {'video': 0.6, 'story': 0.25, 'editing': 0.15}: video=0.525, story=0.688, editing=1.000.\nVisual judge (UnifiedReward on 6 frames, alignment/coherence/style vs the task text): frame_std=0.0163. Last judge response: Alignment Score (1-5): 3.029599905014038\nCoherence Score (1-5): 3.5032999515533447\nStyle Score (1-5): 3.0032999515533447\nStory judge: completeness=0.5124, completeness_level=2.0495, consistency=0.9524 (completeness of the script; consistency between script and H3 prompt).\nShot pacing: num_shots=3, mean_seconds=5.0, std_seconds=0.0, total_seconds=15.0, length_cv=0.0\nCritic gates: physics_p=0.0099, subject_p=0.0861",
+  "finished_at": "2026-10-12T16:22:53+00:00",
+  "h3_requests": 1,
+  "phase": "promotion",
+  "policy_hash": "dd489936d9ea8f3d633e4b5e58df0931fc1f0be14f0d4ad929ca804fc7b07124",
+  "score": 0.636827,
+  "seed": 0,
+  "split": "promotion",
+  "task_id": "promotion-001",
+  "trajectory_path": "outputs/101214_1strun/evaluations/ee06ed72226772933316f2622235b92f33d78d599504f40934105e3539f217a3/trajectory.json",
+  "valid": true,
+  "video_path": "outputs/101214_1strun/evaluations/ee06ed72226772933316f2622235b92f33d78d599504f40934105e3539f217a3/video.mp4"
+}

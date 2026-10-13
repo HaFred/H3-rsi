@@ -1,0 +1,131 @@
+{
+  "artifact": {
+    "audio_path": null,
+    "backend": "minimax_h3",
+    "cached": false,
+    "duration_seconds": 5.0,
+    "meta": {
+      "endpoint": "http://localhost:30010",
+      "request_hash": "fa555dad9e1e3d5d4fe573e2e3279e2d2c64f4381b2c6db79baa052fbe281c75",
+      "status": "completed",
+      "video_id": "80293533-9144-4775-b919-b316f6c99249"
+    },
+    "seed": 0,
+    "task_id": "promotion-001",
+    "video_path": "outputs/101214_1strun/evaluations/9d747a8a7c3bd2969a32c381f1028569f94103ba534b3a798352f7f4fae9db7f/fa555dad9e1e3d5d4fe573e2e3279e2d2c64f4381b2c6db79baa052fbe281c75.mp4"
+  },
+  "breakdown": {
+    "details": {
+      "editing": {
+        "length_cv": 0.057,
+        "mean_seconds": 1.667,
+        "num_shots": 3,
+        "std_seconds": 0.094,
+        "total_seconds": 5.0
+      },
+      "harness_hash": "55be971f47e67d57",
+      "human": {
+        "human_missing": true,
+        "reason": "no artifact-specific labels"
+      },
+      "mode": "local",
+      "story": {
+        "completeness": 0.5058,
+        "completeness_level": 2.0233794152736664,
+        "consistency": 0.9874
+      },
+      "video": {
+        "av": {
+          "skipped": true
+        },
+        "av_alignment": 0.0,
+        "unified": {
+          "frame_std": 0.026,
+          "malformed_frames": 0,
+          "n_frames": 6,
+          "sample_response": "Alignment Score (1-5): 3.1201999187469482\nCoherence Score (1-5): 3.539099931716919\nStyle Score (1-5): 3.055000066757202"
+        },
+        "unified_reward": 0.5479027761353387
+      }
+    },
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.6984806433320045,
+    "total": 0.6533618265142044,
+    "video": 0.5479027761353387,
+    "weights": {
+      "editing": 0.15,
+      "human": 0.0,
+      "story": 0.25,
+      "video": 0.6
+    }
+  },
+  "critic_report": "### Physics\n- **Lighting/Weather Contradiction:** Shot 1 and Shot 2 explicitly describe \"golden-hour\" light and \"fading golden-hour light.\" Shot 3 abruptly shifts to \"cooler, rainy twilight\" without a visual transition or gradual shift, making the lighting change feel like a different time of day rather than a weather progression.\n- **Rain Physics:** In Shot 3, rain is described as \"glistening on the grey concrete,\" implying wet, reflective surfaces. However, the conductor's uniform (navy tunic, peaked cap, black gloves) shows no water droplets, wetness, or staining, despite the rain falling for the duration of the shot.\n- **Steam/Rain Interaction:** The steam rising from the rails in Shot 3 is described as a \"higher plume of white steam\" while rain falls. There is no visual indication of the steam condensing into rain or the rain melting the steam, which should be visible in a realistic medium shot.\n\n### Subject Consistency\n- **Watch Ticking:** The script states the conductor \"stops the ticking\" in Shot 1. In Shot 3, the watch is held palm-up, offering it to the sky, but there is no indication in the audio or visual description of the watch face (once visible) or the sound of the watch starting to tick again as it is held high, or remaining silent.\n- **Hand Position Logic:** In Shot 1, the hand slides the watch from the breast pocket. In Shot 3, the hand holds the watch palm-up. The transition between these two shots implies the watch was retrieved, but the description of the conductor's posture in Shot 2 (\"stands at attention, raising left hand\") conflicts with the physical act of holding a watch in the right hand while signaling with the left; the description does not clarify if he is still holding the watch in his right hand during the signal.\n- **Uniform Detail:** The script mentions \"black gloves.\" The generation description repeats \"black gloves\" but fails to specify if the gloves are wet in Shot 3, creating an inconsistency in the character's state relative to the environment.\n\n### Story Clarity\n- **Ambiguous Motivation:** The conductor offers the watch to the sky in Shot 3 while the train rumbles. The script and description do not clarify *why* he is doing this—whether it is a ritual, a farewell to the train, or a moment of despair—leaving the narrative intent unclear without external context.\n- **Temporal Dissonance:** The scene moves from \"golden hour\" (sunset) to \"rainy twilight\" in a single continuous sequence. The lack of a clear narrative beat explaining the sudden shift in time of day obscures the emotional arc of the character's moment.\n\n### Pacing\n- **Static Duration vs. Action:** Shot 2 (1.6s–3.2s) describes the conductor \"standing at attention\" and \"raising his left hand,\" yet the audio description adds a \"slow, melancholic melody that swells gently as the train begins to rumble.\" The swelling music conflicts with the static, short-duration action of the shot, creating a pacing mismatch where the emotional beat outpaces the visual action.\n- **Rain Onset:** The rain begins in Shot 3 (\"Soft rain begins to fall\") but the audio description states the rain \"patters lightly\" and \"merges with the rising hiss.\" The sudden introduction of sound effects for rain without a corresponding visual build-up in the 1.8-second window creates a jarring pacing shift.\n\n### Audio\n- **Silence vs. Sound:** In Shot 1, the watch ticking is \"abruptly silenced.\" In Shot 3, the watch is held up, but the audio description never re-introduces the tick, nor does it mention a change in the watch's acoustic presence. The silence feels permanent and unexplained.\n- **Unbalanced Foley:** The audio description lists specific sounds (watch tick, train hum, horn, rain, steam hiss, wheel creaks) but the visual script for Shot 3 only mentions \"standing still, waiting.\" The density of audio effects (especially the train starting to move and rumble) does not match the visual activity, where the character remains completely static while the background machinery activates.\n- **Music-Visual Sync:** The cello melody \"swells gently as the train begins to rumble,\" but the train's rumble is described as \"soft\" and the steam \"venting higher.\" The swell in music may overpower the intended \"damp and quiet\" atmosphere, creating a sonic texture that contradicts the visual restraint of the conductor's stillness.",
+  "director_prompt": "integrated_multimodal_description\n[Shot 1] 0.0s - 1.6s [Close-up] A conductor's gloved hand slides a tarnished silver pocket watch from the breast pocket of a navy-blue tunic adorned with formal gold braiding. The conductor wears a matching navy-blue peaked cap and black gloves. Golden-hour light, warm and directional, strikes the brass casing of the watch as the conductor's fingers halt its ticking. The background is a blurred, empty concrete platform with grey bricks, bathed in the soft amber glow of the setting sun.\n\n[Shot 2] 1.6s - 3.2s [Medium] The conductor stands at attention on the grey brick platform, raising his left hand to signal. He wears the same navy-blue tunic with gold braiding, navy cap, and black gloves. Behind him, at the far end of the platform, a steam locomotive with red stripes sits stationary. Mist rises gently from the cold rails, illuminated by the fading golden-hour light. Soft ambient train whistles echo in the distance.\n\n[Shot 3] 3.2s - 5.0s [Medium] The conductor holds the tarnished silver pocket watch in his right hand, palm open, offering it upward to the sky. His navy-blue tunic with gold braiding and navy cap remain consistent. The distant steam locomotive begins to rumble softly, venting a higher plume of white steam. Soft rain begins to fall, glistening on the grey concrete platform as the conductor stands still, waiting. The lighting shifts slightly from golden-hour to a cooler, rainy twilight.\n\noverall_soundscape\nThe soundscape begins with the soft, rhythmic *tick-tock* of the pocket watch, abruptly silenced as the conductor stops it, replaced by the low hum of a stationary steam engine. Gentle wind whistles through the platform, accompanied by the distant, mournful cry of a train horn. As the scene progresses, the sound of soft rain begins to texture the air—pattering lightly against the grey concrete platform and merging with the rising hiss of steam escaping the locomotive's pipes. The ambient tone is damp and quiet, with the occasional creak of the train's wheels on the tracks as it begins to move.\n\nnon_diegetic_music\nA low, resonant cello line anchors the mood, playing a slow, melancholic melody that swells gently as the train begins to rumble. The instrumentation is sparse, featuring a soft ambient drone and a distant, swelling horn that mirrors the train whistle. The tempo is slow and deliberate, evoking a sense of nostalgia and quiet farewell, fading slightly into a gentle reverb as the rain intensifies, leaving the character in a moment of suspended time.",
+  "editor_notes": "The best candidate is the one that most faithfully portrays the conductor's emotional arc from golden-hour resignation to rainy twilight despair, while resolving the physics contradictions by ensuring the watch face shows the stopped time, the uniform displays realistic rain wetness, and the steam visibly interacts with the falling rain. Keep the full duration of Shot 1 and Shot 2 to allow the audience to fully absorb the golden-hour atmosphere and the weight of the silent watch before the transition, but significantly shorten Shot 3 to 1.5–2 seconds so the sudden shift to rainy twilight feels like a jarring, poignant climax rather than a bloated, physically inconsistent middle act.",
+  "error": null,
+  "harness_hash": "55be971f47e67d57",
+  "harness_version": "gepa-base-gepa-4ddd73aa",
+  "meta": {
+    "cost": 10.0,
+    "critic_gates": {
+      "physics_ok": false,
+      "physics_p": 0.12437490373849869,
+      "subject_ok": false,
+      "subject_p": 0.542560338973999
+    },
+    "effective": {
+      "backend": "minimax_h3",
+      "decision": "http",
+      "declared": {
+        "backend": "minimax_h3",
+        "decision": "http",
+        "text_llm": "openai"
+      },
+      "text_llm": "openai"
+    },
+    "target": {
+      "aspect_ratio": "16:9",
+      "duration_seconds": 5.0,
+      "frame_rate": 24.0,
+      "num_inference_steps": 10,
+      "seed": 0,
+      "short_edge": 768
+    },
+    "task_type": "t2va",
+    "warnings": [],
+    "workflow": [
+      "script",
+      "storyboard",
+      "director",
+      "critic",
+      "editor"
+    ]
+  },
+  "script": "**SHOT 1 (0.0s-1.6s)**\nClose-up on a train conductor's gloved hand sliding a tarnished silver pocket watch from his breast pocket. The conductor wears a navy-blue tunic with gold braiding and a peaked cap; the watch face has Roman numerals. Golden-hour light hits the brass casing as he stops the ticking. The background is a blurred, empty concrete platform with grey bricks.\n\n**SHOT 2 (1.6s-3.2s)**\nThe conductor stands at attention, raising his left hand to signal. He wears the same navy-blue tunic with gold braiding, navy cap, and black gloves. Behind him, a steam locomotive with red stripes sits stationary at the far end of the platform. Mist rises gently from the rails; soft ambient train whistles echo in the distance.\n\n**SHOT 3 (3.2s-5.0s)**\nMedium shot of the conductor holding the pocket watch in his right hand, palm open, as if offering it to the sky. His navy-blue tunic and cap remain consistent. The distant train begins to rumble softly, steam venting higher. The platform ambience features soft rain beginning to fall, glistening on the grey concrete, while the conductor stands still, waiting.",
+  "split": "promotion",
+  "storyboard": [
+    {
+      "action": "Close-up on the conductor's gloved hand sliding a tarnished silver pocket watch from his breast pocket. Golden-hour light hits the brass casing as he stops the ticking. Background: blurred empty concrete platform with grey bricks.",
+      "camera": "static",
+      "index": 1,
+      "seconds": 1.6,
+      "shot_size": "close"
+    },
+    {
+      "action": "The conductor stands at attention, raising his left hand to signal. He wears the same navy-blue tunic with gold braiding, navy cap, and black gloves. Behind him, a steam locomotive with red stripes sits stationary at the far end of the platform; mist rises gently from the rails.",
+      "camera": "static",
+      "index": 2,
+      "seconds": 1.6,
+      "shot_size": "medium"
+    },
+    {
+      "action": "Medium shot of the conductor holding the pocket watch in his right hand, palm open, offering it to the sky. The train begins to rumble softly, steam venting higher. Soft rain begins to fall, glistening on the grey concrete platform as the conductor stands still, waiting.",
+      "camera": "pan",
+      "index": 3,
+      "seconds": 1.8,
+      "shot_size": "medium"
+    }
+  ],
+  "task_id": "promotion-001"
+}

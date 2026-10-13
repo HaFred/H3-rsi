@@ -1,0 +1,221 @@
+{
+  "base_candidate_hash": "d16c2e959f5bed4c8d2e8a5f911fd061363d02b0c2c4b1e7f425fb035658e122",
+  "base_validation_mean": 0.6588240000000001,
+  "best_candidate_hash": "4ddd73aa8fa203c6aaef003092483f3f4d4c90210a62dfc352b1cd7f862b5f5d",
+  "best_changed_components": [
+    "director",
+    "script"
+  ],
+  "best_validation_mean": 0.6749385,
+  "budget": {
+    "limits": {
+      "promotion": 12,
+      "search": 60,
+      "test": 8
+    },
+    "used": {
+      "promotion": 0,
+      "search": 45,
+      "test": 0
+    }
+  },
+  "candidates": [
+    {
+      "candidate_hash": "d16c2e959f5bed4c8d2e8a5f911fd061363d02b0c2c4b1e7f425fb035658e122",
+      "changed_components": [],
+      "scores": {
+        "train:train-002:seed0": 0.625452,
+        "train:train-003:seed0": 0.634777,
+        "train:train-004:seed0": 0.613596,
+        "validation:val-001:seed0": 0.64337,
+        "validation:val-002:seed0": 0.674278
+      }
+    },
+    {
+      "candidate_hash": "d58fde464b7f6e72b223770db9e3f50d6d9aa4babb138b75d4c77d27fadda30f",
+      "changed_components": [
+        "script"
+      ],
+      "scores": {
+        "train:train-001:seed0": 0.662783,
+        "train:train-002:seed0": 0.620517,
+        "train:train-003:seed0": 0.66638,
+        "train:train-004:seed0": 0.670038,
+        "validation:val-001:seed0": 0.632439,
+        "validation:val-002:seed0": 0.69374
+      }
+    },
+    {
+      "candidate_hash": "157430005ac96277e2f0fd2cc3e69da0ad09850fc4b3a1a3652685dfb8054316",
+      "changed_components": [
+        "script",
+        "storyboard"
+      ],
+      "scores": {
+        "train:train-001:seed0": 0.628206,
+        "train:train-004:seed0": 0.677816
+      }
+    },
+    {
+      "candidate_hash": "01c67597c378b9de3a56f679154af99b09a3ecad42da760534dec5388fdf8c5a",
+      "changed_components": [
+        "director",
+        "script"
+      ],
+      "scores": {
+        "train:train-001:seed0": 0.646036,
+        "train:train-004:seed0": 0.554005
+      }
+    },
+    {
+      "candidate_hash": "db013ff21f13608a3e12d85db657f89728215c4665e3d8a855b697e9f5dedbb1",
+      "changed_components": [
+        "storyboard"
+      ],
+      "scores": {
+        "train:train-002:seed0": 0.640655,
+        "train:train-003:seed0": 0.637584,
+        "validation:val-001:seed0": 0.542401,
+        "validation:val-002:seed0": 0.648248
+      }
+    },
+    {
+      "candidate_hash": "d28dee6ca47efc87afe64a515a9032ffe122d8274e7158321cbe38ab6a1c6477",
+      "changed_components": [
+        "director"
+      ],
+      "scores": {
+        "train:train-002:seed0": 0.64268,
+        "train:train-004:seed0": 0.578173
+      }
+    },
+    {
+      "candidate_hash": "78df0a21cd8d87dcf8f142f112a0f53a7879a15f3e4aae8ecf16d084623231ea",
+      "changed_components": [
+        "memory",
+        "script"
+      ],
+      "scores": {
+        "train:train-001:seed0": 0.636807,
+        "train:train-003:seed0": 0.66861
+      }
+    },
+    {
+      "candidate_hash": "0461809fbc5b6fa88e0741958c8faf362385d3a3944e0ea613d010ff1b32401b",
+      "changed_components": [
+        "memory"
+      ],
+      "scores": {
+        "train:train-002:seed0": 0.649594,
+        "train:train-004:seed0": 0.619643,
+        "validation:val-001:seed0": 0.636675,
+        "validation:val-002:seed0": 0.651717
+      }
+    },
+    {
+      "candidate_hash": "d70756ad082e7afeaaacf3e248140bdb839012a0c857b6c563c5dbcb91172cb1",
+      "changed_components": [
+        "script"
+      ],
+      "scores": {
+        "train:train-001:seed0": 0.65583,
+        "train:train-003:seed0": 0.628177
+      }
+    },
+    {
+      "candidate_hash": "63ad1a1e1c0817b3b85f5f52b1c7ccf1d5284c33a7e2010af6735c8cbbaeba10",
+      "changed_components": [
+        "script",
+        "storyboard"
+      ],
+      "scores": {
+        "train:train-003:seed0": 0.660259,
+        "train:train-004:seed0": 0.649158
+      }
+    },
+    {
+      "candidate_hash": "4ddd73aa8fa203c6aaef003092483f3f4d4c90210a62dfc352b1cd7f862b5f5d",
+      "changed_components": [
+        "director",
+        "script"
+      ],
+      "scores": {
+        "train:train-001:seed0": 0.665859,
+        "train:train-002:seed0": 0.648567,
+        "train:train-003:seed0": 0.677346,
+        "train:train-004:seed0": 0.653433,
+        "validation:val-001:seed0": 0.657774,
+        "validation:val-002:seed0": 0.692103
+      }
+    },
+    {
+      "candidate_hash": "810779b07fb80dcc4390e24ad756879eabfd3bc0d7533989429cda0d20c2aaa8",
+      "changed_components": [
+        "director",
+        "memory",
+        "script"
+      ],
+      "scores": {
+        "train:train-001:seed0": 0.654443,
+        "train:train-003:seed0": 0.679255
+      }
+    },
+    {
+      "candidate_hash": "83a8cb14c8a791ea5d3971af50b215d823013e8a4232a7a270a38e9a0cec1153",
+      "changed_components": [
+        "director",
+        "script"
+      ],
+      "scores": {
+        "train:train-002:seed0": 0.641006,
+        "train:train-004:seed0": 0.633579
+      }
+    },
+    {
+      "candidate_hash": "13a196f5c24f0c4018684562c88928f32e902afae96d42719b3e01dd40616c83",
+      "changed_components": [
+        "director",
+        "script",
+        "storyboard"
+      ],
+      "scores": {
+        "train:train-002:seed0": 0.653497,
+        "train:train-004:seed0": 0.628116
+      }
+    }
+  ],
+  "elapsed_seconds": 2317.5,
+  "failure": null,
+  "finished_at": "2026-10-12T15:04:00+00:00",
+  "gepa": {
+    "num_candidates": 5,
+    "parents": [
+      [
+        null
+      ],
+      [
+        0
+      ],
+      [
+        0
+      ],
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "total_metric_calls": 62,
+    "val_aggregate_scores": [
+      0.6588240000000001,
+      0.6566908,
+      0.527392375,
+      0.628489225,
+      0.6749385
+    ]
+  },
+  "reflection_calls": 13,
+  "run_id": "101214_1strun",
+  "status": "succeeded"
+}

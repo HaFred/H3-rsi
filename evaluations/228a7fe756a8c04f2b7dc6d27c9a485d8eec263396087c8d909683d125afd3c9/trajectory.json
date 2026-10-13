@@ -1,0 +1,131 @@
+{
+  "artifact": {
+    "audio_path": null,
+    "backend": "minimax_h3",
+    "cached": false,
+    "duration_seconds": 5.0,
+    "meta": {
+      "endpoint": "http://localhost:30010",
+      "request_hash": "5e485626f1d689c8aa986872ad122ff5780ead99af1a40136c4b1effd5f491bd",
+      "status": "completed",
+      "video_id": "786cee4e-4225-48e7-911d-ad04baf77150"
+    },
+    "seed": 0,
+    "task_id": "train-003",
+    "video_path": "outputs/101214_1strun/evaluations/228a7fe756a8c04f2b7dc6d27c9a485d8eec263396087c8d909683d125afd3c9/5e485626f1d689c8aa986872ad122ff5780ead99af1a40136c4b1effd5f491bd.mp4"
+  },
+  "breakdown": {
+    "details": {
+      "editing": {
+        "length_cv": 0.057,
+        "mean_seconds": 1.667,
+        "num_shots": 3,
+        "std_seconds": 0.094,
+        "total_seconds": 5.0
+      },
+      "harness_hash": "703a11aaa92e3e04",
+      "human": {
+        "human_missing": true,
+        "reason": "no artifact-specific labels"
+      },
+      "mode": "local",
+      "story": {
+        "completeness": 0.596,
+        "completeness_level": 2.383892275393009,
+        "consistency": 0.9876
+      },
+      "video": {
+        "av": {
+          "skipped": true
+        },
+        "av_alignment": 0.0,
+        "unified": {
+          "frame_std": 0.0618,
+          "malformed_frames": 0,
+          "n_frames": 6,
+          "sample_response": "Alignment Score (1-5): 3.003200054168701\nCoherence Score (1-5): 3.700200080871582\nStyle Score (1-5): 3.3350000381469727"
+        },
+        "unified_reward": 0.5470374988185035
+      }
+    },
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.7526297416538,
+    "total": 0.6663799347045521,
+    "video": 0.5470374988185035,
+    "weights": {
+      "editing": 0.15,
+      "human": 0.0,
+      "story": 0.25,
+      "video": 0.6
+    }
+  },
+  "critic_report": "**Physics**\n*   **Shot 2:** A paper kite lacks structural rigidity; it cannot support its own weight against updrafts in cupped hands. It should flutter uncontrollably or fall, not lift smoothly and spin gently like a rigid object.\n*   **Shot 3:** The jacket billows \"dramatically\" with a collar flare that is aerodynamically improbable for a gentle breeze. Paper kites do not generate enough lift to float upward into the sky at a 6-year-old's standing height; they usually stall or drift horizontally.\n*   **Shot 3:** The camera \"slowly zooms out\" while the subject simultaneously ascends into the sky. The framing implies the camera stays static on the ground while the subject climbs, creating a visual disconnect between the subject's motion and the camera's perspective unless a dollycamera move is executed perfectly with a match cut, which is ambiguous here.\n\n**Subject Consistency**\n*   **Shot 2:** The description states the girl crouches, yet the generation description mentions \"beige knit pants are visible as she sits.\" If the shot is a close-up on hands, the pants should mostly be out of frame or obscured by the crouch angle; explicit visibility of the full leg area in a hand close-up is inconsistent with the shot size.\n*   **Shot 3:** The transition from \"holding against chest\" to the kite \"floating upward\" while the girl stands still creates a physics inconsistency. If the kite floats up, the girl must either throw it or hold it by the string (which isn't mentioned); holding it \"firmly against her chest\" contradicts the kite ascending away from her body.\n\n**Story Clarity**\n*   **Shot 3:** The narrative arc is unclear. The girl stands up, smile, and the kite floats up. Does the girl release the kite? If she holds it against her chest, the kite should remain at chest level. The visual of a kite floating upward into the sky while the girl stands motionless creates ambiguity about whether the kite is actually flying or just being held aloft by wind.\n\n**Pacing**\n*   **Shot 3:** The action density is mismatched. Shot 1 is static (1.6s), Shot 2 involves picking up and smoothing (1.6s), and Shot 3 involves standing, the jacket flaring, looking up, and the kite ascending, all within 1.8s. The final shot compresses too many distinct physical movements into a single short duration, resulting in a rushed, chaotic feel rather than a slow, emotional zoom-out.\n\n**Audio**\n*   **Shot 2:** The \"crunch of damp grass\" is described as \"subtle, almost inaudible\" in the overall soundscape, but this footstep sound occurs in a close-up shot (Shot 2) where the audio mix typically prioritizes the subject's hands and the kite. The ground noise is likely masked by the camera's focus on the hands, making the inclusion of it a distracting textural element in a tight frame.\n*   **Shot 3:** The music \"swells slightly\" during the zoom-out, but the visual action (kite floating away) contradicts the musical swell. A swelling swell usually accompanies an emotional climax or a grand reveal; here, the kite's ascent is a minor, quiet event. The music feels disconnected from the specific, gentle physical action of the kite drifting up.",
+  "director_prompt": "integrated_multimodal_description\n[Shot 1] 0.0s - 1.6s\nWide shot, golden hour. A 6-year-old girl with tight curly brown hair stands perfectly still in a quiet suburban park. She wears a bright emerald green puffer jacket with visible quilt stitching and beige knit pants with a ribbed hem. Soft sunlight filters through ancient oak trees, casting dappled shadows on the damp, moss-streaked grass. A pale blue paper kite with yellow stars lies crumpled near her feet. The camera is static. Distant birds chirp softly; a gentle breeze rustles the oak leaves.\n\n[Shot 2] 1.6s - 3.2s\nClose-up, static. The 6-year-old girl crouches, her curly brown hair bouncing slightly. Her emerald green puffer jacket sleeves pull taut as she reaches down. She gently picks up the pale blue paper kite with yellow stars, smoothing the creased paper with her fingertips. The wind picks up; the kite's tail catches the breeze, lifting slightly and spinning gently within her cupped hands. The beige knit pants are visible as she sits.\n\n[Shot 3] 3.2s - 5.0s\nMedium shot, slowly zooming out. The 6-year-old girl stands up, holding the pale blue kite with yellow stars firmly against her chest. Her emerald green puffer jacket billows dramatically in the wind, the collar flaring out. She looks up with a radiant smile, eyes crinkling, as the kite catches the full breeze and floats upward into the sky. Distant birds fly overhead. The camera slowly pulls back, revealing the quiet park fading into soft bokeh.\n\noverall_soundscape\nThe soundscape is dominated by the crisp, sun-warmed hush of a suburban afternoon. Soft, distant birds chirp intermittently, punctuated by the gentle rustle of oak leaves in a light breeze. The crunch of damp grass beneath the girl's shoes is subtle, almost inaudible, save for the faint whisper of wind catching the paper kite's tail in the close-up. No dialogue; the audio texture is airy and naturalistic, designed to underscore the solitude of the moment.\n\nnon_diegetic_music\nA minimalist, warm piano piece with a slow, swaying rhythm. The melody begins sparse in the establishing shot, using a soft, rounded tone, and gradually introduces a gentle pizzicato string layer as the girl stands and the wind picks up. The music swells slightly during the zoom-out in the final shot, mirroring the kite's ascent, before fading into silence as the park dissolves into bokeh, leaving only the ambient park sounds.",
+  "editor_notes": "The best candidate is **Shot 2**, as it is the only clip free of physics violations, subject inconsistencies, or narrative ambiguity, whereas Shot 3 fails catastrophically on every critic report metric from aerodynamics to story logic. You should keep Shot 2 intact as the sole reliable scene, but since Shot 3 contains contradictory elements like the impossible kite lift and mismatched audio, it should be cut entirely rather than shortened to salvage a broken narrative.",
+  "error": null,
+  "harness_hash": "703a11aaa92e3e04",
+  "harness_version": "gepa-base",
+  "meta": {
+    "cost": 10.0,
+    "critic_gates": {
+      "physics_ok": false,
+      "physics_p": 0.014038736931979656,
+      "subject_ok": true,
+      "subject_p": 0.724666953086853
+    },
+    "effective": {
+      "backend": "minimax_h3",
+      "decision": "http",
+      "declared": {
+        "backend": "minimax_h3",
+        "decision": "http",
+        "text_llm": "openai"
+      },
+      "text_llm": "openai"
+    },
+    "target": {
+      "aspect_ratio": "16:9",
+      "duration_seconds": 5.0,
+      "frame_rate": 24.0,
+      "num_inference_steps": 10,
+      "seed": 0,
+      "short_edge": 768
+    },
+    "task_type": "t2va",
+    "warnings": [],
+    "workflow": [
+      "script",
+      "storyboard",
+      "director",
+      "critic",
+      "editor"
+    ]
+  },
+  "script": "**SHOT 1 (0.0s-1.6s)**\nA quiet suburban park at golden hour, soft sunlight filtering through oak trees. A 6-year-old girl with curly brown hair, wearing a bright emerald green puffer jacket and beige knit pants, stands still. A pale blue paper kite with yellow stars lies crumpled on the damp grass nearby. Distant birds chirp softly; a gentle breeze rustles the leaves.\n\n**SHOT 2 (1.6s-3.2s)**\nClose-up on the girl's hands as she crouches, the emerald green puffer jacket sleeves pulling slightly. She gently picks up the pale blue paper kite with yellow stars, smoothing out the crumpled paper. The wind picks up, catching the kite's tail, causing it to lift slightly and spin gently in her cupped hands.\n\n**SHOT 3 (3.2s-5.0s)**\nThe girl stands up, holding the pale blue kite with yellow stars against her chest, the emerald green puffer jacket billowing in the wind. She looks up smiling as the kite catches the breeze and floats upward into the sky. Distant birds fly overhead; the camera slowly zooms out, showing the quiet park fading into soft bokeh.",
+  "split": "train",
+  "storyboard": [
+    {
+      "action": "Establishing shot of a 6-year-old girl in a bright emerald green puffer jacket and beige knit pants standing still in a quiet suburban park at golden hour; a pale blue paper kite with yellow stars lies crumpled on damp grass; soft sunlight filters through oak trees, distant birds chirp, gentle breeze rustles leaves.",
+      "camera": "static",
+      "index": 1,
+      "seconds": 1.6,
+      "shot_size": "wide"
+    },
+    {
+      "action": "Close-up on the girl's hands as she crouches; emerald green puffer jacket sleeves pull slightly; she gently picks up the pale blue paper kite with yellow stars and smooths out the crumpled paper; wind picks up, catching the kite's tail, causing it to lift slightly and spin gently in her cupped hands.",
+      "camera": "static",
+      "index": 2,
+      "seconds": 1.6,
+      "shot_size": "close"
+    },
+    {
+      "action": "The girl stands up, holding the pale blue kite with yellow stars against her chest; emerald green puffer jacket billows in the wind; she looks up smiling as the kite catches the breeze and floats upward into the sky; distant birds fly overhead; camera slowly zooms out to reveal the quiet park fading into soft bokeh.",
+      "camera": "zoom_out",
+      "index": 3,
+      "seconds": 1.8,
+      "shot_size": "medium"
+    }
+  ],
+  "task_id": "train-003"
+}

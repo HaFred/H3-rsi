@@ -1,0 +1,131 @@
+{
+  "artifact": {
+    "audio_path": null,
+    "backend": "minimax_h3",
+    "cached": false,
+    "duration_seconds": 5.0,
+    "meta": {
+      "endpoint": "http://localhost:30010",
+      "request_hash": "23013d8bdeb11faa4e4641130c43bb067041cddff90f7002da8962bf86395092",
+      "status": "completed",
+      "video_id": "41c585df-99d1-4116-833e-66d98b9ea5c9"
+    },
+    "seed": 0,
+    "task_id": "test-003",
+    "video_path": "outputs/101214_1strun/evaluations/04f66ccd0b8f5c15bcf2aacef9db58776ecc47e5dd96b0fe273d5e0652588d69/23013d8bdeb11faa4e4641130c43bb067041cddff90f7002da8962bf86395092.mp4"
+  },
+  "breakdown": {
+    "details": {
+      "editing": {
+        "length_cv": 0.028,
+        "mean_seconds": 1.667,
+        "num_shots": 3,
+        "std_seconds": 0.047,
+        "total_seconds": 5.0
+      },
+      "harness_hash": "55be971f47e67d57",
+      "human": {
+        "human_missing": true,
+        "reason": "no artifact-specific labels"
+      },
+      "mode": "local",
+      "story": {
+        "completeness": 0.5142,
+        "completeness_level": 2.056956097483635,
+        "consistency": 0.9874
+      },
+      "video": {
+        "av": {
+          "skipped": true
+        },
+        "av_alignment": 0.0,
+        "unified": {
+          "frame_std": 0.024,
+          "malformed_frames": 0,
+          "n_frames": 6,
+          "sample_response": "Alignment Score (1-5): 2.402600049972534\nCoherence Score (1-5): 3.5815999507904053\nStyle Score (1-5): 3.0032999515533447"
+        },
+        "unified_reward": 0.48398333456781173
+      }
+    },
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.7034959502518177,
+    "total": 0.6162639883036415,
+    "video": 0.48398333456781173,
+    "weights": {
+      "editing": 0.15,
+      "human": 0.0,
+      "story": 0.25,
+      "video": 0.6
+    }
+  },
+  "critic_report": "### Physics\n*   **Gravity/Contact in Shot 3:** The barber \"steps back\" while the camera is positioned over-the-shoulder from behind the mirror. If the barber steps back, his body should move out of the frame or significantly shift the angle; the description implies he remains stationary relative to the towel while the camera perspective shifts or he teleports behind the mirror.\n*   **Broom Mechanics (Shot 1):** Sweeping wooden floorboards with a brass-broom creates a high-pitched *scrunch* or *scrape* sound, not a rhythmic \"swish-hiss\" (which implies soft cloth on wood). The physics of a brass bristle against polished wood do not generate a smooth, liquid sound.\n*   **Towel Fold Ergonomics (Shot 2):** Folding a striped towel into a perfect rectangle with \"neat\" hand movements in a single take is mechanically improbable for a human; the fabric usually bunches or wrinkles unevenly unless the actor is a professional fold model.\n\n### Subject Consistency\n*   **Camera/Subject Relationship (Shot 3):** The storyboard and script describe an \"Over-the-shoulder shot from behind the mirror.\" The generation description states the barber \"steps back.\" If the camera is behind the mirror, the barber's shoulder blocking the view contradicts the action of stepping back to reveal the towel, creating a spatial impossibility regarding the camera's implied position.\n*   **Uniform Continuity:** The barber wears a \"white uniform\" in all shots. In Shot 3, as he steps back, his white uniform would be visible against the shop background; the description fails to account for the background clutter, making the isolation of the white uniform feel inconsistent with a real shop environment.\n\n### Story Clarity\n*   **Narrative Disconnect:** There is no clear narrative link between sweeping the floor (Shot 1), folding a towel (Shot 2), and adjusting a towel on a chair (Shot 3). The sequence feels like three unrelated actions strung together by a doorbell chime rather than a logical progression of events.\n*   **Ambiguous Purpose:** The viewer is never told why the towel is on the chair or who it belongs to. The \"story\" is purely atmospheric, leaving the subject's intent and the setting's function entirely opaque.\n\n### Pacing\n*   **Temporal Compression:** The entire sequence (5 seconds) compresses three distinct micro-actions into a single continuous beat. The transition from sweeping to folding to adjusting feels jarringly abrupt, lacking a beat of time to establish the relationship between the barber and the towel.\n*   **Lack of Resolution:** Shot 3 ends with the doorbell fading and the barber stepping back, but the scene provides no payoff or conclusion. The viewer is left waiting for an action that never occurs, creating a sense of unresolved tension.\n\n### Audio\n*   **Sound Design Mismatch:** The soundscape describes the broom as a \"percussive bed\" with a \"swish-hiss.\" As noted under physics, a brass-broom on wood cannot produce this sound, creating a dissonance between the visual texture (metal on wood) and the audio texture (soft cloth).\n*   **Audio-Visual Sync:** The doorbell chime occurs in Shot 1, repeats in Shot 2, and fades in Shot 3. However, the visual action in Shot 3 (adjusting the towel) does not visually trigger the fading of the chime; the audio feels detached from the specific action occurring on screen, acting more as a loop than a diegetic reaction to the scene.\n*   **Music Dynamics:** The piano melody \"swells very gently\" on the doorbell in Shot 2 but remains \"subtle and ambient\" in Shot 3 where the scene has no narrative climax. This creates a dynamic valley where the music fails to support the final shot's emotional weight.",
+  "director_prompt": "integrated_multimodal_description\n[Shot 1] 0.0s - 1.7s [Close-up, low angle] A barber with a graying beard, wearing a navy-blue cap and white uniform, sweeps wooden floorboards with a brass-broom. Sunlight streams through a window, illuminating dust motes. The broom makes rhythmic sweeping strokes; a faint doorbell chimes softly in the background.\n\n[Shot 2] 1.7s - 3.4s [Medium shot, eye-level] The same barber, with a graying beard, wearing a navy-blue cap and white uniform, folds a striped red-and-white towel on the counter beside a vintage mirror. His hands move neatly, tucking the fabric into a rectangle. The doorbell chime repeats softly as he finishes folding.\n\n[Shot 3] 3.4s - 5.0s [Over-the-shoulder shot from behind the mirror] The folded red-and-white towel sits perfectly on the chair beside the mirror. The barber's navy-blue cap is visible on the counter. He gently adjusts the towel's position with one hand, then steps back, the doorbell fading into silence.\n\noverall_soundscape\nThe audio landscape is dominated by the rhythmic, metallic *swish-hiss* of the brass-broom against polished wood, creating a percussive bed that syncs with the sweeping motion. This is interwoven with the soft, tinkling resonance of a doorbell chime (C-major triad), which occurs at the start of Shot 1, repeats softly as the barber finishes the towel fold in Shot 2, and then dissolves into a very low, fading reverb tail in Shot 3. Ambient room tone is present: a faint, warm hum of the shop and the subtle crackle of sunlight hitting the wood, kept at a low volume to not overpower the broom's sound.\n\nnon_diegetic_music\nA minimal, contemplative piano melody in C major. The tempo is slow (approx. 60 BPM), featuring long, resonant notes that allow space for the diegetic sounds. The texture is warm and slightly brushed, evoking the feeling of sunlight and old wood. It swells very gently on the doorbell chime in Shot 2 but remains subtle and ambient throughout, providing a calm, nostalgic emotional layer without distracting from the quiet narrative.",
+  "editor_notes": "Candidate 2 is the strongest choice because it successfully integrates the three distinct actions (sweeping, folding, and adjusting) into a single, cohesive narrative of preparation, whereas Candidate 1 relies on the jarring \"doorbell chime\" loop that the critic explicitly flagged as a lack of narrative resolution. To improve the final edit, keep the sweeping shot as the establishing beat to ground the shop's atmosphere, and retain the towel-folding moment as the emotional peak where the piano swells, but significantly shorten the final adjustment shot to remove the unresolved tension of the barber stepping back without a payoff.",
+  "error": null,
+  "harness_hash": "55be971f47e67d57",
+  "harness_version": "gepa-base-gepa-4ddd73aa",
+  "meta": {
+    "cost": 10.0,
+    "critic_gates": {
+      "physics_ok": false,
+      "physics_p": 0.020126353949308395,
+      "subject_ok": true,
+      "subject_p": 0.971930205821991
+    },
+    "effective": {
+      "backend": "minimax_h3",
+      "decision": "http",
+      "declared": {
+        "backend": "minimax_h3",
+        "decision": "http",
+        "text_llm": "openai"
+      },
+      "text_llm": "openai"
+    },
+    "target": {
+      "aspect_ratio": "16:9",
+      "duration_seconds": 5.0,
+      "frame_rate": 24.0,
+      "num_inference_steps": 10,
+      "seed": 0,
+      "short_edge": 768
+    },
+    "task_type": "t2va",
+    "warnings": [],
+    "workflow": [
+      "script",
+      "storyboard",
+      "director",
+      "critic",
+      "editor"
+    ]
+  },
+  "script": "**SHOT 1 (0.0s-1.7s)** Close-up, low angle: A barber with a graying beard, wearing a navy-blue cap and white uniform, sweeps wooden floorboards with a brass-broom. Sunlight streams through a window, illuminating dust motes. The broom makes rhythmic sweeping strokes; a faint doorbell chimes softly in the background.\n\n**SHOT 2 (1.7s-3.4s)** Medium shot, eye-level: The same barber in the navy-blue cap and white uniform folds a striped red-and-white towel on the counter beside a vintage mirror. His hands move neatly, tucking the fabric into a rectangle. The doorbell chime repeats softly as he finishes folding.\n\n**SHOT 3 (3.4s-5.0s)** Over-the-shoulder shot from behind the mirror: The folded red-and-white towel sits perfectly on the chair beside the mirror. The barber's navy-blue cap is visible on the counter. He gently adjusts the towel's position with one hand, then steps back, the doorbell fading into silence.",
+  "split": "test",
+  "storyboard": [
+    {
+      "action": "A barber with a graying beard, wearing a navy-blue cap and white uniform, sweeps wooden floorboards with a brass-broom. Sunlight streams through a window, illuminating dust motes. A faint doorbell chimes softly in the background.",
+      "camera": "static",
+      "index": 1,
+      "seconds": 1.7,
+      "shot_size": "close"
+    },
+    {
+      "action": "The same barber in the navy-blue cap and white uniform folds a striped red-and-white towel on the counter beside a vintage mirror. His hands move neatly, tucking the fabric into a rectangle. The doorbell chime repeats softly as he finishes.",
+      "camera": "static",
+      "index": 2,
+      "seconds": 1.7,
+      "shot_size": "medium"
+    },
+    {
+      "action": "Over-the-shoulder view from behind the mirror: the folded red-and-white towel sits on the chair beside the mirror, with the barber's navy-blue cap visible on the counter. He gently adjusts the towel's position with one hand, steps back, and the doorbell fades into silence.",
+      "camera": "static",
+      "index": 3,
+      "seconds": 1.6,
+      "shot_size": "medium"
+    }
+  ],
+  "task_id": "test-003"
+}

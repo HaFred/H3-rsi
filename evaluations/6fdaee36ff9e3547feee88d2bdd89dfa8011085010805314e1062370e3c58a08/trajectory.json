@@ -1,0 +1,131 @@
+{
+  "artifact": {
+    "audio_path": null,
+    "backend": "minimax_h3",
+    "cached": false,
+    "duration_seconds": 5.0,
+    "meta": {
+      "endpoint": "http://localhost:30010",
+      "request_hash": "5f5e231f37e981f18d1d2c839eb60fb2f1dc317755874af29c9b9dbb143206cc",
+      "status": "completed",
+      "video_id": "bba97c70-2a34-48a0-abe3-c28c30e59ec5"
+    },
+    "seed": 0,
+    "task_id": "train-003",
+    "video_path": "outputs/101214_1strun/evaluations/6fdaee36ff9e3547feee88d2bdd89dfa8011085010805314e1062370e3c58a08/5f5e231f37e981f18d1d2c839eb60fb2f1dc317755874af29c9b9dbb143206cc.mp4"
+  },
+  "breakdown": {
+    "details": {
+      "editing": {
+        "length_cv": 0.057,
+        "mean_seconds": 1.667,
+        "num_shots": 3,
+        "std_seconds": 0.094,
+        "total_seconds": 5.0
+      },
+      "harness_hash": "55be971f47e67d57",
+      "human": {
+        "human_missing": true,
+        "reason": "no artifact-specific labels"
+      },
+      "mode": "local",
+      "story": {
+        "completeness": 0.5881,
+        "completeness_level": 2.352295644581318,
+        "consistency": 0.9664
+      },
+      "video": {
+        "av": {
+          "skipped": true
+        },
+        "av_alignment": 0.0,
+        "unified": {
+          "frame_std": 0.0209,
+          "malformed_frames": 0,
+          "n_frames": 6,
+          "sample_response": "Alignment Score (1-5): 3.1217000484466553\nCoherence Score (1-5): 3.690999984741211\nStyle Score (1-5): 3.312000036239624"
+        },
+        "unified_reward": 0.5708222223652734
+      }
+    },
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.7394087921828032,
+    "total": 0.6773455314648648,
+    "video": 0.5708222223652734,
+    "weights": {
+      "editing": 0.15,
+      "human": 0.0,
+      "story": 0.25,
+      "video": 0.6
+    }
+  },
+  "critic_report": "### Physics\n*   **Kite descent:** A \"crumpled white paper kite\" is too light to be carried by wind high enough to drop from the sky; it should fall like a dead leaf or drape slowly like a banner, not drift down as a distinct object the girl can catch with both hands.\n*   **Sneaker vs. boot:** The description contradicts itself, mentioning \"white sneakers\" in Shot 1, then \"white sneaker boot\" (a non-existent hybrid footwear) in Shot 2.\n*   **Bird mechanics:** \"Distant birds flap their wings in quick, rhythmic bursts\" against a pale blue sky while the kite falls implies the birds are at the same altitude as the falling paper object, yet the script says they are \"high above.\"\n*   **Wind consistency:** The wind is described as \"gentle\" enough to rustle the kite edges but \"soft, invisible breeze\" strong enough to carry a paper object from the sky, yet in Shot 3, the wind \"dies down completely\" instantly, which is physically abrupt for a continuous scene.\n\n### Subject Consistency\n*   **Footwear contradiction:** Shot 1 and 3 specify \"white sneakers,\" while Shot 2 specifies a \"white sneaker boot.\"\n*   **Backpack placement:** Shot 1 says the backpack hangs on her \"left shoulder,\" but Shot 3 does not confirm this and the visual flow of a backpack swinging freely while walking is unanchored without strap visibility.\n*   **Hair style:** The script says \"pigtails,\" the storyboard says \"pigtails,\" but the generation description fluctuates between \"shoulder-length brown hair tied in two neat pigtails\" and \"brown hair in pigtails\" without clarifying if the pigtails are actually visible or just described.\n*   **Jacket detail:** The generation adds \"matte black zippers\" to the emerald green jacket, a specific detail not present in the script or storyboard, altering the character's visual identity.\n\n### Story Clarity\n*   **Narrative emptiness:** The scene offers no emotional stakes or context. We don't know why the girl is walking, why the kite fell, or why finding it matters. It is a series of actions without a reason.\n*   **Confusing spatial logic:** The kite drifts down from the sky in Shot 1, lands near her boot in Shot 2, and she tucks it under her left arm in Shot 3. The transition from a falling object to a secured item feels telegraphic rather than earned.\n*   **Ambiguous subject:** The description of the girl is generic (\"young girl,\" \"gentle expression\"), leaving the audience unable to connect emotionally to the protagonist.\n\n### Pacing\n*   **Shot 2 duration mismatch:** Shot 2 is scripted for 1.6 seconds (1.6s–3.2s) but the storyboard lists it as 1.6 seconds, while the generation description treats it as a full action sequence (bending, reaching, scooping) that likely requires more time than 1.6 seconds to perform naturally.\n*   **Static holding:** Shot 3 is static for 1.8 seconds (3.2s–5.0s), yet the action within it (standing, holding, tucking, resting hand, then standing still) creates a sense of motion that a static camera cannot convey effectively, making the final \"suspended drone\" of sound feel premature.\n*   **Rhythm:** The 1.6s shot length is extremely short for the amount of detail described, particularly Shot 2 where the girl performs a full bending and scooping motion in under 2 seconds.\n\n### Audio\n*   **Inconsistent sound design:** The \"whoosh\" of the kite descent is described as subtle, but the \"crinkle\" of the paper landing on grass is described as soft and quiet. A crumpled paper kite usually makes a sharper, more distinct sound than a \"quiet, soft rustle.\"\n*   **Music vs. Action:** The cello melody swells \"gently under the girl's movement\" but the music fades into a \"suspended drone\" immediately upon the girl standing still. This abrupt cut from swelled melody to drone feels jarring and unearned for the quiet mood.\n*   **Bird sound contradiction:** The script mentions \"distant birds flap their wings,\" but the audio description specifies \"occasional, low thump-thump sounds high above.\" Low thumps do not match the visual of flapping wings; flapping wings produce a rustle or a high-pitched flutter, not a thump.\n*   **Sneaker crunch:** The \"very faint crunch of the girl's sneakers on the dry grass\" is described as silent in the script's visual context (\"looks down\"), creating a sensory disconnect where the",
+  "director_prompt": "integrated_multimodal_description\n[Shot 1] 0.0s - 1.6s [Wide, Static] Golden hour sunlight, warm tungsten tones (approx. 3200K), filters through a canopy of golden and russet oak leaves, casting long, dappled shadows on a expanse of manicured green grass. A young girl with shoulder-length brown hair tied in two neat pigtails, wearing a bright emerald green jacket with matte black zippers, navy-blue jeans with faint white stitching, and white sneakers, walks slowly across the frame from right to left. A dark blue backpack hangs loosely on her left shoulder. She looks downward with a gentle expression as a crumpled white paper kite, adorned with delicate red paper crane tails, drifts gently down from the sky, caught in a soft, invisible breeze. High above, distant birds flap their wings in quick, rhythmic bursts against the pale blue sky, creating small, dark silhouettes.\n\n[Shot 2] 1.6s - 3.2s [Medium, Push] The camera slowly pushes in (dolly forward) to focus on the girl's lower body and hands. The girl, still in her bright emerald green jacket with matte black zippers, navy-blue jeans, and brown pigtails, bends her knees deeply, extending her right hand toward the ground. The white paper kite with red crane tails lands softly on the grass near her white sneaker boot. A gentle breeze lifts the crinkled edges of the kite's paper, causing the red crane tails to flutter softly. She reaches out, her green jacket sleeves brushing against the grass, then gently scoops the kite up with both hands. The background consists of blurred, vertical tree trunks in warm sepia tones, maintaining the golden hour atmosphere.\n\n[Shot 3] 3.2s - 5.0s [Close, Static] The girl stands upright, her brown hair in pigtails framed by the warm sunlight. She holds the white paper kite with red crane tails close to her chest, her emerald green jacket contrasting sharply with the bright sunlight hitting her face and the kite's white paper. She then tucks the kite securely under her left arm while resting her right hand on her hip, showcasing the navy-blue jeans and white sneakers. Two distant birds circle slowly overhead against a clear, pale blue sky. The scene ends with the girl standing perfectly still, the wind dying down completely, leaving the kite secured under her arm and the golden light fading slightly as the shot holds.\n\noverall_soundscape\nThe audio landscape is dominated by the quiet, crisp ambience of a late afternoon park. Soft rustling of dry autumn leaves overhead creates a gentle, swaying texture, mixed with the faint, distant call of a wood thrush. As the kite drifts down, a subtle *whoosh* of air follows its descent, accompanied by the soft *crinkle* of the crinkled white paper landing on the grass. When the girl scoops the kite, the fabric and paper make a quiet, soft *rustle* against the grass blades. The distant birds flap their wings with occasional, low *thump-thump* sounds high above. The background remains largely silent, save for the natural wind chime of the trees and the very faint crunch of the girl's sneakers on the dry grass as she walks. The sound of the wind gradually diminishes in volume and intensity by the final shot until it is completely still.\n\nnon_diegetic_music\nA sparse, emotive cello melody emerges, characterized by a low, resonant hum that swells gently under the girl's movement. The instrumentation is minimal, featuring a solo cello with a warm, nasal tone and occasional soft, reverberant piano arpeggios in the background to mimic the filtering sunlight. The tempo is slow and leisurely (approx. 60 BPM), matching the gentle pace of the girl's walk and the drifting kite. The mood is nostalgic and serene, evoking a sense of quiet childhood wonder. As the kite is secured and the girl stands still, the music fades into a gentle, suspended drone, leaving only the echo of the final cello note before the scene ends in silence.",
+  "editor_notes": "Because the critic report contains no actual video files or candidate scores to evaluate, I cannot select a \"best\" candidate or provide specific shot-length advice based on visual performance. However, assuming the goal is to fix the identified issues, **keep Shot 1 as the establishing wide shot** (it correctly depicts the kite's light descent) and **shorten or restructure Shot 2** to address the physics error where the girl catches a paper kite; instead of a full bend-and-scoop motion that takes 1.6 seconds, the action should be slowed to a realistic 3–4 seconds so the lightweight object drapes naturally before being caught. Additionally, you should **remove or adjust Shot 3's static duration** to at least 4–5 seconds, as the complex sequence of tucking the kite and resting the hand cannot be conveyed effectively in a static frame within the current 1.8-second window.",
+  "error": null,
+  "harness_hash": "55be971f47e67d57",
+  "harness_version": "gepa-base",
+  "meta": {
+    "cost": 10.0,
+    "critic_gates": {
+      "physics_ok": false,
+      "physics_p": 0.04845254123210907,
+      "subject_ok": false,
+      "subject_p": 0.03398943319916725
+    },
+    "effective": {
+      "backend": "minimax_h3",
+      "decision": "http",
+      "declared": {
+        "backend": "minimax_h3",
+        "decision": "http",
+        "text_llm": "openai"
+      },
+      "text_llm": "openai"
+    },
+    "target": {
+      "aspect_ratio": "16:9",
+      "duration_seconds": 5.0,
+      "frame_rate": 24.0,
+      "num_inference_steps": 10,
+      "seed": 0,
+      "short_edge": 768
+    },
+    "task_type": "t2va",
+    "warnings": [],
+    "workflow": [
+      "script",
+      "storyboard",
+      "director",
+      "critic",
+      "editor"
+    ]
+  },
+  "script": "**SHOT 1 (0.0s-1.6s)**\nIn a quiet park at golden hour, soft sunlight filters through autumn trees. A young girl with brown hair in a pigtails, wearing a bright emerald green jacket and navy-blue jeans, walks slowly across the grass. Her backpack hangs on her shoulder. She looks down as a crumpled white paper kite with red paper crane tails drifts down from the sky, caught in a gentle breeze. Distant birds flap their wings high above.\n\n**SHOT 2 (1.6s-3.2s)**\nThe girl bends her knees, extending her right hand. The white paper kite with red crane tails lands softly on the grass near her boot. The wind lifts the kite's edges slightly, rustling the crinkled paper. She reaches out, her green jacket sleeves brushing the grass as she gently scoops the kite up with both hands. The background remains the same quiet park, with blurred tree trunks.\n\n**SHOT 3 (3.2s-5.0s)**\nThe girl stands upright, holding the white paper kite with red crane tails close to her chest. She smiles softly, tucking the kite under her left arm while her right hand rests on her hip. The emerald green jacket contrasts with the warm sunlight. Two distant birds circle overhead against a pale blue sky. The scene ends with the girl standing still, the kite secured, as the wind dies down.",
+  "split": "train",
+  "storyboard": [
+    {
+      "action": "Golden hour sunlight filters through autumn trees; a young girl in an emerald green jacket and navy-blue jeans walks slowly across the grass with a backpack on her shoulder. A crumpled white paper kite with red crane tails drifts down from the sky. Distant birds flap their wings high above.",
+      "camera": "static",
+      "index": 1,
+      "seconds": 1.6,
+      "shot_size": "wide"
+    },
+    {
+      "action": "The girl bends her knees and extends her right hand as the white paper kite with red crane tails lands softly on the grass near her boot. The wind lifts the kite's edges, rustling the crinkled paper. She reaches out, her green jacket sleeves brushing the grass as she gently scoops the kite up with both hands. Blurred tree trunks remain in the background.",
+      "camera": "push",
+      "index": 2,
+      "seconds": 1.6,
+      "shot_size": "medium"
+    },
+    {
+      "action": "The girl stands upright, holding the white paper kite with red crane tails close to her chest, then tucks it under her left arm while her right hand rests on her hip. The emerald green jacket contrasts with the warm sunlight. Two distant birds circle overhead against a pale blue sky. The scene ends with the girl standing still, the kite secured, as the wind dies down.",
+      "camera": "static",
+      "index": 3,
+      "seconds": 1.8,
+      "shot_size": "close"
+    }
+  ],
+  "task_id": "train-003"
+}

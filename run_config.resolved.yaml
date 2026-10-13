@@ -1,0 +1,54 @@
+base_harness: configs/harness_gepa_base.yaml
+budget:
+  h3_concurrency: 1
+  promotion_h3_requests: 12
+  search_h3_requests: 60
+  test_h3_requests: 8
+  wall_time_seconds: 21600
+components:
+- script
+- storyboard
+- director
+- memory
+decision:
+  revision: local-NeoHorse-Jev-4B-SHA256SUMS-bbeb2aa3f76ea39c
+  url: http://localhost:8085
+evaluation_policy: configs/evaluation_v1_h800.yaml
+h3:
+  revision: MiniMax-H3@42ed227ee7df40d41602854ae760620d6eb651fe+sglang@450837e770ce+fl2va-tp2-memory
+  url: http://localhost:30010
+mode: local
+production:
+  extra_body:
+    chat_template_kwargs:
+      enable_thinking: false
+  model: neohorse-1-4B
+  revision: local-NeoHorse-1-4B-index-sha256-315b36f21026e93b
+  url: http://localhost:8000
+promotion:
+  automatic: false
+reflection:
+  extra_body:
+    chat_template_kwargs:
+      enable_thinking: true
+  max_tokens: 8192
+  model: Qwen/Qwen3.5-9B
+  proposer: reflection
+  revision: c202236235762e1c871ad0ccb60c8ee5ba337b9a
+  temperature: 0.7
+  timeout_seconds: 600.0
+  url: http://127.0.0.1:8001
+run_id: null
+run_root: outputs
+schema_version: 1
+search:
+  axis_regression_tolerance: 0.0
+  candidate_selection_strategy: pareto
+  guard_axis_regression: true
+  max_metric_calls: 60
+  module_selector: round_robin
+  random_seed: 0
+  reflection_minibatch_size: 2
+  use_merge: false
+store: outputs/.rsi_store_h800
+tasks: benchmarks/tasks_gepa_v1.jsonl

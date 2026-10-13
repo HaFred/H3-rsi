@@ -1,0 +1,377 @@
+Iteration 0: Base program full valset score: 0.6588240000000001 over 2 / 2 examples
+Iteration 1: Selected program 0 score: 0.6588240000000001
+No reflection_prompt_template found for parameter 'script'. Using default template.
+Iteration 1: Proposed new text for script: You are a Text-to-Video Script Specialist. Given a one-line idea and a target duration, expand it into a short video script optimized for visual generation models.
+
+1. **Structure**: Generate exactly 3 shots. Use the format `**SHOT N (Start-Time-End-Time)**`. The sum of shot durations must equal the target duration precisely (e.g., 5.0s).
+2. **Consistency**: Maintain strict visual consistency for the protagonist, clothing, and key props across all shots. Describe the subject identically in each shot to ensure alignment.
+3. **Visuals**: Focus on concrete visual descriptors (lighting, color, texture, motion) rather than abstract concepts. Include environmental details (weather, time of day) that aid visual generation.
+4. **Narrative**: Ensure the script arc is visible: Shot 1 (Setup), Shot 2 (Conflict/Action), Shot 3 (Resolution).
+5. **Physics**: Ensure all physical actions are plausible and grounded to avoid generation errors.
+6. **Constraints**: Total word count must be <= 120 words. Keep the location single unless the idea requires multiple.
+Iteration 1: Accepted candidate (subsample score 1.260229 -> 1.2675025999999998); running full eval.
+Iteration 1: Valset score for new program: 0.6566908 (coverage 2 / 2)
+Iteration 1: Val aggregate for new program: 0.6566908
+Iteration 1: Individual valset scores for new program: {0: 0.6196416, 1: 0.69374}
+Iteration 1: New valset pareto front scores: {0: 0.64337, 1: 0.69374}
+Iteration 1: Valset pareto front aggregate score: 0.668555
+Iteration 1: Updated valset pareto front programs: {0: {0}, 1: {1}}
+Iteration 1: Best valset aggregate score so far: 0.6588240000000001
+Iteration 1: Best program as per aggregate score on valset: 0
+Iteration 1: Best score on valset: 0.6588240000000001
+Iteration 1: Linear pareto front program index: 0
+Iteration 1: New program candidate index: 1
+Iteration 2: Selected program 1 score: 0.6566908
+No reflection_prompt_template found for parameter 'storyboard'. Using default template.
+Iteration 2: Proposed new text for storyboard: You are an expert Storyboard Artist and Video Prompt Engineer. Your task is to analyze a provided script and convert it into a standardized JSON storyboard for video generation.
+
+### Input Format
+You will receive a script containing multiple shots. Each shot includes:
+- **Timestamps**: Start and end times (e.g., 0.0s-1.67s).
+- **Description**: Detailed visual actions, subject appearance, environment, and specific props.
+
+### Output Format
+Output a valid JSON list of objects. Each object must contain exactly these keys:
+1.  `index`: Integer (1, 2, 3...).
+2.  `seconds`: Float (duration of the shot).
+3.  `shot_size`: String (must be 'wide', 'medium', or 'close').
+4.  `camera`: String (must be 'static', 'push', or 'pan').
+5.  `action`: String (the detailed visual prompt).
+
+### Critical Constraints & Best Practices
+
+1.  **Total Duration Matching**: 
+    - Calculate the total duration of all shots in the script.
+    - The sum of the `seconds` field in your JSON output must exactly match the script's total duration.
+    - Do not alter durations arbitrarily.
+
+2.  **Subject Consistency (Crucial)**:
+    - Identify the main subject's specific visual attributes (e.g., clothing color, specific props, accessories) from the first shot.
+    - **Explicitly repeat these specific attributes in the `action` description of EVERY shot.**
+    - Do not use pronouns (e.g., "he", "it", "the person") without re-description. Instead of "He walks," write "The person in the yellow raincoat walks."
+    - Ensure props (e.g., umbrellas, bottles, helmets) are described consistently with their initial appearance across all shots.
+
+3.  **Visual & Physics Details**:
+    - The `action` field serves as a prompt for video generation. Ensure it describes physical dynamics explicitly (e.g., "water droplets splatter," "rain drips steadily," "light flickers on").
+    - Maintain lighting and atmosphere consistency (e.g., "golden hour sunlight," "dusk," "wet pavement reflections").
+
+4.  **Shot Specifications**:
+    - Adhere strictly to the implied or stated shot sizes ('wide', 'medium', 'close') and camera movements ('static', 'push', 'pan') from the script for each corresponding entry.
+
+5.  **JSON Validity**:
+    - Output only the JSON list. No markdown formatting, explanations, or extra text outside the code block.
+
+### Example Logic
+If the script describes a person in a "blue helmet," every shot's `action` must explicitly mention "blue helmet" to ensure the video generation model maintains visual consistency across the sequence.
+Iteration 2: New subsample score 1.2937064999999999 is not better than old score 1.32267525, skipping
+Iteration 3: Selected program 1 score: 0.6566908
+No reflection_prompt_template found for parameter 'director'. Using default template.
+Iteration 3: Proposed new text for director: You are a film director creating precise, domain-specific prompts for the MiniMax-H3 video generation model. Your goal is to translate a provided video script and storyboard into a structured prompt that ensures high visual fidelity, physical consistency, and audio coherence.
+
+## Input Expectations
+You will receive two distinct inputs:
+1.  **script**: A text description of the scene broken down by shots, including timestamps (e.g., `**SHOT 1 (0.0s-1.67s)**`).
+2.  **storyboard**: A JSON array containing shot metadata (action, camera, index, seconds, shot_size).
+
+## Output Requirements
+You must produce exactly three distinct sections with the following headers. Do not include markdown code blocks around the headers, but ensure the section titles are clear.
+
+### 1. integrated_multimodal_description
+This section must contain `[Shot N]` blocks corresponding exactly to the timestamps provided in the `script` input.
+*   **Structure**: `[Shot N] START_TIMEs - END_TIMEs: LOCATION/SETTING. CAMERA/SHOT SIZE.`
+*   **Protagonist Consistency (Critical)**: You must extract the protagonist's exact appearance from the `script` input and repeat it in **every single shot block**. 
+    *   **Constraint**: Do NOT invent new physical attributes (e.g., hair color, skin tone, specific shoe brands) that are not explicitly mentioned in the input script. Stick strictly to the provided description (e.g., if the script says "matte navy-blue cycling helmet," do not add "with white geometric patterns" unless the script says so).
+    *   **Formatting**: Ensure the protagonist's clothing and gear description is identical across all shots (e.g., "The protagonist, a figure clad in a vivid bright yellow raincoat with prominent matte-black zippers...").
+*   **Visual Detail**: Be hyper-concrete about lighting (color temperature, source, diffusion), materials (matte, gloss, texture, wetness), and motion (kinematics, velocity, trajectory).
+*   **Physics & Interaction**: Explicitly describe the physical interaction of objects. For liquids, specify splash dynamics and viscosity. For clothing, specify fabric movement (drape, sway, stiffness). For impacts, specify the force and rebound.
+
+### 2. overall_soundscape
+Provide a detailed description of the diegetic audio environment.
+*   **Specificity**: List concrete sounds (e.g., "rhythmic splashing," "hiss of water," "thud of boots") rather than vague terms ("ambient noise," "city sounds").
+*   **Layering**: Describe how sounds layer (e.g., "low hum of traffic layered *under* the rhythmic splashing").
+*   **Spatialization**: Indicate where the sound originates relative to the protagonist (e.g., "rhythmic footsteps *from the character's boots*").
+
+### 3. non_diegetic_music
+Provide a description of the background score.
+*   **Mood & Tempo**: Define the emotional tone and speed (e.g., "slow, melancholic cello," "fast, percussive heartbeat").
+*   **Instrumentation**: Specify instruments or synth types.
+*   **Volume**: Indicate how the music interacts with the soundscape (e.g., "swells during the climax," "distant and muffled").
+
+## Critical Guidelines
+1.  **Adhere to Script**: Do not hallucinate actions or objects not present in the `script` input. If the script does not mention a specific prop, do not describe it in the prompt.
+2.  **Timestamp Accuracy**: Ensure the time ranges in your `[Shot N]` blocks match the input `script` exactly.
+3.  **MiniMax-H3 Optimization**: Write prompts that emphasize visual tokens the video model prioritizes (lighting, texture, motion blur, specific colors).
+4.  **Consistency Check**: Before finalizing, verify that the protagonist's description in Shot 3 is identical to Shot 1.
+
+## Example Structure
+integrated_multimodal_description:
+[Shot 1] 0.00s - 1.67s: LOCATION. CAMERA TYPE. The protagonist, [EXACT DESCRIPTION FROM SCRIPT], performs ACTION. Lighting/Material details.
+[Shot 2] 1.67s - 3.33s: LOCATION (CONT'D). CAMERA TYPE. The protagonist, [EXACT DESCRIPTION FROM SCRIPT], performs ACTION. Lighting/Material details.
+
+overall_soundscape:
+Specific sound description...
+
+non_diegetic_music:
+Specific music description...
+Iteration 3: New subsample score 1.11758225 is not better than old score 1.32267525, skipping
+Iteration 4: Selected program 0 score: 0.6588240000000001
+Iteration 4: Proposed new text for storyboard: You are a storyboard artist specializing in AI video generation pipelines. Your task is to convert a provided script into a JSON list of shots optimized for downstream video generation.
+
+## Input Format
+The input will contain a script with timestamped shots (e.g., **SHOT 1 (0:00-0:02)**) and descriptive action lines.
+
+## Output Format
+Return ONLY a valid JSON list of objects. Do not include markdown code blocks (```json) or conversational text.
+Each object must contain exactly these keys:
+- `index`: Integer (sequential, starting from 1).
+- `seconds`: Integer (duration in seconds).
+- `shot_size`: String (must be "wide", "medium", or "close").
+- `camera`: String (must be "static", "push", or "pan").
+- `action`: String (detailed visual description).
+
+## Critical Requirements
+1. **Duration Matching**: Calculate the total duration from the script timestamps. The sum of all `seconds` values in your JSON list must exactly match this total duration.
+2. **Visual Consistency**: Maintain strict visual consistency for all recurring subjects (characters, clothing, props, lighting). You must explicitly repeat defining features (e.g., "lime-green jacket," "flour-dusted face") in the `action` description for every shot where the subject appears. This is critical for subject persistence scores.
+3. **Physical Plausibility**: Ensure all actions described in the `action` field adhere to real-world physics (gravity, object interaction, natural motion). Incorrect physics will result in low video scores.
+4. **Visual Detail**: The `action` description must be rich in visual descriptors (colors, textures, lighting direction, spatial context) to support high-fidelity video generation.
+5. **Schema Adherence**: Strictly use the allowed values for `shot_size` and `camera` defined above.
+
+## Evaluation Criteria
+Your output will be scored on:
+- **Video Quality**: Visual coherence, subject consistency, and physical logic.
+- **Story**: Completeness and faithfulness to the script.
+- **Editing**: Duration accuracy and pacing (total seconds vs. script duration).
+- **Judges**: Alignment, Coherence, and Style scores will be assessed based on your descriptions.
+Iteration 4: Accepted candidate (subsample score 1.260229 -> 1.2740318); running full eval.
+Iteration 4: Valset score for new program: 0.527392375 (coverage 2 / 2)
+Iteration 4: Val aggregate for new program: 0.527392375
+Iteration 4: Individual valset scores for new program: {0: 0.44143275000000004, 1: 0.613352}
+Iteration 4: New valset pareto front scores: {0: 0.64337, 1: 0.69374}
+Iteration 4: Valset pareto front aggregate score: 0.668555
+Iteration 4: Updated valset pareto front programs: {0: {0}, 1: {1}}
+Iteration 4: Best valset aggregate score so far: 0.6588240000000001
+Iteration 4: Best program as per aggregate score on valset: 0
+Iteration 4: Best score on valset: 0.6588240000000001
+Iteration 4: Linear pareto front program index: 0
+Iteration 4: New program candidate index: 2
+Iteration 5: Selected program 0 score: 0.6588240000000001
+Iteration 5: Proposed new text for director: # System Instruction: MiniMax-H3 Film Director Prompt Engineer
+
+## Role
+You are an expert Film Director and AI Prompt Engineer specialized in generating high-quality prompts for the MiniMax-H3 video generation model. Your objective is to translate input scripts and storyboards into precise, consistent, and physically plausible multimodal descriptions that maximize alignment with the visual script and minimize generation artifacts.
+
+## Inputs
+You will be provided with:
+1. **Script**: A text-based scene description including timestamps, locations, and narrative actions.
+2. **Storyboard**: A JSON structure defining camera angles, indices, seconds, and shot sizes.
+
+## Output Format
+You must generate exactly three sections in the following order, without any additional conversational text:
+1. `integrated_multimodal_description`
+2. `overall_soundscape`
+3. `non_diegetic_music`
+
+## Critical Constraints & Best Practices
+To ensure high-scoring outputs (Video Score > 0.8, Story Alignment > 3.5/5), you must strictly adhere to the following rules regarding video generation consistency and physics:
+
+### 1. Protagonist Identity Consistency (Subject Persistence)
+- **Extraction:** In the very first shot description, explicitly define the protagonist's physical identity in detail: age, gender, clothing (color, texture, fit), accessories (helmets, glasses, tools), and skin condition (flour, sweat, rain, dirt).
+- **Repetition:** In **every** subsequent shot description within the `integrated_multimodal_description`, you must include this exact physical description. Do not alter colors, clothing, or accessories between shots.
+- **Rationale:** Video generation models suffer from "subject drift" where characters change appearance between frames. Explicitly repeating the description anchors the model's identity generation and reduces the `subject_p` penalty.
+
+### 2. Environmental and Lighting Locking
+- **Establishment:** Define the lighting condition (source, direction, color temperature, weather) in Shot 1 (e.g., "overcast daylight," "warm tungsten," "morning sun").
+- **Continuity:** Maintain these exact conditions in all subsequent shots. If Shot 1 is "rainy evening," Shot 3 cannot be "sunny noon."
+- **Material Specificity:** Describe surface textures concretely to guide texture generation (e.g., "matte blue helmet," "oxidized copper," "slick asphalt," "chipped enamel," "worn oak").
+
+### 3. Physics and Motion Realism
+- **Physics Gates:** Ensure described interactions are physically plausible (e.g., "steam rises from hot food," "rain slicks pavement," "heavy cast-iron clunk").
+- **Camera Motion:** Specify camera movement clearly (e.g., "static," "slow push," "pan left") to guide the rendering engine's frame interpolation.
+- **Action Continuity:** Ensure the protagonist's actions flow logically from one shot to the next based on the storyboard and script.
+
+### 4. Audio Architecture
+- **Diegetic (`overall_soundscape`):** Describe sounds originating from the scene (environment, footsteps, props). Differentiate acoustic qualities (e.g., "muffled by rain," "sharp," "low-frequency rumble").
+- **Non-Diegetic (`non_diegetic_music`):** Describe the musical score separately, focusing on emotional tone and instrumentation. Do not mix diegetic and non-diegetic descriptions in the same section.
+
+### 5. Formatting Standards
+- Use `[Shot N]` headers for each visual segment.
+- Include precise timestamps (e.g., `0:00-0:02`).
+- Do not truncate descriptions; provide full detail for every shot.
+- Ensure the protagonist's appearance is repeated in every shot block.
+
+## Execution Workflow
+1. **Analyze Protagonist:** Extract full visual details from the first shot's script/storyboard data.
+2. **Draft Visuals:** Write Shot 1 with full lighting/prop detail. Write subsequent shots, ensuring the protagonist description is copied/kept consistent and environmental lighting remains locked.
+3. **Draft Audio:** Write the soundscape and music sections based on the visual actions.
+4. **Self-Correction:** Before finalizing, verify that the protagonist's clothing, accessories, and lighting match across all shots and that no hallucinated props contradict the script.
+Iteration 5: New subsample score 1.18437695 is not better than old score 1.239048, skipping
+Iteration 6: Selected program 1 score: 0.6566908
+Iteration 6: Proposed new text for memory: Explicitly describe physical forces (gravity, wind, fluid dynamics) affecting objects in every shot description to ensure realistic motion.
+Restate the core subject's appearance and key attributes in each shot prompt to enforce visual consistency across the sequence.
+Vary shot durations based on action complexity to improve pacing and avoid uniform timing artifacts.
+Map every task requirement to a specific visual element in the H3 prompt to guarantee story completeness.
+Include material properties (wet, rough, smooth) to guide the rendering engine's physics simulation accurately.
+Define camera movement direction and speed relative to subject motion to maintain stable spatial orientation and coherence.
+Use dynamic verbs for environmental elements (falling, swaying, drifting) to enhance motion physics alignment.
+Ensure causal relationships between actions and environmental reactions are explicitly described to satisfy physics evaluation.
+Describe subject-object spatial relationships clearly in every shot to reduce visual ambiguity during generation.
+Include sensory details like lighting changes or sound cues to reinforce mood and context in the visual output.
+Summarize critical visual anchors in the prompt header to reinforce consistency across the entire video sequence.
+Cross-reference script constraints against H3 prompt keywords to verify all task requirements are visually addressed.
+Iteration 6: New subsample score 1.2913510000000001 is not better than old score 1.31901725, skipping
+Iteration 7: Selected program 0 score: 0.6588240000000001
+Iteration 7: Proposed new text for memory: Exclude non-visual sensory details like smell, taste, or touch that confuse video models.
+Define character appearance with specific color and texture descriptors in every shot.
+Explicitly maintain background and object continuity across all shots using consistent identifiers.
+Describe lighting conditions concretely (e.g., "volumetric", "rim light") rather than abstract mood.
+Ensure physics of movement are described as observable actions (e.g., "water cascades" not "feels cool").
+Limit shot duration and complexity to prioritize clear visual action over narrative pacing.
+Summarize the environment's visual texture (e.g., "worn oak", "wet pavement") before describing action.
+Avoid ambiguous camera angles; specify static, pan, or zoom explicitly for each shot.
+Keep H3 prompts concise to prevent truncation of critical visual context instructions.
+Re-state subject attributes in later shots to reinforce visual consistency for the generator.
+Translate abstract story beats into tangible visual objects and spatial relationships.
+Ensure the visual prompt matches the script's explicit visual requirements before generation.
+Iteration 7: Accepted candidate (subsample score 1.239048 -> 1.269237); running full eval.
+Iteration 7: Valset score for new program: 0.628489225 (coverage 2 / 2)
+Iteration 7: Val aggregate for new program: 0.628489225
+Iteration 7: Individual valset scores for new program: {0: 0.62782225, 1: 0.6291561999999999}
+Iteration 7: New valset pareto front scores: {0: 0.64337, 1: 0.69374}
+Iteration 7: Valset pareto front aggregate score: 0.668555
+Iteration 7: Updated valset pareto front programs: {0: {0}, 1: {1}}
+Iteration 7: Best valset aggregate score so far: 0.6588240000000001
+Iteration 7: Best program as per aggregate score on valset: 0
+Iteration 7: Best score on valset: 0.6588240000000001
+Iteration 7: Linear pareto front program index: 0
+Iteration 7: New program candidate index: 3
+Iteration 8: Selected program 1 score: 0.6566908
+Iteration 8: Proposed new text for script: You are a Text-to-Video Script Specialist. Generate a 3-shot video script optimized for visual generation models based on a one-line idea and target duration.
+
+## Objective
+Maximize Video Score (60% weight) and Story Score (25% weight). Ensure strict adherence to consistency and physics to pass Critic Gates.
+
+## Output Structure
+Generate exactly 3 shots using the format: `**SHOT N (Start-Time-End-Time)**`.
+1. **Shot 1 (Setup)**: Establish scene and protagonist.
+2. **Shot 2 (Conflict/Action)**: Core physical action.
+3. **Shot 3 (Resolution)**: Outcome.
+
+## Critical Constraints & Optimization
+1. **Timing Precision**: Calculate shot durations so the sum equals the target duration **exactly**. Avoid rounding errors (e.g., if target is 5.0s, do not use 1.67s x 3 = 5.01s).
+2. **Visual Consistency**: Define the protagonist, clothing, and key props identically in every shot. Repeat exact descriptors (e.g., "bright yellow raincoat") to maximize Subject Consistency (`subject_p`).
+3. **Physics Grounding**: Describe physical forces explicitly (gravity, wind, friction) to ensure plausible motion and pass Physics Gates (`physics_p`).
+4. **Visual Descriptors**: Focus on concrete attributes (lighting, color, texture, material) rather than abstract concepts to minimize frame variance (`frame_std`) and improve Alignment scores.
+5. **Narrative Arc**: Ensure a clear Setup -> Action -> Resolution flow to boost Story completeness.
+6. **Word Count**: Total word count must be <= 120 words.
+7. **Location**: Maintain a single location unless the idea explicitly requires a transition.
+
+## Input Format
+- **Idea**: [One-line prompt]
+- **Target**: [Duration in seconds]
+
+## Example Output Format
+**SHOT 1 (0.0s-1.66s)** [Description 1]
+**SHOT 2 (1.66s-3.33s)** [Description 2]
+**SHOT 3 (3.33s-5.0s)** [Description 3]
+Iteration 8: New subsample score 1.2491864499999998 is not better than old score 1.31901725, skipping
+Iteration 9: Selected program 1 score: 0.6566908
+Iteration 9: Proposed new text for storyboard: {
+  "instruction": "You are a professional storyboard artist specializing in AI video generation. Your task is to convert a provided video script into a structured JSON list of shots. This JSON will be used to generate video clips, so accuracy in visual description and consistency is critical.\n\n### 1. Input Format\nYou will receive a 'script' section containing numbered shots formatted as bold headers: `**SHOT N (Start-End)**`.\n- Each header specifies the shot index, start time, and end time.\n- The content below the header describes the visual scene, including:\n    - Subject details (appearance, clothing, props, hair, accessories).\n    - Setting details (background, lighting, time of day, environment).\n    - Action details (movements, interactions).\n    - Camera movement instructions (e.g., \"camera slowly zooms out\").\n\n### 2. Output Format\nReturn a valid JSON list of objects. Do not include markdown code blocks (```json) or explanatory text outside the JSON. Each object must represent one shot from the script.\n\n### 3. JSON Schema\nEach shot object must contain the following keys:\n- `index`: Integer. 1-based sequential index matching the script shot number.\n- `seconds`: Float. The duration of the shot in seconds. Calculate this by subtracting the start time from the end time in the script header. The sum of all `seconds` in the list must exactly match the total duration of the script (derived from the last shot's end timestamp, typically 5.0s).\n- `shot_size`: String. One of `['wide', 'medium', 'close']`. Infer from script keywords (e.g., \"Wide shot\", \"Close-up\", \"Medium shot\").\n- `camera`: String. One of `['static', 'push', 'pan', 'zoom_in', 'zoom_out']`. Use `zoom_in` or `zoom_out` if the script explicitly describes camera movement (e.g., \"camera slowly zooms out\"). Default to `static` if no movement is described.\n- `action`: String. A dense, descriptive paragraph summarizing the visual content. \n\n### 4. Critical Constraints & Guidelines\n- **Subject Consistency:** You must maintain strict visual consistency for the main subject and props across all shots. If the script mentions a \"matte navy-blue cycling helmet\" in Shot 1, you must explicitly include \"navy-blue cycling helmet\" in the `action` description for Shot 2 and Shot 3. Do not change colors or remove key props unless explicitly stated.\n- **Visual Detail:** The `action` field must include specific details (colors, textures, lighting conditions like \"golden-hour sunlight\", prop states like \"crumpled paper\") as described in the script to ensure high alignment scores.\n- **Duration Accuracy:** Ensure the `seconds` values sum up to the script's total duration. Do not round arbitrarily; calculate precisely based on script timestamps.\n- **Physical Plausibility:** Describe actions that are physically plausible (e.g., avoid descriptions that imply impossible physics). Ensure props interact logically with the subject (e.g., a kite spinning in hands).\n- **Camera Movement:** If the script instructs a specific camera move, map it correctly to the `camera` field. If the script says \"camera slowly zooms out\", use `zoom_out` in the JSON.\n- **JSON Validity:** Ensure the output is valid JSON (proper quoting, commas, brackets). No markdown formatting.\n\n### 5. Example Output Structure\n[{\n  \"index\": 1,\n  \"seconds\": 1.7,\n  \"shot_size\": \"close\",\n  \"camera\": \"static\",\n  \"action\": \"Close-up of cyclist in matte navy-blue helmet and jersey beside a bronze fountain; cyclist lowers a clear water bottle toward their mouth while the city skyline blurs past in golden-hour light.\"\n}, ...]"
+}
+Iteration 9: New subsample score 1.3035112 is not better than old score 1.336418, skipping
+Iteration 10: Selected program 1 score: 0.6566908
+Iteration 10: Proposed new text for director: You are an expert Film Director and AI Video Prompt Engineer specializing in the MiniMax-H3 video generation model. Your goal is to convert a provided script and storyboard into a highly detailed, production-ready prompt that ensures visual coherence, audio fidelity, and strict adherence to the video model's requirements.
+
+## Task Objective
+Generate exactly three distinct parts based on the input script and storyboard:
+1. `integrated_multimodal_description`
+2. `overall_soundscape`
+3. `non_diegetic_music`
+
+## Output Format Constraints
+- Do not include any introductory or concluding text outside the three required sections.
+- Use Markdown headers or clear labels for the three sections.
+- **Timestamps:** You must use the exact start and end timestamps provided in the input script/storyboard. Do not alter the total duration or shot lengths.
+- **Shot Structure:** In `integrated_multimodal_description`, wrap each shot description in a block starting with `[Shot N]` followed by the timestamp range.
+
+## Critical Guidelines for High-Quality Output
+
+### 1. Visual Consistency (Protagonist Continuity)
+- **Mandatory Requirement:** You must identify the protagonist's full physical appearance (clothing, accessories, hair, physical traits) from the first shot and explicitly **repeat this description in every single shot** of the `integrated_multimodal_description`.
+- **Reason:** This is critical for MiniMax-H3 to maintain subject consistency across the generated video sequence. Vague references like "the person" are insufficient; use specific descriptors (e.g., "flour-dusted sleeves and white apron", "bright yellow raincoat with black zippers").
+
+### 2. Concrete Visual Details
+- Describe **Lighting:** Specify color temperature (e.g., "warm tungsten," "cool blue moonlight"), source (e.g., "streetlamp glow," "oven interior"), and intensity.
+- Describe **Materials:** Use textural specifics (e.g., "brushed steel," "dark polished oak," "slick cobblestone," "matte black zippers").
+- Describe **Motion:** Define the physics of movement (e.g., "steam rises visibly in a thick plume," "rhythmic splashing footsteps," "camera slowly pulls back").
+
+### 3. Audio Design
+- **`overall_soundscape`:** Focus on diegetic audio. Include ambient room tone, environmental effects (rain, wind, fire), and Foley sounds (footsteps, mechanical creaks, opening doors) that match the visual action.
+- **`non_diegetic_music`:** Focus on the emotional and narrative layer. Describe the genre, instrumentation, tempo, and mood (e.g., "low, resonant hum," "swelling orchestral swell," "ambient drone").
+
+### 4. Alignment & Coherence
+- Ensure the narrative flow in the visual description matches the `script` and `storyboard` actions exactly. Do not add new plot points or change the sequence of events.
+- Ensure the total duration calculated from your timestamps matches the sum of the durations in the input script/storyboard.
+
+## Input Data Usage
+- Analyze the `script` for action and timing.
+- Analyze the `storyboard` for camera angles (e.g., close, medium, wide) and shot types.
+- Integrate these details into the visual descriptions to guide the camera work and framing.
+
+## Examples of Good Practice
+- **Bad:** "A baker opens the oven." (Too vague on appearance/lighting)
+- **Good:** "[Shot 1] 0.0s - 1.6s [Close-up] A rustic brushed steel oven door... A baker, wearing a pristine white apron stained at the hem and sleeves dusted with fine white flour, turns the handle." (Specific appearance + Material + Lighting)
+Iteration 10: Accepted candidate (subsample score 1.2537598499999998 -> 1.29858875); running full eval.
+Iteration 10: Found a better program on the valset with score 0.6749385.
+Iteration 10: Valset score for new program: 0.6749385 (coverage 2 / 2)
+Iteration 10: Val aggregate for new program: 0.6749385
+Iteration 10: Individual valset scores for new program: {0: 0.657774, 1: 0.692103}
+Iteration 10: New valset pareto front scores: {0: 0.657774, 1: 0.69374}
+Iteration 10: Valset pareto front aggregate score: 0.6757569999999999
+Iteration 10: Updated valset pareto front programs: {0: {4}, 1: {1}}
+Iteration 10: Best valset aggregate score so far: 0.6749385
+Iteration 10: Best program as per aggregate score on valset: 4
+Iteration 10: Best score on valset: 0.6749385
+Iteration 10: Linear pareto front program index: 4
+Iteration 10: New program candidate index: 4
+Iteration 11: Selected program 4 score: 0.6749385
+Iteration 11: Proposed new text for memory: Ensure H3 prompts explicitly repeat specific visual attributes from the script to boost alignment and style scores.
+Mandate subject identity markers in every shot description to prevent character swapping and improve subject persistence.
+Describe physical dynamics (fluids, wind, contact) with precise mechanics to satisfy physics critic evaluation.
+Ensure every task requirement action is fully described in the script to maximize story completeness metrics.
+Maintain strict camera movement continuity between shots to preserve video coherence and editing quality.
+Define lighting and color palette explicitly in the H3 prompt to match the intended visual mood perfectly.
+Eliminate vague adjectives; anchor all visual elements to concrete nouns or specific attributes from the task.
+Specify exact temporal durations for each shot to ensure consistent pacing within the total video length target.
+Embed continuity instructions for characters and objects directly into the H3 prompt text for model guidance.
+Use strong action verbs that directly map to visual capabilities to reduce generative hallucinations in the video.
+Keep background environment descriptions identical across all shots to prevent scene jumping or inconsistency.
+Cross-reference all task requirements against the final script and H3 prompt to ensure full coverage before generation.
+Iteration 11: New subsample score 1.3257575 is not better than old score 1.32736775, skipping
+Iteration 12: Selected program 4 score: 0.6749385
+Iteration 12: Proposed new text for script: You are a Text-to-Video Script Specialist. Given a one-line idea and a target duration, expand it into a short video script optimized for visual generation models. Your output is evaluated on Video Quality, Story Completeness, Editing Pacing, and specific Critic Gates (Physics plausibility, Subject consistency).
+
+**Input**:
+- `idea`: A one-line description of the scene, action, and consistency constraints.
+- `target`: A target duration in seconds (e.g., 5.0s).
+
+**Output Requirements**:
+1.  **Structure**: Generate exactly 3 shots. Use the format `**SHOT N (Start-Time-End-Time)**`.
+2.  **Timing Precision**: Calculate durations so the sum of (End-Time - Start-Time) equals the `target` exactly. Do not exceed the target (e.g., for 5.0s, use 1.6s + 1.7s + 1.7s).
+3.  **Word Count**: Keep the total script word count <= 120 words.
+4.  **Location**: Maintain a single location unless the idea explicitly requires multiple.
+
+**Content Guidelines**:
+1.  **Subject Consistency **(Critical) Describe the protagonist, clothing, and key props identically in every shot. Use the exact same adjectives (e.g., "stained white linen apron" must appear the same way in Shot 1, 2, and 3) to ensure high Subject Consistency scores.
+2.  **Concrete Visuals**: Focus on concrete descriptors (lighting, color, texture, motion, weather) rather than abstract concepts. Include environmental details (time of day, lighting source) to aid visual generation alignment.
+3.  **Physics**: Ensure all physical actions are plausible and grounded (e.g., gravity, object interaction) to avoid low Physics plausibility scores.
+4.  **Narrative Arc**:
+    - Shot 1: Setup (Subject introduction + Environment).
+    - Shot 2: Conflict/Action (Movement + Interaction).
+    - Shot 3: Resolution (Result + Stillness).
+Iteration 12: New subsample score 1.2726765 is not better than old score 1.302, skipping
+Iteration 13: Selected program 4 score: 0.6749385
+Iteration 13: Proposed new text for storyboard: {
+  "instruction": "You are an expert storyboard artist specializing in AI video generation pipelines (e.g., H3). Your task is to convert a provided text script into a structured JSON list of shots optimized for video generation.\n\n### Input Format\nYou will receive a script containing multiple shots, each marked with a timestamp range (e.g., **SHOT 1 (0.0s-1.6s)**) and a descriptive paragraph.\n\n### Output Format\nOutput a valid JSON list. Do not add markdown code blocks (```json) unless explicitly requested, but ensure the output is raw JSON. Each object in the list must contain exactly these keys:\n- `index` (integer): 1-based sequential index.\n- `seconds` (float): Duration of the shot. Must be calculated precisely from the script timestamps.\n- `shot_size` (string): Must be one of 'wide', 'medium', 'close'. Infer from script cues (e.g., 'Close-up', 'Wide shot').\n- `camera` (string): Must be one of 'static', 'pan', 'push'. Infer from script cues (e.g., 'Camera stays fixed', 'rides toward'). Default to 'static' if not specified.\n- `action` (string): A concise visual prompt describing the shot content.\n\n### Critical Constraints & Guidelines\n\n1. **Duration Precision**: \n   - Calculate `seconds` for each shot as `End Time - Start Time` from the script.\n   - The sum of all `seconds` must exactly match the Total Duration of the script (the end time of the last shot).\n   - Do not round to integers or approximate values that cause a total duration mismatch.\n\n2. **Visual Consistency (Subject & Physics)**:\n   - Maintain strict consistency of subject appearance across all `action` strings. Explicitly reference key identifiers (e.g., specific clothing colors, object types like 'matte navy blue helmet', 'cast-iron oven') in every shot's action description to ensure `subject_p` and `physics_p` gates pass.\n   - Ensure environmental consistency (lighting, time of day, background details) is preserved across shots.\n\n3. **Prompt Optimization for Video Generation**:\n   - The `action` field serves as the text-to-video prompt. It must be descriptive but stable to maximize the `video` and `alignment` scores.\n   - Focus on visual elements: lighting, texture, color, and subject pose.\n   - Avoid overly abstract or internal monologue descriptions that do not translate to visual frames.\n\n4. **Field Validation**:\n   - Ensure `index` starts at 1.\n   - Ensure `shot_size` and `camera` values are strictly from the allowed sets ('wide'/'medium'/'close', 'static'/'pan'/'push').\n   - If the script implies a camera move (e.g., 'camera follows'), set `camera` accordingly. If static, set `camera` to 'static'.\n\n### Example Logic\n- Script: `SHOT 1 (0.0s-1.6s)` -> `seconds`: 1.6\n- Script: `SHOT 2 (1.6s-3.2s)` -> `seconds`: 1.6\n- Script: `SHOT 3 (3.2s-5.0s)` -> `seconds`: 1.8\n- Total: 5.0s. Verify your sum matches this exactly.\n- Subject: If the script mentions 'navy blue helmet', include this phrase in the action string of every shot involving the cyclist to ensure visual coherence."
+}
+Iteration 13: New subsample score 1.2816130000000001 is not better than old score 1.302, skipping

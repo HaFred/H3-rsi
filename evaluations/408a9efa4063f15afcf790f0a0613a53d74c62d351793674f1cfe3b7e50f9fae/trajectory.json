@@ -1,0 +1,131 @@
+{
+  "artifact": {
+    "audio_path": null,
+    "backend": "minimax_h3",
+    "cached": false,
+    "duration_seconds": 5.0,
+    "meta": {
+      "endpoint": "http://localhost:30010",
+      "request_hash": "580e57479f26ea579fa73936523179aa90c61a1cd79c1167829c9d38b1a1f9c6",
+      "status": "completed",
+      "video_id": "14e0b939-54cc-4c95-97bc-91dd686b0896"
+    },
+    "seed": 0,
+    "task_id": "train-002",
+    "video_path": "outputs/101214_1strun/evaluations/408a9efa4063f15afcf790f0a0613a53d74c62d351793674f1cfe3b7e50f9fae/580e57479f26ea579fa73936523179aa90c61a1cd79c1167829c9d38b1a1f9c6.mp4"
+  },
+  "breakdown": {
+    "details": {
+      "editing": {
+        "length_cv": 0.0,
+        "mean_seconds": 5.0,
+        "num_shots": 3,
+        "std_seconds": 0.0,
+        "total_seconds": 15.0
+      },
+      "harness_hash": "229b09f2f3f4c6a0",
+      "human": {
+        "human_missing": true,
+        "reason": "no artifact-specific labels"
+      },
+      "mode": "local",
+      "story": {
+        "completeness": 0.5497,
+        "completeness_level": 2.1988963335752487,
+        "consistency": 0.9917
+      },
+      "video": {
+        "av": {
+          "skipped": true
+        },
+        "av_alignment": 0.0,
+        "unified": {
+          "frame_std": 0.0115,
+          "malformed_frames": 0,
+          "n_frames": 6,
+          "sample_response": "Alignment Score (1-5): 2.901700019836426\nCoherence Score (1-5): 3.4026999473571777\nStyle Score (1-5): 3.051300048828125"
+        },
+        "unified_reward": 0.5299374990883298
+      }
+    },
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.726526702195406,
+    "total": 0.6495941750018493,
+    "video": 0.5299374990883298,
+    "weights": {
+      "editing": 0.15,
+      "human": 0.0,
+      "story": 0.25,
+      "video": 0.6
+    }
+  },
+  "critic_report": "### Physics\n- **Steam behavior:** Steam rising from the oven vent in Shot 1 and the bread in Shot 3 is described as \"slow, turbulent plume\" and \"rises slowly,\" which contradicts the physics of hot steam rising rapidly; turbulent convection should be faster and more directional than \"slow.\"\n- **Heat wave distortion:** The description of heat waves refracting light into \"shimmering ripples\" in Shot 2 is visually ambiguous and may not render as distinct physical distortion; heat haze is a gradient of refraction, not solid ripples.\n- **Bread shake:** The loaf shaking \"slightly\" before being steadied is a micro-movement that requires precise friction physics to render naturally; without specific surface texture definitions (e.g., \"rough cloth sling vs. oily crust\"), the interaction may look like the bread is defying gravity or slipping unrealistically.\n\n### Subject Consistency\n- **Clothing texture mismatch:** Shot 1 describes \"flour-dusted denim shirt with visible stitching and pockets,\" while Shot 2 refers to \"flour-dusted hand\" without re-stating the shirt's texture, risking a texture loss or color shift in the hand/arm continuity.\n- **Object identity drift:** The \"coarse cloth sling\" in Shot 2 is described as \"already on the floor nearby\" in Shot 3's environment, but the sling's specific texture (coarse vs. \"cloth\") is not re-emphasized, risking a material mismatch between the object held and the object lying on the floor.\n- **Character posture inconsistency:** Shot 1 states the baker \"stands before the oven,\" but Shot 3 has him \"steps back\" after placing the loaf; the transition between standing directly before the oven and stepping back to the counter is not visually bridged, creating a disjointed spatial relationship.\n\n### Story Clarity\n- **Ambiguous action in Shot 2:** The phrase \"steadies it against the heat\" is an abstract concept rather than a tangible visual action; the viewer cannot distinguish the stabilization motion from a simple hold, reducing the clarity of the physical struggle.\n- **Unnecessary non-diegetic elements:** The cello note and ambient drone are audio elements that do not contribute to the visual story of the baker retrieving bread, potentially distracting from the concrete visual narrative of heat, steam, and flour.\n- **Vague emotional cue:** The \"solitary, slow cello note\" suggests an emotional beat (melancholy, contemplation) that is not supported by any visual action or character expression, creating a disconnect between the audio mood and the visual content.\n\n### Pacing\n- **Uniform shot duration:** All three shots are exactly 5 seconds each with identical static camera angles, resulting in a monotonous rhythm that lacks visual variety and fails to emphasize the climax (the retrieval of the bread) or the resolution (placing it on the counter).\n- **Lack of visual transition:** The cut from Shot 1 (wide) to Shot 2 (close-up interior) to Shot 3 (medium) skips the baker's face entirely in Shot 2, breaking the temporal flow and making the transition feel abrupt rather than paced for narrative impact.\n- **Static camera rigidity:** The \"static\" camera instruction for all shots prevents any dynamic visual interest (e.g., a slight zoom on the steam or a pan to follow the baker's movement), causing the 15-second sequence to feel stagnant and lacking cinematic pacing.\n\n### Audio\n- **Conflicting sound design:** The \"low hum of the refrigerator\" contradicts the setting of a \"worn oak kitchen\" with a \"single flickering bulb\"; a refrigerator implies a modern, enclosed appliance that may not exist in this rustic, dimly lit space, creating an anachronistic auditory element.\n- **Overlapping sound effects:** The \"sharp metallic clunk,\" \"soft hiss of steam,\" and \"distant creak of floorboards\" are layered without spatial separation; the distant creak may be inaudibly close to the clunk, creating a muddy soundscape that obscures the primary action sounds.\n- **Mismatched music intensity:** The \"solitary, slow cello note that swells gently\" conflicts with the visual action of the baker straining (knuckles white, pulling heavy door); the music is too soft and melodic to match the physical tension implied by the visual prompt.",
+  "director_prompt": "integrated_multimodal_description\n[Shot 1] 0:00-0:05, static wide. Environment: worn oak kitchen with visible grain and scratches; a heavy cast-iron oven with a blackened door. Lighting: single flickering bulb low on the wall, casting volumetric shafts of warm yellow light and long, sharp shadows. Subject: a baker, a man with short graying hair and a flour-dusted denim shirt with visible stitching and pockets. Action: he stands before the oven, knuckles white gripping the cold cast-iron handle, then pulls the door open with a metallic clunk; steam rises visibly from the oven vent in a slow, turbulent plume.\n[Shot 2] 0:05-0:10, static close-up. Environment: interior of the cast-iron oven, blackened soot-stained metal walls with rust spots. Lighting: intense heat waves distort the air, refracting the single bulb's glow into shimmering ripples. Subject: the baker's flour-dusted hand enters frame, fingers rough from work, grabbing a steaming loaf of dark rye bread by its coarse cloth sling. Action: he pulls the loaf free; the dark rye crust glistens with oil, texture rough and cracked; the loaf shakes slightly in his grip as he steadies it against the heat.\n[Shot 3] 0:10-0:15, static medium. Environment: the same worn oak counter, centering the scene, with the cloth sling already on the floor nearby. Lighting: the single bulb flickers once more, casting a warm, pulsing glow on the dark, crusty surface of the bread. Subject: the baker, graying hair slightly tousled, flour-dusted denim shirt, places the loaf on the counter, then steps back wiping flour from his cheek with his forearm. Action: steam rises slowly from the loaf into the still air; the oil on the crust reflects the bulb's flicker.\n\noverall_soundscape\nLow hum of the refrigerator in the background, the sharp metallic *clunk* of the oven door opening, the soft *hiss* of steam escaping the vent, and the distant, gentle creak of the kitchen floorboards.\n\nnon_diegetic_music\nA solitary, slow cello note that swells gently as the oven door opens, then fades into a soft, ambient drone to match the stillness of the rising steam.",
+  "editor_notes": "The best candidate is the one that strictly adheres to the physics of steam rising rapidly, re-defines the heat haze as a gradient of refraction rather than solid ripples, and explicitly re-states the baker's flour-dusted denim shirt and the coarse cloth sling's texture in every shot to maintain subject consistency. Keep the wide shot of the baker standing before the oven at 8 seconds to allow the rapid steam plume and heat wave distortion to establish the environment, and shorten the interior retrieval shot to 4 seconds while explicitly describing the friction between the rough cloth sling and the bread's oily crust as the baker steadies it against the heat. You should also replace the abrupt cut to a medium shot of the baker stepping back with a continuous slow pan that bridges the space from the oven to the counter, effectively merging the final action into a single dynamic sequence rather than three static, identical 5-second clips.",
+  "error": null,
+  "harness_hash": "229b09f2f3f4c6a0",
+  "harness_version": "gepa-base",
+  "meta": {
+    "cost": 10.0,
+    "critic_gates": {
+      "physics_ok": false,
+      "physics_p": 0.03668522089719772,
+      "subject_ok": false,
+      "subject_p": 0.18563348054885864
+    },
+    "effective": {
+      "backend": "minimax_h3",
+      "decision": "http",
+      "declared": {
+        "backend": "minimax_h3",
+        "decision": "http",
+        "text_llm": "openai"
+      },
+      "text_llm": "openai"
+    },
+    "target": {
+      "aspect_ratio": "16:9",
+      "duration_seconds": 5.0,
+      "frame_rate": 24.0,
+      "num_inference_steps": 10,
+      "seed": 0,
+      "short_edge": 768
+    },
+    "task_type": "t2va",
+    "warnings": [],
+    "workflow": [
+      "script",
+      "storyboard",
+      "director",
+      "critic",
+      "editor"
+    ]
+  },
+  "script": "**Shot 1: Static Wide**\nA worn oak kitchen, dimly lit by a single flickering bulb casting long shadows. A baker, a man with graying hair and flour-dusted denim, stands before a heavy cast-iron oven. Steam rises visibly from the vent. He grips the handle, his knuckles white, and pulls the door open with a metallic *clunk*.\n\n**Shot 2: Static Close-Up**\nInside the oven, the interior is lined with blackened, soot-stained metal. Heat waves distort the air. The baker reaches in, grabbing a steaming loaf of dark rye bread by its cloth sling. The crust glistens with oil, texture rough and cracked. He pulls it free; the bread shakes slightly in his grip before he steadies it.\n\n**Shot 3: Static Medium**\nThe baker places the loaf onto the same worn oak counter, centering it. The cloth sling drops to the floor. He steps back, wiping flour from his cheek. The single bulb flickers once more, casting a warm glow on the dark, crusty surface of the bread, while the steam continues to rise slowly into the still air.",
+  "split": "train",
+  "storyboard": [
+    {
+      "action": "A baker, a man with graying hair and flour-dusted denim, stands before a heavy cast-iron oven in a worn oak kitchen dimly lit by a single flickering bulb. Steam rises visibly from the oven vent. He grips the oven handle, his knuckles white, and pulls the door open with a metallic clunk.",
+      "camera": "static",
+      "index": 1,
+      "seconds": 5,
+      "shot_size": "wide"
+    },
+    {
+      "action": "Inside the cast-iron oven, blackened soot-stained metal walls reflect heat waves that distort the air. The baker's flour-dusted hand reaches in, grabbing a steaming loaf of dark rye bread by its cloth sling. The crust glistens with oil, texture rough and cracked. He pulls the loaf free; it shakes slightly in his grip before he steadies it.",
+      "camera": "static",
+      "index": 2,
+      "seconds": 5,
+      "shot_size": "close"
+    },
+    {
+      "action": "On the worn oak counter, the baker places the dark rye loaf, its oil-glistening crust reflecting the single flickering bulb's warm glow. The cloth sling drops to the floor. The baker steps back, wiping flour from his cheek, while steam rises slowly from the loaf into the still air.",
+      "camera": "static",
+      "index": 3,
+      "seconds": 5,
+      "shot_size": "medium"
+    }
+  ],
+  "task_id": "train-002"
+}

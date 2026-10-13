@@ -1,0 +1,131 @@
+{
+  "artifact": {
+    "audio_path": null,
+    "backend": "minimax_h3",
+    "cached": false,
+    "duration_seconds": 5.0,
+    "meta": {
+      "endpoint": "http://localhost:30010",
+      "request_hash": "702b4f4beb01eed4a7e16f6c77206bf4c3b9d8324e95758975fe631f0584830a",
+      "status": "completed",
+      "video_id": "d5d3b80b-97f1-4716-8372-35959f83979f"
+    },
+    "seed": 0,
+    "task_id": "promotion-003",
+    "video_path": "outputs/101214_1strun/evaluations/a72559df839466f7c3006f8e9246e6b218f5c89654b732aa63841d88f264ae89/702b4f4beb01eed4a7e16f6c77206bf4c3b9d8324e95758975fe631f0584830a.mp4"
+  },
+  "breakdown": {
+    "details": {
+      "editing": {
+        "length_cv": 0.2,
+        "mean_seconds": 2.5,
+        "num_shots": 3,
+        "std_seconds": 0.5,
+        "total_seconds": 5.0
+      },
+      "harness_hash": "2e347be9390a9685",
+      "human": {
+        "human_missing": true,
+        "reason": "no artifact-specific labels"
+      },
+      "mode": "local",
+      "story": {
+        "completeness": 0.4726,
+        "completeness_level": 1.8902809023857117,
+        "consistency": 0.9557
+      },
+      "video": {
+        "av": {
+          "skipped": true
+        },
+        "av_alignment": 0.0,
+        "unified": {
+          "frame_std": 0.1245,
+          "malformed_frames": 0,
+          "n_frames": 6,
+          "sample_response": "Alignment Score (1-5): 1.5315000534057617\nCoherence Score (1-5): 2.3129000663757324\nStyle Score (1-5): 1.5315000534057617"
+        },
+        "unified_reward": 0.46145417160458035
+      }
+    },
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.6658195286989212,
+    "total": 0.5933273851374785,
+    "video": 0.46145417160458035,
+    "weights": {
+      "editing": 0.15,
+      "human": 0.0,
+      "story": 0.25,
+      "video": 0.6
+    }
+  },
+  "critic_report": "- **Physics (Shot 1):** Milk should not \"flood\" a cup to the brim while being poured from a standing pitcher in the first second of the pour; the pour rate described implies the cup is overflowing instantly, defying realistic pouring mechanics.\n- **Physics (Shot 1):** A heavy stainless-steel pitcher is described as being \"guiding\" the milk with a gloved hand in a way that suggests the hand is the primary force, but the description of the hand \"guiding\" a heavy object to flood a cup simultaneously contradicts the visual weight implied by the material.\n- **Physics (Shot 2):** The extreme close-up on the elbow stopping the cup at the customer's elbow creates an impossible geometric distance; the camera frame cannot show the cup stopping at the elbow while also framing the eyes through the partition without significant blur or distortion given the shallow depth of field.\n- **Subject Consistency:** The \"protagonist\" is referred to as both the barista (wearing an apron) and the customer (whose eyes are met), though the script never establishes the character as a dual-role subject or a specific customer; the generation conflates the two roles into a single \"protagonist\" without distinction.\n- **Story Clarity:** Shot 3 cuts to black immediately after the exchange, offering no context for the customer's identity, the nature of the relationship, or why the silence is significant; the narrative hook is dropped without payoff.\n- **Pacing:** Shot 2 is described as 2 seconds but the action (\"eyes meet... remains still\") offers no visual progression or change within that window, making it a static dead air beat rather than a dynamic moment.\n- **Pacing:** The transition from Shot 2 to Shot 3 (0:05) is a cut to black after a 5-second hold, which rushes the emotional beat of the eye contact; the script implies a longer, lingering moment (\"perfect five-second exchange\") that the edit truncates.\n- **Audio:** The soundscape describes the steam wand hiss fading into a \"low-frequency thrum\" mimicking a *sitting cup*, which is physically inaccurate; a cup sitting still produces no thrum, and the sound design fails to distinguish the diegetic silence of the cup from the non-diegetic cello swell.\n- **Audio:** The non-diegetic music swells into a \"gentle, floating arpeggio\" exactly when the characters make eye contact, which contradicts the script's intent of \"warmth and silence\"; the music intrudes on the quiet moment the script explicitly frames as an exchange of silence.\n- **Physics (Shot 3):** The description claims \"no protagonist is visible\" yet simultaneously describes the \"lingering thought of the protagonist's glove and apron fading out of existence,\" a cinematic impossibility where a cut-to-black shot cannot contain lingering thoughts of unseen objects.",
+  "director_prompt": "integrated_multimodal_description\n[Shot 1] (0:00-0:03) A tight close-up on the protagonist's gloved hand, the glove made of faded, bread-dusted wool, guiding a heavy stainless-steel pitcher. Warm, opaque milk floods a matte white ceramic cup to the brim, steam hissing softly as it rises in thin, ghostly ribbons against the dim light. The protagonist, beneath the glove, wears a worn blue apron with frayed edges tied snugly at the waist. The camera is static, the background blurred into indistinct shadows of a coffee shop. At 0:02, the protagonist slides the cup across a scratched oak counter; the wood grain is deep and dark, scarred by years of use, catching the single warm lamp light.\n\n[Shot 2] (0:03-0:05) Extreme close-up on the protagonist's elbow, clad in the same worn blue apron, as the ceramic cup stops with a soft *clink* against a dark wooden surface. Through the glass partition separating the spaces, the protagonist's eyes meet the customer's; the irises are dark and calm, reflecting the amber glow of the counter lamp. The lighting is low-key, highlighting the texture of the wool glove on the arm and the smooth curve of the ceramic rim. The protagonist remains still, holding the gaze across the barrier of glass.\n\n[Shot 3] (0:05-0:05) The screen cuts to pure black. No protagonist is visible, but the silence that follows feels heavy with the protagonist's stillness. The only movement is the lingering thought of the protagonist's glove and apron fading out of existence into the void.\n\noverall_soundscape\nThe soundscape is intimate and tactile, dominated by the hiss of steam escaping the pitcher and the soft, wet *whoosh* of milk filling the ceramic. This is layered over the low, distant hum of an espresso machine and the scratch of the protagonist's glove against the scratched oak counter. At 0:03, a single, crisp *clink* of ceramic on wood punctuates the silence. As the shot cuts to black, the hiss of the steam wand fades into a low-frequency thrum, mimicking the sound of the cup sitting still, the ambient noise of the shop receding until only the protagonist's own breath is audible.\n\nnon_diegetic_music\nA minimal, cello-driven ambient score begins at 0:01, using a single, sustained low note that swells gently as the milk floods the cup. The texture of the music mirrors the worn blue apron and scratched wood—warm, organic, and slightly rough. At 0:03, as the cup lands and the eyes meet, the melody softens into a gentle, floating arpeggio of piano keys, creating a sense of suspended time. By 0:05, as the screen cuts to black, the cello note drops out abruptly, leaving only a faint, lingering reverb tail on the piano, symbolizing the protagonist vanishing into the silence.",
+  "editor_notes": "Since no candidate videos were actually provided in your request, I cannot select a specific winner or analyze their footage; however, based on the critic report, the best candidate would be the one that most faithfully depicts the realistic pouring mechanics of Shot 1 and the accurate geometry of the elbow interaction in Shot 2. To improve the final edit, keep the initial pour sequence and the eye-contact moment intact, but significantly shorten Shot 3's cut-to-black transition to allow the emotional weight of the silence to land naturally rather than rushing off-screen.",
+  "error": null,
+  "harness_hash": "2e347be9390a9685",
+  "harness_version": "gepa-base",
+  "meta": {
+    "cost": 10.0,
+    "critic_gates": {
+      "physics_ok": false,
+      "physics_p": 0.007357671856880188,
+      "subject_ok": false,
+      "subject_p": 0.07295206189155579
+    },
+    "effective": {
+      "backend": "minimax_h3",
+      "decision": "http",
+      "declared": {
+        "backend": "minimax_h3",
+        "decision": "http",
+        "text_llm": "openai"
+      },
+      "text_llm": "openai"
+    },
+    "target": {
+      "aspect_ratio": "16:9",
+      "duration_seconds": 5.0,
+      "frame_rate": 24.0,
+      "num_inference_steps": 10,
+      "seed": 0,
+      "short_edge": 768
+    },
+    "task_type": "t2va",
+    "warnings": [],
+    "workflow": [
+      "script",
+      "storyboard",
+      "director",
+      "critic",
+      "editor"
+    ]
+  },
+  "script": "**SHOT 1 (0:00-0:03)**\nClose-up on the barista's gloved hand guiding the steaming pitcher. Steam hisses softly as warm milk floods the ceramic cup, filling it to the brim. The barista, wearing a worn blue apron, slides the cup across the scratched oak counter.\n\n**SHOT 2 (0:03-0:05)**\nExtreme close-up: The cup stops at the customer's elbow. A soft *clink* echoes from the ceramic against the wood. The customer's eyes meet the barista's through the glass partition.\n\n**SHOT 3 (0:05-0:05)**\nCut to black. The steam wand hiss fades into the sound of the cup sitting still, a perfect five-second exchange of warmth and silence.",
+  "split": "promotion",
+  "storyboard": [
+    {
+      "action": "Close-up on the barista's gloved hand guiding a steaming pitcher as warm milk floods a ceramic cup to the brim. The barista, wearing a worn blue apron, slides the cup across a scratched oak counter.",
+      "camera": "static",
+      "index": 1,
+      "seconds": 3,
+      "shot_size": "close"
+    },
+    {
+      "action": "The ceramic cup stops at the customer's elbow with a soft clink. Through the glass partition, the customer's eyes meet the barista's.",
+      "camera": "static",
+      "index": 2,
+      "seconds": 2,
+      "shot_size": "extreme_close"
+    },
+    {
+      "action": "Cut to black. The steam wand hiss fades into the sound of the cup sitting still.",
+      "camera": "cut",
+      "index": 3,
+      "seconds": 0,
+      "shot_size": "wide"
+    }
+  ],
+  "task_id": "promotion-003"
+}

@@ -1,0 +1,131 @@
+{
+  "artifact": {
+    "audio_path": null,
+    "backend": "minimax_h3",
+    "cached": false,
+    "duration_seconds": 5.0,
+    "meta": {
+      "endpoint": "http://localhost:30010",
+      "request_hash": "f457558af6bb01b27052985f002dc13f51232827ba46fda95d397609f1ab3e0e",
+      "status": "completed",
+      "video_id": "c210bca9-94f3-4964-a8fb-a4455c993569"
+    },
+    "seed": 0,
+    "task_id": "train-003",
+    "video_path": "outputs/101214_1strun/evaluations/1d567d7950bb08c98d03069d0ce5ab05f02e455a2d18cbd816242214118a1b94/f457558af6bb01b27052985f002dc13f51232827ba46fda95d397609f1ab3e0e.mp4"
+  },
+  "breakdown": {
+    "details": {
+      "editing": {
+        "length_cv": 0.283,
+        "mean_seconds": 1.667,
+        "num_shots": 3,
+        "std_seconds": 0.471,
+        "total_seconds": 5.0
+      },
+      "harness_hash": "2e347be9390a9685",
+      "human": {
+        "human_missing": true,
+        "reason": "no artifact-specific labels"
+      },
+      "mode": "local",
+      "story": {
+        "completeness": 0.4789,
+        "completeness_level": 1.915426716208458,
+        "consistency": 0.933
+      },
+      "video": {
+        "av": {
+          "skipped": true
+        },
+        "av_alignment": 0.0,
+        "unified": {
+          "frame_std": 0.0395,
+          "malformed_frames": 0,
+          "n_frames": 6,
+          "sample_response": "Alignment Score (1-5): 2.8701000213623047\nCoherence Score (1-5): 3.7035000324249268\nStyle Score (1-5): 3.202199935913086"
+        },
+        "unified_reward": 0.5327430533038245
+      }
+    },
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.6605239130556584,
+    "total": 0.6347768102462094,
+    "video": 0.5327430533038245,
+    "weights": {
+      "editing": 0.15,
+      "human": 0.0,
+      "story": 0.25,
+      "video": 0.6
+    }
+  },
+  "critic_report": "### Physics\n*   **Shot 3 Trajectory:** The child runs \"forward to launch it back into the sky\" in a straight line while holding the kite by a torn corner. A paper kite requires a specific angle of ascent relative to the wind; running straight ahead in a gust would likely cause the kite to spin uncontrollably or drop rather than ascend gracefully into the sky as described.\n*   **Shot 1 Kite Aerodynamics:** A large paper kite tumbling end-over-end in a gust of wind strong enough to scatter a flock of birds should not be fluttering \"weakly\" and \"tumbling\" so slowly that the POV camera has time to focus on its texture for two seconds without losing it. The wind intensity described creates a contradiction between the kite's behavior and the bird activity.\n*   **Shot 3 Jacket Movement:** The jacket is described as a \"bright spot\" and \"stark\" contrast, yet the audio description notes the wind creates a \"gentle rustle.\" In a scene where the wind is strong enough to lift paper wings and scatter birds, the heavy fabric of a lime-green jacket should flap violently, not just rustle gently.\n\n### Subject Consistency\n*   **Child's Anatomy:** The script and description alternate between the child being a \"small child\" (POV hands are \"small and pale\") and the child taking a \"bounding step\" and running with enough force to launch a kite. The transition from a static crouch to a bounding run in 2 seconds (0:03-0:05) is physically aggressive for a small child described as having \"soft, shallow\" breathing.\n*   **Kite Material vs. Texture:** The kite is described as a \"pale, paper kite\" with \"frayed, brownish edges\" and \"brittle, semi-transparent\" texture. However, the action requires it to be sturdy enough to be held by a torn corner and withstand a gust strong enough to scatter sparrows without disintegrating instantly. Paper kites of this description usually tear or shred in such wind, not flutter gently.\n*   **Bird Behavior:** In Shot 1, a \"flock of birds cries out, scattered.\" In Shot 2, a \"single bird\" lands on a branch directly above the crouching child. If the wind was strong enough to scatter a flock in the first shot, a single bird landing calmly on a branch immediately afterward contradicts the established wind intensity.\n\n### Story Clarity\n*   **Narrative Gap:** The sequence shows a child finding a kite, touching it, and then running to launch it. There is no clear emotional arc or reason for the child to pick up the broken kite and run. The transition from \"touching frayed edges\" to \"grins and runs to launch\" feels like two unrelated actions spliced together rather than a cause-and-effect moment.\n*   **Ambiguous Motivation:** The child's \"wide, genuine grin\" in Shot 3 occurs before the kite has actually ascended. It implies the child is happy simply for holding the kite or for the wind, which contradicts the visual of a broken, paper kite. The emotional payoff is unclear given the physical state of the object.\n\n### Pacing\n*   **Shot 1 Duration:** 2 seconds (0:00-0:02) is excessive for a POV shot establishing a scene. The description packs too much information: hands pressing against the lens, kite tumbling, wind sighing, trees rustling, sky framing, flock crying, and gust sweeping. The viewer is overwhelmed by details rather than immersed in the moment.\n*   **Shot 2 Duration:** 1 second (0:02-0:03) is insufficient to convey the action of crouching, reaching out, and brushing the kite, plus the bird landing and taking flight. The rapid succession of actions (crouch, reach, brush, bird land, bird fly) leaves no time for the eye to process any single detail.\n*   **Rhythm Break:** The jump from a 2-second wide establishing shot to a 1-second close-up breaks the natural flow. The short duration of Shot 2 makes it feel like a stutter in the narrative, cutting off the emotional beat of the child reaching for the kite before the next shot begins.\n\n### Audio\n*   **Sound-Movie Mismatch:** The audio description includes a \"distant, mournful cry of a flock\" and \"distant creak of wood on wood from a playground structure\" and \"faint murmur of children playing.\" If these sounds are truly distant/background, they should be inaudible or very low during the intimate moments (the child touching the kite). The description suggests they are layering prominently, which distracts from the subject.\n*   **Inconsistent Wind Sound:** The wind sound is described as a \"soft hiss\" in Shot 1,",
+  "director_prompt": "integrated_multimodal_description\n[Shot 1] (0:00-0:02)\nA low-angle, static wide shot from the perspective of a small child wearing a bright lime-green jacket. The child's hands, small and pale, press against the lens, framing the view. Below, a pale, crinkled paper kite tumbles end-over-end through tall, dry golden grass. The wind sighs softly, rustling the blades. In the background, tall oak trees frame a pale blue afternoon sky; a flock of sparrows cries out in scattered, startled calls as a sudden gust sweeps across the park. The child's lime-green jacket is the only vibrant color in the muted earth-toned scene.\n\n[Shot 2] (0:02-0:03)\nA static close-up, eye-level with the ground, focusing on the child's face and upper body. The child, still in the lime-green jacket, crouches low, their face illuminated by the warm, golden glow of the afternoon sun. Their sleeves whip back and forth rapidly as they reach out, fingers brushing the frayed, brownish edges of the tumbling paper kite. Above the frame, a single sparrow lands on a low oak branch, tilts its head, then soars away in a quick blur against the sky. The texture of the paper kite is visible: brittle, semi-transparent, and weathered.\n\n[Shot 3] (0:03-0:05)\nA medium shot with a slow camera push forward, tracking the child as they rise. The child stands, clutching the kite gently by a torn corner. The wind picks up, lifting the pale paper wings into a fluttering arc. The child's face breaks into a wide, genuine grin, eyes crinkling at the corners. They take a bounding step forward, running across the manicured grass of the quiet park, launching the kite back into the air. The lime-green jacket acts as a stark, bright spot in the soft, desaturated palette of the park, contrasting sharply with the grey-green grass and blue sky.\n\noverall_soundscape\nThe soundscape is dominated by natural, ambient textures. It begins with the soft *hiss* of wind passing through tall, dry grass, layered with the distant, mournful cry of a flock of sparrows. As the child reaches for the kite, the wind intensifies slightly, creating a gentle *rustle* against the fabric of the lime-green jacket. A single, crisp *thump* registers as a bird's wing beats against the oak branch, followed by the sharp *whoosh* of the bird taking flight. The child's breathing is audible, soft and shallow, syncing with their movement. The ambient park noise includes the distant creak of wood on wood from a playground structure and the faint murmur of children playing far off, creating a sense of secluded solitude.\n\nnon_diegetic_music\nA minimalist, ethereal cello melody enters softly at 0:00, playing a single, hanging note that resonates with the weight of the tumbling kite. At 0:02, as the child makes contact with the kite, the cello shifts to a warmer, brighter harmonic, suggesting hope. By 0:03, when the child begins to run, the music swells subtly with a light, woodwind counter-melody (like a piccolo or flute) that mimics the upward motion of the kite. The track is sparse, avoiding heavy instrumentation, allowing the emotional weight to rest on the child's expression and the visual contrast of the green jacket, fading to a single sustained chord as the kite ascends out of frame.",
+  "editor_notes": "**Best Candidate:** Shot 3 (the child running with the kite) is the strongest sequence to keep, as it successfully captures the kinetic energy and emotional payoff of the scene, despite the physical inconsistencies noted in the trajectory and jacket movement.\n\n**Editing Advice:** You should retain the core action of Shot 3 but **shorten the initial POV tumble (Shot 1)** from two seconds to roughly 1.5 seconds to reduce information overload, and **extend the crouching reach (Shot 2)** to at least 1.5–2 seconds to allow the viewer to process the intimate moment of the child brushing the kite before the bird lands, thereby smoothing the rhythmic stutter.",
+  "error": null,
+  "harness_hash": "2e347be9390a9685",
+  "harness_version": "gepa-base",
+  "meta": {
+    "cost": 10.0,
+    "critic_gates": {
+      "physics_ok": false,
+      "physics_p": 0.024076052010059357,
+      "subject_ok": true,
+      "subject_p": 0.680143415927887
+    },
+    "effective": {
+      "backend": "minimax_h3",
+      "decision": "http",
+      "declared": {
+        "backend": "minimax_h3",
+        "decision": "http",
+        "text_llm": "openai"
+      },
+      "text_llm": "openai"
+    },
+    "target": {
+      "aspect_ratio": "16:9",
+      "duration_seconds": 5.0,
+      "frame_rate": 24.0,
+      "num_inference_steps": 10,
+      "seed": 0,
+      "short_edge": 768
+    },
+    "task_type": "t2va",
+    "warnings": [],
+    "workflow": [
+      "script",
+      "storyboard",
+      "director",
+      "critic",
+      "editor"
+    ]
+  },
+  "script": "**SHOT 1 (0:00-0:02)**\nPOV from a small child in a lime-green jacket. A pale, paper kite tumbles from the tall grass, fluttering weakly. The wind sighs through the trees. In the distance, a flock of birds cries out, scattered by the gust.\n\n**SHOT 2 (0:02-0:03)**\nThe child, face illuminated by afternoon sun, crouches low. Their green sleeves whip as they reach out, fingers brushing the frayed edges of the paper kite. A single bird lands briefly on a branch above, then soars away.\n\n**SHOT 3 (0:03-0:05)**\nThe child stands, holding the kite gently. The wind picks up, lifting the paper wings; the child grins, running forward to launch it back into the sky, the green jacket a bright spot in the quiet park.",
+  "split": "train",
+  "storyboard": [
+    {
+      "action": "POV from a small child in a lime-green jacket looking down at a pale, paper kite tumbling from tall grass; wind sighs through trees; flock of birds cries out in the distance.",
+      "camera": "static",
+      "index": 1,
+      "seconds": 2,
+      "shot_size": "wide"
+    },
+    {
+      "action": "Child crouches low, face illuminated by afternoon sun, green sleeves whipping as they reach out to touch the frayed edges of the paper kite; a bird lands on a branch above then soars away.",
+      "camera": "static",
+      "index": 2,
+      "seconds": 1,
+      "shot_size": "close"
+    },
+    {
+      "action": "Child stands holding the kite, wind lifts the paper wings, child grins and runs forward to launch it into the sky; lime-green jacket stands out against the quiet park.",
+      "camera": "push",
+      "index": 3,
+      "seconds": 2,
+      "shot_size": "medium"
+    }
+  ],
+  "task_id": "train-003"
+}

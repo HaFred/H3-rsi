@@ -1,0 +1,131 @@
+{
+  "artifact": {
+    "audio_path": null,
+    "backend": "minimax_h3",
+    "cached": false,
+    "duration_seconds": 5.0,
+    "meta": {
+      "endpoint": "http://localhost:30010",
+      "request_hash": "87b4073db78807780343a05689a7401f1ee806c87ef726a97c3147720e6beab3",
+      "status": "completed",
+      "video_id": "5971b47f-ae85-4813-a094-4f045c841567"
+    },
+    "seed": 0,
+    "task_id": "test-002",
+    "video_path": "outputs/101214_1strun/evaluations/4dc7b1061308e4d5524ce111e7a3a20a147b83d976334af78d8414cea3604235/87b4073db78807780343a05689a7401f1ee806c87ef726a97c3147720e6beab3.mp4"
+  },
+  "breakdown": {
+    "details": {
+      "editing": {
+        "length_cv": 0.057,
+        "mean_seconds": 1.667,
+        "num_shots": 3,
+        "std_seconds": 0.094,
+        "total_seconds": 5.0
+      },
+      "harness_hash": "55be971f47e67d57",
+      "human": {
+        "human_missing": true,
+        "reason": "no artifact-specific labels"
+      },
+      "mode": "local",
+      "story": {
+        "completeness": 0.4849,
+        "completeness_level": 1.9394626766443253,
+        "consistency": 0.9761
+      },
+      "video": {
+        "av": {
+          "skipped": true
+        },
+        "av_alignment": 0.0,
+        "unified": {
+          "frame_std": 0.0468,
+          "malformed_frames": 0,
+          "n_frames": 6,
+          "sample_response": "Alignment Score (1-5): 2.571500062942505\nCoherence Score (1-5): 3.1212000846862793\nStyle Score (1-5): 2.6015000343322754"
+        },
+        "unified_reward": 0.4779597222805023
+      }
+    },
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.6813623450696469,
+    "total": 0.6071164196357131,
+    "video": 0.4779597222805023,
+    "weights": {
+      "editing": 0.15,
+      "human": 0.0,
+      "story": 0.25,
+      "video": 0.6
+    }
+  },
+  "critic_report": "**Physics**\n- In Shot 2, the mechanic leans against a stationary motorcycle; gravity should cause the body to shift slightly to the bike's center of mass, not remain perfectly static while \"casually\" leaning.\n- In Shot 3, the \"dancing highlights\" on the cloth are visually inconsistent with the described \"flat\" 6500K lighting; reflections should be steady streaks, not dynamic dancing spots, unless the camera moves (which is static).\n- The transition from tightening a bolt (Shot 1) to placing the wrench down and leaning (Shot 2) implies the mechanic was holding the wrench against their body in Shot 1; the script says they \"tighten the bolt,\" implying the wrench is on the bolt, not held in the air to be unclasped.\n\n**Subject Consistency**\n- The mechanic's gloves are described as \"dark\" in the script and storyboard, but the generation description mentions \"slight sheen on the mechanic's skin,\" implying bare skin visibility which contradicts \"heavy-duty work gloves\" covering the hands and wrists.\n- In Shot 2, the description notes the wrench is \"unclasped\" from the hands before being placed down, whereas the script states the mechanic \"removes the red wrench,\" which usually implies taking it off entirely, creating a mismatch in action sequence.\n\n**Story Clarity**\n- The narrative logic is inverted: Shot 1 shows tightening a bolt, Shot 2 shows the wrench being put away, and Shot 3 shows cleaning up. While plausible as a sequence, the timing of removing the wrench (Shot 2) immediately after tightening it creates a jarring editing jump without an intervening shot of the bolt being fully secured or the mechanic finishing the task.\n- The shift from a functional garage setting to a \"clinical, dim hue\" lighting description feels tonally inconsistent with the gritty \"grease-stained\" subject matter, diluting the intended realism.\n\n**Pacing**\n- Shot 1 (1.6s) and Shot 2 (1.6s) are both extremely short for distinct camera movements (close-up to medium), leaving almost no time to register the action of tightening the bolt and then placing the wrench.\n- The total runtime of 5.0s for three shots, especially with the ambient hum and music layers described, feels rushed; the \"dancing highlights\" and emotional beat of the cello drone arrive too quickly to have impact.\n\n**Audio**\n- The audio description states the wrench sound (\"click-hiss\") is heard in Shot 1, but then the wrench is placed down in Shot 2. There is no audio bridge or sound design to indicate the wrench actually left the bolt and the mechanic's hand, making the transition between the wrench-on-bolt sound and the wrench-placing action disjointed.\n- The \"soft, wet shhh-shhh\" in Shot 3 is described as fading into the ambient roar, but the script notes the sound fades into the \"steady, continuous drone.\" The generation description adds \"oil and fabric friction,\" which may be too loud or specific for the final shot where the wiping ceases, creating an auditory mismatch with the visual end state.",
+  "director_prompt": "integrated_multimodal_description\n[Shot 1] 0.0s - 1.6s [Close-up] Extreme close-up on a gleaming chrome motorcycle engine bolt, the surface reflecting the cool, sterile light of overhead fluorescent tubes. A mechanic, wearing a black leather apron with visible scuff marks and dark, heavy-duty work gloves, uses a red-handled wrench to tighten the bolt. The wrench turns with precision, the red handle contrasting sharply against the metallic grey of the engine and the dim, shadowed concrete floor below. The lighting is flat and cool (6500K), casting subtle blue-grey shadows that emphasize the industrial texture of the metal.\n\n[Shot 2] 1.6s - 3.2s [Medium shot] The same mechanic, still wearing the black leather apron and dark work gloves, stands leaning casually against the stationary motorcycle. They unclasp the red-handled wrench from their gloved hands and place it down on a nearby stainless steel workbench. In the background, out of focus, rows of metal tool racks and the silhouette of a parked forklift are visible. The lighting remains consistent with the previous shot: cool, diffused fluorescent illumination that bathes the scene in a clinical, dim hue, highlighting the matte texture of the leather apron and the slight sheen on the mechanic's skin.\n\n[Shot 3] 3.2s - 5.0s [Extreme Close-up] Extreme close-up on the mechanic's gloved hands, the black leather apron now framing the top edge of the shot. The mechanic holds a soiled white cloth, fingers moving in a vigorous, rhythmic wiping motion. As the gloved fingers press into the fabric, dark grease and oil smear across the white fibers, creating streaks of deep black and brown. The overhead fluorescent lights reflect brightly off the wet, oily patches on the cloth, creating sharp, dancing highlights on the textured fibers. The camera remains static, focusing entirely on the tactile interaction between the gloved hands, the oil, and the cloth.\n\noverall_soundscape\nThe primary audio layer is the low, rhythmic hum of the garage ventilation system, a steady and continuous drone that establishes the industrial setting. This is punctuated by the sharp *click-hiss* of the red-handled wrench engaging the bolt in the first shot. As the scene transitions to the second shot, the wrench is set down, and the sound of the mechanic's boots making soft, rhythmic contact with the concrete floor is audible, mixed with the distant, muffled *clang* of a hammer striking metal in the background. In the final shot, the mechanical sounds recede slightly to highlight the soft, wet *shhh-shhh* of the cloth being rubbed against itself, the sound of the oil and fabric friction, which fades into the ambient roar of the ventilation as the scene concludes.\n\nnon_diegetic_music\nA minimal, atmospheric ambient track begins with a low, resonant cello drone that mirrors the heavy, grounded feeling of the garage environment. The tempo is slow and steady, matching the rhythm of the mechanic's work. As the mechanic places the wrench down (around 1.6s), a subtle, warm piano note enters, adding a touch of human presence and calm to the otherwise cold industrial soundscape. By the third shot, the music thins out, leaving only the soft, swelling cello pad and a gentle, almost imperceptible reverb tail, creating a sense of solitary focus and quiet dedication, before fading out completely as the wiping motion ceases.",
+  "editor_notes": "**Best Candidate:** Candidate 2, despite its physics and subject inconsistencies, is the strongest choice because it maintains the most coherent narrative thread of the mechanic working and finishing the task, whereas Candidate 1 fails to establish the wrench-on-bolt connection entirely, making the subsequent action feel like a nonsensical loop.\n\n**Shot Advice:** Keep the close-up of the wrench tightening the bolt (Shot 1) as the essential establishing moment, but significantly shorten the medium shot of the mechanic leaning against the bike (Shot 2) to 1.0s so it functions purely as a transitional bridge rather than a distracting pause; extend the final cleanup shot (Shot 3) to 2.5s to allow the \"soft, wet\" wiping motion and the fading audio to resonate properly, correcting the current pacing imbalance where the emotional beat arrives too quickly.",
+  "error": null,
+  "harness_hash": "55be971f47e67d57",
+  "harness_version": "gepa-base-gepa-4ddd73aa",
+  "meta": {
+    "cost": 10.0,
+    "critic_gates": {
+      "physics_ok": false,
+      "physics_p": 0.05266783758997917,
+      "subject_ok": false,
+      "subject_p": 0.1387750208377838
+    },
+    "effective": {
+      "backend": "minimax_h3",
+      "decision": "http",
+      "declared": {
+        "backend": "minimax_h3",
+        "decision": "http",
+        "text_llm": "openai"
+      },
+      "text_llm": "openai"
+    },
+    "target": {
+      "aspect_ratio": "16:9",
+      "duration_seconds": 5.0,
+      "frame_rate": 24.0,
+      "num_inference_steps": 10,
+      "seed": 0,
+      "short_edge": 768
+    },
+    "task_type": "t2va",
+    "warnings": [],
+    "workflow": [
+      "script",
+      "storyboard",
+      "director",
+      "critic",
+      "editor"
+    ]
+  },
+  "script": "**SHOT 1 (0.0s-1.6s)**\nClose-up on a chrome motorcycle engine bolt. A mechanic with grease-stained hands, wearing a black leather apron and dark work gloves, tightens the bolt with a red-handled wrench. The garage is dimly lit by overhead fluorescent tubes, casting cool shadows on the concrete floor. A low, rhythmic hum of the garage ventilation mixes with the sharp *click-hiss* of the wrench engaging the metal.\n\n**SHOT 2 (1.6s-3.2s)**\nMedium shot of the same mechanic, apron and gloves unchanged, leaning against the stationary bike. They remove the red wrench and place it on a nearby metal workbench. The background shows blurred tool racks and a parked forklift. The ambient hum continues, punctuated by the distant clang of a hammer.\n\n**SHOT 3 (3.2s-5.0s)**\nExtreme close-up on the mechanic's gloved hands holding a soiled white cloth. They vigorously wipe their grease-stained fingers, smearing oil onto the fabric. The garage lights reflect off the wet cloth fibers. The sound of the wipe is a soft *shhh-shhh*, fading into the steady, continuous drone of the garage ventilation as the scene ends.",
+  "split": "test",
+  "storyboard": [
+    {
+      "action": "Close-up on a chrome motorcycle engine bolt; a mechanic with grease-stained hands, wearing a black leather apron and dark work gloves, tightens the bolt with a red-handled wrench in a dimly lit garage.",
+      "camera": "static",
+      "index": 1,
+      "seconds": 1.6,
+      "shot_size": "close"
+    },
+    {
+      "action": "Medium shot of the same mechanic, apron and gloves unchanged, leaning against the stationary bike; they remove the red wrench and place it on a nearby metal workbench, with blurred tool racks and a parked forklift in the background.",
+      "camera": "static",
+      "index": 2,
+      "seconds": 1.6,
+      "shot_size": "medium"
+    },
+    {
+      "action": "Extreme close-up on the mechanic's gloved hands holding a soiled white cloth, vigorously wiping grease-stained fingers and smearing oil onto the fabric as garage lights reflect off the wet cloth fibers.",
+      "camera": "static",
+      "index": 3,
+      "seconds": 1.8,
+      "shot_size": "close"
+    }
+  ],
+  "task_id": "test-002"
+}

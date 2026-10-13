@@ -1,0 +1,131 @@
+{
+  "artifact": {
+    "audio_path": null,
+    "backend": "minimax_h3",
+    "cached": false,
+    "duration_seconds": 5.0,
+    "meta": {
+      "endpoint": "http://localhost:30010",
+      "request_hash": "d2f290fa33825131664e019293fa0ccb1c5c8076daa5208ea80b5d946fdc44df",
+      "status": "completed",
+      "video_id": "b4412353-1d88-4730-ba55-1568193d7e55"
+    },
+    "seed": 0,
+    "task_id": "promotion-004",
+    "video_path": "outputs/101214_1strun/evaluations/9fc6e25b1033dedd919899ad08994fc48e2927451757f7fd3b957049c22f9b36/d2f290fa33825131664e019293fa0ccb1c5c8076daa5208ea80b5d946fdc44df.mp4"
+  },
+  "breakdown": {
+    "details": {
+      "editing": {
+        "length_cv": 0.283,
+        "mean_seconds": 1.667,
+        "num_shots": 3,
+        "std_seconds": 0.471,
+        "total_seconds": 5.0
+      },
+      "harness_hash": "2e347be9390a9685",
+      "human": {
+        "human_missing": true,
+        "reason": "no artifact-specific labels"
+      },
+      "mode": "local",
+      "story": {
+        "completeness": 0.5987,
+        "completeness_level": 2.39465294778347,
+        "consistency": 0.9434
+      },
+      "video": {
+        "av": {
+          "skipped": true
+        },
+        "av_alignment": 0.0,
+        "unified": {
+          "frame_std": 0.0326,
+          "malformed_frames": 0,
+          "n_frames": 6,
+          "sample_response": "Alignment Score (1-5): 2.6015000343322754\nCoherence Score (1-5): 3.202899932861328\nStyle Score (1-5): 2.702199935913086"
+        },
+        "unified_reward": 0.45010416706403095
+      }
+    },
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.7365770734846592,
+    "total": 0.6042067686095833,
+    "video": 0.45010416706403095,
+    "weights": {
+      "editing": 0.15,
+      "human": 0.0,
+      "story": 0.25,
+      "video": 0.6
+    }
+  },
+  "critic_report": "### Physics\n*   **Brush mechanics:** In Shot 3, the brush lifts away \"leaving a perfect, uniform stripe\" while the bristles remain \"dusted with pigment\" and heavy; this is physically impossible. A stiff brush loaded with thick, viscous paint would leave a textured, uneven residue or pull paint off the wood rather than laying down a perfectly uniform, smooth stripe.\n*   **Paint viscosity:** The description claims the paint is \"thick, viscous, and flecked with dust\" yet simultaneously describes it being \"dragged... across the grain\" to create a uniform coat. Thick, dusty paint cannot flow enough to hide decay and create a uniform surface without dripping or leaving clumps.\n*   **Breathing vs. posture:** In Shot 2, the man is described as \"breathing shallowly, his chest rising and falling quickly\" while simultaneously performing \"long, deliberate strokes.\" Rapid, shallow breathing (indicating distress or fatigue) typically prevents the sustained, controlled arm movement required for deliberate painting strokes.\n*   **Fence stability:** The \"creak-creak\" of a wooden fence shifting in a light breeze is described as rhythmic and continuous, yet the man presses the brush \"hard\" against the final patch of rotting wood. The physical force of pressing hard enough to paint over rot would likely warp or snap the splintered wood instantly, rather than allowing a single patch to be painted while the entire fence creaks rhythmically.\n\n### Subject Consistency\n*   **Hand anatomy:** Shot 1 describes the hand as having \"knuckles swollen with varicose veins.\" Varicose veins occur in the legs; swelling knuckles with varicose veins is anatomically incorrect. The description likely means swollen knuckles from arthritis or labor, but \"varicose veins\" is the wrong medical term for hand joints.\n*   **Face visibility contradiction:** Shot 1 is a close-up of the hand with a blurred background. Shot 2 is a medium shot where the face is \"partially visible.\" Shot 3 (extreme close-up of the brush) has the face entering the frame \"close to the lens.\" The transition from a hand-only close-up to a face-entering extreme close-up of the brush in the same sequence creates a confusing spatial relationship for the subject's position relative to the camera.\n*   **Clothing texture:** The shirt is described as \"worn cotton\" with a \"soft, organic rustle\" (sound) in the final seconds. The visual description of the shirt as \"worn\" and the sound as a \"soft rustle\" are consistent, but the description of the forearm being \"dusted with green paint chippings\" while the shirt is \"worn cotton\" creates a slight inconsistency if the paint was just applied to a fence; the chippings should be larger flakes or drips rather than a dusting, which implies the paint was airbrushed or blown onto him.\n\n### Story Clarity\n*   **Motivation ambiguity:** The script establishes the man as elderly and solitary, painting a fence. The added cello music (\"melancholic,\" \"mournful\") and the \"grim line\" on his mouth introduce an emotional tone (grief, mourning) that is not present in the script or storyboard, making the story unclear about *why* he is painting. Is it restorative? Is it a funeral ritual? The added music forces a specific emotional reading not supported by the text.\n*   **Pacing dissonance:** Shot 3 is a 1-second extreme close-up. The action described—brush lifts, man pauses, face enters, bird chirps, sound swells, scene holds—is too much narrative information for a single second, creating a rushed, confusing moment where the viewer doesn't know if the focus pull, the face entry, or the bird chirp happens first.\n\n### Pacing\n*   **Shot 3 overload:** Shot 3 (0:04-0:05) attempts to condense four distinct actions into one second: the brush lifts, the hand withdraws, the focus pulls back, the face enters close to the lens, a bird chirps, and the sound swells. This creates a jarring, stop-start rhythm that feels rushed and uncinematic.\n*   **Sound swell timing:** The sound swells and fades while the scene \"holds on the newly painted wood\" for the final second. A swelling organic sound (leaves/fabric) over a static shot of painted wood for the final beat creates a sense of unresolved tension and abruptness, as the audio resolution (silence) does not match the visual resolution (static hold).\n\n### Audio\n*   **Diegetic vs. Non-diegetic clash:** The birdsong is diegetic (part of the scene). The cello is non-diegetic (added music). The description states the cello",
+  "director_prompt": "integrated_multimodal_description\n[Shot 1] 0:00-0:02 — Close-up. The light is soft, diffused morning amber, catching the deep crevices of the elderly man's skin. His hand is weathered, knuckles swollen with varicose veins, the skin mapped with gray wrinkles that contrast sharply against the stark white of his worn cotton cuff. He grips a stiff, bristle-heavy brush with a pale, trembling thumb. The brush head is dipped into a chipped tin of oxidized green paint; the tin's rim is rusted orange, and the paint inside is thick, viscous, and flecked with dust. The camera is static, locked off on the hand as the bristles drag through the pigment, loading with a heavy, glossy sheen. In the blurred background, the texture of a weathered wooden workbench is visible, bathed in the same golden hour light. Distant birdsong hums softly, fading into the creak of wood. He lifts the brush, the bristles heavy with pigment, the green glinting before the frame cuts.\n\n[Shot 2] 0:02-0:04 — Medium shot. The camera remains static, framing the splintered, gray fence that stretches across the horizontal axis, its wood grain cracked and eaten by time. The elderly man stands before it, his posture hunched. His face is partially visible; wrinkles etched deep around his eyes, his mouth set in a grim line. He wears the same worn cotton shirt, sleeves rolled to the elbows, revealing forearms dusted with green paint chippings. He steps forward, breathing shallowly, his chest rising and falling quickly. He presses the brush hard against the final patch of rotting wood. Long, deliberate strokes drag the vibrant green across the grain, the paint pushing under the bristles, hiding the decay beneath a uniform coat of color. The contrast between the gray, splintered wood and the fresh, saturated green is stark.\n\n[Shot 3] 0:04-0:05 — Extreme close-up. The brush lifts away, leaving a perfect, uniform stripe of green that gleams under the morning light, the bristles still dusted with pigment. The elderly man's hand withdraws from the frame, leaving his wrinkled forearm in the foreground for a split second before the focus pulls back to the wood. His face enters the frame, close to the lens; eyes squint slightly in satisfaction, crinkled at the corners, staring at his work. A single bird chirps sharply in the distance. The scene holds on the newly painted wood, the green stripe standing out like a vein of emerald in the gray stone. The sound swells and fades as the static camera lingers on the texture of the fresh paint.\n\noverall_soundscape\nThe soundscape begins with a low, ambient hum of distant birdsong, mixed with the subtle, rhythmic *creak-creak* of a wooden fence shifting in a light breeze. This is overlaid by the wet, squelching sound of stiff paint being dragged through the bristles, followed by the dry *scratch-hiss* of the brush lifting across the wood grain. As the man paints, a low, mournful wind whistles faintly through the cracks in the fence. The single bird's sharp chirp cuts through the quiet at 0:04, followed by the gradual swelling of a soft, organic rustle—perhaps leaves or the fabric of his shirt moving in the wind—until the scene dissolves into complete silence by the end.\n\nnon_diegetic_music\nA solitary, melancholic cello line enters at 0:03, low in the register, vibrating with a sense of enduring quiet. The melody is sparse, consisting of long, bowed notes that swell gently with the motion of the brush, then recede. It does not overpower the diegetic sounds; rather, it sits beneath them, providing a warm, nostalgic undertone that mirrors the man's solitary ritual. By 0:05, the cello fades out completely, leaving only the natural ambient sounds, allowing the viewer to rest on the visual of the painted fence.",
+  "editor_notes": "Based on the critic report, the **best candidate is Shot 2**, as it is the only segment that successfully balances physical realism, anatomical accuracy, and narrative clarity without the extreme pacing issues or medical inaccuracies found in the other shots. You should **keep** the medium shot of the man performing deliberate strokes while breathing steadily, as it grounds the scene in both visual plausibility and emotional calm, and **shorten** Shot 3 significantly by splitting its overloaded four-second sequence into two distinct beats: a 1-second extreme close-up of the brush lifting to show texture, followed immediately by a 2-second medium shot of the man's face entering the frame to allow the bird chirp and sound swell to resolve naturally.",
+  "error": null,
+  "harness_hash": "2e347be9390a9685",
+  "harness_version": "gepa-base",
+  "meta": {
+    "cost": 10.0,
+    "critic_gates": {
+      "physics_ok": false,
+      "physics_p": 0.0042082881554961205,
+      "subject_ok": false,
+      "subject_p": 0.03902994468808174
+    },
+    "effective": {
+      "backend": "minimax_h3",
+      "decision": "http",
+      "declared": {
+        "backend": "minimax_h3",
+        "decision": "http",
+        "text_llm": "openai"
+      },
+      "text_llm": "openai"
+    },
+    "target": {
+      "aspect_ratio": "16:9",
+      "duration_seconds": 5.0,
+      "frame_rate": 24.0,
+      "num_inference_steps": 10,
+      "seed": 0,
+      "short_edge": 768
+    },
+    "task_type": "t2va",
+    "warnings": [],
+    "workflow": [
+      "script",
+      "storyboard",
+      "director",
+      "critic",
+      "editor"
+    ]
+  },
+  "script": "**Shot 1 (0:00-0:02)**\nClose-up: ELDERLY MAN's wrinkled hand grips a stiff brush. He dips it into a chipped tin of green paint. Distant birdsong hums softly, fading into the creak of wood. He lifts the brush, the bristles heavy with pigment.\n\n**Shot 2 (0:02-0:04)**\nMedium shot: The fence stretches across the frame, splintered and gray. The man steps forward, breathing shallowly. He presses the brush hard against the final patch of rotting wood. Long, deliberate strokes drag the vibrant green across the grain, hiding the decay.\n\n**Shot 3 (0:04-0:05)**\nExtreme close-up: The brush lifts away, leaving a perfect, uniform stripe of green. The man pauses, looking at his work. A single bird chirps sharply in the distance, then the scene holds on the newly painted wood as the sound swells and fades.",
+  "split": "promotion",
+  "storyboard": [
+    {
+      "action": "Close-up of the elderly man's wrinkled hand gripping a stiff brush; he dips the brush into a chipped tin of green paint. Distant birdsong hums softly, fading into the creak of wood. He lifts the brush, bristles heavy with pigment.",
+      "camera": "static",
+      "index": 1,
+      "seconds": 2,
+      "shot_size": "close"
+    },
+    {
+      "action": "Medium shot of the splintered gray fence stretching across the frame. The man steps forward, breathing shallowly, and presses the brush hard against the final patch of rotting wood. Long, deliberate strokes drag vibrant green paint across the grain, hiding the decay.",
+      "camera": "static",
+      "index": 2,
+      "seconds": 2,
+      "shot_size": "medium"
+    },
+    {
+      "action": "Extreme close-up of the brush lifting away, leaving a perfect, uniform stripe of green. The man pauses, looking at his work. A single bird chirps sharply in the distance, then the scene holds on the newly painted wood as the sound swells and fades.",
+      "camera": "static",
+      "index": 3,
+      "seconds": 1,
+      "shot_size": "close"
+    }
+  ],
+  "task_id": "promotion-004"
+}

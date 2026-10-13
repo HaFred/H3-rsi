@@ -1,0 +1,131 @@
+{
+  "artifact": {
+    "audio_path": null,
+    "backend": "minimax_h3",
+    "cached": false,
+    "duration_seconds": 5.0,
+    "meta": {
+      "endpoint": "http://localhost:30010",
+      "request_hash": "a51faf0134b3573eb4de8741c4a910324024e59e73833d248cc132ac39edaf78",
+      "status": "completed",
+      "video_id": "7d957fcb-4db8-469c-b717-711db111b8c4"
+    },
+    "seed": 0,
+    "task_id": "test-001",
+    "video_path": "outputs/101214_1strun/evaluations/b5b924300fa39ee10c7b1359d7c17a4428a0e201681905b246661c872a6ebd95/a51faf0134b3573eb4de8741c4a910324024e59e73833d248cc132ac39edaf78.mp4"
+  },
+  "breakdown": {
+    "details": {
+      "editing": {
+        "length_cv": 0.283,
+        "mean_seconds": 1.667,
+        "num_shots": 3,
+        "std_seconds": 0.471,
+        "total_seconds": 5.0
+      },
+      "harness_hash": "2e347be9390a9685",
+      "human": {
+        "human_missing": true,
+        "reason": "no artifact-specific labels"
+      },
+      "mode": "local",
+      "story": {
+        "completeness": 0.5662,
+        "completeness_level": 2.264602929353714,
+        "consistency": 0.9775
+      },
+      "video": {
+        "av": {
+          "skipped": true
+        },
+        "av_alignment": 0.0,
+        "unified": {
+          "frame_std": 0.0475,
+          "malformed_frames": 0,
+          "n_frames": 6,
+          "sample_response": "Alignment Score (1-5): 2.5134999752044678\nCoherence Score (1-5): 3.680500030517578\nStyle Score (1-5): 3.020900011062622"
+        },
+        "unified_reward": 0.5230208337197199
+      }
+    },
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.7306790038943292,
+    "total": 0.6464822512054141,
+    "video": 0.5230208337197199,
+    "weights": {
+      "editing": 0.15,
+      "human": 0.0,
+      "story": 0.25,
+      "video": 0.6
+    }
+  },
+  "critic_report": "### Physics\n*   **Soil displacement:** In Shot 1, the description states \"soft soil ripples outward in concentric circles\" as a gloved thumb presses a single seedling. Real damp soil yields to a single finger with a localized indentation, not a radial wave pattern resembling liquid or trampoline.\n*   **Ground clearance:** In Shot 2, Elara is described as standing with her \"full body occupying the lower two-thirds of the frame\" while kneeling in the previous shot. If she is fully standing, she should be significantly higher than the seedling; the description implies she is still very close to the ground level relative to the camera, contradicting the \"stand up\" action unless the lens is extremely long or she is crouching, not standing.\n*   **Bird trajectory:** The sparrow hops from the shoulder to the seedling (approx. 1–1.5 meters) then flies to a \"dense thicket of hollyhocks.\" The description says it \"flaps hard against the soft morning light before vanishing.\" Without visible flapping motion in a low-angle shot looking up, the bird should be clearly visible against the sky, not vanish instantly.\n\n### Subject Consistency\n*   **Handwear mismatch:** The script specifies **gloved hands** (black leather). The generation description mentions fingers \"stained slightly with earth\" and dirt \"clinging to her skin,\" implying the gloves are either missing or torn, creating a contradiction between the prop and the texture described.\n*   **Jacket description:** The script mentions a tweed jacket, but the generation description introduces \"black leather\" gloves contrasting with the \"tweed jacket.\" While not a direct contradiction if the jacket is tweed, the tactile description of dirt clinging to \"skin\" directly conflicts with the leather glove premise established in the script and the first shot's visual.\n*   **Bird anatomy:** The sparrow is described as landing on the left shoulder, tilting its head \"back\" at Elara, then hopping down. Head-tilting birds usually tilt the head *sideways* (noddying), not backward, which looks unnatural for a sparrow.\n\n### Story Clarity\n*   **Ambiguous motivation:** The script says Elara is \"waiting.\" The generation description adds specific internal states (\"shoulders dropping in relief,\" \"sad smile,\" \"peaceful solitude\") that are not in the script. These injected emotions redefine the character's arc without narrative justification, creating confusion about whether she is happy, sad, or relieved.\n*   **Missing context:** The script establishes a single seedling. The generation description adds \"hollyhocks\" as the destination for the bird. This introduces a specific plant type not present in the script's setting (\"garden stretches behind her\"), altering the environment's identity without cause.\n*   **Contradictory emotional beats:** Shot 2 describes the music swelling to reflect a \"connection,\" while Shot 3 describes the music stripping away to leave a \"faint, lingering echo\" matching her waiting alone. The transition from \"connection\" to \"alone\" is abrupt and unbridged by action, making the emotional arc feel disjointed rather than earned.\n\n### Pacing\n*   **Shot 3 duration:** Shot 3 is only **1 second** long (0:04–0:05). A wide establishing shot meant to convey \"waiting\" and \"stillness\" is too brief to register the intended mood. The description spends 30+ words detailing a single second of action, suggesting the pacing is rushed and fails to let the silence breathe.\n*   **Action density:** Shot 2 (2 seconds) packs standing up, brushing dirt, waiting, head tilt, hopping, pecking, and flying. This is a high-density montage of micro-actions that likely feels frantic rather than the \"gentle sigh of release\" intended by the script tone.\n\n### Audio\n*   **Exaggerated impact sounds:** The soundscape description emphasizes a \"heavy, wet thwump\" of soil compressing and a \"crisp, dry swish\" of the jacket. These are overly loud and tactile for a scene focused on \"gentle solitude.\" A real single finger press in damp soil makes a soft *squish*, not a thwump.\n*   **Inconsistent volume layering:** The description states \"the wind drops out\" when the sparrow lands, leaving only the tap. In reality, ambient wind is rarely completely silent; its total absence creates an artificial, unnatural silence that breaks the immersion of the \"ambient morning wind\" established in the same paragraph.\n*   **Non-diegetic intrusion:** The cello melody \"resonates in the damp quiet\" and later drops to a \"faint, lingering echo.\" The description conflates the diegetic soundscape (birds, wind) with the music too closely, making the final fade-out where",
+  "director_prompt": "integrated_multimodal_description\n[Shot 1] 0:00–0:02 — Close-up. The frame is filled with rich, dark loam and the rough, black leather of Elara's gloves. Her fingers, stained slightly with earth, tremble just enough to show fatigue but resolve into a gentle press. She places a single, pale green seedling into the damp mound. The soil ripples outward in concentric circles as her thumb and forefinger sink into it, the dirt clinging to her skin like wet clay. Soft, diffused morning light from the upper left catches the moisture on the seedling's leaves, making them glow against the matte black of the gloves. The camera is static, holding the intimacy of the action until the very last millisecond.\n[Shot 2] 0:02–0:04 — Low angle, medium shot looking up. Elara stands, her full body occupying the lower two-thirds of the frame; her tweed jacket, dusted with grey soil, contrasts with the vibrant green of the garden below. She brushes dirt from her knees with a swift, deliberate motion. A small brown sparrow lands on her left shoulder, its feathers ruffled by the breeze. Elara pauses, tilting her head, and the bird tilts its own head back at her in a silent exchange. The sparrow then hops down to the seedling, pecks it once with a sharp *tap*, and launches into the air, flapping hard against the soft morning light before vanishing toward a dense thicket of hollyhocks.\n[Shot 3] 0:04–0:05 — Wide shot. The garden stretches behind her, a tapestry of emerald and gold under a pale, hazy morning sky. Elara stands still in the center foreground, silhouetted slightly against the bright background, her figure small against the vastness of the plot. She watches the point where the sparrow disappeared, her shoulders dropping in relief. A slow, sad smile touches her lips as she waits. The single seedling stands alone in the middle distance, a tiny green dot against the sprawling earth. The scene fades out on her stillness.\n\noverall_soundscape\nThe soundscape is dominated by the heavy, wet *thwump* of soil compressing under Elara's gloved fingers, followed by the crisp, dry *swish* of her tweed jacket brushing against her knees. This is layered under a low, steady hum of ambient morning wind moving through tall grass and the distant, hollow creak of an old wooden fence in the background. When the sparrow lands, the wind drops out, leaving the sharp, percussive *tap* of the bird's foot on her shoulder and the delicate rustle of its feathers. The bird's flight is marked by a quick *whoosh* of air. The final moments are filled with the soft, drowsy sound of birdsong in the distance and the gentle settling of dew on leaves, creating an atmosphere of peaceful solitude.\n\nnon_diegetic_music\nA solitary, cello-like instrument (or a low-registered synth solo) plays a single, melancholic melody. It begins with a soft, bowed note at the start of the first shot, resonating in the damp quiet. As Elara stands and the sparrow arrives, the music swells slightly with a warm, major-third harmony, reflecting the connection between human and bird, before dropping back to a sparse, rhythmic pulse as the bird flies off. In the wide final shot, the music strips away entirely, leaving only the heartbeat of the cello as a faint, lingering echo, matching the visual of Elara waiting alone in the fading light.",
+  "editor_notes": "The best candidate to keep is **Candidate A**, which correctly depicts the soil yielding to a single finger with a localized indentation rather than an unrealistic radial wave, and maintains the character's tweed jacket and gloved hands without contradicting the script's established details. For the final edit, retain the full duration of **Shot 1** to emphasize the gentle tactile interaction, but significantly shorten **Shot 3** from its current rushed 1-second cut to at least 4–5 seconds so the wide establishing mood of \"waiting\" can breathe and register emotionally.",
+  "error": null,
+  "harness_hash": "2e347be9390a9685",
+  "harness_version": "gepa-base",
+  "meta": {
+    "cost": 10.0,
+    "critic_gates": {
+      "physics_ok": false,
+      "physics_p": 0.039220456033945084,
+      "subject_ok": false,
+      "subject_p": 0.12254586815834045
+    },
+    "effective": {
+      "backend": "minimax_h3",
+      "decision": "http",
+      "declared": {
+        "backend": "minimax_h3",
+        "decision": "http",
+        "text_llm": "openai"
+      },
+      "text_llm": "openai"
+    },
+    "target": {
+      "aspect_ratio": "16:9",
+      "duration_seconds": 5.0,
+      "frame_rate": 24.0,
+      "num_inference_steps": 10,
+      "seed": 0,
+      "short_edge": 768
+    },
+    "task_type": "t2va",
+    "warnings": [],
+    "workflow": [
+      "script",
+      "storyboard",
+      "director",
+      "critic",
+      "editor"
+    ]
+  },
+  "script": "**EXT. GARDEN - MORNING**\n\n**SHOT 1 (0:00-0:02)**\nClose-up. ELARA's gloved hands kneel in damp earth. She carefully places a single seedling into the dirt. Soft soil ripples outward as her fingers press down, a gentle sigh of release.\n\n**SHOT 2 (0:02-0:04)**\nLow angle. Elara stands, brushing soil from her knees. A SPARROW lands on her shoulder, tilting its head. They exchange a silent look. The bird hops to the seedling, pecking once, then taking flight toward a nearby bush.\n\n**SHOT 3 (0:04-0:05)**\nWide shot. The garden stretches behind her. Elara stands still, watching the sparrow disappear into the green. The seedling is alone, but she smiles, waiting. Fade out.",
+  "split": "test",
+  "storyboard": [
+    {
+      "action": "Elara's gloved hands kneel in damp earth, carefully placing a single seedling into the dirt and gently pressing the soil down.",
+      "camera": "static",
+      "index": 1,
+      "seconds": 2,
+      "shot_size": "close"
+    },
+    {
+      "action": "Low angle: Elara stands, brushing soil from her knees as a sparrow lands on her shoulder; they exchange a silent look before the bird hops to the seedling, pecks once, and flies toward a nearby bush.",
+      "camera": "push",
+      "index": 2,
+      "seconds": 2,
+      "shot_size": "medium"
+    },
+    {
+      "action": "Wide shot of the garden with Elara standing still, watching the sparrow disappear into the green foliage. The seedling stands alone while Elara smiles, waiting. Fade out.",
+      "camera": "static",
+      "index": 3,
+      "seconds": 1,
+      "shot_size": "wide"
+    }
+  ],
+  "task_id": "test-001"
+}

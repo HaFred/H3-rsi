@@ -1,0 +1,131 @@
+{
+  "artifact": {
+    "audio_path": null,
+    "backend": "minimax_h3",
+    "cached": false,
+    "duration_seconds": 5.0,
+    "meta": {
+      "endpoint": "http://localhost:30010",
+      "request_hash": "9e6dd60532c848b6a9428568017e717dd8791fcf4023be649740430e2c0511b4",
+      "status": "completed",
+      "video_id": "74d28c1f-5351-4912-b7a3-bd0061c5742b"
+    },
+    "seed": 0,
+    "task_id": "train-001",
+    "video_path": "outputs/101214_1strun/evaluations/631d708ac3df6588b1e37f60b3541a534089d4bbb6e4b19ead030ff9c347b776/9e6dd60532c848b6a9428568017e717dd8791fcf4023be649740430e2c0511b4.mp4"
+  },
+  "breakdown": {
+    "details": {
+      "editing": {
+        "length_cv": 0.141,
+        "mean_seconds": 1.667,
+        "num_shots": 3,
+        "std_seconds": 0.236,
+        "total_seconds": 5.0
+      },
+      "harness_hash": "c15af1a6afbad1c3",
+      "human": {
+        "human_missing": true,
+        "reason": "no artifact-specific labels"
+      },
+      "mode": "local",
+      "story": {
+        "completeness": 0.5808,
+        "completeness_level": 2.323288396000862,
+        "consistency": 0.989
+      },
+      "video": {
+        "av": {
+          "skipped": true
+        },
+        "av_alignment": 0.0,
+        "unified": {
+          "frame_std": 0.061,
+          "malformed_frames": 0,
+          "n_frames": 6,
+          "sample_response": "Alignment Score (1-5): 2.8517000675201416\nCoherence Score (1-5): 3.558500051498413\nStyle Score (1-5): 3.1410999298095703"
+        },
+        "unified_reward": 0.4869652854071724
+      }
+    },
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.7441080503165722,
+    "total": 0.6282061838234465,
+    "video": 0.4869652854071724,
+    "weights": {
+      "editing": 0.15,
+      "human": 0.0,
+      "story": 0.25,
+      "video": 0.6
+    }
+  },
+  "critic_report": "### Physics\n1.  **Steam vs. Rain:** The script and description state it is raining (\"raindrops fall,\" \"heavy downpour\"), yet Shot 1 describes \"steam rising from puddles.\" In cold rain, puddles emit no visible steam; steam only rises from heat sources (foot traffic, exhaust) or hot pavement, which contradicts the \"dusk\" setting where such heat would be negligible.\n2.  **Umbrella Mechanics:** In Shot 2, the character bends at the knees to grip the handle of an umbrella lying flat on the ground. Physically, this posture places the character almost parallel to the ground, making the transition to standing upright in Shot 3 without a clear \"lifting\" motion described in the movement physics highly jarring. The description says they \"lift the red umbrella upright,\" but the camera is a push-in medium shot; the spatial relationship between the crouching body and the umbrella's handle implies the umbrella is being held *by* the handle while crouched, yet in Shot 3 it is held \"over the head like a roof.\" A person cannot stand upright holding a handle while simultaneously using the canopy as a roof unless they are also holding the canopy edge, which is not described.\n3.  **Water Dynamics:** The description claims raindrops \"bounce off the umbrella's red fabric\" with *plip* impacts. Raindrops do not bounce off standard fabric (cotton/polyester); they bead and slide. Bouncing requires a superhydrophilic or superhydrophobic surface treated specifically for bouncing, or a hard shell (like a fiberglass umbrella), neither of which is specified.\n4.  **Cloth Friction:** In Shot 2, the description notes the sleeves are \"slightly rolled up, revealing the black zippers on the inner cuffs.\" If the zippers are on the *front* of the coat (stated in Shot 1), rolling up sleeves to expose them on the \"inner cuffs\" implies the zippers are internal or the sleeves are pulled down over the zippers. The geometry of a standard raincoat zipper running down the front vs. being on an inner cuff is inconsistent without clarification.\n\n### Subject Consistency\n5.  **Umbrella Color/Shade:** The umbrella is described as \"crimson red,\" \"rust-red,\" and \"vibrant red.\" While varying degrees of red are acceptable, the description shifts the perceived hue significantly within seconds, suggesting a color grading inconsistency or a model rendering the same object with different spectral properties.\n6.  **Zipper Visibility:** Shot 1 states the zippers run \"down the front and across the shoulders.\" Shot 2 states sleeves are rolled up \"exposing skin and highlighting the black zippers on the inner cuffs.\" Shot 3 states the zippers \"glint brightly.\" In Shot 2, if the sleeves are rolled up to reveal inner cuffs, the front zippers should be obscured by the rolled fabric unless the character is wearing a double-layer coat or the zippers are on the inside lining, which contradicts the \"front\" description in Shot 1.\n7.  **Camera Movement Logic:** The storyboard lists Shot 2 as a \"push,\" but the generation description says \"The camera executes a slow, smooth push-in... as the same person... drops to one knee.\" In a static or pushing shot, the background should blur or compress slightly. The description mentions the figure drops to one knee while the camera pushes; this creates a visual conflict where the subject's scale changes drastically relative to the frame edge, often resulting in the subject disappearing off-screen or the background moving unnaturally fast relative to the subject.\n\n### Story Clarity\n8.  **Narrative Ambiguity:** The sequence shows a person walking, picking up an umbrella, and standing under it. There is no indication of *why* the umbrella was discarded (was it lost? dropped intentionally? theft?), nor is there a character to interact with. The final shot isolates the figure under the umbrella with no emotional anchor or destination, leaving the \"story\" as purely atmospheric with no narrative resolution or question posed.\n9.  **Contradictory Weather States:** The script implies a transition from \"steam rising from puddles\" (wet, possibly cold but dry air) to a full downpour. However, the lack of a clear progression (e.g., clouds gathering, rain starting) makes the sudden onset of individual raindrops in Shot 3 feel unearned, as the initial shot established a misty/dry condition.\n\n### Pacing\n10. **Shot Duration Mismatch:** The script labels Shot 2 as 2.0 seconds (1.5-3.5s), but the storyboard lists it as 2.0 seconds. The generation description splits the action: walking (Shot 1, 1.5s), bending/grabbing (Shot 2 start), lifting (Shot 2 end), standing",
+  "director_prompt": "integrated_multimodal_description:\n[Shot 1] (0.0s–1.5s) A wide, static shot captures a figure clad in a vivid **bright yellow raincoat** featuring prominent **black zippers** running down the front and across the shoulders, walking purposefully forward along a slick, **wet city sidewalk** at **dusk**. The lighting is low-key and moody, dominated by the **warm, amber glow of distant streetlights** that pool in the glossy pavement, creating elongated, distorted reflections of the city skyline. Patches of **steam rise gently from large puddles** directly beneath the figure's feet, billowing slightly before dissipating into the cool grey air. As they approach the foreground, a **crimson red umbrella** lies discarded and flat on the wet concrete. The material of the raincoat appears slightly crinkled and water-repellent, glistening where droplets have collected on the shoulders and collar. The figure's movement is steady and deliberate, the black zippers catching fleeting glints of light as the torso shifts with each step.\n\n[Shot 2] (1.5s–3.5s) The camera executes a slow, smooth **push-in** (medium shot) as the same person in the **bright yellow raincoat with black zippers** drops to one knee, bending at the waist. The fabric of the coat stretches and wrinkles around the torso, emphasizing the motion. They reach down, gripping the **handle of a red umbrella** with both hands. Water, heavy and slow, **drips steadily from the umbrella's rust-red tip** into a dark puddle, each drop tracing a perfect white arc against the dark asphalt. The **yellow raincoat sleeves are slightly rolled up** to the mid-forearm, exposing skin and highlighting the **black zippers** on the inner cuffs. With a controlled lift, the **red umbrella** is raised from its flat position to stand upright in their hand, the vibrant red contrasting sharply against the muted, shadowy urban background.\n\n[Shot 3] (3.5s–5.0s) In a static close-up, the person stands fully upright, arms extended, holding the **red umbrella** directly over their head like a canopy. Individual **raindrops fall around them** in a rhythmic pattern, hitting the **red fabric** of the umbrella with soft *plip* impacts, causing the surface to ripple slightly. The **bright yellow raincoat with black zippers** stands rigid and dry under the umbrella's shelter, the **black zippers** glinting brightly as the figure stabilizes. The **wet street below** acts as a dark mirror, reflecting the deep red of the underside of the umbrella and the warm streetlights, while a few stray droplets cling to the hem of the coat. The atmosphere is quiet and intimate, focusing on the texture of the red fabric and the sharp geometry of the yellow coat against the grey, rainy night.\n\noverall_soundscape:\nThe audio landscape is defined by the immersive weight of a heavy downpour, with a consistent *hiss* of rain hitting the slick pavement and the rhythmic *tap-tap* of drops on the yellow raincoat's hood. Underfoot, the crunch of wet asphalt and the occasional soft *squelch* as boots press into puddles are audible. In the second shot, the sound of water dripping from the red umbrella's tip is amplified into a distinct, melodic *plip-plip-plip*, creating a percussive counterpoint to the ambient rain. The city background is muffled by the storm—a distant, low rumble of traffic and the indistinct murmur of shouting pedestrians, all softened by the atmospheric fog rising from the wet streets.\n\nnon_diegetic_music:\nA solitary, cello-driven motif begins softly, emerging around the 1.0-second mark. The tone is warm and melancholic, played on a gut-string cello that resonates with a slight nasal quality, evoking the intimacy of the yellow coat. The melody is sparse, consisting of long, sustaining notes that swell gently as the figure lifts the umbrella, mirroring the opening of the red canopy. There is no percussion; the rhythm is purely melodic, fading slightly in volume as the rain intensifies in the final shot, leaving only the cello's warm, hollow echo against the cold, grey silence of the storm.",
+  "editor_notes": "Candidate Video **C** is the strongest choice because it successfully captures the atmospheric mood and the character's silhouette under the umbrella, despite the physics and color inconsistencies noted in the report. I recommend keeping the full duration of the atmospheric opening and climax shots while significantly shortening the middle sequence where the character fumbles with the umbrella, as this specific action segment suffers from the most jarring physics and duration mismatches.\n\nFor precise shot lengths, retain the **steam/puddle establishing shot** and the **final sheltered silhouette** at their current pace to maximize emotional impact, but trim the **umbrella-grabbing and lifting sequence** to roughly 1.5 seconds to fix the pacing mismatch and reduce the visual awkwardness of the crouching mechanics.",
+  "error": null,
+  "harness_hash": "c15af1a6afbad1c3",
+  "harness_version": "gepa-base",
+  "meta": {
+    "cost": 10.0,
+    "critic_gates": {
+      "physics_ok": false,
+      "physics_p": 0.047808997333049774,
+      "subject_ok": false,
+      "subject_p": 0.4794251620769501
+    },
+    "effective": {
+      "backend": "minimax_h3",
+      "decision": "http",
+      "declared": {
+        "backend": "minimax_h3",
+        "decision": "http",
+        "text_llm": "openai"
+      },
+      "text_llm": "openai"
+    },
+    "target": {
+      "aspect_ratio": "16:9",
+      "duration_seconds": 5.0,
+      "frame_rate": 24.0,
+      "num_inference_steps": 10,
+      "seed": 0,
+      "short_edge": 768
+    },
+    "task_type": "t2va",
+    "warnings": [],
+    "workflow": [
+      "script",
+      "storyboard",
+      "director",
+      "critic",
+      "editor"
+    ]
+  },
+  "script": "**SHOT 1 (0.0-1.5s)**\nA person in a bright yellow raincoat with black zippers walks forward on a wet city sidewalk at dusk. Steam rises from puddles under their feet as wet pavement reflects the streetlights. They approach a red umbrella lying on the ground.\n\n**SHOT 2 (1.5-3.5s)**\nThe same person in the yellow raincoat bends at the knees, gripping the red umbrella handle. Water drips steadily from the umbrella's tip into a puddle. Their yellow raincoat sleeves are slightly rolled up, and the red umbrella is now upright in their hand.\n\n**SHOT 3 (3.5-5.0s)**\nThe person stands fully upright, holding the red umbrella over their head like a roof. Raindrops fall around them, bouncing off the umbrella's red fabric. The yellow raincoat and red umbrella remain the same colors, and the wet street reflects the scene beneath their feet.",
+  "split": "train",
+  "storyboard": [
+    {
+      "action": "A person in a bright yellow raincoat with black zippers walks forward on a wet city sidewalk at dusk. Steam rises from puddles under their feet as wet pavement reflects the warm glow of streetlights. They approach a red umbrella lying flat on the ground.",
+      "camera": "static",
+      "index": 1,
+      "seconds": 1.5,
+      "shot_size": "wide"
+    },
+    {
+      "action": "The person in the bright yellow raincoat with black zippers bends at the knees, gripping the handle of a red umbrella. Water drips steadily from the red umbrella's tip into a puddle. Their yellow raincoat sleeves are slightly rolled up, revealing the black zippers, and they lift the red umbrella upright into their hand.",
+      "camera": "push",
+      "index": 2,
+      "seconds": 2.0,
+      "shot_size": "medium"
+    },
+    {
+      "action": "The person in the bright yellow raincoat with black zippers stands fully upright, holding the red umbrella over their head like a roof. Individual raindrops fall around them, bouncing off the red fabric of the umbrella. The yellow raincoat and red umbrella remain the same colors, and the wet street below reflects the scene.",
+      "camera": "static",
+      "index": 3,
+      "seconds": 1.5,
+      "shot_size": "close"
+    }
+  ],
+  "task_id": "train-001"
+}

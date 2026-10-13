@@ -1,0 +1,131 @@
+{
+  "artifact": {
+    "audio_path": null,
+    "backend": "minimax_h3",
+    "cached": false,
+    "duration_seconds": 5.0,
+    "meta": {
+      "endpoint": "http://localhost:30010",
+      "request_hash": "666450ddacc179ba6f95675a1f13bf21e83b02fff70593e6f44afff0c78b73dd",
+      "status": "completed",
+      "video_id": "0ca7b88a-dd5c-45f5-b83a-891037fcacf1"
+    },
+    "seed": 0,
+    "task_id": "promotion-002",
+    "video_path": "outputs/101214_1strun/evaluations/aeea3f5b03090fe0e176ffcc791fd692a04fa97d8e5ff382365c8e48961349ea/666450ddacc179ba6f95675a1f13bf21e83b02fff70593e6f44afff0c78b73dd.mp4"
+  },
+  "breakdown": {
+    "details": {
+      "editing": {
+        "length_cv": 0.0,
+        "mean_seconds": 1.67,
+        "num_shots": 3,
+        "std_seconds": 0.0,
+        "total_seconds": 5.01
+      },
+      "harness_hash": "55be971f47e67d57",
+      "human": {
+        "human_missing": true,
+        "reason": "no artifact-specific labels"
+      },
+      "mode": "local",
+      "story": {
+        "completeness": 0.5286,
+        "completeness_level": 2.1142748594284058,
+        "consistency": 0.9883
+      },
+      "video": {
+        "av": {
+          "skipped": true
+        },
+        "av_alignment": 0.0,
+        "unified": {
+          "frame_std": 0.0301,
+          "malformed_frames": 0,
+          "n_frames": 6,
+          "sample_response": "Alignment Score (1-5): 2.8701999187469482\nCoherence Score (1-5): 3.7035000324249268\nStyle Score (1-5): 3.202199935913086"
+        },
+        "unified_reward": 0.5410722262329525
+      }
+    },
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.7124667465686798,
+    "total": 0.6527600223819415,
+    "video": 0.5410722262329525,
+    "weights": {
+      "editing": 0.15,
+      "human": 0.0,
+      "story": 0.25,
+      "video": 0.6
+    }
+  },
+  "critic_report": "### Physics\n*   **Object Weight Violation:** In Shot 2, the woman \"sits down\" while the camera is a static close-up on her hands. No motion of her torso, chair, or legs is captured; the action of sitting is described but visually impossible to verify or see in a hand-only frame.\n*   **Finger Placement:** In Shot 3, she rests her \"chin softly on her fingertips.\" Anatomically, resting the chin directly on the fingertips while holding a book open with the other hand creates an unnatural, strained angle that contradicts the relaxed posture implied by the rest of the scene.\n*   **Light Consistency:** Shot 1 describes \"warm afternoon sunlight\" casting long golden shadows, while Shot 3 describes \"soft ambient light filtering through\" with closed doors. The transition from direct, directional afternoon sun to diffuse ambient light without a logical time-of-day shift or window change is inconsistent with the established \"warm afternoon\" setting.\n\n### Subject Consistency\n*   **Clothing Continuity:** The script and storyboards specify \"grey slacks\" for Shot 1. In Shot 2 and 3, only the navy-blue cardigan and hands are mentioned. There is no visual confirmation that grey slacks are present in the close-up or medium shots, leaving a gap in visual continuity between the wide and tighter frames.\n*   **Hair Detail:** Shot 1 specifies \"short brown hair.\" Shot 3 mentions \"short brown hair catching the warm glow.\" However, since Shot 1 is a wide shot and Shot 3 is a medium shot, the hair length and color should be immediately obvious. If the generated video shows long hair or a different shade in Shot 3, it breaks consistency with the established character description.\n\n### Story Clarity\n*   **Ambiguous Motivation:** The script establishes the woman finding a specific book (\"faded royal blue spine\") and immediately flipping through it. There is no visual cue or narrative context explaining *why* she chose this specific book or what the story within the book is, leaving the emotional arc of the scene unresolved by the end of the 5 seconds.\n*   **Missing Context:** The storyboards state the camera \"pulls back to reveal the quiet library room,\" yet the description of the room (closed doors, ambient light) is generic. The specific \"story\" of the library setting is not visually grounded beyond the initial shelf interaction, making the environment feel like a backdrop rather than a character in the scene.\n\n### Pacing\n*   **Rushed Action:** Shot 2 (1.67s) requires the woman to sit down, place a book on a stack, open the cover wide, and turn multiple pages one by one. This sequence of four distinct physical actions compressed into under two seconds is rushed and lacks the natural rhythm of reading, appearing mechanical rather than contemplative.\n*   **Slow Motion Disconnect:** Shot 3 is 1.67 seconds long. The description says she \"settles into reading\" while the camera pulls back. A full pull-back revealing a room, combined with the subtle action of settling into a reading posture, takes longer than the allotted 1.67 seconds, causing the visual resolution of the room to feel abrupt or unfinished.\n\n### Audio\n*   **Inconsistent Sound Layers:** The soundscape describes \"the gentle creak of the wooden floorboards as the woman sits down\" (Shot 2). However, Shot 2 is a close-up on hands; the creak is likely inaudible or drowned out by the \"soft, dry rustle\" described as the dominant layer. The prominence of the floor creak contradicts the visual scope of the shot.\n*   **Music Tempo Mismatch:** The non-diegetic music is described as \"extremely slow (approx. 50 BPM)\" with a \"slow, ascending arpeggio.\" Simultaneously, the visual action in Shot 2 involves rapid, sequential page-turning. A 50 BPM cello line may feel too sluggish to underscore the mechanical speed of the page-turning action, creating a rhythmic dissonance between the sound and the visual tempo.",
+  "director_prompt": "integrated_multimodal_description\n[Shot 1] 0.0s - 1.67s [Wide, Static] A woman with short brown hair, wearing a navy-blue cardigan and grey slacks, stands in a cozy library bathed in warm afternoon sunlight streaming through tall windows. The light casts long, golden shadows across the floorboards. She reaches onto a polished dark oak shelf, her fingers gently pulling out a worn hardcover book with a faded royal blue spine. She turns toward her desk, holding the book by its spine, the blue cover gleaming softly in the dust-mote light that fills the air.\n[Shot 2] 1.67s - 3.33s [Close-up, Static] Close-up on the woman's hands at the same wooden desk; the navy-blue cardigan sleeves frame the shot. She sits down, placing the blue book on a stack of cream paper. Her hands open the front cover wide, then she begins to turn pages one by one, the crisp white pages fanning out slightly as she flips through them quietly, the fabric of her cardigan sleeve moving gently with each hand gesture.\n[Shot 3] 3.33s - 5.0s [Medium, Pull Back] The woman, in her navy-blue cardigan, lifts the blue book to read, resting her chin softly on her fingertips. The camera slowly pulls back to reveal the quiet library room: soft ambient light filtering through, closed wooden doors in the background, and the gentle rustle of the book's pages filling the still air as she settles into reading, her short brown hair catching the warm glow.\n\noverall_soundscape\nThe audio landscape is dominated by the soft, dry rustle of the book's crisp white pages turning one by one. This is layered over the warm, muffled ambient tone of the library: the low hum of distant traffic outside, the gentle creak of the wooden floorboards as the woman sits down, and the soft scratch of her fingers against the paper. There is a subtle, airy \"stillness\" sound, as if tiny dust motes are settling in the warm afternoon air. No dialogue or sudden noises occur; the environment feels thick, quiet, and intimate.\n\nnon_diegetic_music\nA minimal, warm ambient score features a soft, resonant cello line in a low register, playing a slow, ascending arpeggio that mirrors the gentle unfolding of the book's pages. A faint, warm piano note occasionally sustains in the mid-range, adding a sense of nostalgia and quiet contemplation. The tempo is extremely slow (approx. 50 BPM), with no percussion, maintaining a hushed, dreamlike atmosphere that supports the visual stillness of the library setting.",
+  "editor_notes": "The best candidate is the one where the woman's posture in Shot 3 naturally accommodates her chin resting on her fingertips without strain, and where the lighting transition from Shot 1 to Shot 3 feels earned through a gradual shift in time or window position rather than an abrupt change; in that version, keep the entire sequence of shots but significantly extend Shot 2 to allow the sitting, book placement, and page-turning actions to unfold with a natural, contemplative rhythm rather than rushing them into under two seconds, and lengthen Shot 3 to give the camera pull-back enough time to fully reveal the library environment.",
+  "error": null,
+  "harness_hash": "55be971f47e67d57",
+  "harness_version": "gepa-base-gepa-4ddd73aa",
+  "meta": {
+    "cost": 10.0,
+    "critic_gates": {
+      "physics_ok": false,
+      "physics_p": 0.05711483210325241,
+      "subject_ok": false,
+      "subject_p": 0.5680850148200989
+    },
+    "effective": {
+      "backend": "minimax_h3",
+      "decision": "http",
+      "declared": {
+        "backend": "minimax_h3",
+        "decision": "http",
+        "text_llm": "openai"
+      },
+      "text_llm": "openai"
+    },
+    "target": {
+      "aspect_ratio": "16:9",
+      "duration_seconds": 5.0,
+      "frame_rate": 24.0,
+      "num_inference_steps": 10,
+      "seed": 0,
+      "short_edge": 768
+    },
+    "task_type": "t2va",
+    "warnings": [],
+    "workflow": [
+      "script",
+      "storyboard",
+      "director",
+      "critic",
+      "editor"
+    ]
+  },
+  "script": "**SHOT 1 (0.0s-1.67s)** A woman with short brown hair, wearing a navy-blue cardigan and grey slacks, stands in a cozy library with warm afternoon sunlight. She reaches onto a wooden shelf, her fingers gently pulling out a worn hardcover book with a faded royal blue spine. She turns toward her desk, holding the book by its spine, the blue cover gleaming softly in the dust-mote light.\n\n**SHOT 2 (1.67s-3.33s)** Close-up on the woman's hands at the same wooden desk, still in the navy-blue cardigan. She sits down, the blue book resting on a stack of cream paper. Her hands open the front cover wide, then she begins to turn pages one by one, the crisp white pages fanning out slightly as she flips through them quietly.\n\n**SHOT 3 (3.33s-5.0s)** The woman, in her navy-blue cardigan, lifts the blue book to read, resting her chin softly on her fingertips. The camera pulls back slightly to show the quiet library room: soft ambient light, closed doors, and the gentle rustle of the book's pages filling the still air as she settles into reading.",
+  "split": "promotion",
+  "storyboard": [
+    {
+      "action": "A woman with short brown hair, in a navy-blue cardigan and grey slacks, stands in a cozy library bathed in warm afternoon sunlight. She reaches onto a wooden shelf, gently pulling out a worn hardcover book with a faded royal blue spine, then turns toward her desk holding the book by its spine.",
+      "camera": "static",
+      "index": 1,
+      "seconds": 1.67,
+      "shot_size": "wide"
+    },
+    {
+      "action": "Close-up on the woman's hands at the wooden desk; she sits down, places the blue book on a stack of cream paper, opens the front cover wide, and begins turning pages one by one as they fan out slightly.",
+      "camera": "static",
+      "index": 2,
+      "seconds": 1.67,
+      "shot_size": "close"
+    },
+    {
+      "action": "The woman lifts the blue book to read, resting her chin softly on her fingertips. The camera pulls back to reveal the quiet library room with soft ambient light, closed doors, and the gentle rustle of the book's pages filling the air as she settles into reading.",
+      "camera": "pull_back",
+      "index": 3,
+      "seconds": 1.67,
+      "shot_size": "medium"
+    }
+  ],
+  "task_id": "promotion-002"
+}

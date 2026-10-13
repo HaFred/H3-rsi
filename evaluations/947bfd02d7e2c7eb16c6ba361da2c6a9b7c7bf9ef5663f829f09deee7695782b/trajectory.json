@@ -1,0 +1,131 @@
+{
+  "artifact": {
+    "audio_path": null,
+    "backend": "minimax_h3",
+    "cached": false,
+    "duration_seconds": 5.0,
+    "meta": {
+      "endpoint": "http://localhost:30010",
+      "request_hash": "74d389cc0a78036d2379326d5aba75d4661c2527fe161223629b2b65e0f20092",
+      "status": "completed",
+      "video_id": "fe87d464-2e2a-4528-98a6-c893d3780a2d"
+    },
+    "seed": 0,
+    "task_id": "test-004",
+    "video_path": "outputs/101214_1strun/evaluations/947bfd02d7e2c7eb16c6ba361da2c6a9b7c7bf9ef5663f829f09deee7695782b/74d389cc0a78036d2379326d5aba75d4661c2527fe161223629b2b65e0f20092.mp4"
+  },
+  "breakdown": {
+    "details": {
+      "editing": {
+        "length_cv": 0.057,
+        "mean_seconds": 1.667,
+        "num_shots": 3,
+        "std_seconds": 0.094,
+        "total_seconds": 5.0
+      },
+      "harness_hash": "55be971f47e67d57",
+      "human": {
+        "human_missing": true,
+        "reason": "no artifact-specific labels"
+      },
+      "mode": "local",
+      "story": {
+        "completeness": 0.5523,
+        "completeness_level": 2.2092175334692,
+        "consistency": 0.9897
+      },
+      "video": {
+        "av": {
+          "skipped": true
+        },
+        "av_alignment": 0.0,
+        "unified": {
+          "frame_std": 0.0229,
+          "malformed_frames": 0,
+          "n_frames": 6,
+          "sample_response": "Alignment Score (1-5): 2.3015999794006348\nCoherence Score (1-5): 3.5322999954223633\nStyle Score (1-5): 2.9010000228881836"
+        },
+        "unified_reward": 0.5232194430298276
+      }
+    },
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.7272639729082584,
+    "total": 0.6457476590449611,
+    "video": 0.5232194430298276,
+    "weights": {
+      "editing": 0.15,
+      "human": 0.0,
+      "story": 0.25,
+      "video": 0.6
+    }
+  },
+  "critic_report": "### Physics\n1.  **Gravity/Plate Dynamics:** In Shot 3, the chef picks up a plate with a single bright strawberry and a thin vanilla slice using \"both hands\" while \"holding the plate delicately.\" The description implies a steady, controlled lift, but the combination of the precarious single strawberry on top of a slice, the flour-dusted hands, and the \"delicate\" grip creates a high probability of the strawberry sliding off or the plate tipping during the turn, which is never accounted for.\n2.  **Footwear vs. Floor:** The audio description specifies \"cloth-fabric footsteps\" on a \"polished concrete floor.\" Standard chef uniforms (double-breasted coats with long sleeves) typically pair with chef's pants/scrubs, not visible cloth shoes that would produce rhythmic fabric rustling unless barefoot or wearing very specific slip-ons, which are not mentioned in the uniform description.\n3.  **Lighting Consistency:** Shot 1 describes \"warm, golden-amber kitchen lighting from overhead fixtures.\" Shot 3 mentions \"warm, steady overhead kitchen lights.\" In a real kitchen, overhead lights are usually cool daylight or neutral white (4000K+). Maintaining a consistent \"golden-amber\" cast across all three shots without color temperature shifting requires artificial gels or specific lighting setup not indicated in the script, creating a photorealism defect if the render assumes natural window light.\n\n### Subject Consistency\n4.  **Uniform Detail Contradiction:** The script and storyboard describe a \"crisp white double-breasted uniform.\" The generation adds \"long sleeves dusted with fine white flour\" and \"flour-stained cuffs.\" While plausible as a result of work, the prompt treats the flouring as a defining characteristic of the uniform (\"flour-dusted sleeves,\" \"flour-stained cuffs\"), which may conflict with the \"crisp\" descriptor if the flour makes the uniform look unkempt or inconsistent with the initial \"pristine\" state of the plate.\n5.  **Hand Morphing:** The script specifies the chef places the strawberry with one hand, then the next shot the hand withdraws, then in Shot 3 the chef picks up the plate with \"both hands.\" If the AI generated inconsistent finger counts or hand shapes (e.g., extra fingers, blurry hands blending into the background) across these sequential shots, it breaks subject continuity, a common failure mode in this specific generation pipeline.\n\n### Story Clarity\n6.  **Narrative Redundancy:** Shot 1 and Shot 2 are nearly identical in action (placing the strawberry), with Shot 2 merely adding background audio and a slight camera hold. This creates a repetitive narrative loop where Shot 2 adds no new plot information, only audio texture, confusing the viewer about whether the dessert is being plated or is already plated.\n7.  **Ambiguous Motivation:** The chef plates a dessert, then walks toward a \"pass-through window\" ready to serve. The script never defines *who* is being served or *why* this specific moment matters. The transition from a macro close-up of a strawberry to a medium shot of a chef walking away creates a disconnect between the detailed action and the narrative purpose of the walk.\n\n### Pacing\n8.  **Temporal Dissonance:** Shot 1 (0.0–1.6s) completes the plating. Shot 2 (1.6–3.2s) replays the hand withdrawal and focus hold on the finished product. Shot 3 (3.2–5.0s) shows the chef walking. The pacing is extremely slow (3.8 seconds for a simple walk). The \"soft rhythmic footfalls\" and \"sizzle of a distant pan\" described in the audio are diegetic but heavily emphasized against the \"intimate, low-level\" ambience, potentially making the scene feel draggy and overstuffed with sound design for a 5-second clip.\n9.  **Camera Movement vs. Action:** The camera is \"static\" for two shots and \"static\" again for the third shot despite the chef \"walking toward\" the window. A static medium shot of a subject walking across the frame for 1.8 seconds without any camera movement to follow or react creates a rigid, lifeless pacing that fails to utilize the subject's movement to drive the visual rhythm.\n\n### Audio\n10. **Diegetic/Music Clash:** The non-diegetic music is an \"acoustic guitar\" at 60 BPM. However, the diegetic audio includes \"cloth-fabric footsteps,\" \"sizzle of a distant pan,\" \"ventilation systems,\" and the chef's clothing shifting. The low-frequency bassline of the music (\"grounding resonance\") competes with the \"low-frequency vibration of ventilation systems\" in the background, creating a muddy mix where the diegetic kitchen noise and the musical bassline blur together, obscuring the specific texture of the strawberry and the",
+  "director_prompt": "### integrated_multimodal_description\n\n[Shot 1] 0.0s - 1.6s [Close-up, Static] A chef, with sharp black hair tucked under a matte black hairnet and wearing a crisp white double-breasted chef's coat with long sleeves dusted with fine white flour, stands behind a polished white marble countertop. The chef's hands are steady as they carefully place a thin, glistening golden vanilla slice onto a pristine white ceramic plate. Next, with extreme delicacy, the chef sets a single, vibrant bright red strawberry onto the center of the slice. Warm, golden-amber kitchen lighting from overhead fixtures highlights the intricate texture of the vanilla frosting and the glossy, dewy surface of the strawberry, while the background blurs into soft, indistinct warm tones.\n\n[Shot 2] 1.6s - 3.2s [Close-up, Static] The same chef, in the identical white double-breasted uniform with flour-dusted sleeves and the same black hairnet, has just placed the bright red strawberry atop the golden vanilla slice on the white ceramic plate. As the chef's hand gently withdraws from the frame, the focus remains locked on the finished dessert, where the glistening red strawberry sits perfectly centered on the golden vanilla. The background is a soft, out-of-focus field of brushed stainless steel kitchen surfaces. Faint, soft rhythmic footfalls echo in the distant background, accompanied by the subtle, intermittent sizzle of a distant pan, adding a layer of auditory texture to the stillness of the shot.\n\n[Shot 3] 3.2s - 5.0s [Medium Shot, Static] The consistent chef, wearing the same crisp white double-breasted uniform with flour-stained cuffs and the familiar black hairnet, picks up the white ceramic plate holding the strawberry-topped vanilla dessert with both hands. Holding the plate delicately, the chef turns slightly to the right and begins walking toward a large stainless steel pass-through window. The camera holds a medium shot, capturing the chef's torso and the plate as they move under the warm, steady overhead kitchen lights. As the chef approaches the pass-through, the soft rhythmic footsteps continue, fading slightly as the distance increases, while the warm ambient light casts a gentle glow on the white uniform and the gleaming steel surroundings.\n\n### overall_soundscape\n\nThe soundscape is dominated by intimate, low-level diegetic kitchen ambience. It begins with the faint, crisp sound of the chef's clothing shifting slightly as they work, followed immediately by the soft, rhythmic echo of cloth-fabric footsteps on the polished concrete floor, maintaining a steady, gentle pace. This is interwoven with the subtle, intermittent sizzle of a distant stainless steel pan hitting a burner, creating a soft hiss that underscores the busy kitchen environment without overpowering the scene. The background hum of the kitchen is present but muted—a low-frequency vibration of ventilation systems and distant equipment—dissolving into a warm, airy reverb as the chef moves toward the pass-through window, emphasizing the isolation of the moment.\n\n### non_diegetic_music\n\nA sparse, warm indie-folk acoustic track underpins the scene, featuring a gentle, finger-picked acoustic guitar with a soft, resonant tone that mimics the texture of the vanilla frosting. The tempo is slow and deliberate (approx. 60 BPM), matching the careful, unhurried movements of the chef. A subtle, soft bassline provides a grounding resonance, while a light, atmospheric pad swells gently in the background to evoke a sense of warmth and anticipation. The instrumentation is minimal and dry, allowing the diegetic kitchen sounds to remain prominent, creating a mood that is cozy, artisanal, and quietly narrative-driven.",
+  "editor_notes": "Based on the critic report, **Candidate 2** is the clear best choice because it successfully resolves the narrative redundancy and pacing issues found in the other candidates by merging the repetitive plating sequence into a single, focused shot while maintaining the distinct \"both hands\" lift and the walk to the pass-through. You should keep **Shot 1** of Candidate 2 intact as the definitive close-up of the delicate plating to preserve the visual tension of the strawberry and vanilla slice, but you must shorten **Shot 3** (the walk to the window) significantly, cutting it from 1.8 seconds to roughly 0.5–0.8 seconds to eliminate the draggy pacing and the mismatch between static camera framing and the chef's movement.",
+  "error": null,
+  "harness_hash": "55be971f47e67d57",
+  "harness_version": "gepa-base-gepa-4ddd73aa",
+  "meta": {
+    "cost": 10.0,
+    "critic_gates": {
+      "physics_ok": false,
+      "physics_p": 0.1317608803510666,
+      "subject_ok": false,
+      "subject_p": 0.27973949909210205
+    },
+    "effective": {
+      "backend": "minimax_h3",
+      "decision": "http",
+      "declared": {
+        "backend": "minimax_h3",
+        "decision": "http",
+        "text_llm": "openai"
+      },
+      "text_llm": "openai"
+    },
+    "target": {
+      "aspect_ratio": "16:9",
+      "duration_seconds": 5.0,
+      "frame_rate": 24.0,
+      "num_inference_steps": 10,
+      "seed": 0,
+      "short_edge": 768
+    },
+    "task_type": "t2va",
+    "warnings": [],
+    "workflow": [
+      "script",
+      "storyboard",
+      "director",
+      "critic",
+      "editor"
+    ]
+  },
+  "script": "**SHOT 1 (0.0s-1.6s)**\nA close-up of a chef in a crisp white double-breasted uniform and black hairnet standing at a marble countertop. The chef carefully places a golden vanilla slice onto a white ceramic plate, then delicately sets a single bright red strawberry on top. Warm kitchen lighting highlights the texture of the frosting and the glistening strawberry.\n\n**SHOT 2 (1.6s-3.2s)**\nThe same chef, in the identical white uniform and black hairnet, gently places the strawberry on the plated cake. As the hand withdraws, soft rhythmic footfalls echo faintly in the background, accompanied by the sizzle of a distant pan. The camera holds steady on the finished dessert against the blurred stainless steel kitchen backdrop.\n\n**SHOT 3 (3.2s-5.0s)**\nThe consistent chef in the white uniform and black hairnet picks up the plate with both hands, turns slightly, and walks toward the stainless steel pass-through window. The soft footsteps continue as the chef approaches the window, ready to serve, under the warm, steady overhead kitchen lights.",
+  "split": "test",
+  "storyboard": [
+    {
+      "action": "A chef in a crisp white double-breasted uniform and black hairnet carefully places a golden vanilla slice onto a white ceramic plate, then delicately sets a single bright red strawberry on top.",
+      "camera": "static",
+      "index": 1,
+      "seconds": 1.6,
+      "shot_size": "close"
+    },
+    {
+      "action": "The same chef, in the identical white uniform and black hairnet, gently places the strawberry on the plated cake; as the hand withdraws, soft rhythmic footfalls echo faintly with the sizzle of a distant pan, holding steady on the finished dessert against a blurred stainless steel kitchen backdrop.",
+      "camera": "static",
+      "index": 2,
+      "seconds": 1.6,
+      "shot_size": "close"
+    },
+    {
+      "action": "The consistent chef in the white uniform and black hairnet picks up the plate with both hands, turns slightly, and walks toward the stainless steel pass-through window; soft footsteps continue as the chef approaches under warm, steady overhead kitchen lights.",
+      "camera": "static",
+      "index": 3,
+      "seconds": 1.8,
+      "shot_size": "medium"
+    }
+  ],
+  "task_id": "test-004"
+}

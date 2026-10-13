@@ -1,0 +1,26 @@
+{
+  "axis_scores": {
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.694134,
+    "video": 0.492326
+  },
+  "cache_hit": false,
+  "cache_key": "0c9be593fa7a48bcabc65c1eedd31898ec8377c33a582e59016fb8a48a3b6b0a",
+  "candidate_hash": "d16c2e959f5bed4c8d2e8a5f911fd061363d02b0c2c4b1e7f425fb035658e122",
+  "case_id": "test:test-004:seed0",
+  "elapsed_seconds": 50.08,
+  "errors": [],
+  "feedback": "Task requirement: A chef plates a slice of cake, adds a strawberry and carries the plate to a pass-through window. Keep the chef and plate consistent. Include kitchen sizzle and soft footsteps.\nTotal score 0.619 with fixed weights {'video': 0.6, 'story': 0.25, 'editing': 0.15}: video=0.492, story=0.694, editing=1.000.\nVisual judge (UnifiedReward on 6 frames, alignment/coherence/style vs the task text): frame_std=0.0278. Last judge response: Alignment Score (1-5): 2.801300048828125\nCoherence Score (1-5): 3.202199935913086\nStyle Score (1-5): 2.6126999855041504\nStory judge: completeness=0.5202, completeness_level=2.0809, consistency=0.955 (completeness of the script; consistency between script and H3 prompt).\nShot pacing: num_shots=3, mean_seconds=1.667, std_seconds=0.471, total_seconds=5.0, length_cv=0.283\nCritic gates: physics_p=0.016, subject_p=0.4413",
+  "finished_at": "2026-10-12T16:50:49+00:00",
+  "h3_requests": 1,
+  "phase": "test",
+  "policy_hash": "dd489936d9ea8f3d633e4b5e58df0931fc1f0be14f0d4ad929ca804fc7b07124",
+  "score": 0.618929,
+  "seed": 0,
+  "split": "test",
+  "task_id": "test-004",
+  "trajectory_path": "outputs/101214_1strun/evaluations/0c9be593fa7a48bcabc65c1eedd31898ec8377c33a582e59016fb8a48a3b6b0a/trajectory.json",
+  "valid": true,
+  "video_path": "outputs/101214_1strun/evaluations/0c9be593fa7a48bcabc65c1eedd31898ec8377c33a582e59016fb8a48a3b6b0a/video.mp4"
+}

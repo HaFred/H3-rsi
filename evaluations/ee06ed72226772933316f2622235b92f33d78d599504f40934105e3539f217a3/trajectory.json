@@ -1,0 +1,131 @@
+{
+  "artifact": {
+    "audio_path": null,
+    "backend": "minimax_h3",
+    "cached": false,
+    "duration_seconds": 5.0,
+    "meta": {
+      "endpoint": "http://localhost:30010",
+      "request_hash": "8d343fe0e4b23b41fc298cd7ca89bdd5d2840287dacde95242ca2e038c012ac8",
+      "status": "completed",
+      "video_id": "f31b6e2b-f962-42d7-be74-e4413b804b99"
+    },
+    "seed": 0,
+    "task_id": "promotion-001",
+    "video_path": "outputs/101214_1strun/evaluations/ee06ed72226772933316f2622235b92f33d78d599504f40934105e3539f217a3/8d343fe0e4b23b41fc298cd7ca89bdd5d2840287dacde95242ca2e038c012ac8.mp4"
+  },
+  "breakdown": {
+    "details": {
+      "editing": {
+        "length_cv": 0.0,
+        "mean_seconds": 5.0,
+        "num_shots": 3,
+        "std_seconds": 0.0,
+        "total_seconds": 15.0
+      },
+      "harness_hash": "2e347be9390a9685",
+      "human": {
+        "human_missing": true,
+        "reason": "no artifact-specific labels"
+      },
+      "mode": "local",
+      "story": {
+        "completeness": 0.5124,
+        "completeness_level": 2.049545571208,
+        "consistency": 0.9524
+      },
+      "video": {
+        "av": {
+          "skipped": true
+        },
+        "av_alignment": 0.0,
+        "unified": {
+          "frame_std": 0.0163,
+          "malformed_frames": 0,
+          "n_frames": 6,
+          "sample_response": "Alignment Score (1-5): 3.029599905014038\nCoherence Score (1-5): 3.5032999515533447\nStyle Score (1-5): 3.0032999515533447"
+        },
+        "unified_reward": 0.5245527757538689
+      }
+    },
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.6883813805878163,
+    "total": 0.6368270105992754,
+    "video": 0.5245527757538689,
+    "weights": {
+      "editing": 0.15,
+      "human": 0.0,
+      "story": 0.25,
+      "video": 0.6
+    }
+  },
+  "critic_report": "Here are the concrete defects found in the script, storyboard, and video generation description:\n\n**Physics**\n*   **Impossible Wind Cutoff:** In Shot 3, the wind \"suddenly dies\" while the conductor is still standing on the platform. The description notes his coat \"swaying slightly\" even after the wind stops, implying the fabric is still moving against zero air resistance.\n*   **Watch Landing Surface:** The script says the watch clatters to the \"ground,\" but Shot 3 description specifies it lands on \"gravel.\" In Shot 1, the conductor is pacing on \"metal grating.\" If the platform is rusted steel (Shot 1), the close-up in Shot 2 should show the same surface; the sudden switch to gravel is unexplained and inconsistent with the established environment.\n*   **Gravity/Inertia:** The conductor snaps his fingers, checks the watch, and immediately drops it. The description says he \"clutched\" it in his right hand and it \"slipped.\" A dropped object should arc downward; the description describes it simply \"slipping... and clattering,\" omitting the brief visual of the watch falling through the air before impact.\n*   **Train Sound Logic:** A steam whistle is described as a \"long, mournful wail\" that is followed by \"absolute silence\" as the train vanishes. Steam whistles are high-frequency, short-duration blasts, not long, mournful wails (which are more characteristic of a train horn or a bugle).\n\n**Subject Consistency**\n*   **Uniform Mismatch:** The script describes a \"faded navy uniform\" with a \"heavy collar.\" The generation description alternates terminology: Shot 1 calls it a \"faded navy wool uniform,\" Shot 2 calls it a \"faded navy tunic,\" and Shot 3 calls it a \"faded navy coat.\" While not a plot hole, the shifting garment names suggest inconsistent character consistency.\n*   **Hand Inconsistency:** The script explicitly states the conductor raises his **left** hand to signal \"stop.\" However, the generation description for Shot 2 says he checks the watch with his **right** hand (\"pulls out... checks the time\"), then in Shot 3, the watch slips from his **right** hand. If he was using his left hand to signal earlier, the switch to the right hand for the watch interaction is not explicitly stated in the script but is implied by the description's lack of detail on the left hand's position during the close-up.\n\n**Story Clarity**\n*   **Ambiguous Motivation:** The conductor signals \"stop\" on an empty track. The story offers no context for *why* he stops for nothing. The sudden silence after the whistle is a strong visual, but the narrative reason for the conductor's specific \"stop\" gesture is entirely unclear—is he waiting for a signal that never comes, or is he reacting to the sound?\n*   **Unclear Stakes:** The pocket watch is stuck on five. The story establishes he frowned at the discrepancy, but the description never reveals *what* the correct time was or why the time matters (e.g., a scheduled departure, a deadline). The ending relies on \"dawning horror\" without establishing what he is being late for or who he is waiting for.\n\n**Pacing**\n*   **Redundant Beat:** Shot 1 (0-5s) establishes the conductor pacing and the wind. Shot 3 (10-15s) repeats the \"wind stopping\" mechanic after the conductor has already been pacing for 10 seconds. The buildup of the wind in Shot 1 feels unused because the resolution (wind stopping) happens in Shot 3, leaving Shot 2's close-up on the face/hands feeling like an isolated interruption rather than a necessary bridge.\n*   **Rushed Transition:** The transition from the wide shot of the empty platform (Shot 1) to the extreme close-up of the face (Shot 2) removes all environmental context for 5 seconds, making the viewer feel disconnected from the \"empty rails\" until Shot 3 returns us to the environment.\n\n**Audio**\n*   **Dissonant Music Placement:** The non-diegetic cello music \"drops out entirely\" during the whistle's silence in Shot 1, then the description cuts off mid-sentence in Shot 2 (\"As the scene moves to the close-up... a soft, high-register violin counter-mel...\"). The abrupt cut-off in the provided text also creates a defect in the delivery of the audio description itself.\n*   **Sound Design Overload:** In Shot 1, the description includes the wind, the howl of the cap, the scuffing of feet on metal grating, the whistle, and the silence. Then in Shot 2, it adds the snap, the watch ticking, the fabric against skin, and the collar tightening.",
+  "director_prompt": "integrated_multimodal_description\n[Shot 1] (00:00–00:05)\nEXT. RUSTY PLATFORM - DUSK. A wide, static shot captures the desolate expanse of a weathered steel platform, its surface pitted with rust stains that catch the dying amber light of the setting sun. The sky is a bruised tapestry of violet and burnt orange, heavy with impending storm clouds. In the foreground, the protagonist, a CONDUCTOR, stands out as a solitary figure clad in a faded navy wool uniform—the fabric worn thin at the elbows and knees, the color dulled by years of salt and grime. His cap, a patchwork of dark blue and gray, is whipped violently by a howling wind that skims the platform edge. The conductor paces a tight, nervous circle, his feet scuffing the metal grating. In the deep distance, a steam locomotive's whistle erupts—a long, mournful wail that cuts through the gale, followed by a sudden, aggressive silence as the train vanishes into the mist. The lighting is low-key and directional, casting long, jagged shadows that stretch across the tracks.\n\n[Shot 2] (00:05–00:10)\nEXT. CONDUCTOR'S STATION - CONTINUOUS. A tight close-up on the protagonist's face and hands. The conductor's eyes are sharp and tired, framed by shadows under his cap's brim. He snaps his fingers once, sharply, the knuckles white against the dim light. He reaches into the breast pocket of his faded navy tunic and pulls out a gold pocket watch; the metal gleams dully, a stark contrast to the grey surroundings. He checks the time: the second hand ticks past the numeral *five*. A frown etches into his forehead as he notices the discrepancy. The camera holds tight on his face, capturing the sweat of his brow and the stiffness of his uniform's heavy collar, which bites into his neck, emphasizing the biting chill of the dusk air. The background is a soft, out-of-focus blur of the platform's rusted railing.\n\n[Shot 3] (00:10–00:15)\nEXT. PLATFORM - CONTINUOUS. A medium shot, slowly pushing in toward the protagonist. The conductor raises his left hand, palm open and facing outward, signaling \"stop\" with a gesture of command. The track ahead is completely empty—no train, no signal, not even a puff of steam. The wind, which had been tearing at his uniform in the previous shots, suddenly dies, leaving the air unnervingly still. The conductor's expression shifts from command to confusion, then to dawning horror. As he stares at the empty rails, the gold pocket watch he clutched in his right hand slips from his grip and clatters loudly to the gravel, landing face up. The watch is frozen; the second hand is locked firmly on *five*, the gold casing gleaming in the sudden, abrupt stillness of the scene. The conductor's faded navy coat remains the dominant visual anchor, swaying slightly only where the wind had been.\n\noverall_soundscape\nThe aural landscape is defined by the auditory contrast between chaos and sudden stillness. Initially, a low-frequency rumble of wind dominates, whipping through the rusted iron of the platform and the conductor's coat. This is punctuated by the mournful, echoing wail of a steam whistle from the distance, which hangs in the air before being swallowed by absolute silence. As the scene moves to the close-up, the wind's roar drops to a distant murmur, replaced by the crisp, mechanical *tick-tick-tick* of the pocket watch's second hand. The conductor's sharp finger snap cuts through the quiet, followed by the heavy, wet sound of fabric against skin as his collar tightens around his neck. In the final shot, the sudden cessation of the wind creates a vacuum of sound, making the solitary, metallic *clatter* of the dropped pocket watch ring out with startling clarity. The watch landing on the gravel is a dry, hard impact, and the final seconds of the scene are rendered in near-silence, save for the faint, rhythmic ticking of the frozen timepiece, which seems to echo the conductor's growing dread.\n\nnon_diegetic_music\nA sparse, melancholic cello melody begins in the first shot, its tone bowed slowly and heavily, mirroring the wind's howl and the conductor's pacing. The music is minimal, utilizing only the instrument's lowest register to create a sense of isolation and impending loss. As the whistle blows, the cello swells briefly into a dissonant harmonic, then drops out entirely as the train vanishes, leaving a gap of silence that the audience feels rather than hears. In the second shot, a soft, high-register violin counter-mel",
+  "editor_notes": "The best candidate is the one where the editor can immediately resolve the **impossible wind cutoff** in Shot 3 by extending its duration slightly to clearly show the conductor's coat going perfectly still before the watch drops, while also fixing the **surface inconsistency** by ensuring the watch lands on the metal grating established in Shot 1 rather than gravel. Keep the powerful wide shot of the empty platform and the dramatic close-up of the face, but shorten the isolated middle section that cuts off environmental context, replacing the redundant \"wind stopping\" beat in Shot 3 with a seamless, continuous arc of the watch slipping from the conductor's hand to the ground to fix the missing gravity/inertia visual.",
+  "error": null,
+  "harness_hash": "2e347be9390a9685",
+  "harness_version": "gepa-base",
+  "meta": {
+    "cost": 10.0,
+    "critic_gates": {
+      "physics_ok": false,
+      "physics_p": 0.009891051799058914,
+      "subject_ok": false,
+      "subject_p": 0.08605030179023743
+    },
+    "effective": {
+      "backend": "minimax_h3",
+      "decision": "http",
+      "declared": {
+        "backend": "minimax_h3",
+        "decision": "http",
+        "text_llm": "openai"
+      },
+      "text_llm": "openai"
+    },
+    "target": {
+      "aspect_ratio": "16:9",
+      "duration_seconds": 5.0,
+      "frame_rate": 24.0,
+      "num_inference_steps": 10,
+      "seed": 0,
+      "short_edge": 768
+    },
+    "task_type": "t2va",
+    "warnings": [],
+    "workflow": [
+      "script",
+      "storyboard",
+      "director",
+      "critic",
+      "editor"
+    ]
+  },
+  "script": "**SHOT 1** (0-5s)\nEXT. RUSTY PLATFORM - DUSK\nA lone CONDUCTOR in a faded navy uniform paces. The wind howls, whipping his cap. In the distance, a steam WHISTLE blows—long, mournful, then silence.\n\n**SHOT 2** (5-10s)\nEXT. CONDUCTOR'S STATION - CONTINUOUS\nClose up. He snaps his fingers, checking a gold pocket watch. The second hand ticks past *five*. He frowns, the uniform's heavy collar stiff in the chill.\n\n**SHOT 3** (10-15s)\nEXT. PLATFORM - CONTINUOUS\nThe conductor raises his left hand, palm open, signaling \"stop.\" But the track is empty. No train, no signal. He stares at the empty rails, the wind suddenly stopping dead. The pocket watch clatters to the ground, face up, stuck on five.",
+  "split": "promotion",
+  "storyboard": [
+    {
+      "action": "EXT. RUSTY PLATFORM - DUSK. A lone CONDUCTOR in a faded navy uniform paces back and forth. The wind howls, whipping his cap. In the distance, a steam WHISTLE blows—a long, mournful sound that fades into silence.",
+      "camera": "static",
+      "index": 1,
+      "seconds": 5,
+      "shot_size": "wide"
+    },
+    {
+      "action": "EXT. CONDUCTOR'S STATION - CONTINUOUS. Close-up on the Conductor's face and hands. He snaps his fingers and checks a gold pocket watch; the second hand ticks past five. He frowns as the heavy collar of his uniform stiffens in the chill.",
+      "camera": "static",
+      "index": 2,
+      "seconds": 5,
+      "shot_size": "close"
+    },
+    {
+      "action": "EXT. PLATFORM - CONTINUOUS. The Conductor raises his left hand, palm open, signaling 'stop.' The track remains empty—no train, no signal. He stares at the empty rails as the wind suddenly dies. The pocket watch clatters to the ground, face up, stuck on five.",
+      "camera": "push",
+      "index": 3,
+      "seconds": 5,
+      "shot_size": "medium"
+    }
+  ],
+  "task_id": "promotion-001"
+}

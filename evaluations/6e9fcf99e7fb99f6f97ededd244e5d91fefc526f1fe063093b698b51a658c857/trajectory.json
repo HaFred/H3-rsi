@@ -1,0 +1,131 @@
+{
+  "artifact": {
+    "audio_path": null,
+    "backend": "minimax_h3",
+    "cached": false,
+    "duration_seconds": 5.0,
+    "meta": {
+      "endpoint": "http://localhost:30010",
+      "request_hash": "2785d13df80f347a4424511ee8926f5e2fbf444874bb9a709d23a024ae3c863a",
+      "status": "completed",
+      "video_id": "9215fc67-a2a1-4d7c-8308-d4d560a5b598"
+    },
+    "seed": 0,
+    "task_id": "promotion-004",
+    "video_path": "outputs/101214_1strun/evaluations/6e9fcf99e7fb99f6f97ededd244e5d91fefc526f1fe063093b698b51a658c857/2785d13df80f347a4424511ee8926f5e2fbf444874bb9a709d23a024ae3c863a.mp4"
+  },
+  "breakdown": {
+    "details": {
+      "editing": {
+        "length_cv": 0.0,
+        "mean_seconds": 1.7,
+        "num_shots": 3,
+        "std_seconds": 0.0,
+        "total_seconds": 5.1
+      },
+      "harness_hash": "55be971f47e67d57",
+      "human": {
+        "human_missing": true,
+        "reason": "no artifact-specific labels"
+      },
+      "mode": "local",
+      "story": {
+        "completeness": 0.6242,
+        "completeness_level": 2.496866799890995,
+        "consistency": 0.986
+      },
+      "video": {
+        "av": {
+          "skipped": true
+        },
+        "av_alignment": 0.0,
+        "unified": {
+          "frame_std": 0.0218,
+          "malformed_frames": 0,
+          "n_frames": 6,
+          "sample_response": "Alignment Score (1-5): 2.8701999187469482\nCoherence Score (1-5): 3.422800064086914\nStyle Score (1-5): 3.0281999111175537"
+        },
+        "unified_reward": 0.5278138882584041
+      }
+    },
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.7689332153648138,
+    "total": 0.6589216367962459,
+    "video": 0.5278138882584041,
+    "weights": {
+      "editing": 0.15,
+      "human": 0.0,
+      "story": 0.25,
+      "video": 0.6
+    }
+  },
+  "critic_report": "### Physics\n- **Towel material:** The handkerchief is described as \"worn, patterned\" yet it appears to be a soft, mildewed cloth in the video; it lacks any visible weave, print, or texture consistent with the man's decades of wear, contradicting the \"worn\" descriptor.\n- **Gravity/Fluid dynamics:** In Shot 1, the brush lifts from the tin with a perfect, heavy coat of paint on the first pass, despite the earlier description of the tin being \"rusted\" and the paint \"spilling\" rather than contained. The viscosity of the paint behaves more like oil than the \"thick, glossy\" emulsion implied.\n- **Motion blur:** In Shot 2, the brush \"flies swiftly\" across the grain with a noticeable slow push-in camera move; the motion blur on the bristles is inconsistent with the described speed, appearing more like a quick dab than a flying stroke.\n- **Lighting consistency:** The script sets the scene in a \"sunny afternoon\" with \"golden-hour\" light in Shot 3, but the video lighting remains flat and diffuse throughout, with no distinct shadows cast by the man or the fence, suggesting an overcast day rather than direct sunlight.\n\n### Subject Consistency\n- **Hand continuity:** The man's hands are described as \"weathered\" and \"spotted with age\" in the generation, but the left hand in Shot 1 (dipping the brush) appears smooth and unblemished compared to the right hand, creating a visual disconnect from the \"deeply weathered\" description.\n- **Clothing details:** The script specifies a \"faded blue denim jacket,\" but the generated video shows the jacket as a solid, dark navy without the characteristic fading, pilling, or light-wash texture of a faded garment.\n- **Cap fit:** The script notes the cap is \"slightly askew,\" yet in all shots, the beige flat cap sits perfectly centered and symmetrical on the man's head, defying the casual posture implied by the trembling hands and weathered state.\n\n### Story Clarity\n- **Ambiguous motivation:** The transition from Shot 1 (dipping brush) to Shot 2 (painting) is instantaneous with no establishing shot of the fence's full length or the man's intent, leaving the viewer unsure of the scale of the project or why the final patch is so critical.\n- **Logical gap in Shot 3:** The man wipes his forehead with a handkerchief in Shot 3, implying he has been painting for a while or is exerting himself, yet the previous two shots depict only 3.4 seconds of effortless, broad strokes with no sign of physical labor or heat.\n- **Missing context:** The \"rusted tin spilling paint\" in Shot 1 generates no visual of the man holding the tin or pouring it; the tin appears to be sitting passively, making the action of dipping the brush feel unanchored in a specific setup.\n\n### Pacing\n- **Repetitive shot duration:** All three shots are strictly 1.7 seconds. The medium shot (Shot 2), which contains the primary action of painting, feels rushed and incomplete, preventing the viewer from seeing the brushwork details described in the script.\n- **Abrupt audio cut:** The birdsong fades into silence instantly at 5.0s without a gradual dissolve, making the transition from the active painting scene to the \"peaceful silence\" feel jarring rather than serene.\n- **Lack of buildup:** The 1.7-second close-up on the paint dip offers no time for the rusted tin texture or the man's expression to register before cutting to the painting action, reducing the emotional weight of the opening.\n\n### Audio\n- **Dissonant SFX:** The \"sharp *swish*\" of the brush dragging across the wood is jarringly loud compared to the \"soft, rhythmic\" dip sound, creating an imbalance that distracts from the intended peaceful atmosphere.\n- **Inconsistent music volume:** The finger-picked guitar swells \"slightly during the painting action\" but remains audible over the birdsong in Shot 2, creating a muddy mix where the natural ambient birdsong is no longer \"distant\" but competes with the music.\n- **Silence abruptness:** The fade to silence in Shot 3 leaves a sudden, hollow vacuum rather than the \"soft, natural hum of the summer afternoon\" promised; the ambient hum is barely audible, making the silence feel empty rather than peaceful.",
+  "director_prompt": "integrated_multimodal_description\n[Shot 1] 0.0s - 1.7s [Close-up, static] The scene opens on a weathered, rusted tin spilling emerald green paint onto a wooden board within a sunny afternoon garden. An elderly man with a full head of silver hair, wearing a faded blue denim jacket with frayed cuffs and a beige flat cap slightly askew, leans over the tin. His hands are deeply weathered, spotted with age, and tremble slightly as he submerges a worn wooden brush into the thick, glossy emerald paint. He lifts the brush, the bristles heavily coated in the vibrant green, contrasting against the warm, dappled sunlight filtering through unseen garden leaves.\n\n[Shot 2] 1.7s - 3.4s [Medium shot, slow push-in] The elderly man, silver-haired with a faded blue denim jacket and beige flat cap, extends his arm toward a weathered gray wooden fence. His hands, weathered and spotted with age, grip the worn wooden handle of the brush as he applies broad, deliberate strokes of emerald green paint. The paint fills the final patch where the gray wood has cracked and weathered. Sunlight glints brightly off the wet, glossy emerald paint as the brush flies swiftly across the rough wood grain. In the periphery, the garden remains lush and sun-drenched.\n\n[Shot 3] 3.4s - 5.0s [Wide shot, static] The completed section of the fence now displays vibrant emerald stripes stark against the gray wood. The elderly man, still in his faded blue denim jacket and beige flat cap, steps back. His weathered hands are now visible wiping his forehead with a worn, patterned handkerchief. The distant birdsong that accompanied the painting fades into a peaceful, lingering silence. The camera holds steady on the finished patch of the fence, bathed in the warm, golden light of the afternoon hour, highlighting the texture of the painted wood and the man's contented stillness.\n\noverall_soundscape\nThe audio begins with the soft, rhythmic sound of the brush bristles dipping into the viscous paint, followed by the sharp *swish* of the brush dragging across the rough wood grain. This is layered with a gentle, ambient birdsong from the distant garden—chirps and trills that feel natural and unforced. As the painting concludes in Shot 3, the birdsong gently fades into a soft, natural silence, leaving only the faint, warm ambient hum of the summer afternoon.\n\nnon_diegetic_music\nA soft, acoustic finger-picked guitar melody with a gentle, uplifting tempo. The tuning is warm and resonant, using open strings to create a harmonious, nostalgic atmosphere. The instrumentation is sparse, featuring a light, steady strumming pattern that swells slightly during the painting action (Shot 2) and settles into a calm, sustained chord as the scene fades to silence in Shot 3. The mood is peaceful, nostalgic, and quietly hopeful.",
+  "editor_notes": "Based on the critic's report, the best candidate to keep is **Shot 3** (the man wiping his forehead with the handkerchief), as it is the only segment that successfully captures the emotional weight and physical exhaustion implied by the script, despite the lighting and texture flaws; Shots 1 and 2 should be significantly shortened or restructured because their visual inconsistencies with the \"rusted tin,\" \"weathered hands,\" and \"faded denim\" descriptions make them feel disconnected from the story.\n\nTo fix the pacing issues, you should extend the duration of Shot 3 to at least 3–4 seconds to allow the audience to fully process the man's fatigue and the sudden silence, while compressing the repetitive, 1.7-second dip and painting shots into a rapid, less distinct montage or cutting them out entirely to eliminate the jarring audio transitions and rushed feel.",
+  "error": null,
+  "harness_hash": "55be971f47e67d57",
+  "harness_version": "gepa-base-gepa-4ddd73aa",
+  "meta": {
+    "cost": 10.0,
+    "critic_gates": {
+      "physics_ok": false,
+      "physics_p": 0.19038125872612,
+      "subject_ok": false,
+      "subject_p": 0.13367410004138947
+    },
+    "effective": {
+      "backend": "minimax_h3",
+      "decision": "http",
+      "declared": {
+        "backend": "minimax_h3",
+        "decision": "http",
+        "text_llm": "openai"
+      },
+      "text_llm": "openai"
+    },
+    "target": {
+      "aspect_ratio": "16:9",
+      "duration_seconds": 5.0,
+      "frame_rate": 24.0,
+      "num_inference_steps": 10,
+      "seed": 0,
+      "short_edge": 768
+    },
+    "task_type": "t2va",
+    "warnings": [],
+    "workflow": [
+      "script",
+      "storyboard",
+      "director",
+      "critic",
+      "editor"
+    ]
+  },
+  "script": "**SHOT 1 (0.0s-1.7s)**\nClose-up: Elderly man with silver hair, wearing a faded blue denim jacket and a beige flat cap, dips a worn wooden brush into a rusted tin of emerald green paint. His weathered hands tremble slightly as he submerges the bristles, lifting them coated in thick, glossy paint against the backdrop of a sunny afternoon garden.\n\n**SHOT 2 (1.7s-3.4s)**\nMedium shot: The painter extends his arm to the weathered gray wooden fence. He applies broad, deliberate brush strokes of emerald green, filling the final patch where the wood has cracked. Sunlight glints off the wet paint as the brush flies across the grain, while distant birdsong plays in the background audio.\n\n**SHOT 3 (3.4s-5.0s)**\nWide shot: The completed section of the fence now displays vibrant emerald stripes against gray wood. The painter steps back, wiping his forehead with a worn handkerchief, the distant birdsong fading into a peaceful silence. The camera holds on the finished patch, bathed in warm golden-hour light.",
+  "split": "promotion",
+  "storyboard": [
+    {
+      "action": "Elderly man dips a worn wooden brush into a rusted tin of emerald green paint; his weathered hands tremble slightly as he lifts bristles coated in thick, glossy paint against a sunny afternoon garden backdrop.",
+      "camera": "static",
+      "index": 1,
+      "seconds": 1.7,
+      "shot_size": "close"
+    },
+    {
+      "action": "Painter extends arm to weathered gray wooden fence, applying broad, deliberate brush strokes of emerald green to fill cracked wood; sunlight glints off wet paint as brush flies across grain, with distant birdsong in background.",
+      "camera": "push",
+      "index": 2,
+      "seconds": 1.7,
+      "shot_size": "medium"
+    },
+    {
+      "action": "Completed fence section displays vibrant emerald stripes against gray wood; painter steps back, wiping forehead with worn handkerchief as birdsong fades into peaceful silence; camera holds on finished patch bathed in warm golden-hour light.",
+      "camera": "static",
+      "index": 3,
+      "seconds": 1.7,
+      "shot_size": "wide"
+    }
+  ],
+  "task_id": "promotion-004"
+}

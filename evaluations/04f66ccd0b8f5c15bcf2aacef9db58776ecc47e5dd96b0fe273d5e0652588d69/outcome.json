@@ -1,0 +1,26 @@
+{
+  "axis_scores": {
+    "editing": 1.0,
+    "human": 0.0,
+    "story": 0.703496,
+    "video": 0.483983
+  },
+  "cache_hit": false,
+  "cache_key": "04f66ccd0b8f5c15bcf2aacef9db58776ecc47e5dd96b0fe273d5e0652588d69",
+  "candidate_hash": "4ddd73aa8fa203c6aaef003092483f3f4d4c90210a62dfc352b1cd7f862b5f5d",
+  "case_id": "test:test-003:seed0",
+  "elapsed_seconds": 47.64,
+  "errors": [],
+  "feedback": "Task requirement: A barber sweeps the floor then folds a towel and sets it on the chair beside a mirror. Keep the barber and towel consistent. Include broom strokes and a faint door bell.\nTotal score 0.616 with fixed weights {'video': 0.6, 'story': 0.25, 'editing': 0.15}: video=0.484, story=0.703, editing=1.000.\nVisual judge (UnifiedReward on 6 frames, alignment/coherence/style vs the task text): frame_std=0.024. Last judge response: Alignment Score (1-5): 2.402600049972534\nCoherence Score (1-5): 3.5815999507904053\nStyle Score (1-5): 3.0032999515533447\nStory judge: completeness=0.5142, completeness_level=2.057, consistency=0.9874 (completeness of the script; consistency between script and H3 prompt).\nShot pacing: num_shots=3, mean_seconds=1.667, std_seconds=0.047, total_seconds=5.0, length_cv=0.028\nCritic gates: physics_p=0.0201, subject_p=0.9719",
+  "finished_at": "2026-10-12T16:53:16+00:00",
+  "h3_requests": 1,
+  "phase": "test",
+  "policy_hash": "dd489936d9ea8f3d633e4b5e58df0931fc1f0be14f0d4ad929ca804fc7b07124",
+  "score": 0.616264,
+  "seed": 0,
+  "split": "test",
+  "task_id": "test-003",
+  "trajectory_path": "outputs/101214_1strun/evaluations/04f66ccd0b8f5c15bcf2aacef9db58776ecc47e5dd96b0fe273d5e0652588d69/trajectory.json",
+  "valid": true,
+  "video_path": "outputs/101214_1strun/evaluations/04f66ccd0b8f5c15bcf2aacef9db58776ecc47e5dd96b0fe273d5e0652588d69/video.mp4"
+}

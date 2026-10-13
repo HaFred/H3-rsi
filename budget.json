@@ -1,0 +1,13 @@
+{
+  "limits": {
+    "promotion": 12,
+    "search": 60,
+    "test": 8
+  },
+  "updated_at": "2026-10-12T16:53:21+00:00",
+  "used": {
+    "promotion": 12,
+    "search": 45,
+    "test": 8
+  }
+}
