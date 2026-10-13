@@ -127,7 +127,114 @@ row — a separate per-row "source" column would repeat identical text down the 
 > README. Preview width is scaled per table density (`280 px` for the single-clip narrative tables, `170 px` for
 > the base/optimized pairs, `190 px` for the iteration ledger).
 
-**Harness Delta for the Steps:**
+**Harness Delta for the Steps**
+
+The tables above show the *effect*; these are the harness documents that produced it. The harness is a YAML
+config — the same structure as the codebase seed `configs/harness_gepa_base.yaml` (version `gepa-base`) — and
+across the three steps **only two fields change**: `prompts.script` and `prompts.director`. Every other field
+(`prompts.storyboard`, `prompts.critic`, `prompts.editor`, `memory`, `workflow`, `critic`, `reward_weights`,
+`target_defaults`) is byte-identical to the seed at every step, which is why the `storyboard` and `memory`
+candidates that won a minibatch never survived the full validation run (§4).
+
+| Step | Full harness document | `prompts.script` | `prompts.director` |
+| --- | --- | --- | --- |
+| **0. base** | [`base.yaml`](base.yaml) — `version: gepa-base`, equals the seed | 233 ch | 311 ch |
+| **1. +`script`** | [`candidates/d58fde46…/harness.yaml`](candidates/d58fde464b7f6e72b223770db9e3f50d6d9aa4babb138b75d4c77d27fadda30f/harness.yaml) | **1,058 ch** (rewritten) | 311 ch (unchanged) |
+| **2. +`director`** | [`candidates/4ddd73aa…/harness.yaml`](candidates/4ddd73aa8fa203c6aaef003092483f3f4d4c90210a62dfc352b1cd7f862b5f5d/harness.yaml) | 1,058 ch | **3,512 ch** (rewritten) |
+
+Step 2 is the search winner. The gate accepted it (§3) and recorded `promoted_version: gepa-base.1` in
+[`promotion/decision.json`](promotion/decision.json); the promoted document is [`best.yaml`](best.yaml)
+(`version: gepa-base-gepa-4ddd73aa`, `parent_version: gepa-base`), which matches step 2 on all five prompt fields
+and additionally clears the champion's `memory` to empty. Each step also ships a machine-readable component map
+at `candidates/<hash>/candidate.json`.
+
+<details>
+<summary><b>0. base</b> — <code>prompts.script</code> (233 ch) and <code>prompts.director</code> (311 ch)</summary>
+
+`prompts.script`
+```text
+You are a screenwriter. Given a one-line idea, expand it into a short film script
+(<= 120 words) with a clear setup, a visible conflict and a resolution.
+Keep a single protagonist and a single location unless the idea requires more.
+```
+
+`prompts.director`
+```text
+You are a film director writing a prompt for MiniMax-H3. Produce exactly three parts:
+`integrated_multimodal_description` (with [Shot N] blocks and timestamps),
+`overall_soundscape`, and `non_diegetic_music`. Be concrete about lighting, materials,
+and motion. Repeat the protagonist's appearance in every shot.
+```
+
+</details>
+
+<details>
+<summary><b>1. +<code>script</code></b> — <code>prompts.script</code> (1,058 ch); <code>prompts.director</code> unchanged from base</summary>
+
+`prompts.script`
+```text
+You are a Text-to-Video Script Specialist. Given a one-line idea and a target duration, expand it into a short video script optimized for visual generation models.
+
+1. **Structure**: Generate exactly 3 shots. Use the format `**SHOT N (Start-Time-End-Time)**`. The sum of shot durations must equal the target duration precisely (e.g., 5.0s).
+2. **Consistency**: Maintain strict visual consistency for the protagonist, clothing, and key props across all shots. Describe the subject identically in each shot to ensure alignment.
+3. **Visuals**: Focus on concrete visual descriptors (lighting, color, texture, motion) rather than abstract concepts. Include environmental details (weather, time of day) that aid visual generation.
+4. **Narrative**: Ensure the script arc is visible: Shot 1 (Setup), Shot 2 (Conflict/Action), Shot 3 (Resolution).
+5. **Physics**: Ensure all physical actions are plausible and grounded to avoid generation errors.
+6. **Constraints**: Total word count must be <= 120 words. Keep the location single unless the idea requires multiple.
+```
+
+</details>
+
+<details>
+<summary><b>2. +<code>director</code></b> — <code>prompts.director</code> (3,512 ch); <code>prompts.script</code> as in step 1</summary>
+
+`prompts.director`
+```text
+You are an expert Film Director and AI Video Prompt Engineer specializing in the MiniMax-H3 video generation model. Your goal is to convert a provided script and storyboard into a highly detailed, production-ready prompt that ensures visual coherence, audio fidelity, and strict adherence to the video model's requirements.
+
+## Task Objective
+Generate exactly three distinct parts based on the input script and storyboard:
+1. `integrated_multimodal_description`
+2. `overall_soundscape`
+3. `non_diegetic_music`
+
+## Output Format Constraints
+- Do not include any introductory or concluding text outside the three required sections.
+- Use Markdown headers or clear labels for the three sections.
+- **Timestamps:** You must use the exact start and end timestamps provided in the input script/storyboard. Do not alter the total duration or shot lengths.
+- **Shot Structure:** In `integrated_multimodal_description`, wrap each shot description in a block starting with `[Shot N]` followed by the timestamp range.
+
+## Critical Guidelines for High-Quality Output
+
+### 1. Visual Consistency (Protagonist Continuity)
+- **Mandatory Requirement:** You must identify the protagonist's full physical appearance (clothing, accessories, hair, physical traits) from the first shot and explicitly **repeat this description in every single shot** of the `integrated_multimodal_description`.
+- **Reason:** This is critical for MiniMax-H3 to maintain subject consistency across the generated video sequence. Vague references like "the person" are insufficient; use specific descriptors (e.g., "flour-dusted sleeves and white apron", "bright yellow raincoat with black zippers").
+
+### 2. Concrete Visual Details
+- Describe **Lighting:** Specify color temperature (e.g., "warm tungsten," "cool blue moonlight"), source (e.g., "streetlamp glow," "oven interior"), and intensity.
+- Describe **Materials:** Use textural specifics (e.g., "brushed steel," "dark polished oak," "slick cobblestone," "matte black zippers").
+- Describe **Motion:** Define the physics of movement (e.g., "steam rises visibly in a thick plume," "rhythmic splashing footsteps," "camera slowly pulls back").
+
+### 3. Audio Design
+- **`overall_soundscape`:** Focus on diegetic audio. Include ambient room tone, environmental effects (rain, wind, fire), and Foley sounds (footsteps, mechanical creaks, opening doors) that match the visual action.
+- **`non_diegetic_music`:** Focus on the emotional and narrative layer. Describe the genre, instrumentation, tempo, and mood (e.g., "low, resonant hum," "swelling orchestral swell," "ambient drone").
+
+### 4. Alignment & Coherence
+- Ensure the narrative flow in the visual description matches the `script` and `storyboard` actions exactly. Do not add new plot points or change the sequence of events.
+- Ensure the total duration calculated from your timestamps matches the sum of the durations in the input script/storyboard.
+
+## Input Data Usage
+- Analyze the `script` for action and timing.
+- Analyze the `storyboard` for camera angles (e.g., close, medium, wide) and shot types.
+- Integrate these details into the visual descriptions to guide the camera work and framing.
+
+## Examples of Good Practice
+- **Bad:** "A baker opens the oven." (Too vague on appearance/lighting)
+- **Good:** "[Shot 1] 0.0s - 1.6s [Close-up] A rustic brushed steel oven door... A baker, wearing a pristine white apron stained at the hem and sleeves dusted with fine white flour, turns the handle." (Specific appearance + Material + Lighting)
+```
+
+</details>
+
 
 
 **What to look for, in order:**
@@ -158,7 +265,7 @@ The same progression repeats on `train-003` (`"A child in a green jacket catches
 
 ## 3. The two edits behind the win
 
-**Edit 1 — `script`** (233 → ~1.5k chars). The base prompt never mentioned timing; the rewrite makes timing the
+**Edit 1 — `script`** (233 → 1,058 chars). The base prompt never mentioned timing; the rewrite makes timing the
 first requirement and pins the output format.
 
 | | prompt |
@@ -169,7 +276,7 @@ first requirement and pins the output format.
 Observed effect: shot split 2/2/1 → 1.67/1.67/1.67 on train-001 and 2/1/2 → 1.6/1.6/1.8 on train-003; the
 shot-length coefficient of variation drops from **0.283 to ≤0.075**.
 
-**Edit 2 — `director`** (255 → ~2.3k chars). The base prompt already said "repeat the protagonist's appearance",
+**Edit 2 — `director`** (311 → 3,512 chars). The base prompt already said "repeat the protagonist's appearance",
 so the rewrite **defines what that means** and adds worked examples, keeping the same three-part output contract.
 
 | | prompt |
