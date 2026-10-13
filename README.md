@@ -67,8 +67,8 @@ with story losses; S itself is the plain mean of total R. See [S is total R](#s-
 
 The clips below are the **same task** (`train-001`: *"A person in a yellow raincoat picks up a red umbrella on a
 wet street. Keep the same person and umbrella throughout. Include footsteps and dripping water."*), rendered
-three times as RSI edits the harness. Open them left to right — each column shows what changed on the way to the
-next clip.
+three times as RSI edits the harness. Work down the clip table — each row is the same task rendered again, so
+consecutive rows show what the next edit changed.
 
 ### Where each number comes from
 
@@ -115,17 +115,26 @@ S0/S1 values in the diagram.
 Because each metric has exactly one producer, naming the producer **inside the column header** says it for every
 row — a separate per-row "source" column would repeat identical text down the table.
 
-| Step | What RSI changed in the harness | What the harness then asked H3 for | Clip | Total R | video · *UnifiedReward* `:8090` | story · *Jev* `:8085` | editing · *local, no model* | last-frame alignment · 1–5 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| **0. Base** | — (seed harness) | 3 shots of **2.0 / 2.0 / 1.0 s** | <a href="evaluations/edb00ad03c2e77bc2b759d587f1a1f2c0706fcf90405d129cae6ee19daa4771b/video.mp4"><img src="evaluations/edb00ad03c2e77bc2b759d587f1a1f2c0706fcf90405d129cae6ee19daa4771b/preview.webp" width="400" alt="base train-001"></a> | 0.6348 | 0.477 | 0.793 | 1.000 | 2.87 |
-| **1. after `script`** | timed shot list instead of a free script | 3 shots of **1.67 / 1.67 / 1.67 s** | <a href="evaluations/0aa979018910a10da8a371e18edc03464f18690acf534c0948e629736dd44170/video.mp4"><img src="evaluations/0aa979018910a10da8a371e18edc03464f18690acf534c0948e629736dd44170/preview.webp" width="400" alt="+script train-001"></a> | 0.6628 | 0.541 (**+0.064**) | 0.753 | 1.000 | 2.87 |
-| **2. after `director`** | full subject/appearance spec per shot | same 1.7 / 1.7 / 1.6 s, richer shot text | <a href="evaluations/93d21889efd4bd045da797839dc3add5758da0c7d097d3ca06c15a666ff43810/video.mp4"><img src="evaluations/93d21889efd4bd045da797839dc3add5758da0c7d097d3ca06c15a666ff43810/preview.webp" width="400" alt="+director train-001"></a> | 0.6659 | 0.556 (**+0.015**) | 0.730 | 1.000 | 3.14 |
+| Step | What RSI changed in the harness | What the harness then asked H3 for | Total R | video · *UnifiedReward* `:8090` | story · *Jev* `:8085` | editing · *local, no model* | last-frame alignment · 1–5 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| **0. Base** | — (seed harness) | 3 shots of **2.0 / 2.0 / 1.0 s** | 0.6348 | 0.477 | 0.793 | 1.000 | 2.87 |
+| **1. after `script`** | timed shot list instead of a free script | 3 shots of **1.67 / 1.67 / 1.67 s** | 0.6628 | 0.541 (**+0.064**) | 0.753 | 1.000 | 2.87 |
+| **2. after `director`** | full subject/appearance spec per shot | same 1.7 / 1.7 / 1.6 s, richer shot text | 0.6659 | 0.556 (**+0.015**) | 0.730 | 1.000 | 3.14 |
 
-> **About the clips.** Every clip cell in this document plays **inline**: it is a 480 px / 12 fps animated WebP
-> preview that loops, linked to the full-rate 124-frame `video.mp4` (click to open GitHub's player). GitHub's
-> markdown sanitizer strips `<video>`/`<iframe>` tags, so an animated image is the only way to get motion inside a
-> README. Preview width is scaled per table density (`400 px` for the single-clip narrative tables, `170 px` for
-> the base/optimized pairs, `190 px` for the iteration ledger).
+**The three renders.** Same rows as above, in a table of their own so the preview gets the full column width — click any clip for the full-rate video.
+
+| Step | Clip — `train-001` |
+| --- | --- |
+| **0. Base** | <a href="evaluations/edb00ad03c2e77bc2b759d587f1a1f2c0706fcf90405d129cae6ee19daa4771b/video.mp4"><img src="evaluations/edb00ad03c2e77bc2b759d587f1a1f2c0706fcf90405d129cae6ee19daa4771b/preview-lg.webp" width="720" alt="base train-001"></a> |
+| **1. after `script`** | <a href="evaluations/0aa979018910a10da8a371e18edc03464f18690acf534c0948e629736dd44170/video.mp4"><img src="evaluations/0aa979018910a10da8a371e18edc03464f18690acf534c0948e629736dd44170/preview-lg.webp" width="720" alt="+script train-001"></a> |
+| **2. after `director`** | <a href="evaluations/93d21889efd4bd045da797839dc3add5758da0c7d097d3ca06c15a666ff43810/video.mp4"><img src="evaluations/93d21889efd4bd045da797839dc3add5758da0c7d097d3ca06c15a666ff43810/preview-lg.webp" width="720" alt="+director train-001"></a> |
+
+> **About the clips.** Every clip cell in this document plays **inline**: an animated WebP preview that loops,
+> linked to the full-rate 124-frame `video.mp4` (click to open GitHub's player). GitHub's markdown sanitizer strips
+> `<video>`/`<iframe>` tags, so an animated image is the only way to get motion inside a README. Each narrative clip
+> now sits in its own two-column table, so the text columns can no longer squeeze it: those use `preview-lg.webp` at
+> **720 px** (previews are still generated at 480 px for the denser tables — `170 px` for the base/optimized pairs,
+> `190 px` for the iteration ledger).
 
 **Harness Delta for the Steps**
 
@@ -142,11 +151,17 @@ candidates that won a minibatch never survived the full validation run (§4).
 | **1. +`script`** | [`candidates/d58fde46…/harness.yaml`](candidates/d58fde464b7f6e72b223770db9e3f50d6d9aa4babb138b75d4c77d27fadda30f/harness.yaml) | **1,058 ch** (rewritten) | 311 ch (unchanged) |
 | **2. +`director`** | [`candidates/4ddd73aa…/harness.yaml`](candidates/4ddd73aa8fa203c6aaef003092483f3f4d4c90210a62dfc352b1cd7f862b5f5d/harness.yaml) | 1,058 ch | **3,512 ch** (rewritten) |
 
-Step 2 is the search winner. The gate accepted it (§3) and recorded `promoted_version: gepa-base.1` in
-[`promotion/decision.json`](promotion/decision.json); the promoted document is [`best.yaml`](best.yaml)
-(`version: gepa-base-gepa-4ddd73aa`, `parent_version: gepa-base`), which matches step 2 on all five prompt fields
-and additionally clears the champion's `memory` to empty. Each step also ships a machine-readable component map
-at `candidates/<hash>/candidate.json`.
+Step 2 is the search winner, and the gate accepted it (§3): [`promotion/decision.json`](promotion/decision.json)
+records `promoted_version: gepa-base.1`. Two files carry the outcome — byte-identical in `prompts` and `memory`,
+differing only in metadata:
+
+- [`best.yaml`](best.yaml) — the run's **search winner** snapshot: `version: gepa-base-gepa-4ddd73aa`,
+  `parent_version: gepa-base`, `notes: … not promoted.`
+- [`champion/gepa-base.1.yaml`](champion/gepa-base.1.yaml) — the **promoted champion** written to the persistent
+  store: `version: gepa-base.1`, `notes: Promoted from GEPA run 101214_1strun…`. The store's
+  [`champion.txt`](champion/champion.txt) points at it, and that pointer is what the next run starts from.
+
+Each step also ships a machine-readable component map at `candidates/<hash>/candidate.json`.
 
 <details>
 <summary><b>0. base</b> — <code>prompts.script</code> (233 ch) and <code>prompts.director</code> (311 ch)</summary>
@@ -237,6 +252,34 @@ Generate exactly three distinct parts based on the input script and storyboard:
 
 
 
+**Where these texts came from**
+
+Step 0 is the seed, hard-coded in the codebase (`configs/harness_gepa_base.yaml`, with the same defaults in
+`rsi_harness/config.py`). Steps 1 and 2 are **not** in the codebase — the strings `Text-to-Video Script
+Specialist` and `expert Film Director and AI Video Prompt Engineer` appear nowhere under `configs/` or
+`rsi_harness/`, only in this run's log and outputs. They were written at runtime by the reflection LM, and they
+are the only components GEPA changed.
+
+Every LM call is recorded in [`events.jsonl`](events.jsonl) as a `reflection_call`; the two that produced these
+steps line up with the stored text to the character once the code fences are stripped:
+
+| Step | `reflection_call` | `response_chars` | Stored prompt | Gap |
+| --- | --- | --- | --- | --- |
+| 1. +`script` | call 1 · 14:26:42 | 1,068 | 1,058 | 10 — the ```` ``` ```` fence |
+| 2. +`director` | call 10 · 14:52:36 | 3,530 | 3,512 | 18 — the ```` ```markdown ```` fence |
+
+Thirteen calls were made in all; GEPA kept five as candidates and judged them purely on measured reward —
+iterations 1, 4 and 7 passed the minibatch and were then rejected on full validation. So these deltas are
+**proposed by the LM and selected by the evaluator**, not transcribed from anywhere. That is what makes the loop
+in §1 a real search rather than a staged one.
+
+Two scope limits are worth stating plainly, since they bound how much the word "self-improving" should carry.
+The candidate codec (`rsi_harness/optimization/codec.py`) lets the LM change **only** the six text fields
+(`prompts.{script,storyboard,director,critic,editor}` and `memory`); reward weights, routing, workflow and
+generation parameters are inherited from the base and cannot be searched at all. And `memory` — the field that
+would accumulate state *within* a run — won two minibatches but never a full validation, so the champion's
+`memory` is empty. What actually recurs here is the harness version: the promoted champion seeds the next run.
+
 **What to look for, in order:**
 
 - **Base → +script:** the base harness has no duration constraint, so the script agent split the 5 s as 2/2/1 and
@@ -255,11 +298,19 @@ Generate exactly three distinct parts based on the input script and storyboard:
 
 The same progression repeats on `train-003` (`"A child in a green jacket catches a fallen paper kite…"`):
 
-| Step | Shot lengths | Clip | Total R | video · *UnifiedReward* | story · *Jev* | editing · *local* | last-frame alignment |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Base | 2.0 / 1.0 / 2.0 s | <a href="evaluations/1d567d7950bb08c98d03069d0ce5ab05f02e455a2d18cbd816242214118a1b94/video.mp4"><img src="evaluations/1d567d7950bb08c98d03069d0ce5ab05f02e455a2d18cbd816242214118a1b94/preview.webp" width="400" alt="base train-003"></a> | 0.6348 | 0.533 | 0.661 | 1.000 | 2.87 |
-| after `script` | 1.6 / 1.6 / 1.8 s | <a href="evaluations/228a7fe756a8c04f2b7dc6d27c9a485d8eec263396087c8d909683d125afd3c9/video.mp4"><img src="evaluations/228a7fe756a8c04f2b7dc6d27c9a485d8eec263396087c8d909683d125afd3c9/preview.webp" width="400" alt="+script train-003"></a> | 0.6664 | 0.547 | 0.753 | 1.000 | 3.00 |
-| after `director` | 1.6 / 1.6 / 1.8 s | <a href="evaluations/6fdaee36ff9e3547feee88d2bdd89dfa8011085010805314e1062370e3c58a08/video.mp4"><img src="evaluations/6fdaee36ff9e3547feee88d2bdd89dfa8011085010805314e1062370e3c58a08/preview.webp" width="400" alt="+director train-003"></a> | 0.6773 | 0.571 | 0.739 | 1.000 | 3.12 |
+| Step | Shot lengths | Total R | video · *UnifiedReward* | story · *Jev* | editing · *local* | last-frame alignment |
+| --- | --- | --- | --- | --- | --- | --- |
+| Base | 2.0 / 1.0 / 2.0 s | 0.6348 | 0.533 | 0.661 | 1.000 | 2.87 |
+| after `script` | 1.6 / 1.6 / 1.8 s | 0.6664 | 0.547 | 0.753 | 1.000 | 3.00 |
+| after `director` | 1.6 / 1.6 / 1.8 s | 0.6773 | 0.571 | 0.739 | 1.000 | 3.12 |
+
+**The three renders.** Same rows as above, unsqueezed.
+
+| Step | Clip — `train-003` |
+| --- | --- |
+| Base | <a href="evaluations/1d567d7950bb08c98d03069d0ce5ab05f02e455a2d18cbd816242214118a1b94/video.mp4"><img src="evaluations/1d567d7950bb08c98d03069d0ce5ab05f02e455a2d18cbd816242214118a1b94/preview-lg.webp" width="720" alt="base train-003"></a> |
+| after `script` | <a href="evaluations/228a7fe756a8c04f2b7dc6d27c9a485d8eec263396087c8d909683d125afd3c9/video.mp4"><img src="evaluations/228a7fe756a8c04f2b7dc6d27c9a485d8eec263396087c8d909683d125afd3c9/preview-lg.webp" width="720" alt="+script train-003"></a> |
+| after `director` | <a href="evaluations/6fdaee36ff9e3547feee88d2bdd89dfa8011085010805314e1062370e3c58a08/video.mp4"><img src="evaluations/6fdaee36ff9e3547feee88d2bdd89dfa8011085010805314e1062370e3c58a08/preview-lg.webp" width="720" alt="+director train-003"></a> |
 
 ---
 
@@ -387,7 +438,7 @@ PYTHONPATH=. python -m rsi_harness.cli report   --run-dir outputs/101214_1strun 
 | `promotion/decision.json` | gate inputs and verdict (`accepted: true`) |
 | `report.json` | search + promotion + test summary |
 | `candidates/<hash>/harness.yaml` | full text of every candidate |
-| `evaluations/<key>/video.mp4` + `preview.webp` + `outcome.json` + `trajectory.json` | every clip (full rate + the inline animated preview), its score, the judge feedback and the prompts that made it |
+| `evaluations/<key>/video.mp4` + `preview.webp` / `preview-lg.webp` + `outcome.json` + `trajectory.json` | every clip (full rate + the inline animated preview), its score, the judge feedback and the prompts that made it |
 | `events.jsonl` | time-ordered log of every evaluation, reflection call and decision |
 | `gepa/run_log.txt` | raw GEPA iteration log |
 
