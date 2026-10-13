@@ -117,9 +117,18 @@ row — a separate per-row "source" column would repeat identical text down the 
 
 | Step | What RSI changed in the harness | What the harness then asked H3 for | Clip | Total R | video · *UnifiedReward* `:8090` | story · *Jev* `:8085` | editing · *local, no model* | last-frame alignment · 1–5 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| **0. Base** | — (seed harness) | 3 shots of **2.0 / 2.0 / 1.0 s** | [base train-001](evaluations/edb00ad03c2e77bc2b759d587f1a1f2c0706fcf90405d129cae6ee19daa4771b/video.mp4) | 0.6348 | 0.477 | 0.793 | 1.000 | 2.87 |
-| **1. after `script`** | timed shot list instead of a free script | 3 shots of **1.67 / 1.67 / 1.67 s** | [+script train-001](evaluations/0aa979018910a10da8a371e18edc03464f18690acf534c0948e629736dd44170/video.mp4) | 0.6628 | 0.541 (**+0.064**) | 0.753 | 1.000 | 2.87 |
-| **2. after `director`** | full subject/appearance spec per shot | same 1.7 / 1.7 / 1.6 s, richer shot text | [+director train-001](evaluations/93d21889efd4bd045da797839dc3add5758da0c7d097d3ca06c15a666ff43810/video.mp4) | 0.6659 | 0.556 (**+0.015**) | 0.730 | 1.000 | 3.14 |
+| **0. Base** | — (seed harness) | 3 shots of **2.0 / 2.0 / 1.0 s** | <a href="evaluations/edb00ad03c2e77bc2b759d587f1a1f2c0706fcf90405d129cae6ee19daa4771b/video.mp4"><img src="evaluations/edb00ad03c2e77bc2b759d587f1a1f2c0706fcf90405d129cae6ee19daa4771b/preview.webp" width="280" alt="base train-001"></a> | 0.6348 | 0.477 | 0.793 | 1.000 | 2.87 |
+| **1. after `script`** | timed shot list instead of a free script | 3 shots of **1.67 / 1.67 / 1.67 s** | <a href="evaluations/0aa979018910a10da8a371e18edc03464f18690acf534c0948e629736dd44170/video.mp4"><img src="evaluations/0aa979018910a10da8a371e18edc03464f18690acf534c0948e629736dd44170/preview.webp" width="280" alt="+script train-001"></a> | 0.6628 | 0.541 (**+0.064**) | 0.753 | 1.000 | 2.87 |
+| **2. after `director`** | full subject/appearance spec per shot | same 1.7 / 1.7 / 1.6 s, richer shot text | <a href="evaluations/93d21889efd4bd045da797839dc3add5758da0c7d097d3ca06c15a666ff43810/video.mp4"><img src="evaluations/93d21889efd4bd045da797839dc3add5758da0c7d097d3ca06c15a666ff43810/preview.webp" width="280" alt="+director train-001"></a> | 0.6659 | 0.556 (**+0.015**) | 0.730 | 1.000 | 3.14 |
+
+> **About the clips.** Every clip cell in this document plays **inline**: it is a 480 px / 12 fps animated WebP
+> preview that loops, linked to the full-rate 124-frame `video.mp4` (click to open GitHub's player). GitHub's
+> markdown sanitizer strips `<video>`/`<iframe>` tags, so an animated image is the only way to get motion inside a
+> README. Preview width is scaled per table density (`280 px` for the single-clip narrative tables, `170 px` for
+> the base/optimized pairs, `190 px` for the iteration ledger).
+
+**Harness Delta for the Steps:**
+
 
 **What to look for, in order:**
 
@@ -141,9 +150,9 @@ The same progression repeats on `train-003` (`"A child in a green jacket catches
 
 | Step | Shot lengths | Clip | Total R | video · *UnifiedReward* | story · *Jev* | editing · *local* | last-frame alignment |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Base | 2.0 / 1.0 / 2.0 s | [base train-003](evaluations/1d567d7950bb08c98d03069d0ce5ab05f02e455a2d18cbd816242214118a1b94/video.mp4) | 0.6348 | 0.533 | 0.661 | 1.000 | 2.87 |
-| after `script` | 1.6 / 1.6 / 1.8 s | [+script train-003](evaluations/228a7fe756a8c04f2b7dc6d27c9a485d8eec263396087c8d909683d125afd3c9/video.mp4) | 0.6664 | 0.547 | 0.753 | 1.000 | 3.00 |
-| after `director` | 1.6 / 1.6 / 1.8 s | [+director train-003](evaluations/6fdaee36ff9e3547feee88d2bdd89dfa8011085010805314e1062370e3c58a08/video.mp4) | 0.6773 | 0.571 | 0.739 | 1.000 | 3.12 |
+| Base | 2.0 / 1.0 / 2.0 s | <a href="evaluations/1d567d7950bb08c98d03069d0ce5ab05f02e455a2d18cbd816242214118a1b94/video.mp4"><img src="evaluations/1d567d7950bb08c98d03069d0ce5ab05f02e455a2d18cbd816242214118a1b94/preview.webp" width="280" alt="base train-003"></a> | 0.6348 | 0.533 | 0.661 | 1.000 | 2.87 |
+| after `script` | 1.6 / 1.6 / 1.8 s | <a href="evaluations/228a7fe756a8c04f2b7dc6d27c9a485d8eec263396087c8d909683d125afd3c9/video.mp4"><img src="evaluations/228a7fe756a8c04f2b7dc6d27c9a485d8eec263396087c8d909683d125afd3c9/preview.webp" width="280" alt="+script train-003"></a> | 0.6664 | 0.547 | 0.753 | 1.000 | 3.00 |
+| after `director` | 1.6 / 1.6 / 1.8 s | <a href="evaluations/6fdaee36ff9e3547feee88d2bdd89dfa8011085010805314e1062370e3c58a08/video.mp4"><img src="evaluations/6fdaee36ff9e3547feee88d2bdd89dfa8011085010805314e1062370e3c58a08/preview.webp" width="280" alt="+director train-003"></a> | 0.6773 | 0.571 | 0.739 | 1.000 | 3.12 |
 
 ---
 
@@ -179,12 +188,12 @@ Every one of the six promotion tasks improved, and the gate required the **video
 
 | Task | Base clip | Optimized clip | total R | video · *UnifiedReward* `:8090` | story · *Jev* `:8085` |
 | --- | --- | --- | --- | --- | --- |
-| promotion-001 | [base](evaluations/ee06ed72226772933316f2622235b92f33d78d599504f40934105e3539f217a3/video.mp4) | [optimized](evaluations/9d747a8a7c3bd2969a32c381f1028569f94103ba534b3a798352f7f4fae9db7f/video.mp4) | 0.637 → 0.653 | 0.525 → 0.548 (+0.023) | 0.688 → 0.698 |
-| promotion-002 | [base](evaluations/8d0f9415cf512c7700575fb55ac5bc352a45b155218090862277f7479e7657d7/video.mp4) | [optimized](evaluations/aeea3f5b03090fe0e176ffcc791fd692a04fa97d8e5ff382365c8e48961349ea/video.mp4) | 0.569 → 0.653 | 0.408 → 0.541 (**+0.133**) | 0.695 → 0.712 |
-| promotion-003 | [base](evaluations/a72559df839466f7c3006f8e9246e6b218f5c89654b732aa63841d88f264ae89/video.mp4) | [optimized](evaluations/2679672eb6afee820a028827abfd9bcdb578a008221f0a8726d079ad921c220d/video.mp4) | 0.593 → 0.652 | 0.461 → 0.523 (+0.062) | 0.666 → 0.752 |
-| promotion-004 | [base](evaluations/9fc6e25b1033dedd919899ad08994fc48e2927451757f7fd3b957049c22f9b36/video.mp4) | [optimized](evaluations/6e9fcf99e7fb99f6f97ededd244e5d91fefc526f1fe063093b698b51a658c857/video.mp4) | 0.604 → 0.659 | 0.450 → 0.528 (+0.078) | 0.737 → 0.769 |
-| promotion-005 | [base](evaluations/1a698636c4ca67eb40cf931758bbf6c7a7a593b94ed669ce9b152aa3e562f2d1/video.mp4) | [optimized](evaluations/0ddd2aa3ba40227594e21c5e7e9f6fbcdb969a758a01412e679f2ca060b95098/video.mp4) | 0.639 → 0.635 | 0.460 → 0.469 (+0.009) | 0.852 → 0.814 |
-| promotion-006 | [base](evaluations/26f615b93539a55d59d0b17d118a819f6f70778afd4e5b213ad1f1a7deb8819b/video.mp4) | [optimized](evaluations/d83296894e58c66d069a7285ffc49b69f816bcd8c68bc9ecab2928abe51de19e/video.mp4) | 0.622 → 0.665 | 0.521 → 0.551 (+0.029) | 0.637 → 0.737 |
+| promotion-001 | <a href="evaluations/ee06ed72226772933316f2622235b92f33d78d599504f40934105e3539f217a3/video.mp4"><img src="evaluations/ee06ed72226772933316f2622235b92f33d78d599504f40934105e3539f217a3/preview.webp" width="170" alt="base"></a> | <a href="evaluations/9d747a8a7c3bd2969a32c381f1028569f94103ba534b3a798352f7f4fae9db7f/video.mp4"><img src="evaluations/9d747a8a7c3bd2969a32c381f1028569f94103ba534b3a798352f7f4fae9db7f/preview.webp" width="170" alt="optimized"></a> | 0.637 → 0.653 | 0.525 → 0.548 (+0.023) | 0.688 → 0.698 |
+| promotion-002 | <a href="evaluations/8d0f9415cf512c7700575fb55ac5bc352a45b155218090862277f7479e7657d7/video.mp4"><img src="evaluations/8d0f9415cf512c7700575fb55ac5bc352a45b155218090862277f7479e7657d7/preview.webp" width="170" alt="base"></a> | <a href="evaluations/aeea3f5b03090fe0e176ffcc791fd692a04fa97d8e5ff382365c8e48961349ea/video.mp4"><img src="evaluations/aeea3f5b03090fe0e176ffcc791fd692a04fa97d8e5ff382365c8e48961349ea/preview.webp" width="170" alt="optimized"></a> | 0.569 → 0.653 | 0.408 → 0.541 (**+0.133**) | 0.695 → 0.712 |
+| promotion-003 | <a href="evaluations/a72559df839466f7c3006f8e9246e6b218f5c89654b732aa63841d88f264ae89/video.mp4"><img src="evaluations/a72559df839466f7c3006f8e9246e6b218f5c89654b732aa63841d88f264ae89/preview.webp" width="170" alt="base"></a> | <a href="evaluations/2679672eb6afee820a028827abfd9bcdb578a008221f0a8726d079ad921c220d/video.mp4"><img src="evaluations/2679672eb6afee820a028827abfd9bcdb578a008221f0a8726d079ad921c220d/preview.webp" width="170" alt="optimized"></a> | 0.593 → 0.652 | 0.461 → 0.523 (+0.062) | 0.666 → 0.752 |
+| promotion-004 | <a href="evaluations/9fc6e25b1033dedd919899ad08994fc48e2927451757f7fd3b957049c22f9b36/video.mp4"><img src="evaluations/9fc6e25b1033dedd919899ad08994fc48e2927451757f7fd3b957049c22f9b36/preview.webp" width="170" alt="base"></a> | <a href="evaluations/6e9fcf99e7fb99f6f97ededd244e5d91fefc526f1fe063093b698b51a658c857/video.mp4"><img src="evaluations/6e9fcf99e7fb99f6f97ededd244e5d91fefc526f1fe063093b698b51a658c857/preview.webp" width="170" alt="optimized"></a> | 0.604 → 0.659 | 0.450 → 0.528 (+0.078) | 0.737 → 0.769 |
+| promotion-005 | <a href="evaluations/1a698636c4ca67eb40cf931758bbf6c7a7a593b94ed669ce9b152aa3e562f2d1/video.mp4"><img src="evaluations/1a698636c4ca67eb40cf931758bbf6c7a7a593b94ed669ce9b152aa3e562f2d1/preview.webp" width="170" alt="base"></a> | <a href="evaluations/0ddd2aa3ba40227594e21c5e7e9f6fbcdb969a758a01412e679f2ca060b95098/video.mp4"><img src="evaluations/0ddd2aa3ba40227594e21c5e7e9f6fbcdb969a758a01412e679f2ca060b95098/preview.webp" width="170" alt="optimized"></a> | 0.639 → 0.635 | 0.460 → 0.469 (+0.009) | 0.852 → 0.814 |
+| promotion-006 | <a href="evaluations/26f615b93539a55d59d0b17d118a819f6f70778afd4e5b213ad1f1a7deb8819b/video.mp4"><img src="evaluations/26f615b93539a55d59d0b17d118a819f6f70778afd4e5b213ad1f1a7deb8819b/preview.webp" width="170" alt="base"></a> | <a href="evaluations/d83296894e58c66d069a7285ffc49b69f816bcd8c68bc9ecab2928abe51de19e/video.mp4"><img src="evaluations/d83296894e58c66d069a7285ffc49b69f816bcd8c68bc9ecab2928abe51de19e/preview.webp" width="170" alt="optimized"></a> | 0.622 → 0.665 | 0.521 → 0.551 (+0.029) | 0.637 → 0.737 |
 | **mean** | | | **0.611 → 0.653** | **0.471 → 0.527 (+0.056)** | 0.712 → 0.747 |
 
 The video axis improved on **6 of 6** promotion tasks, which is what the gate tests. The one total that slipped,
@@ -195,10 +204,10 @@ Test split, never used for any decision:
 
 | Task | Base clip | Optimized clip | total R |
 | --- | --- | --- | --- |
-| test-001 | [base](evaluations/b5b924300fa39ee10c7b1359d7c17a4428a0e201681905b246661c872a6ebd95/video.mp4) | [optimized](evaluations/998b4be4e3bc7ed0294ed65a9c7fe78dc79c8dbcd480970f849084bbd25565f3/video.mp4) | 0.646 → 0.688 |
-| test-002 | [base](evaluations/46da8e301312ae856e5e163fa6a14628358f86a5f4dea66074dd395b73090357/video.mp4) | [optimized](evaluations/4dc7b1061308e4d5524ce111e7a3a20a147b83d976334af78d8414cea3604235/video.mp4) | 0.509 → 0.607 |
-| test-003 | [base](evaluations/c623acf1696f096723dd27510456ce4ab2752f0f6b6f60420c76eb236a80df82/video.mp4) | [optimized](evaluations/04f66ccd0b8f5c15bcf2aacef9db58776ecc47e5dd96b0fe273d5e0652588d69/video.mp4) | 0.588 → 0.616 |
-| test-004 | [base](evaluations/0c9be593fa7a48bcabc65c1eedd31898ec8377c33a582e59016fb8a48a3b6b0a/video.mp4) | [optimized](evaluations/947bfd02d7e2c7eb16c6ba361da2c6a9b7c7bf9ef5663f829f09deee7695782b/video.mp4) | 0.619 → 0.646 |
+| test-001 | <a href="evaluations/b5b924300fa39ee10c7b1359d7c17a4428a0e201681905b246661c872a6ebd95/video.mp4"><img src="evaluations/b5b924300fa39ee10c7b1359d7c17a4428a0e201681905b246661c872a6ebd95/preview.webp" width="170" alt="base"></a> | <a href="evaluations/998b4be4e3bc7ed0294ed65a9c7fe78dc79c8dbcd480970f849084bbd25565f3/video.mp4"><img src="evaluations/998b4be4e3bc7ed0294ed65a9c7fe78dc79c8dbcd480970f849084bbd25565f3/preview.webp" width="170" alt="optimized"></a> | 0.646 → 0.688 |
+| test-002 | <a href="evaluations/46da8e301312ae856e5e163fa6a14628358f86a5f4dea66074dd395b73090357/video.mp4"><img src="evaluations/46da8e301312ae856e5e163fa6a14628358f86a5f4dea66074dd395b73090357/preview.webp" width="170" alt="base"></a> | <a href="evaluations/4dc7b1061308e4d5524ce111e7a3a20a147b83d976334af78d8414cea3604235/video.mp4"><img src="evaluations/4dc7b1061308e4d5524ce111e7a3a20a147b83d976334af78d8414cea3604235/preview.webp" width="170" alt="optimized"></a> | 0.509 → 0.607 |
+| test-003 | <a href="evaluations/c623acf1696f096723dd27510456ce4ab2752f0f6b6f60420c76eb236a80df82/video.mp4"><img src="evaluations/c623acf1696f096723dd27510456ce4ab2752f0f6b6f60420c76eb236a80df82/preview.webp" width="170" alt="base"></a> | <a href="evaluations/04f66ccd0b8f5c15bcf2aacef9db58776ecc47e5dd96b0fe273d5e0652588d69/video.mp4"><img src="evaluations/04f66ccd0b8f5c15bcf2aacef9db58776ecc47e5dd96b0fe273d5e0652588d69/preview.webp" width="170" alt="optimized"></a> | 0.588 → 0.616 |
+| test-004 | <a href="evaluations/0c9be593fa7a48bcabc65c1eedd31898ec8377c33a582e59016fb8a48a3b6b0a/video.mp4"><img src="evaluations/0c9be593fa7a48bcabc65c1eedd31898ec8377c33a582e59016fb8a48a3b6b0a/preview.webp" width="170" alt="base"></a> | <a href="evaluations/947bfd02d7e2c7eb16c6ba361da2c6a9b7c7bf9ef5663f829f09deee7695782b/video.mp4"><img src="evaluations/947bfd02d7e2c7eb16c6ba361da2c6a9b7c7bf9ef5663f829f09deee7695782b/preview.webp" width="170" alt="optimized"></a> | 0.619 → 0.646 |
 | **mean** | | | **0.590 → 0.639** |
 
 ---
@@ -211,17 +220,17 @@ validation run (2 real H3 clips).
 
 | Iter | Selected program | Component proposed | Minibatch | Full val | Val score | Clip from that iteration |
 | --- | --- | --- | --- | --- | --- | --- |
-| 0 | — | — (base program) | — | yes | 0.6588 | [base val-001](evaluations/2c86b2f9b7b60ba40a8e9a49bf815b70cdb0e4b4b27c365d2a386ef5107cd854/video.mp4) |
-| 1 | 0 | `script` | **accepted** | yes | 0.6567 | [script-v1 train-003](evaluations/228a7fe756a8c04f2b7dc6d27c9a485d8eec263396087c8d909683d125afd3c9/video.mp4) |
+| 0 | — | — (base program) | — | yes | 0.6588 | <a href="evaluations/2c86b2f9b7b60ba40a8e9a49bf815b70cdb0e4b4b27c365d2a386ef5107cd854/video.mp4"><img src="evaluations/2c86b2f9b7b60ba40a8e9a49bf815b70cdb0e4b4b27c365d2a386ef5107cd854/preview.webp" width="190" alt="base val-001"></a><br><sub>base val-001</sub> |
+| 1 | 0 | `script` | **accepted** | yes | 0.6567 | <a href="evaluations/228a7fe756a8c04f2b7dc6d27c9a485d8eec263396087c8d909683d125afd3c9/video.mp4"><img src="evaluations/228a7fe756a8c04f2b7dc6d27c9a485d8eec263396087c8d909683d125afd3c9/preview.webp" width="190" alt="script-v1 train-003"></a><br><sub>script-v1 train-003</sub> |
 | 2 | 1 | `storyboard` | skipped | no | — | — |
 | 3 | 1 | `director` | skipped | no | — | — |
-| 4 | 0 | `storyboard` | **accepted** | yes | 0.5274 | [train-001](evaluations/631d708ac3df6588b1e37f60b3541a534089d4bbb6e4b19ead030ff9c347b776/video.mp4) |
+| 4 | 0 | `storyboard` | **accepted** | yes | 0.5274 | <a href="evaluations/631d708ac3df6588b1e37f60b3541a534089d4bbb6e4b19ead030ff9c347b776/video.mp4"><img src="evaluations/631d708ac3df6588b1e37f60b3541a534089d4bbb6e4b19ead030ff9c347b776/preview.webp" width="190" alt="train-001"></a><br><sub>train-001</sub> |
 | 5 | 0 | `director` | skipped | no | — | — |
 | 6 | 1 | `memory` | skipped | no | — | — |
-| 7 | 0 | `memory` | **accepted** | yes | 0.6285 | [train-002](evaluations/408a9efa4063f15afcf790f0a0613a53d74c62d351793674f1cfe3b7e50f9fae/video.mp4) |
+| 7 | 0 | `memory` | **accepted** | yes | 0.6285 | <a href="evaluations/408a9efa4063f15afcf790f0a0613a53d74c62d351793674f1cfe3b7e50f9fae/video.mp4"><img src="evaluations/408a9efa4063f15afcf790f0a0613a53d74c62d351793674f1cfe3b7e50f9fae/preview.webp" width="190" alt="train-002"></a><br><sub>train-002</sub> |
 | 8 | 1 | `script` | skipped | no | — | — |
 | 9 | 1 | `storyboard` | skipped | no | — | — |
-| 10 | 4 | `director` | **accepted** | yes | **0.6749** | [best val-001](evaluations/b2f33fd8e5b9a326f9a066d57667edd5ee70bc854e10b84dca9ece6ec39e2850/video.mp4) |
+| 10 | 4 | `director` | **accepted** | yes | **0.6749** | <a href="evaluations/b2f33fd8e5b9a326f9a066d57667edd5ee70bc854e10b84dca9ece6ec39e2850/video.mp4"><img src="evaluations/b2f33fd8e5b9a326f9a066d57667edd5ee70bc854e10b84dca9ece6ec39e2850/preview.webp" width="190" alt="best val-001"></a><br><sub>best val-001</sub> |
 | 11 | 4 | `memory` | skipped | no | — | — |
 | 12 | 4 | `script` | skipped | no | — | — |
 | 13 | 4 | `storyboard` | skipped | no | — | — |
@@ -271,7 +280,7 @@ PYTHONPATH=. python -m rsi_harness.cli report   --run-dir outputs/101214_1strun 
 | `promotion/decision.json` | gate inputs and verdict (`accepted: true`) |
 | `report.json` | search + promotion + test summary |
 | `candidates/<hash>/harness.yaml` | full text of every candidate |
-| `evaluations/<key>/video.mp4` + `outcome.json` + `trajectory.json` | every clip, its score, the judge feedback and the prompts that made it |
+| `evaluations/<key>/video.mp4` + `preview.webp` + `outcome.json` + `trajectory.json` | every clip (full rate + the inline animated preview), its score, the judge feedback and the prompts that made it |
 | `events.jsonl` | time-ordered log of every evaluation, reflection call and decision |
 | `gepa/run_log.txt` | raw GEPA iteration log |
 
