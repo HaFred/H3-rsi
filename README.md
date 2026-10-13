@@ -135,6 +135,9 @@ row — a separate per-row "source" column would repeat identical text down the 
 > now sits in its own two-column table, so the text columns can no longer squeeze it: those use `preview-lg.webp` at
 > **720 px** (previews are still generated at 480 px for the denser tables — `170 px` for the base/optimized pairs,
 > `190 px` for the iteration ledger).
+>
+> **Where the prompts are.** The three renders above come from one task but three harness versions, so three
+> different prompts produced them — see [Where the prompts live](#where-the-prompts-live).
 
 **Harness Delta for the Steps**
 
@@ -368,6 +371,35 @@ Test split, never used for any decision:
 | test-004 | <a href="evaluations/0c9be593fa7a48bcabc65c1eedd31898ec8377c33a582e59016fb8a48a3b6b0a/video.mp4"><img src="evaluations/0c9be593fa7a48bcabc65c1eedd31898ec8377c33a582e59016fb8a48a3b6b0a/preview.webp" width="170" alt="base"></a> | <a href="evaluations/947bfd02d7e2c7eb16c6ba361da2c6a9b7c7bf9ef5663f829f09deee7695782b/video.mp4"><img src="evaluations/947bfd02d7e2c7eb16c6ba361da2c6a9b7c7bf9ef5663f829f09deee7695782b/preview.webp" width="170" alt="optimized"></a> | 0.619 → 0.646 |
 | **mean** | | | **0.590 → 0.639** |
 
+### Where the prompts live
+
+A clip is produced by three different kinds of prompt, and it helps to keep them apart:
+
+| Prompt | What it is | Where to find it |
+| --- | --- | --- |
+| **Task prompt** — the seed | the one-line idea: the user prompt handed to the script agent, and the text the visual judge scores the clip against | the codebase's `benchmarks/tasks_gepa_v1.jsonl`. This repo carries the same text verbatim inside every `evaluations/<key>/outcome.json`, as the first line of `feedback` (`Task requirement: …`) |
+| **System prompts** — the harness | the six text components RSI searches, `prompts.{script,storyboard,director,critic,editor}` and `memory` | [`base.yaml`](base.yaml) (seed), [`best.yaml`](best.yaml), [`champion/gepa-base.1.yaml`](champion/gepa-base.1.yaml), and each `candidates/<hash>/harness.yaml` |
+| **Derived prompts** — per clip | what the storyboard and director agents were actually asked, and the final prompt sent to H3 | each `evaluations/<key>/trajectory.json` — `script`, `storyboard`, `director_prompt` |
+
+**Only the seed is shared between steps; everything downstream of it is rewritten.** For `train-001` the script
+agent's user prompt is built from the task and the target alone — `Idea: <task prompt>` plus
+`Target duration: 5s across 3 shots.` — and never reads the harness. Every later prompt is assembled from the
+previous agent's output, so the sizes move at every step:
+
+| Prompt | base | +`script` | +`director` | identical? |
+| --- | --- | --- | --- | --- |
+| script agent user prompt (the seed) | same | same | same | **yes** |
+| script agent output | 770 ch | 851 ch | 1,048 ch | no |
+| storyboard agent user prompt | 798 ch | 879 ch | 1,076 ch | no |
+| director agent user prompt | 1,658 ch | 1,945 ch | 2,172 ch | no |
+| **H3 prompt** (`director_prompt`) | 2,872 ch | 4,588 ch | 4,009 ch | no |
+
+So "same prompt or rewritten?" is **both**: the seed is identical, and one edit to `prompts.script` propagates the
+whole way down — the script text changes, which changes the storyboard agent's user prompt, which changes the
+storyboard, which changes the director's user prompt, which changes what H3 is asked. The agent user prompts are
+not stored; the rows above are reconstructed from the stored `script` and `storyboard` using the exact templates
+in `rsi_harness/agents/*.py`.
+
 ---
 
 ## 4. The loop in detail (13 iterations)
@@ -446,6 +478,10 @@ PYTHONPATH=. python -m rsi_harness.cli report   --run-dir outputs/101214_1strun 
 
 - One seed per task. Per-task deltas of ~0.01–0.02 are within judge noise; the promotion mean over 6 tasks and
   the test mean over 4 tasks are the meaningful numbers.
+- The chain is **stochastic**, so a single clip pair is not a controlled A/B. Steps 1 and 2 share a byte-identical
+  `prompts.script`, yet produced different scripts (851 vs 1,048 ch) — the text LLM samples at `temperature: 0.7`,
+  and the three steps ran under three different harness hashes. Treat the per-task clips in §2 as illustrations of
+  the mechanism, not as isolated evidence for one edit.
 - The `story` axis moves against the `video` axis on some tasks (train-001 −0.06, test-001 +0.03). The gate only
   requires that no axis regress beyond 0.02 on the promotion mean, which held.
 - The clips in section 2 are one task each. The claim they support is that the edits changed pacing and
