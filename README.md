@@ -42,6 +42,45 @@ the reward weights stay frozen.
 
 ## 2. How RSI improves the harness — watch these clips in order
 
+### What gets rewritten: six text components
+
+The harness is a YAML config, but RSI can rewrite only six text fields inside it. Everything else — reward
+weights, tool routing, workflow order, generation parameters — is inherited from the base and held fixed, so the
+search cannot buy score by touching the rules instead of the prompts.
+
+| Component | Its job (as written in the seed `base.yaml`) |
+| --- | --- |
+| `prompts.script` | screenwriter — expand the one-line idea into a short film script: setup → conflict → resolution |
+| `prompts.storyboard` | storyboard artist — turn the script into a JSON shot list (`index`, `seconds`, `shot_size`, `camera`, `action`) |
+| `prompts.director` | director — write the prompt MiniMax-H3 actually receives: `integrated_multimodal_description` (`[Shot N]` blocks with timestamps), `overall_soundscape`, `non_diegetic_music` |
+| `prompts.critic` | film critic — list concrete defects under physics, subject consistency, story clarity, pacing, audio |
+| `prompts.editor` | editor — pick the best candidate and say which shots to keep or shorten |
+| `memory` | **not a prompt**: a shared list of heuristics appended to *every* agent's system prompt |
+
+The five `prompts.*` entries are the system prompts of the five workflow agents (`script → storyboard →
+director → critic → editor`); `memory` is appended to all of them. Those six fields are the entire search space
+(see [Where the prompts live](#where-the-prompts-live) for what each one is at every step).
+
+### What does the searching: GEPA
+
+GEPA optimizes *textual* system components rather than model weights — instead of gradients it has an LLM reflect
+on per-case feedback, and a Pareto front decide what survives. This run used `gepa` **0.1.4**, configured as:
+
+| Setting | Value | What it means here |
+| --- | --- | --- |
+| the candidate | the six fields above | one candidate = one complete harness |
+| the score | real end-to-end reward | a candidate is judged by driving H3 to generate an actual clip and running the frozen policy over it, so text that merely *looks* better cannot win |
+| the proposer | reflection LM, `Qwen3.5-9B` on `:8001` | shown the current component text plus that minibatch's per-case feedback, and asked to rewrite **one** component |
+| `candidate_selection_strategy` | `pareto` | selection is from the Pareto front, which keeps every candidate that is best on **at least one** case — so a component that helps one task but not another is not discarded |
+| `module_selector` | `round_robin` | which of the six components to rewrite cycles, rather than always the same one |
+| `reflection_minibatch_size` | `2` | a proposal is first tried on 2 tasks |
+| `max_metric_calls` | `60` | search budget, in evaluator calls |
+| `use_merge` | `false` | GEPA's option to combine components from different candidates is off |
+
+Each iteration therefore runs the same four steps: **pick** a program off the Pareto front → **rewrite** one
+component with the reflection LM → **score** the candidate on a 2-task minibatch → if it wins there, **validate**
+it on real H3 clips and update the front. This run took 13 iterations; the per-iteration ledger is in §4.
+
 The mechanism in one picture. RSI is a loop around H3; it never changes H3, only the text H3 is called with:
 
 ```text
