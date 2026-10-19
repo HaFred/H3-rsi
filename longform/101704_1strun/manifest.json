@@ -1,0 +1,206 @@
+{
+  "created_at": "2026-10-17T04:57:17+00:00",
+  "git_revision": "274b5b76bccb7c4d8aa5e0ff8305aa3326f069c4",
+  "identity": {
+    "base_hash": "748ee32198130a71",
+    "code_version": "85300fba76bdd0642e08ee9342f4d67b62bda166a83c29eac07488b6505763ec",
+    "config": {
+      "budget": {
+        "promotion_h3_requests": 120,
+        "search_h3_requests": 1000,
+        "test_h3_requests": 50,
+        "wall_time_seconds": 129600
+      },
+      "clips_per_project": 5,
+      "gate": {
+        "max_project_regression": 0.05,
+        "min_mean_delta": 0.02
+      },
+      "media_root": "outputs/longform_rsi",
+      "projects": "benchmarks/longform_*_5clip_v1.yaml",
+      "run_config": "configs/gepa_video_h800_r2.yaml",
+      "run_root": "benchmarks/longform_example",
+      "schema_version": 1,
+      "score": {
+        "loop_penalty_weight": 0.0,
+        "loop_threshold_bounds": [
+          0.6,
+          0.95
+        ],
+        "loop_threshold_margin": 0.05,
+        "renormalize_missing": true,
+        "search_weights": {
+          "segment_score_mean": 0.7,
+          "visual_handoff_mean": 0.3
+        },
+        "selection": "search",
+        "weights": {
+          "payoff_rate": 0.2,
+          "segment_score_mean": 0.4,
+          "state_confirmed_rate": 0.2,
+          "visual_handoff_mean": 0.2
+        }
+      },
+      "search": {
+        "candidate_selection_strategy": "pareto",
+        "max_metric_calls": 900,
+        "module_selector": "round_robin",
+        "random_seed": 0,
+        "reflection_minibatch_size": 2
+      },
+      "seeds": {
+        "promotion": [
+          0,
+          1
+        ],
+        "test": [
+          0
+        ],
+        "train": [
+          0,
+          1
+        ],
+        "validation": [
+          0
+        ]
+      },
+      "store": "outputs/.rsi_store_longform"
+    },
+    "injected_runtime": false,
+    "policy_hash": "51c6b3ebed519da8649b2768cf6e2d5f94de3003417f86b1b375770b93508cfd",
+    "projects": {
+      "promotion": {
+        "desert-caravan-5clip-v1": {
+          "path": "benchmarks/longform_desert_caravan_5clip_v1.yaml",
+          "sha256": "3cfd94b565cab9ca9f0f896fa1d3e478ab4f2a8270db52ccb58e12bb420abc0e"
+        },
+        "harbor-dawn-5clip-v1": {
+          "path": "benchmarks/longform_harbor_dawn_5clip_v1.yaml",
+          "sha256": "e32702ad6a3d8bc123b7dc1346a6a0a98a529c230f54481eb9395f6ad7ffe3f0"
+        },
+        "science-fair-5clip-v1": {
+          "path": "benchmarks/longform_science_fair_5clip_v1.yaml",
+          "sha256": "b473114da27bfe5aba57e0a05a95c523a51eeeaa7f293f12980b299454d023f4"
+        },
+        "tea-farm-5clip-v1": {
+          "path": "benchmarks/longform_tea_farm_5clip_v1.yaml",
+          "sha256": "a6fefe3081f401f9eac3e68135203b5380d9edd33eb2354ce233f57ac5f1da57"
+        }
+      },
+      "test": {
+        "autumn-orchard-5clip-v1": {
+          "path": "benchmarks/longform_autumn_orchard_5clip_v1.yaml",
+          "sha256": "3b5fb4349e09b952ad8cd1f808388722ce509fa7f2344e7aaee08267400d7162"
+        },
+        "subway-musician-5clip-v1": {
+          "path": "benchmarks/longform_subway_musician_5clip_v1.yaml",
+          "sha256": "b9135abc8fe4079180de0f7438de71f5773f7c9fa8bd1de75f119992c79d3810"
+        }
+      },
+      "train": {
+        "lighthouse-storm-5clip-v1": {
+          "path": "benchmarks/longform_lighthouse_storm_5clip_v1.yaml",
+          "sha256": "88ccd0188ab9d57d2ae3145dcd3f87118dfdf4380f0f99c8c616746a9481a818"
+        },
+        "town-fair-5clip-v1": {
+          "path": "benchmarks/longform_town_fair_5clip_v1.yaml",
+          "sha256": "01784a9533aa15e78822577afc0391569807d16ae6e5fc53bb31493010f1670d"
+        }
+      },
+      "validation": {
+        "mountain-bus-5clip-v1": {
+          "path": "benchmarks/longform_mountain_bus_5clip_v1.yaml",
+          "sha256": "b89b110e14a82875d96662fcdc8a717e37e134f6afe529ff047a4865366568a7"
+        },
+        "night-market-close-5clip-v1": {
+          "path": "benchmarks/longform_night_market_close_5clip_v1.yaml",
+          "sha256": "eee067f8e91e75e3b66ffe0f8e89640ee2cf850ea12ea27453a56cfdf6c787fd"
+        },
+        "rooftop-garden-5clip-v1": {
+          "path": "benchmarks/longform_rooftop_garden_5clip_v1.yaml",
+          "sha256": "894f07dd592c45e3c0709ff043633c0eadc5b0e937ccd69c22f4034e85e1c2fe"
+        },
+        "snow-postman-5clip-v1": {
+          "path": "benchmarks/longform_snow_postman_5clip_v1.yaml",
+          "sha256": "08018e3025323ea1d2efa225235bc56587c1cd89238e4eec468368ea66a1017e"
+        }
+      }
+    },
+    "run_config": {
+      "base_harness": "configs/harness_gepa_longform_r2_base.yaml",
+      "budget": {
+        "h3_concurrency": 1,
+        "promotion_h3_requests": 12,
+        "search_h3_requests": 60,
+        "test_h3_requests": 8,
+        "wall_time_seconds": 21600
+      },
+      "components": [
+        "script",
+        "storyboard",
+        "director",
+        "memory"
+      ],
+      "decision": {
+        "revision": "local-NeoHorse-Jev-4B-SHA256SUMS-bbeb2aa3f76ea39c",
+        "url": "http://localhost:8085"
+      },
+      "evaluation_policy": "configs/evaluation_v1_h800.yaml",
+      "h3": {
+        "revision": "MiniMax-H3@42ed227ee7df40d41602854ae760620d6eb651fe+sglang@450837e770ce+fl2va-tp2-memory",
+        "url": "http://localhost:30010"
+      },
+      "mode": "local",
+      "production": {
+        "extra_body": {
+          "chat_template_kwargs": {
+            "enable_thinking": false
+          }
+        },
+        "model": "neohorse-1-4B",
+        "revision": "local-NeoHorse-1-4B-index-sha256-315b36f21026e93b",
+        "url": "http://localhost:8000"
+      },
+      "promotion": {
+        "automatic": false
+      },
+      "reflection": {
+        "extra_body": {
+          "chat_template_kwargs": {
+            "enable_thinking": true
+          }
+        },
+        "max_tokens": 4096,
+        "model": "Qwen/Qwen3.5-9B",
+        "proposer": "reflection",
+        "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+        "temperature": 0.7,
+        "timeout_seconds": 600.0,
+        "url": "http://127.0.0.1:8001"
+      },
+      "run_id": null,
+      "run_root": "outputs",
+      "schema_version": 1,
+      "search": {
+        "axis_regression_tolerance": 0.0,
+        "candidate_selection_strategy": "pareto",
+        "guard_axis_regression": true,
+        "max_metric_calls": 60,
+        "module_selector": "round_robin",
+        "random_seed": 0,
+        "reflection_minibatch_size": 2,
+        "use_merge": false
+      },
+      "store": "outputs/.rsi_store_h800",
+      "tasks": "benchmarks/tasks_gepa_v1.jsonl"
+    },
+    "schema": 1,
+    "services": {
+      "decision": "local-NeoHorse-Jev-4B-SHA256SUMS-bbeb2aa3f76ea39c",
+      "h3": "MiniMax-H3@42ed227ee7df40d41602854ae760620d6eb651fe+sglang@450837e770ce+fl2va-tp2-memory",
+      "judge": "64b2f51d68a2fa583b194784b6cce3aeb12ed7df",
+      "production": "local-NeoHorse-1-4B-index-sha256-315b36f21026e93b"
+    }
+  },
+  "run_id": "101704_1strun"
+}

@@ -1,0 +1,40 @@
+{
+  "loop_threshold": 0.95,
+  "multi_project_calibrated": false,
+  "note": "weights are the frozen defaults; only loop_threshold is derived from train base runs",
+  "policy": {
+    "calibrated": true,
+    "loop_penalty_weight": 0.0,
+    "loop_threshold": 0.95,
+    "renormalize_missing": true,
+    "weights": {
+      "payoff_rate": 0.2,
+      "segment_score_mean": 0.4,
+      "state_confirmed_rate": 0.2,
+      "visual_handoff_mean": 0.2
+    }
+  },
+  "search_policy": {
+    "calibrated": true,
+    "loop_penalty_weight": 0.0,
+    "loop_threshold": 0.95,
+    "renormalize_missing": true,
+    "weights": {
+      "segment_score_mean": 0.7,
+      "visual_handoff_mean": 0.3
+    }
+  },
+  "source": "base runs on train projects only",
+  "t2va_keyframe_return": [
+    0.7744,
+    0.9121,
+    0.7809,
+    0.8204
+  ],
+  "train_projects": [
+    "lighthouse-storm-5clip-v1",
+    "lighthouse-storm-5clip-v1",
+    "town-fair-5clip-v1",
+    "town-fair-5clip-v1"
+  ]
+}

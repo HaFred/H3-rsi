@@ -1,0 +1,89 @@
+# ProjectSpec for the long-form RSI dataset longform-v1 (docs/12). Executed by
+# `python -m rsi_harness.cli longform` / `longform-optimize`; `load_tasks()` does not read it.
+# Original five-segment story; no actions are reused from tasks_gepa_v1.
+#
+# `evidence`: one visual yes/no question per `state_commit` fact; a fact is committed to
+#   StoryState only when the judge confirms it on the validated clip.
+# `payoff`: questions checking that already committed upstream facts stay visible.
+schema_version: 1
+project_id: snow-postman-5clip-v1
+title: 雪天邮差
+kind: longform-continuity
+source_dataset: original
+target:
+  task_type: t2va
+  short_edge: 768
+  aspect_ratio: "16:9"
+  duration_seconds: 5.0
+  frame_rate: 24.0
+  num_inference_steps: 10
+  expected_frames: 124  # ceil(5 * 24) aligned to 17n+5
+continuity_contract:
+  project_world: "下雪的山间小镇，一位邮差的一趟送信路线；白雪、松树、清冷晨光与室内暖光。"
+  recurring_motifs: [blue_mailbag, red_coat, snow]
+  audio_policy: "保留踩雪、风声和室内炉火声；拼接处短 crossfade。"
+  visual_policy: "统一 16:9、24 fps、雪景冷色与室内暖色。每段以中景或全景收尾，避免以特写结束，便于下一段承接。"
+segments:
+  - index: 1
+    segment_id: depot
+    source_task_id: original
+    purpose: "建立邮差、蓝色邮包与雪天。"
+    prompt: "清晨下雪的小镇邮局门口，一位穿红色外套的邮差背上蓝色邮包，推出一辆旧自行车。包含雪地脚步声和风声。"
+    state_commit: [mailbag: carried, weather: snowing]
+    evidence:
+      mailbag: "Is a person carrying a blue bag?"
+      weather: "Is it snowing or is the ground covered in snow?"
+  - index: 2
+    segment_id: hill-ride
+    source_task_id: original
+    purpose: "送信路线的上坡。"
+    prompt: "邮差推着自行车走上积雪的小坡，蓝色邮包在背上，路边松树挂满白雪。包含踩雪声和喘息声。"
+    depends_on: [depot]
+    state_commit: [route: uphill]
+    evidence:
+      route: "Is a person pushing a bicycle up a snowy slope?"
+    payoff:
+      mailbag: "Is a blue bag visible?"
+  - index: 3
+    segment_id: farm-letter
+    source_task_id: original
+    purpose: "送达信件，兑现邮包与雪景。"
+    prompt: "山坡上的农舍门口，邮差从蓝色邮包里取出一封信，交给一位裹着围巾的老奶奶。包含开门声和简短交谈声。"
+    depends_on: [hill-ride]
+    state_commit: [letter: delivered]
+    evidence:
+      letter: "Is a person handing an envelope to an elderly woman?"
+    payoff:
+      mailbag: "Is a blue bag visible?"
+      weather: "Is there snow in the scene?"
+  - index: 4
+    segment_id: dog-follow
+    source_task_id: original
+    purpose: "引入跟随的小狗，作为终段需兑现的新状态。"
+    prompt: "一只棕色小狗跟着邮差在雪地上奔跑，邮差回头微笑。包含狗叫声和踩雪声。"
+    depends_on: [farm-letter]
+    state_commit: [dog: following]
+    evidence:
+      dog: "Is a brown dog running in the snow?"
+    payoff:
+      weather: "Is there snow in the scene?"
+  - index: 5
+    segment_id: return-warm
+    source_task_id: original
+    purpose: "回到邮局取暖，兑现小狗与邮包。"
+    prompt: "邮局里的炉火旁，邮差把空了的蓝色邮包挂在墙上，棕色小狗趴在炉边。包含炉火噼啪声。"
+    depends_on: [dog-follow, depot]
+    state_commit: [mailbag: empty, rest: indoors]
+    evidence:
+      mailbag: "Is a blue bag hanging on a wall?"
+      rest: "Is there a fireplace or stove with fire indoors?"
+    payoff:
+      dog: "Is a dog lying indoors?"
+stitch:
+  order: [depot, hill-ride, farm-letter, dog-follow, return-warm]
+  video_transition: cut
+  audio_crossfade_seconds: 0.12
+  output: timeline.mp4
+split_policy:
+  status: validation
+  rule: "longform-v1 按项目切分：本作品只属于 validation；不得在其他 split 复用其剧情、事实或评测证据。"

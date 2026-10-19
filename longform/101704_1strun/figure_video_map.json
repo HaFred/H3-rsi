@@ -1,0 +1,207 @@
+{
+  "schema_version": 1,
+  "run_id": "101704_1strun",
+  "media_included": false,
+  "mapping_basis": "Frozen videos.json, project stitch.order, source figure generator and labels. Videos were unavailable locally; no MP4 was re-decoded.",
+  "figures": {
+    "101704_1strun_base_vs_best.webp": {
+      "kind": "segment_last_frame_contact_sheet",
+      "case_id": "promotion:desert-caravan-5clip-v1:seed1",
+      "frame_index_zero_based": 123,
+      "row_order": [
+        "base",
+        "best"
+      ],
+      "column_order": [
+        "dune-walk",
+        "oasis",
+        "sandstorm",
+        "starry-night",
+        "tent-tea"
+      ],
+      "playback_order": [
+        "dune-walk",
+        "sandstorm",
+        "oasis",
+        "tent-tea",
+        "starry-night"
+      ],
+      "rows": [
+        {
+          "case_id": "promotion:desert-caravan-5clip-v1:seed1",
+          "arm": "base",
+          "candidate_hash": "531468a18cbef02985abce2a4cd5f9017933eb238fc235fbaaed6b492356d725",
+          "project_id": "desert-caravan-5clip-v1",
+          "seed": 1,
+          "split": "promotion",
+          "project_dir": "outputs/longform_rsi/101704_1strun/projects/cae591d6210f6ac740d13a7d4b2448b6cc6cac1d6c3db33c558c7fdcb95324fc",
+          "timeline": "outputs/longform_rsi/101704_1strun/projects/cae591d6210f6ac740d13a7d4b2448b6cc6cac1d6c3db33c558c7fdcb95324fc/timeline.mp4",
+          "link": "outputs/longform_rsi/101704_1strun/videos/base/promotion_desert-caravan-5clip-v1_seed1.mp4"
+        },
+        {
+          "case_id": "promotion:desert-caravan-5clip-v1:seed1",
+          "arm": "best",
+          "candidate_hash": "1d079e4c48205724db18ccfd7c6263c2170581ebff7bcd5aee69b4afcc60911f",
+          "project_id": "desert-caravan-5clip-v1",
+          "seed": 1,
+          "split": "promotion",
+          "project_dir": "outputs/longform_rsi/101704_1strun/projects/5b86a07a8cecb7a7697120f8888c23635e8d4b7cb77d22c0d83c3ce560d06aa1",
+          "timeline": "outputs/longform_rsi/101704_1strun/projects/5b86a07a8cecb7a7697120f8888c23635e8d4b7cb77d22c0d83c3ce560d06aa1/timeline.mp4",
+          "link": "outputs/longform_rsi/101704_1strun/videos/best/promotion_desert-caravan-5clip-v1_seed1.mp4"
+        }
+      ],
+      "label_note": "Legacy S in this original image is R_project, not the GEPA search score."
+    },
+    "101704_1strun_evidence.webp": {
+      "kind": "sampled_segment_frames",
+      "row_order_per_block": [
+        "base",
+        "best"
+      ],
+      "frame_indices_zero_based": [
+        62,
+        123
+      ],
+      "blocks": [
+        {
+          "case_id": "promotion:desert-caravan-5clip-v1:seed0",
+          "segment_id": "tent-tea",
+          "check_kind": "evidence",
+          "check_key": "tea",
+          "annotated_p_yes": {
+            "base": 1.0,
+            "best": 0.0
+          },
+          "rows": [
+            {
+              "case_id": "promotion:desert-caravan-5clip-v1:seed0",
+              "arm": "base",
+              "candidate_hash": "531468a18cbef02985abce2a4cd5f9017933eb238fc235fbaaed6b492356d725",
+              "project_id": "desert-caravan-5clip-v1",
+              "seed": 0,
+              "split": "promotion",
+              "project_dir": "outputs/longform_rsi/101704_1strun/projects/a8e54822a20937ea7adfc7151042c80b39d22f709783dfd027e43489d8af90cc",
+              "timeline": "outputs/longform_rsi/101704_1strun/projects/a8e54822a20937ea7adfc7151042c80b39d22f709783dfd027e43489d8af90cc/timeline.mp4",
+              "link": "outputs/longform_rsi/101704_1strun/videos/base/promotion_desert-caravan-5clip-v1_seed0.mp4"
+            },
+            {
+              "case_id": "promotion:desert-caravan-5clip-v1:seed0",
+              "arm": "best",
+              "candidate_hash": "1d079e4c48205724db18ccfd7c6263c2170581ebff7bcd5aee69b4afcc60911f",
+              "project_id": "desert-caravan-5clip-v1",
+              "seed": 0,
+              "split": "promotion",
+              "project_dir": "outputs/longform_rsi/101704_1strun/projects/eff961c9948e5fd930408e733f9e0af2ae0b3dc01b052aa462346f36ce28271c",
+              "timeline": "outputs/longform_rsi/101704_1strun/projects/eff961c9948e5fd930408e733f9e0af2ae0b3dc01b052aa462346f36ce28271c/timeline.mp4",
+              "link": "outputs/longform_rsi/101704_1strun/videos/best/promotion_desert-caravan-5clip-v1_seed0.mp4"
+            }
+          ],
+          "segment_video_location": "<project_dir>/segments/<index>_<segment_id>/attempt_1/*.mp4 (recorded server path)"
+        },
+        {
+          "case_id": "promotion:desert-caravan-5clip-v1:seed1",
+          "segment_id": "sandstorm",
+          "check_kind": "payoff",
+          "check_key": "camels",
+          "annotated_p_yes": {
+            "base": 0.0,
+            "best": 0.99
+          },
+          "rows": [
+            {
+              "case_id": "promotion:desert-caravan-5clip-v1:seed1",
+              "arm": "base",
+              "candidate_hash": "531468a18cbef02985abce2a4cd5f9017933eb238fc235fbaaed6b492356d725",
+              "project_id": "desert-caravan-5clip-v1",
+              "seed": 1,
+              "split": "promotion",
+              "project_dir": "outputs/longform_rsi/101704_1strun/projects/cae591d6210f6ac740d13a7d4b2448b6cc6cac1d6c3db33c558c7fdcb95324fc",
+              "timeline": "outputs/longform_rsi/101704_1strun/projects/cae591d6210f6ac740d13a7d4b2448b6cc6cac1d6c3db33c558c7fdcb95324fc/timeline.mp4",
+              "link": "outputs/longform_rsi/101704_1strun/videos/base/promotion_desert-caravan-5clip-v1_seed1.mp4"
+            },
+            {
+              "case_id": "promotion:desert-caravan-5clip-v1:seed1",
+              "arm": "best",
+              "candidate_hash": "1d079e4c48205724db18ccfd7c6263c2170581ebff7bcd5aee69b4afcc60911f",
+              "project_id": "desert-caravan-5clip-v1",
+              "seed": 1,
+              "split": "promotion",
+              "project_dir": "outputs/longform_rsi/101704_1strun/projects/5b86a07a8cecb7a7697120f8888c23635e8d4b7cb77d22c0d83c3ce560d06aa1",
+              "timeline": "outputs/longform_rsi/101704_1strun/projects/5b86a07a8cecb7a7697120f8888c23635e8d4b7cb77d22c0d83c3ce560d06aa1/timeline.mp4",
+              "link": "outputs/longform_rsi/101704_1strun/videos/best/promotion_desert-caravan-5clip-v1_seed1.mp4"
+            }
+          ],
+          "segment_video_location": "<project_dir>/segments/<index>_<segment_id>/attempt_1/*.mp4 (recorded server path)"
+        },
+        {
+          "case_id": "promotion:harbor-dawn-5clip-v1:seed0",
+          "segment_id": "sun-up",
+          "check_kind": "evidence",
+          "check_key": "time",
+          "annotated_p_yes": {
+            "base": 0.99,
+            "best": 0.0
+          },
+          "rows": [
+            {
+              "case_id": "promotion:harbor-dawn-5clip-v1:seed0",
+              "arm": "base",
+              "candidate_hash": "531468a18cbef02985abce2a4cd5f9017933eb238fc235fbaaed6b492356d725",
+              "project_id": "harbor-dawn-5clip-v1",
+              "seed": 0,
+              "split": "promotion",
+              "project_dir": "outputs/longform_rsi/101704_1strun/projects/7186859fd0311f76dfc65d759bacefa46206054f300a2dcd9a5b6da11557dc8c",
+              "timeline": "outputs/longform_rsi/101704_1strun/projects/7186859fd0311f76dfc65d759bacefa46206054f300a2dcd9a5b6da11557dc8c/timeline.mp4",
+              "link": "outputs/longform_rsi/101704_1strun/videos/base/promotion_harbor-dawn-5clip-v1_seed0.mp4"
+            },
+            {
+              "case_id": "promotion:harbor-dawn-5clip-v1:seed0",
+              "arm": "best",
+              "candidate_hash": "1d079e4c48205724db18ccfd7c6263c2170581ebff7bcd5aee69b4afcc60911f",
+              "project_id": "harbor-dawn-5clip-v1",
+              "seed": 0,
+              "split": "promotion",
+              "project_dir": "outputs/longform_rsi/101704_1strun/projects/520e6420592d9344b8824123f8a4795b48b75e5faad4fd32d72c3e0bdc5e89b2",
+              "timeline": "outputs/longform_rsi/101704_1strun/projects/520e6420592d9344b8824123f8a4795b48b75e5faad4fd32d72c3e0bdc5e89b2/timeline.mp4",
+              "link": "outputs/longform_rsi/101704_1strun/videos/best/promotion_harbor-dawn-5clip-v1_seed0.mp4"
+            }
+          ],
+          "segment_video_location": "<project_dir>/segments/<index>_<segment_id>/attempt_1/*.mp4 (recorded server path)"
+        }
+      ]
+    },
+    "101704_1strun_search.webp": {
+      "kind": "validation_search_scores",
+      "source": "search.json",
+      "metric": "S_project"
+    },
+    "101704_1strun_promotion.webp": {
+      "kind": "promotion_case_report_scores",
+      "source": "promotion/decision.json",
+      "metric": "R_project",
+      "legacy_caption_issues": [
+        "S labels mean R_project.",
+        "The legend says script + storyboard; the winner actually changes memory only."
+      ]
+    },
+    "101704_1strun_axes.webp": {
+      "kind": "promotion_and_test_metric_aggregates",
+      "source": "report.json",
+      "legacy_caption_issues": [
+        "The row labelled S (project score) is R_project.",
+        "The row labelled R = segment_score_mean is C = mean(R_clip)."
+      ]
+    },
+    "101704_1strun_timeline.webp": {
+      "kind": "event_based_request_estimate",
+      "source": [
+        "events.jsonl",
+        "budget.json"
+      ],
+      "legacy_caption_issues": [
+        "The plot estimates 5 requests per project_done, including incomplete projects; budget.json is authoritative.",
+        "The three-session crash/resume/replay footer is stale: this event ledger has one search_started, one completed run_finished, and no recorded interruption/replay."
+      ]
+    }
+  }
+}

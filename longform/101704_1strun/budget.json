@@ -1,0 +1,14 @@
+{
+  "limits": {
+    "promotion": 120,
+    "search": 1000,
+    "test": 50
+  },
+  "reservations": {},
+  "updated_at": "2026-10-17T23:55:36+00:00",
+  "used": {
+    "promotion": 80,
+    "search": 950,
+    "test": 20
+  }
+}

@@ -1,0 +1,88 @@
+# ProjectSpec for the long-form RSI dataset longform-v1 (docs/12). Executed by
+# `python -m rsi_harness.cli longform` / `longform-optimize`; `load_tasks()` does not read it.
+# Original five-segment story; no actions are reused from tasks_gepa_v1.
+#
+# `evidence`: one visual yes/no question per `state_commit` fact; a fact is committed to
+#   StoryState only when the judge confirms it on the validated clip.
+# `payoff`: questions checking that already committed upstream facts stay visible.
+schema_version: 1
+project_id: lighthouse-storm-5clip-v1
+title: 海边灯塔起风
+kind: longform-continuity
+source_dataset: original
+target:
+  task_type: t2va
+  short_edge: 768
+  aspect_ratio: "16:9"
+  duration_seconds: 5.0
+  frame_rate: 24.0
+  num_inference_steps: 10
+  expected_frames: 124  # ceil(5 * 24) aligned to 17n+5
+continuity_contract:
+  project_world: "暴风雨将至的黄昏海岸与一座白色灯塔；阴沉天空、灰蓝海面、冷色调中带暖色灯光。"
+  recurring_motifs: [brass_lantern, lighthouse_beam, rough_sea]
+  audio_policy: "保留海浪、风雨和动作声；拼接处短 crossfade。"
+  visual_policy: "统一 16:9、24 fps、冷色调与灯光暖点。每段以中景或全景收尾，避免以特写结束，便于下一段承接。"
+segments:
+  - index: 1
+    segment_id: keeper-climb
+    source_task_id: original
+    purpose: "建立灯塔、守塔人、铜提灯与将至的风暴。"
+    prompt: "黄昏的海边灯塔下，一位留白胡子的守塔人提着一盏铜色提灯走上灯塔外的螺旋铁梯，海浪拍打礁石。包含海浪声和铁梯脚步声。"
+    state_commit: [lantern: carried, weather: storm_coming]
+    evidence:
+      lantern: "Is a person carrying a lantern?"
+      weather: "Are there dark storm clouds or rough waves?"
+  - index: 2
+    segment_id: lamp-room
+    source_task_id: original
+    purpose: "点亮灯塔，让光束成为后续段落的共享事实。"
+    prompt: "灯塔顶部的灯室里，守塔人点亮巨大的透镜灯，光束扫过阴沉的海面；铜色提灯放在窗台上。包含火柴声和风声。"
+    depends_on: [keeper-climb]
+    state_commit: [beacon: lit]
+    evidence:
+      beacon: "Is a bright lighthouse lamp shining?"
+    payoff:
+      lantern: "Is a lantern visible in the image?"
+  - index: 3
+    segment_id: fishing-boat
+    source_task_id: original
+    purpose: "从海上视角兑现灯塔光束。"
+    prompt: "波涛中的小渔船上，一位穿橙色救生衣的渔夫看见远处灯塔的光束，转动船舵驶向岸边。包含浪声和船引擎声。"
+    depends_on: [lamp-room]
+    state_commit: [boat: turning_home]
+    evidence:
+      boat: "Is a person in an orange life jacket on a small boat?"
+    payoff:
+      beacon: "Is a lighthouse or its light beam visible in the distance?"
+  - index: 4
+    segment_id: harbor-rope
+    source_task_id: original
+    purpose: "渔船靠岸，保持风雨与灯塔光。"
+    prompt: "雨中的小木码头，渔夫把船靠岸，把缆绳系在木桩上；远处灯塔仍在发光。包含雨声和绳索摩擦声。"
+    depends_on: [fishing-boat]
+    state_commit: [boat: docked]
+    evidence:
+      boat: "Is a boat tied to a wooden dock with a rope?"
+    payoff:
+      beacon: "Is a lighthouse or its light beam visible in the distance?"
+  - index: 5
+    segment_id: shelter-tea
+    source_task_id: original
+    purpose: "两条人物线在灯塔小屋汇合，兑现提灯与风暴。"
+    prompt: "灯塔底层的小屋里，守塔人和渔夫围着木桌喝热茶，窗外暴风雨，桌上放着铜色提灯。包含雨打窗声和杯子轻碰声。"
+    depends_on: [harbor-rope, keeper-climb]
+    state_commit: [shelter: reached]
+    evidence:
+      shelter: "Are two people sitting at a table indoors drinking from cups?"
+    payoff:
+      lantern: "Is a lantern visible in the image?"
+      weather: "Is it raining or stormy outside the window?"
+stitch:
+  order: [keeper-climb, lamp-room, fishing-boat, harbor-rope, shelter-tea]
+  video_transition: cut
+  audio_crossfade_seconds: 0.12
+  output: timeline.mp4
+split_policy:
+  status: train
+  rule: "longform-v1 按项目切分：本作品只属于 train；不得在其他 split 复用其剧情、事实或评测证据。"

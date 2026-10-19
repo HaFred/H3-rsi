@@ -1,0 +1,87 @@
+# ProjectSpec for the long-form RSI dataset longform-v1 (docs/12). Executed by
+# `python -m rsi_harness.cli longform` / `longform-optimize`; `load_tasks()` does not read it.
+# Original five-segment story; no actions are reused from tasks_gepa_v1.
+#
+# `evidence`: one visual yes/no question per `state_commit` fact; a fact is committed to
+#   StoryState only when the judge confirms it on the validated clip.
+# `payoff`: questions checking that already committed upstream facts stay visible.
+schema_version: 1
+project_id: harbor-dawn-5clip-v1
+title: 渔港清晨
+kind: longform-continuity
+source_dataset: original
+target:
+  task_type: t2va
+  short_edge: 768
+  aspect_ratio: "16:9"
+  duration_seconds: 5.0
+  frame_rate: 24.0
+  num_inference_steps: 10
+  expected_frames: 124  # ceil(5 * 24) aligned to 17n+5
+continuity_contract:
+  project_world: "薄雾中的小渔港从黎明到日出；橙色浮标、湿木码头、淡蓝到金色的天光。"
+  recurring_motifs: [orange_buoys, fishing_boats, morning_mist]
+  audio_policy: "保留海鸥、浪声、引擎与人声；拼接处短 crossfade。"
+  visual_policy: "统一 16:9、24 fps、清晨柔光。每段以中景或全景收尾，避免以特写结束，便于下一段承接。"
+segments:
+  - index: 1
+    segment_id: boats-return
+    source_task_id: original
+    purpose: "建立渔港、浮标与清晨。"
+    prompt: "清晨薄雾中的渔港，几艘渔船缓缓靠岸，码头边堆着一排橙色浮标。包含海鸥声与船引擎声。"
+    state_commit: [buoys: stacked, time: dawn]
+    evidence:
+      buoys: "Are orange buoys visible?"
+      time: "Is there mist over the water of a harbor with fishing boats?"
+  - index: 2
+    segment_id: fish-unload
+    source_task_id: original
+    purpose: "卸鱼，建立渔获状态。"
+    prompt: "渔民把装满鱼的蓝色塑料筐搬上码头，鱼鳞在晨光里闪光，旁边是橙色浮标。包含水声和吆喝声。"
+    depends_on: [boats-return]
+    state_commit: [fish: unloaded]
+    evidence:
+      fish: "Are crates full of fish on a dock?"
+    payoff:
+      buoys: "Are orange buoys visible?"
+  - index: 3
+    segment_id: auction
+    source_task_id: original
+    purpose: "鱼市拍卖，兑现渔获。"
+    prompt: "渔港鱼市里，拍卖员举手喊价，一群穿雨靴的人围着鱼筐。包含喊价声和人群声。"
+    depends_on: [fish-unload]
+    state_commit: [auction: held]
+    evidence:
+      auction: "Is a crowd of people gathered around crates of fish?"
+    payoff:
+      fish: "Is fish visible?"
+  - index: 4
+    segment_id: net-mending
+    source_task_id: original
+    purpose: "并行人物线：老渔民补网。"
+    prompt: "码头一角，一位老渔民坐在橙色浮标旁，用梭子修补绿色渔网。包含海浪声和绳线摩擦声。"
+    depends_on: [boats-return]
+    state_commit: [net: mended]
+    evidence:
+      net: "Is a person repairing a green fishing net?"
+    payoff:
+      buoys: "Are orange buoys visible?"
+  - index: 5
+    segment_id: sun-up
+    source_task_id: original
+    purpose: "日出收束，时间推进。"
+    prompt: "太阳升起，渔港雾气散去，空渔船随波摇晃，橙色浮标在水面漂浮。包含海鸥声和轻浪声。"
+    depends_on: [auction, net-mending]
+    state_commit: [time: morning]
+    evidence:
+      time: "Is the sun rising over a harbor with fishing boats?"
+    payoff:
+      buoys: "Are orange buoys visible?"
+stitch:
+  order: [boats-return, fish-unload, auction, net-mending, sun-up]
+  video_transition: cut
+  audio_crossfade_seconds: 0.12
+  output: timeline.mp4
+split_policy:
+  status: promotion
+  rule: "longform-v1 按项目切分：本作品只属于 promotion；不得在其他 split 复用其剧情、事实或评测证据。"

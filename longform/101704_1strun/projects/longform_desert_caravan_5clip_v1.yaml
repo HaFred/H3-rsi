@@ -1,0 +1,87 @@
+# ProjectSpec for the long-form RSI dataset longform-v1 (docs/12). Executed by
+# `python -m rsi_harness.cli longform` / `longform-optimize`; `load_tasks()` does not read it.
+# Original five-segment story; no actions are reused from tasks_gepa_v1.
+#
+# `evidence`: one visual yes/no question per `state_commit` fact; a fact is committed to
+#   StoryState only when the judge confirms it on the validated clip.
+# `payoff`: questions checking that already committed upstream facts stay visible.
+schema_version: 1
+project_id: desert-caravan-5clip-v1
+title: 沙漠驿站
+kind: longform-continuity
+source_dataset: original
+target:
+  task_type: t2va
+  short_edge: 768
+  aspect_ratio: "16:9"
+  duration_seconds: 5.0
+  frame_rate: 24.0
+  num_inference_steps: 10
+  expected_frames: 124  # ceil(5 * 24) aligned to 17n+5
+continuity_contract:
+  project_world: "一支小驼队穿越沙丘到绿洲过夜；金色沙丘、强烈日光转为星空与篝火。"
+  recurring_motifs: [green_head_scarf, camels, sand_dunes]
+  audio_policy: "保留风沙、驼铃、水声与篝火声；拼接处短 crossfade。"
+  visual_policy: "统一 16:9、24 fps、暖金色调。每段以中景或全景收尾，避免以特写结束，便于下一段承接。"
+segments:
+  - index: 1
+    segment_id: dune-walk
+    source_task_id: original
+    purpose: "建立向导、绿头巾与骆驼。"
+    prompt: "正午的金色沙丘上，一位戴绿色头巾的向导牵着两头骆驼前行，脚印留在沙面上。包含风沙声和驼铃声。"
+    state_commit: [guide: green_scarf, camels: walking]
+    evidence:
+      guide: "Is a person wearing a green head scarf?"
+      camels: "Are camels visible?"
+  - index: 2
+    segment_id: sandstorm
+    source_task_id: original
+    purpose: "危机：沙尘暴。"
+    prompt: "远处卷起沙尘暴，向导拉低绿色头巾遮住口鼻，骆驼跪下避风。包含呼啸的风声。"
+    depends_on: [dune-walk]
+    state_commit: [weather: sandstorm]
+    evidence:
+      weather: "Is there a dust storm or blowing sand?"
+    payoff:
+      camels: "Are camels visible?"
+  - index: 3
+    segment_id: oasis
+    source_task_id: original
+    purpose: "风停后抵达绿洲。"
+    prompt: "风停后，驼队来到棕榈树环绕的小绿洲，骆驼低头在水边喝水。包含水声和鸟鸣。"
+    depends_on: [sandstorm]
+    state_commit: [location: oasis]
+    evidence:
+      location: "Are palm trees next to water visible?"
+    payoff:
+      camels: "Are camels visible?"
+  - index: 4
+    segment_id: tent-tea
+    source_task_id: original
+    purpose: "帐篷内休整，兑现向导身份。"
+    prompt: "绿洲旁的帐篷里，戴绿色头巾的向导用铜壶给一位旅人倒薄荷茶。包含倒茶声和帐篷布声。"
+    depends_on: [oasis, dune-walk]
+    state_commit: [tea: poured]
+    evidence:
+      tea: "Is someone pouring tea from a metal teapot?"
+    payoff:
+      guide: "Is a person wearing a green head scarf?"
+  - index: 5
+    segment_id: starry-night
+    source_task_id: original
+    purpose: "星空篝火收束。"
+    prompt: "夜晚的沙漠星空下，篝火旁骆驼卧着休息，绿色头巾挂在帐篷杆上随风轻摆。包含篝火噼啪声和微风声。"
+    depends_on: [tent-tea]
+    state_commit: [time: night]
+    evidence:
+      time: "Is it night with stars or a campfire?"
+    payoff:
+      camels: "Are camels visible?"
+stitch:
+  order: [dune-walk, sandstorm, oasis, tent-tea, starry-night]
+  video_transition: cut
+  audio_crossfade_seconds: 0.12
+  output: timeline.mp4
+split_policy:
+  status: promotion
+  rule: "longform-v1 按项目切分：本作品只属于 promotion；不得在其他 split 复用其剧情、事实或评测证据。"

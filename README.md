@@ -1,4 +1,174 @@
-# RSI × MiniMax-H3 — end-to-end demo
+# RSI × MiniMax-H3 — single-clip and five-clip evidence
+
+This repository records two real H3 experiments. [Longform run `101704_1strun`](#longform-rsi-five-clips-searched-as-one-project)
+searches a harness by generating and scoring complete five-clip projects. [Single-clip run `101214_1strun`](#single-clip-rsi-101214_1strun)
+is the earlier promoted demo. Their scores use different evaluation units and policies; compare base and candidate within each run.
+
+## Longform RSI: five clips searched as one project
+
+Run **`101704_1strun`** completed search, promotion and test on real H3 generation. It ran
+**2026-10-17 12:57 → 2026-10-18 07:55, Asia/Shanghai**, about 18 h 58 min.
+The search winner improved validation **search score** slightly, but **the promotion gate rejected it**.
+This is evidence of a complete project-level search and rejection workflow, with mixed quality results.
+
+### What one evaluation generates
+
+One case is **one five-segment project × one seed**, generated with one candidate harness throughout.
+The first segment uses H3 `t2va`; segments 2–5 use `fl2va`, conditioned on the preceding segment's last frame.
+Visually confirmed facts enter a persistent per-project `StoryState` and constrain later segments.
+Once the five segments are committed, FFmpeg stitches their video and audio into a `timeline.mp4`.
+Each requested 5 s segment contains 124 frames at 24 fps, so the complete timeline is **25.83 s**.
+
+```text
+candidate harness + project brief
+  → clip 1 (t2va)
+  → last frame + confirmed state → clip 2 (fl2va)
+  → last frame + confirmed state → clip 3 (fl2va)
+  → last frame + confirmed state → clip 4 (fl2va)
+  → last frame + confirmed state → clip 5 (fl2va)
+  → stitched 25.83 s timeline + project metrics
+  → GEPA feedback → next harness candidate
+```
+
+GEPA therefore compares complete sequential projects. It does not independently pick five clip winners and
+concatenate them afterward. The project score aggregates segment quality, confirmed state, payoff checks and
+boundary continuity; it is **not** a single judge watching and grading the entire stitched movie.
+
+H3 and all served production/reflection/judge models stay frozen. This run started from the learned
+[`gepa-base.2` snapshot](longform/101704_1strun/base.yaml). GEPA could search `script`, `storyboard`, `director`
+and `memory`; the selected [`1d079e4c` candidate](longform/101704_1strun/best.yaml) changes **only `memory`**
+relative to that snapshot. All five agent prompt fields remain identical to the base.
+The shared memory changes from 12 to 6 entries, including more explicit lighting/material continuity and
+background prop persistence. The last entry is literally `Use precise material`; the saved proposal is preserved verbatim.
+
+### Search and independent results
+
+The two project scores have different purposes:
+
+- **`S_project = 0.70 C + 0.30 H`** drives train acceptance, validation ranking and winner selection.
+- **`R_project = 0.40 C + 0.20 F + 0.20 P + 0.20 H`** is the report/promotion/test score when all metrics are present.
+
+`C` is mean segment quality (`R_clip = 0.60 video + 0.25 story + 0.15 editing`);
+`F` is the fraction of declared facts visually confirmed; `P` is the fraction of executed payoff checks that pass;
+`H` is mean pixel similarity across adjacent last/first frames. Missing metrics are renormalized by the frozen
+[policy](longform/101704_1strun/calibration.json); the loop penalty is disabled.
+Project `R_project` and mean segment `R_clip` are distinct metrics.
+
+| Split | Evaluation cases per harness | Metric | Base | Search winner | Δ |
+| --- | --- | --- | --- | --- | --- |
+| Validation | 4 projects × seed 0 | `S_project` | 0.750215 | 0.755050 | +0.004835 |
+| Validation | same 4 cases | `R_project` | 0.810290 | 0.723665 | −0.086625 |
+| Promotion | 4 projects × seeds 0,1 = 8 cases | `R_project` | 0.801887 | 0.806673 | +0.004786 |
+| Test, report only | 2 projects × seed 0 | `R_project` | 0.775430 | 0.787240 | +0.011810 |
+
+Sources: frozen [`report.json`](longform/101704_1strun/report.json),
+[`search.json`](longform/101704_1strun/search.json) and
+[`promotion/decision.json`](longform/101704_1strun/promotion/decision.json).
+The gate records `mean_delta = 0.004785` before rounding the displayed split means.
+Validation participates in search selection; promotion and test do not supply reflection feedback.
+Train uses 2 projects × seeds 0,1, so every parent/child acceptance comparison covers 4 complete project cases.
+
+Search evaluated **44 distinct harness configurations**; base plus 3 child candidates received full validation
+scores. The winner is selected by `S_project`, which explains why it can have a lower validation `R_project`.
+
+![Validation search score for the three child candidates, with the base reference](longform/101704_1strun/figures/101704_1strun_search.webp)
+
+**Promotion required both** mean `R_project` gain ≥ 0.02 and no individual project×seed regression beyond 0.05,
+with no loss of validity. All promotion and test timelines were valid for both harnesses. Nevertheless,
+`tea-farm`, seed 0 fell **0.82632 → 0.75158 (−0.07474)**, and the overall promotion gain was below 0.02.
+The recorded reason names the tea-farm regression; both numerical criteria fail. **No new champion was promoted.**
+The positive test mean does not override that decision.
+
+<details>
+<summary>Every promotion/test case, using R_project</summary>
+
+| Split | Project | Seed | Base | Search winner | Δ |
+| --- | --- | --- | --- | --- | --- |
+| promotion | desert-caravan | 0 | 0.82720 | 0.79924 | -0.02796 |
+| promotion | desert-caravan | 1 | 0.77452 | 0.86662 | +0.09210 |
+| promotion | harbor-dawn | 0 | 0.85908 | 0.81656 | -0.04252 |
+| promotion | harbor-dawn | 1 | 0.82358 | 0.82174 | -0.00184 |
+| promotion | science-fair | 0 | 0.72142 | 0.75070 | +0.02928 |
+| promotion | science-fair | 1 | 0.75412 | 0.78752 | +0.03340 |
+| promotion | tea-farm | 0 | 0.82632 | 0.75158 | -0.07474 |
+| promotion | tea-farm | 1 | 0.82886 | 0.85942 | +0.03056 |
+| test | autumn-orchard | 0 | 0.73508 | 0.72388 | -0.01120 |
+| test | subway-musician | 0 | 0.81578 | 0.85060 | +0.03482 |
+
+</details>
+
+### Five-clip visual evidence and its video mapping
+
+These are **static WebP frame sheets from the recorded videos**. The full MP4 files are not bundled here.
+The sheet below shows the same **promotion desert-caravan project, seed 1**, under base (top) and winner (bottom):
+`R_project` **0.77452 → 0.86662 (+0.09210)**. This is one favorable case; the rejection above includes the regressions.
+
+![Last frame of each desert-caravan segment, base above and search winner below](longform/101704_1strun/figures/101704_1strun_base_vs_best.webp)
+
+The sheet's legacy `S` labels mean **`R_project`**. Its columns were sorted by segment name, rather than playback order:
+
+| Actual playback order | Segment | Column in the WebP |
+| --- | --- | --- |
+| 1 | `dune-walk` | 1 |
+| 2 | `sandstorm` | 3 |
+| 3 | `oasis` | 2 |
+| 4 | `tent-tea` | 5 |
+| 5 | `starry-night` | 4 |
+
+Both rows map to the five segments inside one recorded `timeline.mp4` per harness,
+not to ten separately selected video examples. Recorded source identities:
+
+| WebP row | Harness hash | Recorded project directory under `outputs/longform_rsi/101704_1strun/projects/` |
+| --- | --- | --- |
+| Top, base | `531468a18cbe…` | `cae591d6210f6ac740d13a7d4b2448b6cc6cac1d6c3db33c558c7fdcb95324fc` |
+| Bottom, winner | `1d079e4c4820…` | `5b86a07a8cecb7a7697120f8888c23635e8d4b7cb77d22c0d83c3ce560d06aa1` |
+
+The corresponding server-side links were `videos/base/promotion_desert-caravan-5clip-v1_seed1.mp4` and
+`videos/best/promotion_desert-caravan-5clip-v1_seed1.mp4`. These are provenance paths, not download links.
+The complete case↔harness↔timeline index is preserved in [`videos.json`](longform/101704_1strun/videos.json).
+
+<details>
+<summary>Additional sampled-frame evidence and mappings</summary>
+
+![Sampled frames and recorded continuity judgments for three promotion segment checks](longform/101704_1strun/figures/101704_1strun_evidence.webp)
+
+Each block shows base above winner, with middle/last frames in two columns. From top to bottom:
+
+| Block | Project and seed | Segment / check | Recorded P(yes), base → winner |
+| --- | --- | --- | --- |
+| 1 | desert-caravan, seed 0 | `tent-tea`, evidence `tea`: pouring from a metal teapot | 1.00 → 0.00 |
+| 2 | desert-caravan, seed 1 | `sandstorm`, payoff `camels`: camels visible | 0.00 → 0.99 |
+| 3 | harbor-dawn, seed 0 | `sun-up`, evidence `time`: sunrise over the harbor | 0.99 → 0.00 |
+
+These are the recorded figure annotations. A check's probability is the maximum over the two sampled-frame probabilities,
+not their mean or a whole-video probability. The figure header also mentions a re-query tolerance;
+no new judge re-query was performed for this README update.
+See the [figure provenance guide](longform/101704_1strun/README.md) for the source project-directory hashes and
+known legacy-label issues in the remaining archived figures.
+
+</details>
+
+### Cost, scope and archived evidence
+
+The [budget ledger](longform/101704_1strun/budget.json) records **1,050 actual H3 requests**:
+search **950/1,000**, promotion **80/120**, test **20/50**. Search stopped when its remaining 50 requests
+could not cover the conservative 60-request estimate for another parent/child train comparison plus full validation.
+Those request counts include incomplete/failed attempts; dividing by five does not establish the number of valid movies.
+
+The project score has useful but limited signals: story/editing assess generated text plans, boundary pixel similarity
+can be high because the next clip is explicitly conditioned on the previous last frame, and payoff checks can be skipped
+when an upstream fact was not confirmed. A higher project score therefore needs visual inspection alongside its components.
+For example, test mean segment quality actually falls **0.65580 → 0.64275**, despite the higher test project score.
+
+The [run archive](longform/101704_1strun/) includes the frozen base/best harnesses, scoring and service manifest,
+reports, GEPA log, 12 project specifications verified against their manifest hashes, all six original WebP figures,
+and the recorded video index. It contains no MP4s or implementation code.
+Some original figures use older terminology or stale captions; the JSON-derived tables above and the
+[figure guide](longform/101704_1strun/README.md) identify the intended metrics and mappings.
+
+---
+
+## Single-clip RSI: 101214_1strun
 
 This run shows the full loop, on real hardware:
 
@@ -41,7 +211,7 @@ the reward weights stay frozen.
 
 ## 2. How RSI improves the harness — watch these clips in order
 
-**Scope.** This document covers the **text-only** half: H3 and the judges stay frozen while RSI searches the harness
+**Scope.** Sections 1–7 below cover the single-clip run and the **text-only** half: H3 and the judges stay frozen while RSI searches the harness
 text components. The *harness-only* Context-IR path — a frozen compiler in front of H3 plus weight training
 (actor GRPO + H3 DiffusionNFT/FlowGRPO), with **no harness search at all** — is
 [verl-omni RFC #500](https://github.com/verl-project/verl-omni/issues/500). The RSI half is
@@ -212,7 +382,7 @@ differing only in metadata:
   `parent_version: gepa-base`, `notes: … not promoted.`
 - [`champion/gepa-base.1.yaml`](https://github.com/HaFred/H3-rsi/blob/main/champion/gepa-base.1.yaml) — the **promoted champion** written to the persistent
   store: `version: gepa-base.1`, `notes: Promoted from GEPA run 101214_1strun…`. The store's
-  [`champion.txt`](https://github.com/HaFred/H3-rsi/blob/main/champion/champion.txt) points at it, and that pointer is what the next run starts from.
+  [`champion.txt`](https://github.com/HaFred/H3-rsi/blob/main/champion/champion.txt) points at it, and that pointer identifies the promoted version for this single-clip experiment.
 
 Each step also ships a machine-readable component map at `candidates/<hash>/candidate.json`.
 
@@ -551,5 +721,5 @@ PYTHONPATH=. python -m rsi_harness.cli report   --run-dir outputs/101214_1strun 
 - The clips in section 2 are one task each. The claim they support is that the edits changed pacing and
   alignment in the expected direction, which the aggregate tables confirm; they are not proof that the champion
   is better on every task.
-- The champion is `gepa-base.1`. The next run starts from it, so this loop is meant to repeat rather than to
-  finish in one pass.
+- The published champion for this single-clip run is `gepa-base.1`. The longform run above starts from its own
+  frozen `gepa-base.2` snapshot and did not promote a new champion.
