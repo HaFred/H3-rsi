@@ -20,6 +20,7 @@ All MP4 locations below are recorded server-side identities. No MP4s or dangling
 | [projects/](projects/) | 12 original ProjectSpecs; every file matches the SHA-256 in the manifest |
 | [videos.json](videos.json) | Complete recorded case/harness/project-directory/timeline mapping, including failed attempts |
 | [figure_video_map.json](figure_video_map.json) | Explicit machine-readable mapping for all six original WebPs |
+| [previews/](previews/) | Animated WebP previews derived from the recorded timelines and stitched segments, plus [provenance.json](previews/provenance.json) |
 | [checksums.json](checksums.json) | SHA-256 of copied source artifacts, including the untouched WebPs |
 
 `S_project` is the search objective (0.70 segment quality + 0.30 handoff).

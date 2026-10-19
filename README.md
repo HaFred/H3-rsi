@@ -99,46 +99,51 @@ The positive test mean does not override that decision.
 
 ### Five-clip visual evidence and its video mapping
 
-These are **static WebP frame sheets from the recorded videos**. The full MP4 files are not bundled here.
-The sheet below shows the same **promotion desert-caravan project, seed 1**, under base (top) and winner (bottom):
-`R_project` **0.77452 → 0.86662 (+0.09210)**. This is one favorable case; the rejection above includes the regressions.
+These are **animated WebP previews decoded from the recorded videos**; no MP4 is bundled.
+Each timeline preview plays the complete stitched movie (25.83 s, 620 source frames) of the same **promotion desert-caravan
+project, seed 1**, under base and winner: `R_project` **0.77452 → 0.86662 (+0.09210)**. This is one
+favorable case; the rejection above includes the regressions.
 
-![Last frame of each desert-caravan segment, base above and search winner below](longform/101704_1strun/figures/101704_1strun_base_vs_best.webp)
+Previews are downsampled for the README (640 px wide, 8 fps for timelines, 12 fps for segments, audio
+dropped, no overlaid labels). Exact parameters and per-file SHA-256 are in
+[`previews/provenance.json`](longform/101704_1strun/previews/provenance.json).
+Segments play in stitch order: `dune-walk` → `sandstorm` → `oasis` → `tent-tea` → `starry-night`.
 
-The sheet's legacy `S` labels mean **`R_project`**. Its columns were sorted by segment name, rather than playback order:
+**Base** — `531468a18cbe…`, `R_project` 0.77452
 
-| Actual playback order | Segment | Column in the WebP |
-| --- | --- | --- |
-| 1 | `dune-walk` | 1 |
-| 2 | `sandstorm` | 3 |
-| 3 | `oasis` | 2 |
-| 4 | `tent-tea` | 5 |
-| 5 | `starry-night` | 4 |
+<img src="longform/101704_1strun/previews/101704_1strun_timeline_desert-caravan_seed1_base.webp" width="640" alt="Base harness, desert-caravan seed 1: complete 25.83 s five-segment timeline">
 
-Both rows map to the five segments inside one recorded `timeline.mp4` per harness,
+**Winner** — `1d079e4c4820…`, `R_project` 0.86662
+
+<img src="longform/101704_1strun/previews/101704_1strun_timeline_desert-caravan_seed1_best.webp" width="640" alt="Search winner, desert-caravan seed 1: complete 25.83 s five-segment timeline">
+
+Both previews map to the five segments inside one recorded `timeline.mp4` per harness,
 not to ten separately selected video examples. Recorded source identities:
 
-| WebP row | Harness hash | Recorded project directory under `outputs/longform_rsi/101704_1strun/projects/` |
+| Arm | Harness hash | Recorded project directory under `outputs/longform_rsi/101704_1strun/projects/` |
 | --- | --- | --- |
-| Top, base | `531468a18cbe…` | `cae591d6210f6ac740d13a7d4b2448b6cc6cac1d6c3db33c558c7fdcb95324fc` |
-| Bottom, winner | `1d079e4c4820…` | `5b86a07a8cecb7a7697120f8888c23635e8d4b7cb77d22c0d83c3ce560d06aa1` |
+| Base | `531468a18cbe…` | `cae591d6210f6ac740d13a7d4b2448b6cc6cac1d6c3db33c558c7fdcb95324fc` |
+| Winner | `1d079e4c4820…` | `5b86a07a8cecb7a7697120f8888c23635e8d4b7cb77d22c0d83c3ce560d06aa1` |
 
 The corresponding server-side links were `videos/base/promotion_desert-caravan-5clip-v1_seed1.mp4` and
 `videos/best/promotion_desert-caravan-5clip-v1_seed1.mp4`. These are provenance paths, not download links.
 The complete case↔harness↔timeline index is preserved in [`videos.json`](longform/101704_1strun/videos.json).
+The original static six-panel sheet is still archived byte-for-byte at
+[`figures/101704_1strun_base_vs_best.webp`](longform/101704_1strun/figures/101704_1strun_base_vs_best.webp);
+its columns were sorted by segment name, not playback order (see the archive guide).
 
 <details>
 <summary>Additional sampled-frame evidence and mappings</summary>
 
-![Sampled frames and recorded continuity judgments for three promotion segment checks](longform/101704_1strun/figures/101704_1strun_evidence.webp)
+The archived evidence sheet samples frames 62 and 123 of each segment. These previews instead play the
+whole 5.17 s segment, so the recorded check can be watched rather than inferred from two stills.
+Base is left, winner is right.
 
-Each block shows base above winner, with middle/last frames in two columns. From top to bottom:
-
-| Block | Project and seed | Segment / check | Recorded P(yes), base → winner |
-| --- | --- | --- | --- |
-| 1 | desert-caravan, seed 0 | `tent-tea`, evidence `tea`: pouring from a metal teapot | 1.00 → 0.00 |
-| 2 | desert-caravan, seed 1 | `sandstorm`, payoff `camels`: camels visible | 0.00 → 0.99 |
-| 3 | harbor-dawn, seed 0 | `sun-up`, evidence `time`: sunrise over the harbor | 0.99 → 0.00 |
+| Check | Base | Winner |
+| --- | --- | --- |
+| desert-caravan, seed 0 · `tent-tea`, evidence `tea`: pouring from a metal teapot · recorded P(yes) 1.00 → 0.00 | <img src="longform/101704_1strun/previews/101704_1strun_evidence_desert-caravan_seed0_tent-tea_base.webp" width="330" alt="Base tent-tea segment, seed 0"> | <img src="longform/101704_1strun/previews/101704_1strun_evidence_desert-caravan_seed0_tent-tea_best.webp" width="330" alt="Winner tent-tea segment, seed 0"> |
+| desert-caravan, seed 1 · `sandstorm`, payoff `camels`: camels visible · recorded P(yes) 0.00 → 0.99 | <img src="longform/101704_1strun/previews/101704_1strun_evidence_desert-caravan_seed1_sandstorm_base.webp" width="330" alt="Base sandstorm segment, seed 1"> | <img src="longform/101704_1strun/previews/101704_1strun_evidence_desert-caravan_seed1_sandstorm_best.webp" width="330" alt="Winner sandstorm segment, seed 1"> |
+| harbor-dawn, seed 0 · `sun-up`, evidence `time`: sunrise over the harbor · recorded P(yes) 0.99 → 0.00 | <img src="longform/101704_1strun/previews/101704_1strun_evidence_harbor-dawn_seed0_sun-up_base.webp" width="330" alt="Base sun-up segment, harbor-dawn seed 0"> | <img src="longform/101704_1strun/previews/101704_1strun_evidence_harbor-dawn_seed0_sun-up_best.webp" width="330" alt="Winner sun-up segment, harbor-dawn seed 0"> |
 
 These are the recorded figure annotations. A check's probability is the maximum over the two sampled-frame probabilities,
 not their mean or a whole-video probability. The figure header also mentions a re-query tolerance;
