@@ -1,0 +1,85 @@
+# ProjectSpec for the long-form RSI dataset longform-v1 (docs/12). Executed by
+# `python -m rsi_harness.cli longform` / `longform-optimize`; `load_tasks()` does not read it.
+# Original five-segment story; no actions are reused from tasks_gepa_v1.
+#
+# `evidence`: one visual yes/no question per `state_commit` fact; a fact is committed to
+#   StoryState only when the judge confirms it on the validated clip.
+# `payoff`: questions checking that already committed upstream facts stay visible.
+schema_version: 1
+project_id: science-fair-5clip-v1
+title: 校园科学展
+kind: longform-continuity
+source_dataset: original
+target:
+  task_type: t2va
+  short_edge: 768
+  aspect_ratio: "16:9"
+  duration_seconds: 5.0
+  frame_rate: 24.0
+  num_inference_steps: 10
+  expected_frames: 124  # ceil(5 * 24) aligned to 17n+5
+continuity_contract:
+  project_world: "一所中学的科学展日；体育馆展台、彩色展板、操场与晴朗白天。"
+  recurring_motifs: [silver_rocket_model, display_boards, glasses_girl]
+  audio_policy: "保留人声、实验音效、欢呼与掌声；拼接处短 crossfade。"
+  visual_policy: "统一 16:9、24 fps、明亮自然光。每段以中景或全景收尾，避免以特写结束，便于下一段承接。"
+segments:
+  - index: 1
+    segment_id: setup
+    source_task_id: original
+    purpose: "建立主角、银色火箭与展馆。"
+    prompt: "学校体育馆里，一个戴眼镜的女孩把银色火箭模型放在展台上，周围是其他学生的彩色展板。包含人声和桌椅挪动声。"
+    state_commit: [rocket: displayed, venue: gym]
+    evidence:
+      rocket: "Is a silver rocket model on a table?"
+      venue: "Is this a large indoor hall with display boards?"
+  - index: 2
+    segment_id: volcano
+    source_task_id: original
+    purpose: "旁支：邻桌实验，保持展馆空间。"
+    prompt: "邻桌的男孩演示小苏打火山，红色泡沫从模型火山口喷出，周围同学欢呼。包含冒泡声和欢呼声。"
+    depends_on: [setup]
+    state_commit: [volcano: erupted]
+    evidence:
+      volcano: "Is red foam overflowing from a model volcano?"
+    payoff:
+      venue: "Is this a large indoor hall with display boards?"
+  - index: 3
+    segment_id: judges
+    source_task_id: original
+    purpose: "评委到访，兑现火箭展台。"
+    prompt: "两位评委拿着记分板走到银色火箭展台前，戴眼镜的女孩指着火箭讲解。包含讲话声和翻纸声。"
+    depends_on: [setup]
+    state_commit: [judges: visited]
+    evidence:
+      judges: "Are adults holding clipboards next to a display table?"
+    payoff:
+      rocket: "Is a silver rocket model visible?"
+  - index: 4
+    segment_id: launch
+    source_task_id: original
+    purpose: "高潮：在操场发射火箭。"
+    prompt: "学校操场上，女孩按下发射按钮，银色火箭模型冒着白烟升空；结尾镜头落在抬头仰望、拍手欢呼的同学们身上。包含嘶嘶声和欢呼声。"
+    depends_on: [judges]
+    state_commit: [rocket: launched]
+    evidence:
+      rocket: "Is a small rocket flying into the sky with smoke?"
+  - index: 5
+    segment_id: award
+    source_task_id: original
+    purpose: "颁奖收束，回到展馆。"
+    prompt: "体育馆舞台上，戴眼镜的女孩接过一枚蓝色奖章，背景是彩色展板。包含掌声。"
+    depends_on: [launch, setup]
+    state_commit: [award: received]
+    evidence:
+      award: "Is a girl receiving a medal or ribbon on a stage?"
+    payoff:
+      venue: "Are display boards visible in the background?"
+stitch:
+  order: [setup, volcano, judges, launch, award]
+  video_transition: cut
+  audio_crossfade_seconds: 0.12
+  output: timeline.mp4
+split_policy:
+  status: promotion
+  rule: "longform-v1 按项目切分：本作品只属于 promotion；不得在其他 split 复用其剧情、事实或评测证据。"

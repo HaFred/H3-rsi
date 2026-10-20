@@ -36,6 +36,10 @@ In a small bakery beside the same community fair, a baker opens a small oven, ta
 
 At a pottery stall in the same community fair, a potter lifts a small ceramic bowl from the wheel and places it on a shelf. The prepared bread stall and red umbrella are visible in the background. Keep the bowl's shape and workbench consistent. Include the pottery-wheel motor and soft indoor ambience.
 
+### Source case files
+
+Full inputs: [single-clip JSONL](../benchmarks/tasks_gepa_v1.jsonl) and [all five-clip YAML projects](../benchmarks/README.md#five-clip-inputs), with split assignments and [SHA-256 checksums](../benchmarks/checksums.json).
+
 ---
 
 [Contents](README.md) · [Previous](16-evidence-and-roadmap.md)

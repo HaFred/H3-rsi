@@ -1,0 +1,83 @@
+# ProjectSpec for the long-form RSI dataset longform-v1 (docs/12). Executed by
+# `python -m rsi_harness.cli longform` / `longform-optimize`; `load_tasks()` does not read it.
+# Original five-segment story; no actions are reused from tasks_gepa_v1.
+#
+# `evidence`: one visual yes/no question per `state_commit` fact; a fact is committed to
+#   StoryState only when the judge confirms it on the validated clip.
+# `payoff`: questions checking that already committed upstream facts stay visible.
+schema_version: 1
+project_id: tea-farm-5clip-v1
+title: 山间茶园
+kind: longform-continuity
+source_dataset: original
+target:
+  task_type: t2va
+  short_edge: 768
+  aspect_ratio: "16:9"
+  duration_seconds: 5.0
+  frame_rate: 24.0
+  num_inference_steps: 10
+  expected_frames: 124  # ceil(5 * 24) aligned to 17n+5
+continuity_contract:
+  project_world: "云雾梯田茶园里一天的采茶与制茶；翠绿梯田、竹器、炭火与白瓷。"
+  recurring_motifs: [bamboo_basket, misty_terraces, tea_leaves]
+  audio_policy: "保留鸟鸣、叶片、炒茶与倒水声；拼接处短 crossfade。"
+  visual_policy: "统一 16:9、24 fps、清新绿色调。每段以中景或全景收尾，避免以特写结束，便于下一段承接。"
+segments:
+  - index: 1
+    segment_id: mist-terraces
+    source_task_id: original
+    purpose: "建立茶园、云雾与竹背篓。"
+    prompt: "清晨云雾中的梯田茶园，一位采茶人背着竹背篓走在整齐的茶垄之间。包含鸟鸣和脚步声。"
+    state_commit: [basket: carried, weather: misty]
+    evidence:
+      basket: "Is a person carrying a woven bamboo basket on their back?"
+      weather: "Is there mist or fog over green hills?"
+  - index: 2
+    segment_id: picking
+    source_task_id: original
+    purpose: "采摘嫩叶，建立茶叶状态。"
+    prompt: "采茶人的双手在茶树上摘下嫩芽，放进身后的竹背篓；先是手部特写，结尾镜头拉远到采茶人与茶垄的中景。包含叶片沙沙声。"
+    depends_on: [mist-terraces]
+    state_commit: [leaves: picked]
+    evidence:
+      leaves: "Are hands picking green tea leaves?"
+    payoff:
+      basket: "Is a woven bamboo basket visible?"
+  - index: 3
+    segment_id: withering
+    source_task_id: original
+    purpose: "进入制茶：摊晾。"
+    prompt: "茶厂里的竹匾上摊开新鲜茶叶，阳光从木窗斜照进来。包含风扇声和叶片轻响。"
+    depends_on: [picking]
+    state_commit: [leaves: withering]
+    evidence:
+      leaves: "Are green leaves spread on flat bamboo trays?"
+  - index: 4
+    segment_id: wok-roast
+    source_task_id: original
+    purpose: "炒青，工序推进。"
+    prompt: "老师傅在烧着炭火的大铁锅里用双手翻炒茶叶，热气缓缓升起。包含炒茶声和炭火声。"
+    depends_on: [withering]
+    state_commit: [tea: roasted]
+    evidence:
+      tea: "Is a person stirring tea leaves in a large wok?"
+  - index: 5
+    segment_id: tasting
+    source_task_id: original
+    purpose: "品茶收束，回到云雾梯田。"
+    prompt: "茶园边的木亭里，采茶人和老师傅用白瓷杯品尝新茶，远处是云雾缭绕的梯田。包含倒水声和鸟鸣。"
+    depends_on: [wok-roast, mist-terraces]
+    state_commit: [tea: tasted]
+    evidence:
+      tea: "Are people drinking from small white cups?"
+    payoff:
+      weather: "Is there mist or fog over green hills?"
+stitch:
+  order: [mist-terraces, picking, withering, wok-roast, tasting]
+  video_transition: cut
+  audio_crossfade_seconds: 0.12
+  output: timeline.mp4
+split_policy:
+  status: promotion
+  rule: "longform-v1 按项目切分：本作品只属于 promotion；不得在其他 split 复用其剧情、事实或评测证据。"

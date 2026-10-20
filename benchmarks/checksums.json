@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "hash_algorithm": "sha256",
+  "source_repository": "HaFred/rsi-1st-impl-design",
+  "files": {
+    "tasks_gepa_v1.jsonl": {
+      "sha256": "d5c15799b6a924ec92c84683430ffbba95f71bb7c7cd080bf4bd46697282d83e",
+      "source_path": "benchmarks/tasks_gepa_v1.jsonl",
+      "source_checkout_sha256": "2108b0fb98bf883283887c6b097202e3c2ac886ef90d22ab208c71896f80c291",
+      "normalization": "CRLF to LF; matches short-clip run identity.tasks_sha256"
+    },
+    "longform_autumn_orchard_5clip_v1.yaml": {
+      "sha256": "3b5fb4349e09b952ad8cd1f808388722ce509fa7f2344e7aaee08267400d7162",
+      "source_path": "benchmarks/longform_autumn_orchard_5clip_v1.yaml",
+      "source_checkout_sha256": "b408141b8bc8bf786ae722ca73765c575380b252b704f7154973c09fc3e8ab06",
+      "normalization": "CRLF to LF; matches long-form run project sha256",
+      "project_id": "autumn-orchard-5clip-v1",
+      "split": "test",
+      "segments": 5,
+      "archived_copy": "longform/101704_1strun/projects/longform_autumn_orchard_5clip_v1.yaml"
+    },
+    "longform_desert_caravan_5clip_v1.yaml": {
+      "sha256": "3cfd94b565cab9ca9f0f896fa1d3e478ab4f2a8270db52ccb58e12bb420abc0e",
+      "source_path": "benchmarks/longform_desert_caravan_5clip_v1.yaml",
+      "source_checkout_sha256": "4c45fb449a30c06f676c13e4f74a56afaeb5112162bef5490c9f5a21355ea67a",
+      "normalization": "CRLF to LF; matches long-form run project sha256",
+      "project_id": "desert-caravan-5clip-v1",
+      "split": "promotion",
+      "segments": 5,
+      "archived_copy": "longform/101704_1strun/projects/longform_desert_caravan_5clip_v1.yaml"
+    },
+    "longform_harbor_dawn_5clip_v1.yaml": {
+      "sha256": "e32702ad6a3d8bc123b7dc1346a6a0a98a529c230f54481eb9395f6ad7ffe3f0",
+      "source_path": "benchmarks/longform_harbor_dawn_5clip_v1.yaml",
+      "source_checkout_sha256": "a9f548204d55e5bfbea2e908b1e0aa24320a2911284242412705e8773e83c634",
+      "normalization": "CRLF to LF; matches long-form run project sha256",
+      "project_id": "harbor-dawn-5clip-v1",
+      "split": "promotion",
+      "segments": 5,
+      "archived_copy": "longform/101704_1strun/projects/longform_harbor_dawn_5clip_v1.yaml"
+    },
+    "longform_lighthouse_storm_5clip_v1.yaml": {
+      "sha256": "88ccd0188ab9d57d2ae3145dcd3f87118dfdf4380f0f99c8c616746a9481a818",
+      "source_path": "benchmarks/longform_lighthouse_storm_5clip_v1.yaml",
+      "source_checkout_sha256": "d8476d183ad9fb9d6b7e665cfcc7210970b697c096eb2f94a5b2fccd578ec1fa",
+      "normalization": "CRLF to LF; matches long-form run project sha256",
+      "project_id": "lighthouse-storm-5clip-v1",
+      "split": "train",
+      "segments": 5,
+      "archived_copy": "longform/101704_1strun/projects/longform_lighthouse_storm_5clip_v1.yaml"
+    },
+    "longform_mountain_bus_5clip_v1.yaml": {
+      "sha256": "b89b110e14a82875d96662fcdc8a717e37e134f6afe529ff047a4865366568a7",
+      "source_path": "benchmarks/longform_mountain_bus_5clip_v1.yaml",
+      "source_checkout_sha256": "e0f8281067f03c32dd0f5e9d06ece4c3de2848ed915a1bf434d9a20cbc053a27",
+      "normalization": "CRLF to LF; matches long-form run project sha256",
+      "project_id": "mountain-bus-5clip-v1",
+      "split": "validation",
+      "segments": 5,
+      "archived_copy": "longform/101704_1strun/projects/longform_mountain_bus_5clip_v1.yaml"
+    },
+    "longform_night_market_close_5clip_v1.yaml": {
+      "sha256": "eee067f8e91e75e3b66ffe0f8e89640ee2cf850ea12ea27453a56cfdf6c787fd",
+      "source_path": "benchmarks/longform_night_market_close_5clip_v1.yaml",
+      "source_checkout_sha256": "4de97b4973ce459adb689e724c9c8ab33b660f6dad9c22c119740bfd497209ef",
+      "normalization": "CRLF to LF; matches long-form run project sha256",
+      "project_id": "night-market-close-5clip-v1",
+      "split": "validation",
+      "segments": 5,
+      "archived_copy": "longform/101704_1strun/projects/longform_night_market_close_5clip_v1.yaml"
+    },
+    "longform_rooftop_garden_5clip_v1.yaml": {
+      "sha256": "894f07dd592c45e3c0709ff043633c0eadc5b0e937ccd69c22f4034e85e1c2fe",
+      "source_path": "benchmarks/longform_rooftop_garden_5clip_v1.yaml",
+      "source_checkout_sha256": "95812f71f4166ae85703574edd8f2b96004d920da0b980aa5eda1c02749ad704",
+      "normalization": "CRLF to LF; matches long-form run project sha256",
+      "project_id": "rooftop-garden-5clip-v1",
+      "split": "validation",
+      "segments": 5,
+      "archived_copy": "longform/101704_1strun/projects/longform_rooftop_garden_5clip_v1.yaml"
+    },
+    "longform_science_fair_5clip_v1.yaml": {
+      "sha256": "b473114da27bfe5aba57e0a05a95c523a51eeeaa7f293f12980b299454d023f4",
+      "source_path": "benchmarks/longform_science_fair_5clip_v1.yaml",
+      "source_checkout_sha256": "d1ac0cd94576b290557cb42d09c5f80f805cdaaa378948e5d091c7794793c43f",
+      "normalization": "CRLF to LF; matches long-form run project sha256",
+      "project_id": "science-fair-5clip-v1",
+      "split": "promotion",
+      "segments": 5,
+      "archived_copy": "longform/101704_1strun/projects/longform_science_fair_5clip_v1.yaml"
+    },
+    "longform_snow_postman_5clip_v1.yaml": {
+      "sha256": "08018e3025323ea1d2efa225235bc56587c1cd89238e4eec468368ea66a1017e",
+      "source_path": "benchmarks/longform_snow_postman_5clip_v1.yaml",
+      "source_checkout_sha256": "7e0f0a2c8ebfb24030abafce9466e80bcf8ad88be9e28006297140ec216120f3",
+      "normalization": "CRLF to LF; matches long-form run project sha256",
+      "project_id": "snow-postman-5clip-v1",
+      "split": "validation",
+      "segments": 5,
+      "archived_copy": "longform/101704_1strun/projects/longform_snow_postman_5clip_v1.yaml"
+    },
+    "longform_subway_musician_5clip_v1.yaml": {
+      "sha256": "b9135abc8fe4079180de0f7438de71f5773f7c9fa8bd1de75f119992c79d3810",
+      "source_path": "benchmarks/longform_subway_musician_5clip_v1.yaml",
+      "source_checkout_sha256": "528fc265f8c55404e329d215e07eb21258623b819a5aa8302bd526700d69ab2a",
+      "normalization": "CRLF to LF; matches long-form run project sha256",
+      "project_id": "subway-musician-5clip-v1",
+      "split": "test",
+      "segments": 5,
+      "archived_copy": "longform/101704_1strun/projects/longform_subway_musician_5clip_v1.yaml"
+    },
+    "longform_tea_farm_5clip_v1.yaml": {
+      "sha256": "a6fefe3081f401f9eac3e68135203b5380d9edd33eb2354ce233f57ac5f1da57",
+      "source_path": "benchmarks/longform_tea_farm_5clip_v1.yaml",
+      "source_checkout_sha256": "fcdf172d1e74a6cff4876e834d9776a8d55341ac4f4c2aa34421463676a830f5",
+      "normalization": "CRLF to LF; matches long-form run project sha256",
+      "project_id": "tea-farm-5clip-v1",
+      "split": "promotion",
+      "segments": 5,
+      "archived_copy": "longform/101704_1strun/projects/longform_tea_farm_5clip_v1.yaml"
+    },
+    "longform_town_fair_5clip_v1.yaml": {
+      "sha256": "01784a9533aa15e78822577afc0391569807d16ae6e5fc53bb31493010f1670d",
+      "source_path": "benchmarks/longform_town_fair_5clip_v1.yaml",
+      "source_checkout_sha256": "545c8ccd3c926221c3bd007d58e51551d2a42ab890ad2b67dbd1c2e263a01ba4",
+      "normalization": "CRLF to LF; matches long-form run project sha256",
+      "project_id": "town-fair-5clip-v1",
+      "split": "train",
+      "segments": 5,
+      "archived_copy": "longform/101704_1strun/projects/longform_town_fair_5clip_v1.yaml"
+    }
+  }
+}

@@ -1,0 +1,88 @@
+# ProjectSpec for the long-form RSI dataset longform-v1 (docs/12). Executed by
+# `python -m rsi_harness.cli longform` / `longform-optimize`; `load_tasks()` does not read it.
+# Original five-segment story; no actions are reused from tasks_gepa_v1.
+#
+# `evidence`: one visual yes/no question per `state_commit` fact; a fact is committed to
+#   StoryState only when the judge confirms it on the validated clip.
+# `payoff`: questions checking that already committed upstream facts stay visible.
+schema_version: 1
+project_id: night-market-close-5clip-v1
+title: 夜市收摊
+kind: longform-continuity
+source_dataset: original
+target:
+  task_type: t2va
+  short_edge: 768
+  aspect_ratio: "16:9"
+  duration_seconds: 5.0
+  frame_rate: 24.0
+  num_inference_steps: 10
+  expected_frames: 124  # ceil(5 * 24) aligned to 17n+5
+continuity_contract:
+  project_world: "老街夜市从热闹到下雨收摊的一晚；红灯笼串、暖黄灯光、湿润反光的石板路。"
+  recurring_motifs: [red_lanterns, candied_haws, wet_stone_street]
+  audio_policy: "保留人群、叫卖、雨声与动作声；拼接处短 crossfade。"
+  visual_policy: "统一 16:9、24 fps、夜景暖色调。每段以中景或全景收尾，避免以特写结束，便于下一段承接。"
+segments:
+  - index: 1
+    segment_id: lantern-street
+    source_task_id: original
+    purpose: "建立夜市、红灯笼与糖葫芦小贩。"
+    prompt: "夜晚的老街夜市，红灯笼串挂满街道上空，一位卖糖葫芦的小贩把最后几串糖葫芦插在草把上。包含人群声与叫卖声。"
+    state_commit: [lanterns: lit, candied_haws: last_batch]
+    evidence:
+      lanterns: "Are red lanterns hanging over the street?"
+      candied_haws: "Are skewers of red candied fruit visible?"
+  - index: 2
+    segment_id: noodle-stall
+    source_task_id: original
+    purpose: "夜市热闹的高点，保持红灯笼。"
+    prompt: "同一夜市的面摊，厨师把一碗热汤面递给顾客，背景红灯笼随风摇晃。包含锅铲声和汤沸声。"
+    depends_on: [lantern-street]
+    state_commit: [noodles: served]
+    evidence:
+      noodles: "Is a bowl of noodles being handed to someone?"
+    payoff:
+      lanterns: "Are red lanterns visible?"
+  - index: 3
+    segment_id: rain-starts
+    source_task_id: original
+    purpose: "天气转折：下雨，摊主拉起雨棚。"
+    prompt: "夜市突然下起小雨，摊主们拉起蓝色雨棚，石板路面开始反光，红灯笼仍亮着。包含雨声和帆布声。"
+    depends_on: [lantern-street]
+    state_commit: [weather: drizzle, awning: up]
+    evidence:
+      weather: "Is it raining?"
+      awning: "Is a blue tarp or awning being pulled over a stall?"
+    payoff:
+      lanterns: "Are red lanterns visible?"
+  - index: 4
+    segment_id: packing-up
+    source_task_id: original
+    purpose: "糖葫芦小贩在雨中收摊，兑现天气状态。"
+    prompt: "雨中的糖葫芦小贩把草把和小推车盖上透明塑料布，准备收摊。包含雨声和塑料布摩擦声。"
+    depends_on: [rain-starts]
+    state_commit: [cart: covered]
+    evidence:
+      cart: "Is a cart covered with clear plastic?"
+    payoff:
+      weather: "Is it raining or is the ground wet?"
+  - index: 5
+    segment_id: lights-off
+    source_task_id: original
+    purpose: "以熄灯收束整晚。"
+    prompt: "夜市尽头，最后一位摊主关掉红灯笼，街道只剩湿润的石板路和一盏路灯。包含远处雨声和脚步声。"
+    depends_on: [packing-up, lantern-street]
+    state_commit: [lanterns: switched_off]
+    evidence:
+      lanterns: "Are the red lanterns switched off?"
+    payoff:
+      weather: "Is the street wet?"
+stitch:
+  order: [lantern-street, noodle-stall, rain-starts, packing-up, lights-off]
+  video_transition: cut
+  audio_crossfade_seconds: 0.12
+  output: timeline.mp4
+split_policy:
+  status: validation
+  rule: "longform-v1 按项目切分：本作品只属于 validation；不得在其他 split 复用其剧情、事实或评测证据。"

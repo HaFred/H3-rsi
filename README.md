@@ -4,6 +4,14 @@ This repository records two real H3 experiments. [Longform run `101704_1strun`](
 searches a harness by generating and scoring complete five-clip projects. [Single-clip run `101214_1strun`](#single-clip-rsi-101214_1strun)
 is the earlier promoted demo. Their scores use different evaluation units and policies; compare base and candidate within each run.
 
+## Source case data
+
+The original generation requirements are available in [benchmarks/](benchmarks/README.md):
+
+- [Single-clip tasks](benchmarks/tasks_gepa_v1.jsonl): 16 task prompts, split 4/2/6/4 across Train/Validation/Promotion/Test.
+- [Five-clip ProjectSpecs](benchmarks/README.md#five-clip-inputs): 12 YAML projects, each with five segment prompts, continuity rules, and stitch order, split 2/4/4/2.
+- [SHA-256 manifest](benchmarks/checksums.json): links the published sources to the recorded run inputs.
+
 ## Longform RSI: five clips searched as one project
 
 Run **`101704_1strun`** completed search, promotion and test on real H3 generation. It ran

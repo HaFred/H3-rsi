@@ -1,0 +1,3 @@
+# Preserve published snapshot bytes and recorded SHA-256 values on all platforms.
+*.jsonl -text
+*.yaml -text

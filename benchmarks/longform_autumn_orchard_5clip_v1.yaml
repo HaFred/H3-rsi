@@ -1,0 +1,86 @@
+# ProjectSpec for the long-form RSI dataset longform-v1 (docs/12). Executed by
+# `python -m rsi_harness.cli longform` / `longform-optimize`; `load_tasks()` does not read it.
+# Original five-segment story; no actions are reused from tasks_gepa_v1.
+#
+# `evidence`: one visual yes/no question per `state_commit` fact; a fact is committed to
+#   StoryState only when the judge confirms it on the validated clip.
+# `payoff`: questions checking that already committed upstream facts stay visible.
+schema_version: 1
+project_id: autumn-orchard-5clip-v1
+title: 秋日果园
+kind: longform-continuity
+source_dataset: original
+target:
+  task_type: t2va
+  short_edge: 768
+  aspect_ratio: "16:9"
+  duration_seconds: 5.0
+  frame_rate: 24.0
+  num_inference_steps: 10
+  expected_frames: 124  # ceil(5 * 24) aligned to 17n+5
+continuity_contract:
+  project_world: "秋天的家庭苹果园从采摘到晚餐；红苹果、黄叶、木梯与傍晚金光。"
+  recurring_motifs: [wooden_ladder, red_apples, autumn_leaves]
+  audio_policy: "保留鸟鸣、树枝、榨汁、烤箱与笑声；拼接处短 crossfade。"
+  visual_policy: "统一 16:9、24 fps、暖秋色调。每段以中景或全景收尾，避免以特写结束，便于下一段承接。"
+segments:
+  - index: 1
+    segment_id: ladder
+    source_task_id: original
+    purpose: "建立果园、木梯与秋季。"
+    prompt: "秋天的苹果园，一位穿格子衬衫的农夫把木梯靠在结满红苹果的树上，黄叶飘落。包含落叶声和鸟鸣。"
+    state_commit: [ladder: placed, season: autumn]
+    evidence:
+      ladder: "Is a wooden ladder leaning against a tree?"
+      season: "Are there red apples on trees or yellow autumn leaves?"
+  - index: 2
+    segment_id: picking
+    source_task_id: original
+    purpose: "采摘，建立苹果状态。"
+    prompt: "农夫站在木梯上摘下红苹果，放进挂在胳膊上的柳条篮。包含树枝晃动声。"
+    depends_on: [ladder]
+    state_commit: [apples: picked]
+    evidence:
+      apples: "Is a person on a ladder picking apples?"
+  - index: 3
+    segment_id: cider-press
+    source_task_id: original
+    purpose: "加工：榨苹果汁。"
+    prompt: "农舍棚下，农夫的女儿把苹果倒进木制榨汁机，转动把手，果汁流进玻璃罐。包含榨汁声和木头吱呀声。"
+    depends_on: [picking]
+    state_commit: [cider: pressed]
+    evidence:
+      cider: "Is juice flowing from a wooden press into a jar?"
+    payoff:
+      apples: "Are red apples visible?"
+  - index: 4
+    segment_id: pie
+    source_task_id: original
+    purpose: "厨房烘焙，兑现木梯。"
+    prompt: "厨房里，女儿把苹果派从烤箱取出放在窗台上，窗外可见果园和那架木梯。包含烤箱声。"
+    depends_on: [cider-press, ladder]
+    state_commit: [pie: baked]
+    evidence:
+      pie: "Is a baked pie on a windowsill or counter?"
+    payoff:
+      ladder: "Is a wooden ladder visible?"
+  - index: 5
+    segment_id: harvest-table
+    source_task_id: original
+    purpose: "家庭晚餐收束，兑现派与果汁。"
+    prompt: "傍晚果园里的长木桌旁，一家人分享苹果派和苹果汁，金色夕阳洒在桌上。包含笑声和碰杯声。"
+    depends_on: [pie]
+    state_commit: [harvest: celebrated]
+    evidence:
+      harvest: "Are several people eating together at an outdoor table?"
+    payoff:
+      pie: "Is a pie visible on the table?"
+      cider: "Are glasses or jars of juice visible?"
+stitch:
+  order: [ladder, picking, cider-press, pie, harvest-table]
+  video_transition: cut
+  audio_crossfade_seconds: 0.12
+  output: timeline.mp4
+split_policy:
+  status: test
+  rule: "longform-v1 按项目切分：本作品只属于 test；不得在其他 split 复用其剧情、事实或评测证据。"

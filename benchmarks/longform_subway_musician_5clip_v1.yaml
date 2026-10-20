@@ -1,0 +1,87 @@
+# ProjectSpec for the long-form RSI dataset longform-v1 (docs/12). Executed by
+# `python -m rsi_harness.cli longform` / `longform-optimize`; `load_tasks()` does not read it.
+# Original five-segment story; no actions are reused from tasks_gepa_v1.
+#
+# `evidence`: one visual yes/no question per `state_commit` fact; a fact is committed to
+#   StoryState only when the judge confirms it on the validated clip.
+# `payoff`: questions checking that already committed upstream facts stay visible.
+schema_version: 1
+project_id: subway-musician-5clip-v1
+title: 地铁站音乐人
+kind: longform-continuity
+source_dataset: original
+target:
+  task_type: t2va
+  short_edge: 768
+  aspect_ratio: "16:9"
+  duration_seconds: 5.0
+  frame_rate: 24.0
+  num_inference_steps: 10
+  expected_frames: 124  # ceil(5 * 24) aligned to 17n+5
+continuity_contract:
+  project_world: "早高峰的地下地铁站，一位街头音乐人的一场演出；白色瓷砖墙、荧光灯、人流。"
+  recurring_motifs: [black_guitar_case, knit_hat, subway_tiles]
+  audio_policy: "保留吉他、人声、脚步与列车声；拼接处短 crossfade。"
+  visual_policy: "统一 16:9、24 fps、荧光灯冷白色调。每段以中景或全景收尾，避免以特写结束，便于下一段承接。"
+segments:
+  - index: 1
+    segment_id: arrive
+    source_task_id: original
+    purpose: "建立音乐人、吉他盒与地铁站。"
+    prompt: "早高峰的地铁站通道，一位戴毛线帽的年轻人打开黑色吉他盒，拿出一把木吉他。包含人流脚步声和站内广播声。"
+    state_commit: [guitar_case: open, location: subway]
+    evidence:
+      guitar_case: "Is an open black guitar case visible?"
+      location: "Is this an underground subway station or tunnel?"
+  - index: 2
+    segment_id: first-song
+    source_task_id: original
+    purpose: "开始演出，无人驻足。"
+    prompt: "他开始弹唱，行人匆匆走过，没有人停下。包含吉他声和脚步声。"
+    depends_on: [arrive]
+    state_commit: [performance: started]
+    evidence:
+      performance: "Is a person playing an acoustic guitar?"
+    payoff:
+      location: "Is this an underground subway station or tunnel?"
+  - index: 3
+    segment_id: child-stops
+    source_task_id: original
+    purpose: "转折：第一位听众。"
+    prompt: "一个牵着妈妈的小女孩停下来，往打开的黑色吉他盒里放了一枚硬币。包含硬币声和吉他声。"
+    depends_on: [first-song]
+    state_commit: [coin: given]
+    evidence:
+      coin: "Is a child putting something into a guitar case?"
+    payoff:
+      guitar_case: "Is an open guitar case visible?"
+  - index: 4
+    segment_id: crowd
+    source_task_id: original
+    purpose: "高潮：人群聚集。"
+    prompt: "越来越多的乘客围成半圆，随着节奏拍手，音乐人边弹边笑。包含拍手声和吉他声。"
+    depends_on: [child-stops]
+    state_commit: [crowd: gathered]
+    evidence:
+      crowd: "Are many people standing in a semicircle watching?"
+    payoff:
+      location: "Is this an underground subway station or tunnel?"
+  - index: 5
+    segment_id: train-arrives
+    source_task_id: original
+    purpose: "列车进站，人群散去，收束。"
+    prompt: "列车进站，人群散去，年轻人看着装满硬币的黑色吉他盒，笑着鞠躬。包含列车进站声和刹车声。"
+    depends_on: [crowd, arrive]
+    state_commit: [guitar_case: full]
+    evidence:
+      guitar_case: "Is a guitar case with coins or money inside visible?"
+    payoff:
+      location: "Is a subway train or platform visible?"
+stitch:
+  order: [arrive, first-song, child-stops, crowd, train-arrives]
+  video_transition: cut
+  audio_crossfade_seconds: 0.12
+  output: timeline.mp4
+split_policy:
+  status: test
+  rule: "longform-v1 按项目切分：本作品只属于 test；不得在其他 split 复用其剧情、事实或评测证据。"

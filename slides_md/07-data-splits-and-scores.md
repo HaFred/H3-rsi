@@ -41,6 +41,10 @@ The original chart reports mean R × 100:
 
 These chart values are preserved from the embedded chart data. [Page 8](08-short-clip-results.md) shows one Train task's R/video scores; [page 12](12-town-fair-lineage.md) shows mean S/R over four Validation projects, rather than town-fair alone.
 
+### Source case files
+
+Full inputs: [single-clip JSONL](../benchmarks/tasks_gepa_v1.jsonl) and [all five-clip YAML projects](../benchmarks/README.md#five-clip-inputs), with split assignments and [SHA-256 checksums](../benchmarks/checksums.json).
+
 ---
 
 [Contents](README.md) · [Previous](06-gepa-loops.md) · [Next](08-short-clip-results.md)

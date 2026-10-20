@@ -1,0 +1,90 @@
+# ProjectSpec for the long-form RSI dataset longform-v1 (docs/12). Executed by
+# `python -m rsi_harness.cli longform` / `longform-optimize`; `load_tasks()` does not read it.
+# Original five-segment story; no actions are reused from tasks_gepa_v1.
+#
+# `evidence`: one visual yes/no question per `state_commit` fact; a fact is committed to
+#   StoryState only when the judge confirms it on the validated clip.
+# `payoff`: questions checking that already committed upstream facts stay visible.
+# Questions ask about large, salient objects or scene states (the 2B judge reliably misses
+# small props such as bowls or route lines; see 1013101_1st/plan.md §1).
+schema_version: 1
+project_id: mountain-bus-5clip-v1
+title: 山路巴士
+kind: longform-continuity
+source_dataset: original
+target:
+  task_type: t2va
+  short_edge: 768
+  aspect_ratio: "16:9"
+  duration_seconds: 5.0
+  frame_rate: 24.0
+  num_inference_steps: 10
+  expected_frames: 124  # ceil(5 * 24) aligned to 17n+5
+continuity_contract:
+  project_world: "一辆黄色乡村巴士沿盘山公路驶向山顶小镇；松林、雪山与弯道，车上只有司机和一位背红色背包的少年。"
+  recurring_motifs: [yellow_bus, snowy_peaks, red_backpack]
+  audio_policy: "保留发动机声、山风、车门与人声；拼接处短 crossfade。"
+  visual_policy: "统一 16:9、24 fps、高山晴天色调。每段以中景或全景收尾，避免以特写结束，便于下一段承接。"
+segments:
+  - index: 1
+    segment_id: bus-stop
+    source_task_id: original
+    purpose: "建立黄色巴士、少年与雪山。"
+    prompt: "山脚下的乡村车站，一辆黄色巴士停靠，一位背红色背包的少年上车，远处是覆雪的山峰。包含发动机怠速声和车门开合声。"
+    state_commit: [bus: yellow, backpack: red]
+    evidence:
+      bus: "Is there a yellow bus?"
+      backpack: "Is someone carrying a red backpack?"
+  - index: 2
+    segment_id: switchbacks
+    source_task_id: original
+    purpose: "盘山路行驶，保持黄色巴士。"
+    prompt: "黄色巴士沿着松林间的盘山公路转过一个急弯，车身倾斜，山谷在路边展开。包含发动机加速声和山风声。"
+    depends_on: [bus-stop]
+    state_commit: [road: mountain]
+    evidence:
+      road: "Is the road winding along a mountainside?"
+    payoff:
+      bus: "Is a yellow bus visible?"
+  - index: 3
+    segment_id: goat-block
+    source_task_id: original
+    purpose: "意外：羊群挡路，巴士停下。"
+    prompt: "盘山公路上一群白色山羊挡住去路，黄色巴士停下，司机按喇叭，少年从车窗探出头张望。包含羊叫声和喇叭声。"
+    depends_on: [switchbacks]
+    state_commit: [goats: blocking]
+    evidence:
+      goats: "Is a herd of goats standing on the road?"
+    payoff:
+      bus: "Is a yellow bus visible?"
+  - index: 4
+    segment_id: snow-pass
+    source_task_id: original
+    purpose: "爬升到雪线，景色转白。"
+    prompt: "巴士驶上山口，路两旁是积雪，车窗外雪山近在眼前，少年把红色背包抱在怀里看窗外。包含轮胎压雪声和风声。"
+    depends_on: [goat-block, bus-stop]
+    state_commit: [snow: roadside]
+    evidence:
+      snow: "Is there snow on the ground beside the road?"
+    payoff:
+      backpack: "Is a red backpack visible?"
+  - index: 5
+    segment_id: hilltop-town
+    source_task_id: original
+    purpose: "到达山顶小镇，以下车收束。"
+    prompt: "黄色巴士停在山顶小镇的石头广场，少年背着红色背包跳下车，向等候的祖母挥手。包含车门声、教堂钟声与问候声。"
+    depends_on: [snow-pass]
+    state_commit: [arrival: greeted]
+    evidence:
+      arrival: "Is a young person waving to an older woman?"
+    payoff:
+      bus: "Is a yellow bus visible?"
+      backpack: "Is someone carrying a red backpack?"
+stitch:
+  order: [bus-stop, switchbacks, goat-block, snow-pass, hilltop-town]
+  video_transition: cut
+  audio_crossfade_seconds: 0.12
+  output: timeline.mp4
+split_policy:
+  status: validation
+  rule: "longform-v1 按项目切分：本作品只属于 validation；不得在其他 split 复用其剧情、事实或评测证据。"

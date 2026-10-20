@@ -1,0 +1,89 @@
+# ProjectSpec for the long-form RSI dataset longform-v1 (docs/12). Executed by
+# `python -m rsi_harness.cli longform` / `longform-optimize`; `load_tasks()` does not read it.
+# Original five-segment story; no actions are reused from tasks_gepa_v1.
+#
+# `evidence`: one visual yes/no question per `state_commit` fact; a fact is committed to
+#   StoryState only when the judge confirms it on the validated clip.
+# `payoff`: questions checking that already committed upstream facts stay visible.
+# Questions ask about large, salient objects or scene states (the 2B judge reliably misses
+# small props such as bowls or route lines; see 1013101_1st/plan.md §1).
+schema_version: 1
+project_id: rooftop-garden-5clip-v1
+title: 屋顶菜园
+kind: longform-continuity
+source_dataset: original
+target:
+  task_type: t2va
+  short_edge: 768
+  aspect_ratio: "16:9"
+  duration_seconds: 5.0
+  frame_rate: 24.0
+  num_inference_steps: 10
+  expected_frames: 124  # ceil(5 * 24) aligned to 17n+5
+continuity_contract:
+  project_world: "城市高楼屋顶上的一片菜园，从清晨浇水到傍晚邻居聚餐的一天；木质种植箱、远处的城市天际线。"
+  recurring_motifs: [sunflowers, wooden_planters, city_skyline]
+  audio_policy: "保留水声、鸟叫、城市远景声与人声；拼接处短 crossfade。"
+  visual_policy: "统一 16:9、24 fps、自然光。每段以中景或全景收尾，避免以特写结束，便于下一段承接。"
+segments:
+  - index: 1
+    segment_id: morning-water
+    source_task_id: original
+    purpose: "建立屋顶菜园、向日葵与城市天际线。"
+    prompt: "清晨的高楼屋顶菜园，一位穿蓝色工装的女人用绿色洒水壶给木质种植箱浇水，几株高大的向日葵后面是城市天际线。包含水声和鸟叫声。"
+    state_commit: [sunflowers: blooming, skyline: visible]
+    evidence:
+      sunflowers: "Are tall yellow sunflowers visible?"
+      skyline: "Can city buildings be seen in the background?"
+  - index: 2
+    segment_id: tomato-harvest
+    source_task_id: original
+    purpose: "采摘番茄，保持向日葵在画面中。"
+    prompt: "同一屋顶菜园，女人从藤架上摘下红色番茄放进一个大竹篮，向日葵在旁边随风摇动。包含枝叶摩擦声和远处车流声。"
+    depends_on: [morning-water]
+    state_commit: [tomatoes: picked]
+    evidence:
+      tomatoes: "Is there a basket full of red tomatoes?"
+    payoff:
+      sunflowers: "Are sunflowers visible?"
+  - index: 3
+    segment_id: wind-gust
+    source_task_id: original
+    purpose: "转折：起风，白色遮阳伞被吹倒。"
+    prompt: "午后屋顶突然起风，一把白色大遮阳伞被吹倒在种植箱旁，女人用力把它扶起。包含呼呼风声和伞布拍打声。"
+    depends_on: [morning-water]
+    state_commit: [umbrella: knocked_over]
+    evidence:
+      umbrella: "Is a large white parasol tipped over or being lifted up?"
+    payoff:
+      skyline: "Can city buildings be seen in the background?"
+  - index: 4
+    segment_id: string-lights
+    source_task_id: original
+    purpose: "傍晚布置，为聚餐做准备。"
+    prompt: "傍晚的屋顶菜园，女人在种植箱上方拉起一串暖黄色的灯泡串，长木桌上摆着那篮红番茄。包含脚步声和轻微风声。"
+    depends_on: [tomato-harvest, wind-gust]
+    state_commit: [lights: hung]
+    evidence:
+      lights: "Is a string of glowing light bulbs hanging above?"
+    payoff:
+      tomatoes: "Are red tomatoes on the table?"
+  - index: 5
+    segment_id: neighbors-dinner
+    source_task_id: original
+    purpose: "以邻居聚餐收束。"
+    prompt: "夜幕下的屋顶，几位邻居围坐在长木桌旁吃饭聊天，头顶的灯泡串亮着，远处城市灯火点点。包含笑声、碗筷声与城市远景声。"
+    depends_on: [string-lights]
+    state_commit: [dinner: shared]
+    evidence:
+      dinner: "Are several people sitting together at a long table?"
+    payoff:
+      lights: "Are string lights glowing above the people?"
+stitch:
+  order: [morning-water, tomato-harvest, wind-gust, string-lights, neighbors-dinner]
+  video_transition: cut
+  audio_crossfade_seconds: 0.12
+  output: timeline.mp4
+split_policy:
+  status: validation
+  rule: "longform-v1 按项目切分：本作品只属于 validation；不得在其他 split 复用其剧情、事实或评测证据。"
