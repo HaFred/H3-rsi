@@ -1,10 +1,10 @@
 # RSI × MiniMax-H3 — single-clip and five-clip evidence
 
-This repository records two real H3 experiments. [Longform run `101704_1strun`](#longform-rsi-five-clips-searched-as-one-project)
-searches a harness by generating and scoring complete five-clip projects. [Single-clip run `101214_1strun`](#single-clip-rsi-101214_1strun)
+This repository records two real H3 experiments. [Longform run `101704_1strun`](#2-longform-rsi-five-clips-searched-as-one-project)
+searches a harness by generating and scoring complete five-clip projects. [Single-clip run `101214_1strun`](#3-single-clip-rsi-101214_1strun)
 is the earlier promoted demo. Their scores use different evaluation units and policies; compare base and candidate within each run.
 
-## Source case data
+## 1. Source case data
 
 The original generation requirements are available in [benchmarks/](benchmarks/README.md):
 
@@ -12,14 +12,14 @@ The original generation requirements are available in [benchmarks/](benchmarks/R
 - [Five-clip ProjectSpecs](benchmarks/README.md#five-clip-inputs): 12 YAML projects, each with five segment prompts, continuity rules, and stitch order, split 2/4/4/2.
 - [SHA-256 manifest](benchmarks/checksums.json): links the published sources to the recorded run inputs.
 
-## Longform RSI: five clips searched as one project
+## 2. Longform RSI: five clips searched as one project
 
 Run **`101704_1strun`** completed search, promotion and test on real H3 generation. It ran
 **2026-10-17 12:57 → 2026-10-18 07:55, Asia/Shanghai**, about 18 h 58 min.
 The search winner improved validation **search score** slightly, but **the promotion gate rejected it**.
 This is evidence of a complete project-level search and rejection workflow, with mixed quality results.
 
-### What one evaluation generates
+### 2.1. What one evaluation generates
 
 One case is **one five-segment project × one seed**, generated with one candidate harness throughout.
 The first segment uses H3 `t2va`; segments 2–5 use `fl2va`, conditioned on the preceding segment's last frame.
@@ -49,7 +49,7 @@ relative to that snapshot. All five agent prompt fields remain identical to the 
 The shared memory changes from 12 to 6 entries, including more explicit lighting/material continuity and
 background prop persistence. The last entry is literally `Use precise material`; the saved proposal is preserved verbatim.
 
-### Search and independent results
+### 2.2. Search and independent results
 
 The two project scores have different purposes:
 
@@ -105,11 +105,11 @@ The positive test mean does not override that decision.
 
 </details>
 
-### Five-clip visual evidence and its video mapping
+### 2.3. Five-clip visual evidence and its video mapping
 
 These are **animated WebP previews decoded from the recorded videos**; no MP4 is bundled.
-Each timeline preview plays the complete stitched movie (25.83 s, 620 source frames) of the same **promotion desert-caravan
-project, seed 1**, under base and winner: `R_project` **0.77452 → 0.86662 (+0.09210)**. This is one
+Each timeline preview plays the complete stitched movie (25.83 s, 620 source frames) of the same [**promotion desert-caravan
+project, seed 1**](benchmarks/longform_desert_caravan_5clip_v1.yaml), under base and winner: `R_project` **0.77452 → 0.86662 (+0.09210)**. This is one
 favorable case; the rejection above includes the regressions.
 
 Previews are downsampled for the README (640 px wide, 8 fps for timelines, 12 fps for segments, audio
@@ -153,6 +153,18 @@ Base is left, winner is right.
 | desert-caravan, seed 1 · `sandstorm`, payoff `camels`: camels visible · recorded P(yes) 0.00 → 0.99 | <img src="longform/101704_1strun/previews/101704_1strun_evidence_desert-caravan_seed1_sandstorm_base.webp" width="330" alt="Base sandstorm segment, seed 1"> | <img src="longform/101704_1strun/previews/101704_1strun_evidence_desert-caravan_seed1_sandstorm_best.webp" width="330" alt="Winner sandstorm segment, seed 1"> |
 | harbor-dawn, seed 0 · `sun-up`, evidence `time`: sunrise over the harbor · recorded P(yes) 0.99 → 0.00 | <img src="longform/101704_1strun/previews/101704_1strun_evidence_harbor-dawn_seed0_sun-up_base.webp" width="330" alt="Base sun-up segment, harbor-dawn seed 0"> | <img src="longform/101704_1strun/previews/101704_1strun_evidence_harbor-dawn_seed0_sun-up_best.webp" width="330" alt="Winner sun-up segment, harbor-dawn seed 0"> |
 
+**How these questions participate in RSI.** Each `segments[index]` carries fixed case requirements and visual checks; RSI rewrites the harness, while these questions stay fixed. The first row above corresponds to [`tent-tea.evidence.tea`](benchmarks/longform_desert_caravan_5clip_v1.yaml#L66); the second to [`sandstorm.payoff.camels`](benchmarks/longform_desert_caravan_5clip_v1.yaml#L46). The third uses the separate harbor-dawn case. Each arrow compares base with the search winner on the same case and seed, rather than showing a sequence of RSI iterations.
+
+| Input / stage | High-level role | Effect in this RSI run |
+| --- | --- | --- |
+| `prompt` + `state_commit` | Specify the requested scene and the new facts it should establish; e.g. `tea: poured`. A declaration is a requirement, not proof. | The scene brief drives generation; proposed facts require visual confirmation before becoming shared state. |
+| `evidence.<fact>` | Ask whether the new fact is visible in this segment; L66 asks whether someone is pouring tea from a metal teapot. | The frozen visual judge checks sampled frames. At P(yes) >= 0.5, the declared value enters StoryState; otherwise it is withheld and any older value for that key is removed. Confirmed facts enter later segment briefs. |
+| `payoff.<fact>` | Ask whether an earlier confirmed fact remains visible; [L68](benchmarks/longform_desert_caravan_5clip_v1.yaml#L68) checks the green scarf established in `dune-walk`. | Runs only when the key is in the upstream confirmed state. Pass/fail contributes to `payoff_rate`, without changing state. A withheld upstream key is skipped and excluded from the denominator. |
+| Project evaluation | Summarize evidence as `F = state_confirmed_rate` and executed payoff checks as `P = payoff_rate`. | Both enter report/promotion/test score `R_project` with weight 0.20 each. Neither directly enters this run's search score `S_project = 0.70 C + 0.30 H`; state changes can still affect later generation and thus S indirectly. |
+| Train feedback -> GEPA -> next harness | Expose weak checks alongside segment scores and transition diagnostics to explain what the current harness failed to realize. | Train-project feedback guides reflection on `script`, `storyboard`, `director` or `memory`. Validation selects the winner; promotion/test checks are held out from reflection. The questions themselves are not optimized. |
+
+A negative evidence/payoff answer alone does not invalidate or regenerate a segment. These checks control verified state, supply diagnostics, and contribute to project evaluation. They measure sampled visual presence: a passing scarf/camel question does not establish exact character identity or continuous visibility throughout the clip. See the [ProjectSpec field reference](benchmarks/README.md#projectspec-field-reference) for the input schema.
+
 These are the recorded figure annotations. A check's probability is the maximum over the two sampled-frame probabilities,
 not their mean or a whole-video probability. The figure header also mentions a re-query tolerance;
 no new judge re-query was performed for this README update.
@@ -161,7 +173,7 @@ known legacy-label issues in the remaining archived figures.
 
 </details>
 
-### Cost, scope and archived evidence
+### 2.4. Cost, scope and archived evidence
 
 The [budget ledger](longform/101704_1strun/budget.json) records **1,050 actual H3 requests**:
 search **950/1,000**, promotion **80/120**, test **20/50**. Search stopped when its remaining 50 requests
@@ -181,7 +193,7 @@ Some original figures use older terminology or stale captions; the JSON-derived 
 
 ---
 
-## Single-clip RSI: 101214_1strun
+## 3. Single-clip RSI: 101214_1strun
 
 This run shows the full loop, on real hardware:
 
@@ -199,12 +211,12 @@ Run `101214_1strun`, 2026-10-12 14:20 → 16:54 UTC. **The optimized harness was
 | Promotion gate | 6 | 0.6107 | **0.6528** | +0.0421 |
 | Test (never used for any decision) | 4 | 0.5905 | **0.6393** | +0.0488 |
 
-These are mean **total R** per split; section 2 breaks R down and names the model behind each part.
+These are mean **total R** per split; section 3.2 breaks R down and names the model behind each part.
 All numbers are only comparable **within this run** (same judge, same policy).
 
 ---
 
-## 1. What was serving
+### 3.1. What was serving
 
 | Role | Model / server | Endpoint | Where |
 | --- | --- | --- | --- |
@@ -222,7 +234,7 @@ the reward weights stay frozen.
 
 ---
 
-## 2. How RSI improves the harness — watch these clips in order
+### 3.2. How RSI improves the harness — watch these clips in order
 
 **Scope.** Sections 1–7 below cover the single-clip run and the **text-only** half: H3 and the judges stay frozen while RSI searches the harness
 text components. The *harness-only* Context-IR path — a frozen compiler in front of H3 plus weight training
@@ -230,7 +242,7 @@ text components. The *harness-only* Context-IR path — a frozen compiler in fro
 [verl-omni RFC #500](https://github.com/verl-project/verl-omni/issues/500). The RSI half is
 [#748](https://github.com/verl-project/verl-omni/issues/748), which these clips support.
 
-### What gets rewritten: text components
+#### 3.2.1. What gets rewritten: text components
 
 The harness is a YAML config, but RSI can rewrite only six text fields inside it, and this run searched four of
 them (see below). Everything else — reward
@@ -253,9 +265,9 @@ let RSI change.
 **This run searched four of them:** `run_config.resolved.yaml` sets `components: [script, storyboard, director,
 memory]`, so `prompts.critic` and `prompts.editor` stayed at the base text for the whole run. Those two agents run
 after H3: their output never reaches H3 or the score, so rewriting them could not move the reward. See
-[Where the prompts live](#where-the-prompts-live) for what each field is at every step.
+[Where the prompts live](#332-where-the-prompts-live) for what each field is at every step.
 
-### What does the searching: GEPA
+#### 3.2.2. What does the searching: GEPA
 
 GEPA optimizes *textual* system components rather than model weights — instead of gradients it has an LLM reflect
 on per-case feedback, and a Pareto front decide what survives. This run used `gepa` **0.1.4**, configured as:
@@ -273,7 +285,7 @@ on per-case feedback, and a Pareto front decide what survives. This run used `ge
 
 Each iteration therefore runs the same four steps: **pick** a program off the Pareto front → **rewrite** one
 component with the reflection LM → **score** the candidate on a 2-task minibatch → if it wins there, **validate**
-it on real H3 clips and update the front. This run took 13 iterations; the per-iteration ledger is in §4.
+it on real H3 clips and update the front. This run took 13 iterations; the per-iteration ledger is in §3.4.
 
 The mechanism in one picture. RSI is a loop around H3; it never changes H3, only the text H3 is called with:
 
@@ -296,14 +308,14 @@ The mechanism in one picture. RSI is a loop around H3; it never changes H3, only
 ```
 
 GEPA compares candidates on `S − Σ w_axis·max(0, base_axis − cand_axis)` so that video gains cannot be bought
-with story losses; S itself is the plain mean of total R. See [S is total R](#s-is-total-r--but-gepa-searches-a-penalized-form-of-it).
+with story losses; S itself is the plain mean of total R. See [S is total R](#324-s-is-total-r--but-gepa-searches-a-penalized-form-of-it).
 
 The clips below are the **same task** (`train-001`: *"A person in a yellow raincoat picks up a red umbrella on a
 wet street. Keep the same person and umbrella throughout. Include footsteps and dripping water."*), rendered
 three times as RSI edits the harness. Work down the clip table — each row is the same task rendered again, so
 consecutive rows show what the next edit changed.
 
-### Where each number comes from
+#### 3.2.3. Where each number comes from
 
 Every score in this document is produced by the evaluator, not by hand. Three of the four axes come from a
 served model; `editing` is computed in code from the storyboard JSON and uses no model at all.
@@ -322,7 +334,7 @@ The judge always compares the frames against the **original one-line task prompt
 the director's rewritten prompt. So the video axis measures "does this look like the task", not "does this match
 the harness's own prose".
 
-### S is total R — but GEPA searches a penalized form of it
+#### 3.2.4. S is total R — but GEPA searches a penalized form of it
 
 This distinction is easy to miss, so it is worth stating plainly. S0/S1 in the diagram **are** means of total R,
 and for this run they are also exactly what GEPA recorded, because the base program trivially has zero penalty
@@ -370,7 +382,7 @@ row — a separate per-row "source" column would repeat identical text down the 
 > `190 px` for the iteration ledger).
 >
 > **Where the prompts are.** The three renders above come from one task but three harness versions, so three
-> different prompts produced them — see [Where the prompts live](#where-the-prompts-live).
+> different prompts produced them — see [Where the prompts live](#332-where-the-prompts-live).
 
 **Harness Delta for the Steps**
 
@@ -379,7 +391,7 @@ config — the same structure as the codebase seed `configs/harness_gepa_base.ya
 across the three steps **only two fields change**: `prompts.script` and `prompts.director`. Every other field
 (`prompts.storyboard`, `prompts.critic`, `prompts.editor`, `memory`, `workflow`, `critic`, `reward_weights`,
 `target_defaults`) is byte-identical to the seed at every step, which is why the `storyboard` and `memory`
-candidates that won a minibatch never survived the full validation run (§4).
+candidates that won a minibatch never survived the full validation run (§3.4).
 
 | Step | Full harness document | `prompts.script` | `prompts.director` |
 | --- | --- | --- | --- |
@@ -387,7 +399,7 @@ candidates that won a minibatch never survived the full validation run (§4).
 | **1. +`script`** | [`candidates/d58fde46…/harness.yaml`](https://github.com/HaFred/H3-rsi/blob/main/candidates/d58fde464b7f6e72b223770db9e3f50d6d9aa4babb138b75d4c77d27fadda30f/harness.yaml) | **1,058 ch** (rewritten) | 311 ch (unchanged) |
 | **2. +`director`** | [`candidates/4ddd73aa…/harness.yaml`](https://github.com/HaFred/H3-rsi/blob/main/candidates/4ddd73aa8fa203c6aaef003092483f3f4d4c90210a62dfc352b1cd7f862b5f5d/harness.yaml) | 1,058 ch | **3,512 ch** (rewritten) |
 
-Step 2 is the search winner, and the gate accepted it (§3): [`promotion/decision.json`](https://github.com/HaFred/H3-rsi/blob/main/promotion/decision.json)
+Step 2 is the search winner, and the gate accepted it (§3.3): [`promotion/decision.json`](https://github.com/HaFred/H3-rsi/blob/main/promotion/decision.json)
 records `promoted_version: gepa-base.1`. Two files carry the outcome — byte-identical in `prompts` and `memory`,
 differing only in metadata:
 
@@ -507,7 +519,7 @@ steps line up with the stored text to the character once the code fences are str
 Thirteen calls were made in all; GEPA kept five as candidates and judged them purely on measured reward —
 iterations 1, 4 and 7 passed the minibatch and were then rejected on full validation. So these deltas are
 **proposed by the LM and selected by the evaluator**, not transcribed from anywhere. That is what makes the loop
-in §1 a real search rather than a staged one.
+in §3.1 a real search rather than a staged one.
 
 Two scope limits are worth stating plainly, since they bound how much the word "self-improving" should carry.
 The candidate codec (`rsi_harness/optimization/codec.py`) lets the LM change **only** six text fields
@@ -550,7 +562,7 @@ The same progression repeats on `train-003` (`"A child in a green jacket catches
 
 ---
 
-## 3. The two edits behind the win
+### 3.3. The two edits behind the win
 
 **Edit 1 — `script`** (233 → 1,058 chars). The base prompt never mentioned timing; the rewrite makes timing the
 first requirement and pins the output format.
@@ -576,7 +588,7 @@ Observed effect: judge alignment 2.87 → 3.14 (train-001), 3.00 → 3.12 (train
 `storyboard`, `critic`, `editor` and `memory` were never selected, so the champion differs from the base in these
 two fields only.
 
-### The result on unseen data
+#### 3.3.1. The result on unseen data
 
 Every one of the six promotion tasks improved, and the gate required the **video** axis to gain:
 
@@ -604,7 +616,7 @@ Test split, never used for any decision:
 | test-004 | <a href="https://github.com/HaFred/H3-rsi/blob/main/evaluations/0c9be593fa7a48bcabc65c1eedd31898ec8377c33a582e59016fb8a48a3b6b0a/video.mp4"><img src="https://github.com/HaFred/H3-rsi/raw/main/evaluations/0c9be593fa7a48bcabc65c1eedd31898ec8377c33a582e59016fb8a48a3b6b0a/preview.webp" width="170" alt="base"></a> | <a href="https://github.com/HaFred/H3-rsi/blob/main/evaluations/947bfd02d7e2c7eb16c6ba361da2c6a9b7c7bf9ef5663f829f09deee7695782b/video.mp4"><img src="https://github.com/HaFred/H3-rsi/raw/main/evaluations/947bfd02d7e2c7eb16c6ba361da2c6a9b7c7bf9ef5663f829f09deee7695782b/preview.webp" width="170" alt="optimized"></a> | 0.619 → 0.646 |
 | **mean** | | | **0.590 → 0.639** |
 
-### Where the prompts live
+#### 3.3.2. Where the prompts live
 
 A clip is produced by three different kinds of prompt, and it helps to keep them apart:
 
@@ -635,14 +647,14 @@ in `rsi_harness/agents/*.py`.
 
 ---
 
-## 4. The loop in detail (13 iterations)
+### 3.4. The loop in detail (13 iterations)
 
 Step 4 of your flow — "keep iterating" — is this ledger. Each iteration GEPA picks a **parent** from the Pareto
 front, the reflection model rewrites **one** of the parent's components, the new candidate is tried on a 2-task
 minibatch, and only if it wins there does it get a full validation run (2 real H3 clips). If it passes, it gets
 the next program number.
 
-This is the same run as §2, not a second one. The base → +`script` → +`director` steps in §2 are rows **0, 1 and
+This is the same run as §3.2, not a second one. The base → +`script` → +`director` steps in §3.2 are rows **0, 1 and
 10** below: iteration 10 rewrote `director` on top of iteration 1's `script`, so the second edit builds on the
 first. Parents are read from the `reflective_dataset` events in [`events.jsonl`](https://github.com/HaFred/H3-rsi/blob/main/events.jsonl).
 
@@ -664,7 +676,7 @@ first. Parents are read from the `reflective_dataset` events in [`events.jsonl`]
 | 13 | 4 | `storyboard` | skipped | no | — | — | — |
 
 "Search" is the score GEPA compares: total R minus the axis-regression penalty (see
-[S is total R](#s-is-total-r--but-gepa-searches-a-penalized-form-of-it)). "Raw R" is the plain validation mean.
+[S is total R](#324-s-is-total-r--but-gepa-searches-a-penalized-form-of-it)). "Raw R" is the plain validation mean.
 
 - 13 reflection calls, 5 candidates kept, 62 metric calls, 45 H3 requests (the remainder were cache hits on
   already-scored cases). Search took 2317 s (≈39 min).
@@ -682,7 +694,7 @@ first. Parents are read from the `reflective_dataset` events in [`events.jsonl`]
 
 ---
 
-## 5. Validity guard in action
+### 3.5. Validity guard in action
 
 The base harness's val-002 attempt at 14:25 was produced by H3, then **rejected** with
 `invalid reward signals: malformed video judge frames` and scored 0. The evaluator re-ran the case, the judge
@@ -692,7 +704,7 @@ valid score or the run stops as a service failure.
 
 ---
 
-## 6. Reproduce
+### 3.6. Reproduce
 
 ```bash
 cd fred_design/RSI_1st_impl
@@ -721,17 +733,17 @@ PYTHONPATH=. python -m rsi_harness.cli report   --run-dir outputs/101214_1strun 
 | `events.jsonl` | time-ordered log of every evaluation, reflection call and decision |
 | `gepa/run_log.txt` | raw GEPA iteration log |
 
-## 7. Caveats
+### 3.7. Caveats
 
 - One seed per task. Per-task deltas of ~0.01–0.02 are within judge noise; the promotion mean over 6 tasks and
   the test mean over 4 tasks are the meaningful numbers.
 - The chain is **stochastic**, so a single clip pair is not a controlled A/B. Steps 1 and 2 share a byte-identical
   `prompts.script`, yet produced different scripts (851 vs 1,048 ch) — the text LLM samples at `temperature: 0.7`,
-  and the three steps ran under three different harness hashes. Treat the per-task clips in §2 as illustrations of
+  and the three steps ran under three different harness hashes. Treat the per-task clips in §3.2 as illustrations of
   the mechanism, not as isolated evidence for one edit.
 - The `story` axis moves against the `video` axis on some tasks (train-001 −0.06, test-001 +0.03). The gate only
   requires that no axis regress beyond 0.02 on the promotion mean, which held.
-- The clips in section 2 are one task each. The claim they support is that the edits changed pacing and
+- The clips in section 3.2 are one task each. The claim they support is that the edits changed pacing and
   alignment in the expected direction, which the aggregate tables confirm; they are not proof that the champion
   is better on every task.
 - The published champion for this single-clip run is `gepa-base.1`. The longform run above starts from its own
