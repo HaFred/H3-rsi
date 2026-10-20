@@ -1,0 +1,360 @@
+{
+  "schema_version": 1,
+  "kind": "animated_preview",
+  "source_mapping": "slides_md/13-town-fair-videos.md; stage labels and validation means from slides_md/12-town-fair-lineage.md",
+  "scope": "Presentation town-fair lineage associated with 101416, separate from 101704 results. Means cover four validation projects, not these videos. Source slide notes say Train seeds differ; per-video seeds and original project-directory hashes are not established by the extracted MP4s.",
+  "encode": {
+    "tool": "ffmpeg version 7.0.1-essentials_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers",
+    "width_px": 640,
+    "fps": 8,
+    "quality": 60,
+    "compression_level": 4,
+    "loop": 0,
+    "audio": "dropped",
+    "labels_overlaid": false
+  },
+  "previews": [
+    {
+      "stage": "base",
+      "harness_hash_prefix": "d16c2e95",
+      "source": "slides_md/assets/media4.mp4",
+      "source_sha256": "629240f030c92c314e700d874f39f976805b3ade93caaa79eccd38c8fa5917a7",
+      "source_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1344,
+            "height": 768,
+            "r_frame_rate": "24/1",
+            "duration": "25.833333",
+            "nb_frames": "620"
+          },
+          {
+            "codec_type": "audio",
+            "r_frame_rate": "0/0",
+            "duration": "25.920000",
+            "nb_frames": "1216"
+          }
+        ],
+        "format": {
+          "duration": "25.920000"
+        }
+      },
+      "file": "slides_md/previews/town-fair_d16c2e95_base.webp",
+      "sha256": "caa863aea470d66f2d735ba92e47df746b5f05fcb686705d30a3b971c8fbc8e2",
+      "bytes": 1628476,
+      "preview": {
+        "width": 640,
+        "height": 366,
+        "frames": 207,
+        "duration_ms": 25875,
+        "loop": 0
+      },
+      "mean_validation_s": 0.7293,
+      "mean_validation_r": 0.7645,
+      "ffmpeg_args": [
+        "-v",
+        "error",
+        "-y",
+        "-i",
+        "slides_md/assets/media4.mp4",
+        "-vf",
+        "fps=8,scale=640:-2",
+        "-an",
+        "-c:v",
+        "libwebp_anim",
+        "-lossless",
+        "0",
+        "-q:v",
+        "60",
+        "-compression_level",
+        "4",
+        "-loop",
+        "0",
+        "slides_md/previews/town-fair_d16c2e95_base.webp"
+      ]
+    },
+    {
+      "stage": "script",
+      "harness_hash_prefix": "c863aae2",
+      "source": "slides_md/assets/media5.mp4",
+      "source_sha256": "9905483d9076add66ee1f8bbf980416700eccf2f76c874a94ec59e10f436f99d",
+      "source_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1344,
+            "height": 768,
+            "r_frame_rate": "24/1",
+            "duration": "25.833333",
+            "nb_frames": "620"
+          },
+          {
+            "codec_type": "audio",
+            "r_frame_rate": "0/0",
+            "duration": "25.920000",
+            "nb_frames": "1216"
+          }
+        ],
+        "format": {
+          "duration": "25.920000"
+        }
+      },
+      "file": "slides_md/previews/town-fair_c863aae2_script.webp",
+      "sha256": "d87660bd005c07c2bda48ac5111d9cee023886c47329baa49fe8e93c98a70920",
+      "bytes": 2626962,
+      "preview": {
+        "width": 640,
+        "height": 366,
+        "frames": 207,
+        "duration_ms": 25875,
+        "loop": 0
+      },
+      "mean_validation_s": 0.7436,
+      "mean_validation_r": 0.7698,
+      "ffmpeg_args": [
+        "-v",
+        "error",
+        "-y",
+        "-i",
+        "slides_md/assets/media5.mp4",
+        "-vf",
+        "fps=8,scale=640:-2",
+        "-an",
+        "-c:v",
+        "libwebp_anim",
+        "-lossless",
+        "0",
+        "-q:v",
+        "60",
+        "-compression_level",
+        "4",
+        "-loop",
+        "0",
+        "slides_md/previews/town-fair_c863aae2_script.webp"
+      ]
+    },
+    {
+      "stage": "storyboard",
+      "harness_hash_prefix": "3252791a",
+      "source": "slides_md/assets/media6.mp4",
+      "source_sha256": "561588f7ac43b59101a1a175843511d3d7a71dbc7a2f47d08f9b8668ac342c3c",
+      "source_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1344,
+            "height": 768,
+            "r_frame_rate": "24/1",
+            "duration": "25.833333",
+            "nb_frames": "620"
+          },
+          {
+            "codec_type": "audio",
+            "r_frame_rate": "0/0",
+            "duration": "25.920000",
+            "nb_frames": "1216"
+          }
+        ],
+        "format": {
+          "duration": "25.920000"
+        }
+      },
+      "file": "slides_md/previews/town-fair_3252791a_storyboard.webp",
+      "sha256": "3d5bcfbb23c5634a53aabff4f54cc39d26bff0aa148ef426885706570506ccea",
+      "bytes": 2194148,
+      "preview": {
+        "width": 640,
+        "height": 366,
+        "frames": 207,
+        "duration_ms": 25875,
+        "loop": 0
+      },
+      "mean_validation_s": 0.7477,
+      "mean_validation_r": 0.7834,
+      "ffmpeg_args": [
+        "-v",
+        "error",
+        "-y",
+        "-i",
+        "slides_md/assets/media6.mp4",
+        "-vf",
+        "fps=8,scale=640:-2",
+        "-an",
+        "-c:v",
+        "libwebp_anim",
+        "-lossless",
+        "0",
+        "-q:v",
+        "60",
+        "-compression_level",
+        "4",
+        "-loop",
+        "0",
+        "slides_md/previews/town-fair_3252791a_storyboard.webp"
+      ]
+    },
+    {
+      "stage": "script-again",
+      "harness_hash_prefix": "c1912a62",
+      "source": "slides_md/assets/media7.mp4",
+      "source_sha256": "4637eb7034927e08fab07e03efbe66b8ea6588255cb517ad8dfa6ec4318e8700",
+      "source_probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_type": "video",
+            "width": 1344,
+            "height": 768,
+            "r_frame_rate": "24/1",
+            "duration": "25.833333",
+            "nb_frames": "620"
+          },
+          {
+            "codec_type": "audio",
+            "r_frame_rate": "0/0",
+            "duration": "25.920000",
+            "nb_frames": "1216"
+          }
+        ],
+        "format": {
+          "duration": "25.920000"
+        }
+      },
+      "file": "slides_md/previews/town-fair_c1912a62_script-again.webp",
+      "sha256": "0144bb01da771d754852612081607a762039939e827e92e3fa7a471777a8fb20",
+      "bytes": 2202450,
+      "preview": {
+        "width": 640,
+        "height": 366,
+        "frames": 207,
+        "duration_ms": 25875,
+        "loop": 0
+      },
+      "mean_validation_s": 0.7516,
+      "mean_validation_r": 0.7672,
+      "ffmpeg_args": [
+        "-v",
+        "error",
+        "-y",
+        "-i",
+        "slides_md/assets/media7.mp4",
+        "-vf",
+        "fps=8,scale=640:-2",
+        "-an",
+        "-c:v",
+        "libwebp_anim",
+        "-lossless",
+        "0",
+        "-q:v",
+        "60",
+        "-compression_level",
+        "4",
+        "-loop",
+        "0",
+        "slides_md/previews/town-fair_c1912a62_script-again.webp"
+      ]
+    }
+  ],
+  "segment_previews": [
+    {
+      "stage": "base",
+      "harness_hash_prefix": "d16c2e95",
+      "segment_id": "kite-park",
+      "segment_index": 2,
+      "source_frame_range_inclusive": [
+        124,
+        247
+      ],
+      "source": "slides_md/assets/media4.mp4",
+      "source_sha256": "629240f030c92c314e700d874f39f976805b3ade93caaa79eccd38c8fa5917a7",
+      "file": "slides_md/previews/town-fair_d16c2e95_kite-park.webp",
+      "sha256": "dd1222b01a8d58bf3fc95c6c69be653a5a11a78cc7b7beee82063e86f8af1b71",
+      "bytes": 447664,
+      "preview": {
+        "width": 640,
+        "height": 366,
+        "frames": 62,
+        "duration_ms": 5166,
+        "loop": 0
+      },
+      "fps": 12,
+      "quality": 65,
+      "ffmpeg_args": [
+        "-v",
+        "error",
+        "-y",
+        "-i",
+        "slides_md/assets/media4.mp4",
+        "-vf",
+        "trim=start_frame=124:end_frame=248,setpts=PTS-STARTPTS,fps=12,scale=640:-2",
+        "-an",
+        "-c:v",
+        "libwebp_anim",
+        "-lossless",
+        "0",
+        "-q:v",
+        "65",
+        "-compression_level",
+        "4",
+        "-loop",
+        "0",
+        "slides_md/previews/town-fair_d16c2e95_kite-park.webp"
+      ],
+      "interpretation": "Visual comparison against the requested kite action; no judge probability is claimed or re-queried."
+    },
+    {
+      "stage": "script-again",
+      "harness_hash_prefix": "c1912a62",
+      "segment_id": "kite-park",
+      "segment_index": 2,
+      "source_frame_range_inclusive": [
+        124,
+        247
+      ],
+      "source": "slides_md/assets/media7.mp4",
+      "source_sha256": "4637eb7034927e08fab07e03efbe66b8ea6588255cb517ad8dfa6ec4318e8700",
+      "file": "slides_md/previews/town-fair_c1912a62_kite-park.webp",
+      "sha256": "b5e4e9842eefda8915359313c8c8dcc18afabd28161e29f72ad4ee5cde0fe08c",
+      "bytes": 675232,
+      "preview": {
+        "width": 640,
+        "height": 366,
+        "frames": 62,
+        "duration_ms": 5166,
+        "loop": 0
+      },
+      "fps": 12,
+      "quality": 65,
+      "ffmpeg_args": [
+        "-v",
+        "error",
+        "-y",
+        "-i",
+        "slides_md/assets/media7.mp4",
+        "-vf",
+        "trim=start_frame=124:end_frame=248,setpts=PTS-STARTPTS,fps=12,scale=640:-2",
+        "-an",
+        "-c:v",
+        "libwebp_anim",
+        "-lossless",
+        "0",
+        "-q:v",
+        "65",
+        "-compression_level",
+        "4",
+        "-loop",
+        "0",
+        "slides_md/previews/town-fair_c1912a62_kite-park.webp"
+      ],
+      "interpretation": "Visual comparison against the requested kite action; no judge probability is claimed or re-queried."
+    }
+  ]
+}

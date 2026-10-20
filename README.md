@@ -131,53 +131,70 @@ The positive test mean does not override that decision.
 
 ### 2.3. Five-clip visual evidence and its video mapping
 
-These are **animated WebP previews decoded from the recorded videos**; no MP4 is bundled.
-Each timeline preview plays the complete stitched movie (25.83 s, 620 source frames) of the same [**promotion desert-caravan
-project, seed 1**](benchmarks/longform_desert_caravan_5clip_v1.yaml), under base and winner: `R_project` **0.77452 → 0.86662 (+0.09210)**. This is one
-favorable case; the rejection above includes the regressions.
+These are **animated WebP previews decoded from the recorded videos**; click a preview to open its source MP4 with sound.
+Each timeline preview plays the complete five-segment movie (620 video frames at 24 fps, about 25.83 s) of the same
+[**town-fair production pilot**](benchmarks/longform_town_fair_5clip_v1.yaml), across the base and three successive harness rewrites shown on
+[Design Walkthrough page 13](slides_md/13-town-fair-videos.md). This is the earlier **`101416` presentation lineage**, separate from the
+`101704_1strun` search and promotion results above. The source slide notes say Train seeds differ across the displayed rows;
+these are lineage examples, not a controlled same-seed comparison.
 
-Previews are downsampled for the README (640 px wide, 8 fps for timelines, 12 fps for segments, audio
-dropped, no overlaid labels). Exact parameters and per-file SHA-256 are in
-[`previews/provenance.json`](longform/101704_1strun/previews/provenance.json).
-Segments play in stitch order: `dune-walk` → `sandstorm` → `oasis` → `tent-tea` → `starry-night`.
+Previews are downsampled for the README (640 px wide, 8 fps, audio dropped, no overlaid labels).
+Exact parameters, source-video metadata and SHA-256 hashes are in
+[`slides_md/previews/provenance.json`](slides_md/previews/provenance.json).
+Segments play in stitch order: `umbrella-arrival` → `kite-park` → `fountain-arrival` → `bakery-prep` → `potter-opening`.
+The [world setting and five segment requirements](slides_md/17-findings-and-pilot-prompts.md#town-fair-manually-constructed-five-segment-production-pilot)
+explain the intended actions. **S/R below are means over four Validation projects, not scores for these town-fair videos.**
 
-**Base** — `531468a18cbe…`, `R_project` 0.77452
+**Base** - `d16c2e95`, mean Validation S 0.7293 / R 0.7645
 
-<img src="longform/101704_1strun/previews/101704_1strun_timeline_desert-caravan_seed1_base.webp" width="640" alt="Base harness, desert-caravan seed 1: complete 25.83 s five-segment timeline">
+<a href="slides_md/assets/media4.mp4"><img src="slides_md/previews/town-fair_d16c2e95_base.webp" width="640" alt="Base harness d16c2e95: complete five-segment town-fair timeline"></a>
 
-**Winner** — `1d079e4c4820…`, `R_project` 0.86662
+**1. Script rewrite** - `c863aae2` (round 1), mean Validation S 0.7436 / R 0.7698
 
-<img src="longform/101704_1strun/previews/101704_1strun_timeline_desert-caravan_seed1_best.webp" width="640" alt="Search winner, desert-caravan seed 1: complete 25.83 s five-segment timeline">
+<a href="slides_md/assets/media5.mp4"><img src="slides_md/previews/town-fair_c863aae2_script.webp" width="640" alt="Script rewrite c863aae2: complete five-segment town-fair timeline"></a>
 
-Both previews map to the five segments inside one recorded `timeline.mp4` per harness,
-not to ten separately selected video examples. Recorded source identities:
+**2. Storyboard rewrite** - `3252791a` (round 7), mean Validation S 0.7477 / R 0.7834
 
-| Arm | Harness hash | Recorded project directory under `outputs/longform_rsi/101704_1strun/projects/` |
+<a href="slides_md/assets/media6.mp4"><img src="slides_md/previews/town-fair_3252791a_storyboard.webp" width="640" alt="Storyboard rewrite 3252791a: complete five-segment town-fair timeline"></a>
+
+**3. Script rewrite again** - `c1912a62` (round 57), mean Validation S 0.7516 / R 0.7672
+
+<a href="slides_md/assets/media7.mp4"><img src="slides_md/previews/town-fair_c1912a62_script-again.webp" width="640" alt="Further script rewrite c1912a62: complete five-segment town-fair timeline"></a>
+
+Each preview maps to one complete five-segment source movie, not to independently selected clips.
+The final rewrite increases mean Validation S while lowering R; the videos let readers inspect the motion and scene realization alongside those metrics.
+Recorded source identities, following the [presentation's video mapping](slides_md/13-town-fair-videos.md#embedded-videos):
+
+| Stage | Harness hash prefix | Source MP4 extracted from the presentation |
 | --- | --- | --- |
-| Base | `531468a18cbe…` | `cae591d6210f6ac740d13a7d4b2448b6cc6cac1d6c3db33c558c7fdcb95324fc` |
-| Winner | `1d079e4c4820…` | `5b86a07a8cecb7a7697120f8888c23635e8d4b7cb77d22c0d83c3ce560d06aa1` |
+| Base | `d16c2e95` | [`media4.mp4`](slides_md/assets/media4.mp4) |
+| Script rewrite | `c863aae2` | [`media5.mp4`](slides_md/assets/media5.mp4) |
+| Storyboard rewrite | `3252791a` | [`media6.mp4`](slides_md/assets/media6.mp4) |
+| Script rewrite again | `c1912a62` | [`media7.mp4`](slides_md/assets/media7.mp4) |
 
-The corresponding server-side links were `videos/base/promotion_desert-caravan-5clip-v1_seed1.mp4` and
-`videos/best/promotion_desert-caravan-5clip-v1_seed1.mp4`. These are provenance paths, not download links.
-The complete case↔harness↔timeline index is preserved in [`videos.json`](longform/101704_1strun/videos.json).
-The original static six-panel sheet is still archived byte-for-byte at
-[`figures/101704_1strun_base_vs_best.webp`](longform/101704_1strun/figures/101704_1strun_base_vs_best.webp);
-its columns were sorted by segment name, not playback order (see the archive guide).
+**Which harness is best?** `c1912a62` is the **search winner**, selected by the highest mean Validation S (0.7516). Its R (0.7672) is **third-highest among these four**, not second; `3252791a` has the highest R (0.7834). Selection uses `S = 0.70 C + 0.30 H`, while report/gate score `R = 0.40 C + 0.20 F + 0.20 P + 0.20 H` also measures confirmed facts and payoff checks. Different weights and metrics can rank candidates differently. "Winner" means best under the search objective; independent promotion determines whether it is eligible to replace the base, and individual clips can still regress.
+
+The extracted MP4s do not establish the original per-video seed or project-directory hash; those identities are not inferred here.
+The original `101704` desert-caravan comparison remains in its [archived figure](longform/101704_1strun/figures/101704_1strun_base_vs_best.webp)
+and [video index](longform/101704_1strun/videos.json). The comparisons below identify their source runs; the recorded probability checks belong to `101704`.
 
 <details>
-<summary>Additional sampled-frame evidence and mappings</summary>
+<summary>Selected action comparison, recorded checks and mappings</summary>
 
-The archived evidence sheet samples frames 62 and 123 of each segment. These previews instead play the
-whole 5.17 s segment, so the recorded check can be watched rather than inferred from two stills.
-Base is left, winner is right.
+The first row shows a town-fair action comparison from the presentation: the base has no clearly visible kite in the child's hands,
+while `c1912a62` shows the child holding a colorful kite overhead. The previews contain the complete second segment
+(frames 124-247 of each source timeline), not selected stills; no judge probability is claimed for this visual comparison.
+The following rows retain the archived `101704` checks, whose judge samples were frames 62 and 123 within each segment.
+All previews play about 5.17 s at 640 px / 12 fps without audio; base is left and the corresponding search winner is right.
+The `101704` winner was rejected by promotion, so that label does not establish better generation across cases.
 
 | Check | Base | Winner |
 | --- | --- | --- |
-| desert-caravan, seed 0 · `tent-tea`, evidence `tea`: pouring from a metal teapot · recorded P(yes) 1.00 → 0.00 | <img src="longform/101704_1strun/previews/101704_1strun_evidence_desert-caravan_seed0_tent-tea_base.webp" width="330" alt="Base tent-tea segment, seed 0"> | <img src="longform/101704_1strun/previews/101704_1strun_evidence_desert-caravan_seed0_tent-tea_best.webp" width="330" alt="Winner tent-tea segment, seed 0"> |
+| town-fair (`101416`) - `kite-park`: child holding a kite - visual comparison of base `d16c2e95` and search winner `c1912a62` | <a href="slides_md/assets/media4.mp4#t=5.166667,10.333333"><img src="slides_md/previews/town-fair_d16c2e95_kite-park.webp" width="330" alt="Base town-fair kite-park segment: no clearly visible kite in the child's hands"></a> | <a href="slides_md/assets/media7.mp4#t=5.166667,10.333333"><img src="slides_md/previews/town-fair_c1912a62_kite-park.webp" width="330" alt="Search-winner town-fair kite-park segment: child holding a colorful kite overhead"></a> |
 | desert-caravan, seed 1 · `sandstorm`, payoff `camels`: camels visible · recorded P(yes) 0.00 → 0.99 | <img src="longform/101704_1strun/previews/101704_1strun_evidence_desert-caravan_seed1_sandstorm_base.webp" width="330" alt="Base sandstorm segment, seed 1"> | <img src="longform/101704_1strun/previews/101704_1strun_evidence_desert-caravan_seed1_sandstorm_best.webp" width="330" alt="Winner sandstorm segment, seed 1"> |
 | harbor-dawn, seed 0 · `sun-up`, evidence `time`: sunrise over the harbor · recorded P(yes) 0.99 → 0.00 | <img src="longform/101704_1strun/previews/101704_1strun_evidence_harbor-dawn_seed0_sun-up_base.webp" width="330" alt="Base sun-up segment, harbor-dawn seed 0"> | <img src="longform/101704_1strun/previews/101704_1strun_evidence_harbor-dawn_seed0_sun-up_best.webp" width="330" alt="Winner sun-up segment, harbor-dawn seed 0"> |
 
-**How these questions participate in RSI.** Each `segments[index]` carries fixed case requirements and visual checks; RSI rewrites the harness, while these questions stay fixed. The first row above corresponds to [`tent-tea.evidence.tea`](benchmarks/longform_desert_caravan_5clip_v1.yaml#L66); the second to [`sandstorm.payoff.camels`](benchmarks/longform_desert_caravan_5clip_v1.yaml#L46). The third uses the separate harbor-dawn case. Each arrow compares base with the search winner on the same case and seed, rather than showing a sequence of RSI iterations.
+**How these questions participate in RSI.** Each `segments[index]` carries fixed case requirements and visual checks; RSI rewrites the harness, while these questions stay fixed. The town-fair row illustrates the action behind `kite-park.evidence.kite` in its [ProjectSpec](benchmarks/longform_town_fair_5clip_v1.yaml); its per-video seeds are not established by the extracted MP4s. The recorded camel check corresponds to [`sandstorm.payoff.camels`](benchmarks/longform_desert_caravan_5clip_v1.yaml#L46), and the sunrise check uses the separate harbor-dawn case. The probability arrows compare base with the `101704` search winner on the same case and seed, rather than showing successive RSI iterations. The tea and scarf questions below are further schema examples, not probability claims about the town-fair videos.
 
 | Input / stage | High-level role | Effect in this RSI run |
 | --- | --- | --- |
@@ -189,7 +206,7 @@ Base is left, winner is right.
 
 A negative evidence/payoff answer alone does not invalidate or regenerate a segment. These checks control verified state, supply diagnostics, and contribute to project evaluation. They measure sampled visual presence: a passing scarf/camel question does not establish exact character identity or continuous visibility throughout the clip. See the [ProjectSpec field reference](benchmarks/README.md#projectspec-field-reference) for the input schema.
 
-These are the recorded figure annotations. A check's probability is the maximum over the two sampled-frame probabilities,
+The two numerical probability comparisons above are recorded figure annotations. A check's probability is the maximum over the two sampled-frame probabilities,
 not their mean or a whole-video probability. The figure header also mentions a re-query tolerance;
 no new judge re-query was performed for this README update.
 See the [figure provenance guide](longform/101704_1strun/README.md) for the source project-directory hashes and
