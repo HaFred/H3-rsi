@@ -11,7 +11,7 @@ Read pages 1–7 for the definition, architecture, search boundary, and evaluati
 | 01 | [RSI × MiniMax-H3: Self-Improving Video Generation](01-overview.md) |
 | 02 | [RSI and AI Agents: The Project Definition](02-rsi-definition.md) |
 | 03 | [Harness RSI: Generation, Evaluation, and Promotion](03-harness-workflow.md) |
-| 04 | [Inference and Evaluation Services](04-service-topology.md) |
+| 04 | [Inference (Agent Tool) and Evaluation Services](04-service-topology.md) |
 | 05 | [The Harness Search Boundary](05-search-boundary.md) |
 | 06 | [GEPA: Search, Evaluation, and Promotion Loops](06-gepa-loops.md) |
 | 07 | [Four Data Splits and the S / R Scores](07-data-splits-and-scores.md) |

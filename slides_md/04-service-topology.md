@@ -1,4 +1,4 @@
-# 04. Inference and Evaluation Services
+# 04. Inference (Agent Tool) and Evaluation Services
 
 Source: PPTX page 4 of 17.
 
