@@ -4,6 +4,30 @@ This repository records two real H3 experiments. [Longform run `101704_1strun`](
 searches a harness by generating and scoring complete five-clip projects. [Single-clip run `101214_1strun`](#3-single-clip-rsi-101214_1strun)
 is the earlier promoted demo. Their scores use different evaluation units and policies; compare base and candidate within each run.
 
+**Contents**
+
+- [0. Design Walkthrough](slides_md/README.md)
+- [1. Source case data](#1-source-case-data)
+- [2. Longform RSI: five clips searched as one project](#2-longform-rsi-five-clips-searched-as-one-project)
+  - [2.1. What one evaluation generates](#21-what-one-evaluation-generates)
+  - [2.2. Search and independent results](#22-search-and-independent-results)
+  - [2.3. Five-clip visual evidence and its video mapping](#23-five-clip-visual-evidence-and-its-video-mapping)
+  - [2.4. Cost, scope and archived evidence](#24-cost-scope-and-archived-evidence)
+- [3. Single-clip RSI: 101214_1strun](#3-single-clip-rsi-101214_1strun)
+  - [3.1. What was serving](#31-what-was-serving)
+  - [3.2. How RSI improves the harness — watch these clips in order](#32-how-rsi-improves-the-harness--watch-these-clips-in-order)
+    - [3.2.1. What gets rewritten: text components](#321-what-gets-rewritten-text-components)
+    - [3.2.2. What does the searching: GEPA](#322-what-does-the-searching-gepa)
+    - [3.2.3. Where each number comes from](#323-where-each-number-comes-from)
+    - [3.2.4. S is total R — but GEPA searches a penalized form of it](#324-s-is-total-r--but-gepa-searches-a-penalized-form-of-it)
+  - [3.3. The two edits behind the win](#33-the-two-edits-behind-the-win)
+    - [3.3.1. The result on unseen data](#331-the-result-on-unseen-data)
+    - [3.3.2. Where the prompts live](#332-where-the-prompts-live)
+  - [3.4. The loop in detail (13 iterations)](#34-the-loop-in-detail-13-iterations)
+  - [3.5. Validity guard in action](#35-validity-guard-in-action)
+  - [3.6. Reproduce](#36-reproduce)
+  - [3.7. Caveats](#37-caveats)
+
 ## 1. Source case data
 
 The original generation requirements are available in [benchmarks/](benchmarks/README.md):
