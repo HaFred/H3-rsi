@@ -35,9 +35,9 @@ P_{\mathrm{axis}} =
 \end{cases}
 $$
 
-Here, $b_a$ and $c_a$ are the Base and candidate scores for axis $a$ on the **same task and seed**; $w_a$ is its frozen policy weight. $A$ contains positive-weight axes with both scores available; missing axes are skipped. $\tau$ is the allowed regression tolerance. If no Base reference is available, the penalty is zero.
+With protection enabled and zero tolerance, each axis loss has twice its weighted impact on S_clip relative to Base.
 
-For the displayed short-clip run, protection is enabled, $\tau = 0$, and the weights are video 0.60, story 0.25 and editing 0.15:
+Protection is by default enabled, $\tau = 0$, and the weights are video 0.60, story 0.25 and editing 0.15:
 
 $$
 P_{\mathrm{axis}} =
