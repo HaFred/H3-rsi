@@ -11,6 +11,8 @@ Qwen3.5-9B at `:8001` proposes Harness changes. In this lineage only `prompts.sc
 | Director input user message | 1,658 | 1,945 | 2,172 |
 | Final H3 prompt | 2,872 | 4,588 | 4,009 |
 
+The [worked script-rewrite lifecycle](subdocs_examples/08-script-rewrite-prompt-lifecycle.md#4-scriptwriter-the-only-rewritten-system-prompt) shows the Base and rewritten script system prompts, downstream agent inputs and outputs, and resulting H3 requests for the first rewrite in this lineage.
+
 These are generated artifact/input lengths, rather than Harness system-prompt lengths.
 
 - **Task input:** unchanged task and target duration. The source's task “seed” means input text here, rather than a sampling RNG seed.

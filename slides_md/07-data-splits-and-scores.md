@@ -48,6 +48,8 @@ Train/Validation use `S_project` for project search. Independent Promotion uses 
 
 These project formulas assume all metrics are present and loop penalty is zero; missing metrics follow the frozen policy. A higher search score does not guarantee a higher reward/report score or better output in every case. Clip-level and project-level values have different definitions and cannot be compared directly. The demonstrated runs use these scores for harness search/evaluation, not direct model-weight updates.
 
+For concrete examples, see the [single-clip evaluation](subdocs_examples/08-script-rewrite-prompt-lifecycle.md#10-evaluation-and-what-the-example-demonstrates) and the [five-clip reward aggregation and project evaluation](subdocs_examples/11-town-fair-longform-production.md#7-clip-rewards-and-project-evaluation). The latter maps recorded fields to clip and project metrics; missing historical values remain marked as DGX placeholders.
+
 ### Short-clip run `101214_1strun`
 
 The original chart reports mean R_clip × 100:

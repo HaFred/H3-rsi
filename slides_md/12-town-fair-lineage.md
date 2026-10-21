@@ -17,6 +17,8 @@ The five intended segment scenes are red-umbrella arrival, park kite, fountain c
 
 Final frames show endings, rather than complete actions or proof that each intended scene was fulfilled. The source notes also state that Train seeds differ across these rows.
 
+The [detailed five-clip production comparison](subdocs_examples/11-town-fair-longform-production.md) expands the Base and first Script rewrite into segment briefs, agent calls, H3 requests, state transitions and stitching. Original runtime records that are unavailable locally remain marked as DGX placeholders; the comparison does not cover the later two rewrites.
+
 ### Source images
 
 ![Page 12, image 1](assets/image7.png)

@@ -10,6 +10,8 @@ Compare full actions, camera movement, and sound for the same `train-001` task. 
 | Rewrite script | 0.6628 | 0.541 |
 | Then rewrite director | 0.6659 | 0.556 |
 
+The [worked script-rewrite example](subdocs_examples/08-script-rewrite-prompt-lifecycle.md#7-h3-request-and-output-video) compares the Base and Script rewrite H3 JSON payloads and output videos shown here.
+
 ### Metric definitions
 
 **Video axis (V)** is a visual-quality proxy in `[0, 1]`. UnifiedReward evaluates sampled frames from the generated video against the **original task prompt**. Each valid frame receives three scores from 1 to 5:

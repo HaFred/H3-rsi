@@ -26,6 +26,15 @@ Read pages 1–7 for the definition, architecture, search boundary, and evaluati
 | 16 | [Experimental Boundaries and Implementation Roadmap](16-evidence-and-roadmap.md) |
 | 17 | [Initial Findings, Data Limitations, and Pilot Prompts](17-findings-and-pilot-prompts.md) |
 
+## Worked examples
+
+| Related pages | Detailed example |
+| --- | --- |
+| 04, 07-10: agent inputs, clip scores, videos and prompt propagation | [Single-clip script rewrite: prompts, agent outputs, Base/rewrite H3 payloads and videos](subdocs_examples/08-script-rewrite-prompt-lifecycle.md) |
+| 04, 07, 11-14: segment lifecycle, project scores, state, handoff and stitching | [Five-clip town-fair production: Base vs Script rewrite](subdocs_examples/11-town-fair-longform-production.md) |
+
+The town-fair example includes source snapshots and segment previews; unavailable original DGX traces and results are marked as DGX placeholders.
+
 ## Reading the evidence
 
 - Harness search is demonstrated with frozen H3 weights. Model-weight optimization and the four-combination gate are a proposed next stage.
