@@ -211,6 +211,10 @@ Each segment has its original requirement, dependencies and judge questions; two
 
 For later segments, the exact composed brief must be read from that arm's `trajectory.meta.brief` or `attempt.json.brief`. Do not assume every declared fact was confirmed or copy a state from the other arm. The original Chinese input strings are retained.
 
+**How to read the comparisons below.** Observations use two sampled frames per segment, approximately 1.25 s and 3.75 s into each local preview. They do not establish complete motion, audio quality or measured score gains. Generated scripts are missing for both arms; the script columns distinguish shared case requirements from unavailable outputs. The known system-prompt rewrite in section 4 is not evidence of what the agent actually generated. Seeds remain unmatched, so visual differences cannot be attributed solely to the rewrite.
+
+Video-axis judgments contribute to R_clip and therefore C; project scores also include other terms. F and P below refer only to configured evidence and eligible payoff checks. Reasons in the last column are fewer than ten words.
+
 ### 5.1. Segment 1: Red-umbrella arrival (`umbrella-arrival`)
 
 **Stitched-video frame interval:** 0-123, approximately 0.000000-5.166667 s.
@@ -256,6 +260,18 @@ Target duration: 5s across 3 shots.
 | Base | Script rewrite |
 | --- | --- |
 | <a href="../assets/media4.mp4#t=0.000000,5.166667"><img src="assets/11-town-fair-production/base_01_umbrella-arrival.webp" width="330" alt="base town-fair segment 1: Red-umbrella arrival"></a> | <a href="../assets/media5.mp4#t=0.000000,5.166667"><img src="assets/11-town-fair-production/script-rewrite_01_umbrella-arrival.webp" width="330" alt="script-rewrite town-fair segment 1: Red-umbrella arrival"></a> |
+
+**Generated script outputs: Base vs script rewrite**
+
+| Base script agent output | Script-rewrite script agent output |
+| --- | --- |
+| `[DGX-PLACEHOLDER]` Base `umbrella-arrival` `trajectory.script` | `[DGX-PLACEHOLDER]` Script rewrite `umbrella-arrival` `trajectory.script` |
+
+Fill these cells from the matched segment trajectories, not from system prompts or video. The expanded records below retain the corresponding output slots.
+
+| Human viewing perspective | Base clip | Script-rewrite clip | Base vs. rewritten scripts: relevant instructions and why they matter | Responsible metrics | Reasons why the metrics are related |
+| --- | --- | --- | --- | --- | --- |
+| Market setting and umbrella action | Samples show a dim, overcast street, a yellow raincoat and a close view of the folded red umbrella. | Samples show wet-street reflections, clearer market stalls and a later view of the person beneath the open umbrella. | Both generated scripts remain `[DGX-PLACEHOLDER]`. The shared requirement asks for a pickup at the market entrance. The rewrite samples foreground the market setting; complete pickup fidelity remains unresolved. | Video axis / R_clip | Visible alignment and style contribute to weighted clip reward. |
 
 <details>
 <summary>base: all five agent messages, outputs, H3 payload and state records for umbrella-arrival</summary>
@@ -433,6 +449,18 @@ Each arm uses fl2va with the last frame of **its own `umbrella-arrival` clip** a
 | Base | Script rewrite |
 | --- | --- |
 | <a href="../assets/media4.mp4#t=5.166667,10.333333"><img src="assets/11-town-fair-production/base_02_kite-park.webp" width="330" alt="base town-fair segment 2: Park kite"></a> | <a href="../assets/media5.mp4#t=5.166667,10.333333"><img src="assets/11-town-fair-production/script-rewrite_02_kite-park.webp" width="330" alt="script-rewrite town-fair segment 2: Park kite"></a> |
+
+**Generated script outputs: Base vs script rewrite**
+
+| Base script agent output | Script-rewrite script agent output |
+| --- | --- |
+| `[DGX-PLACEHOLDER]` Base `kite-park` `trajectory.script` | `[DGX-PLACEHOLDER]` Script rewrite `kite-park` `trajectory.script` |
+
+Fill these cells from the matched segment trajectories, not from system prompts or video. The expanded records below retain the corresponding output slots.
+
+| Human viewing perspective | Base clip | Script-rewrite clip | Base vs. rewritten scripts: relevant instructions and why they matter | Responsible metrics | Reasons why the metrics are related |
+| --- | --- | --- | --- | --- | --- |
+| Park setting, kite and umbrella motif | Samples show a green-jacketed child beside market stalls and a red umbrella; the kite catch is not established. | Samples show grass, tents, a red umbrella and the child holding a white kite. | Both generated scripts remain `[DGX-PLACEHOLDER]`. The shared requirement asks for catching a falling kite in the adjacent park. The rewrite samples make the park and held kite clearer; holding does not demonstrate a catch. | Video axis / R_clip; P if checked | Visible objects affect alignment; eligible payoff checks measure persistence. |
 
 <details>
 <summary>base: all five agent messages, outputs, H3 payload and state records for kite-park</summary>
@@ -627,6 +655,18 @@ Each arm uses fl2va with the last frame of **its own `kite-park` clip** as first
 | Base | Script rewrite |
 | --- | --- |
 | <a href="../assets/media4.mp4#t=10.333333,15.500000"><img src="assets/11-town-fair-production/base_03_fountain-arrival.webp" width="330" alt="base town-fair segment 3: Fountain cyclist"></a> | <a href="../assets/media5.mp4#t=10.333333,15.500000"><img src="assets/11-town-fair-production/script-rewrite_03_fountain-arrival.webp" width="330" alt="script-rewrite town-fair segment 3: Fountain cyclist"></a> |
+
+**Generated script outputs: Base vs script rewrite**
+
+| Base script agent output | Script-rewrite script agent output |
+| --- | --- |
+| `[DGX-PLACEHOLDER]` Base `fountain-arrival` `trajectory.script` | `[DGX-PLACEHOLDER]` Script rewrite `fountain-arrival` `trajectory.script` |
+
+Fill these cells from the matched segment trajectories, not from system prompts or video. The expanded records below retain the corresponding output slots.
+
+| Human viewing perspective | Base clip | Script-rewrite clip | Base vs. rewritten scripts: relevant instructions and why they matter | Responsible metrics | Reasons why the metrics are related |
+| --- | --- | --- | --- | --- | --- |
+| Cyclist action versus continuity props | Samples show the cyclist near the fountain and a closer view of the blue-helmeted person drinking. | Samples show the cyclist, fountain and red umbrella together; drinking is not established. | Both generated scripts remain `[DGX-PLACEHOLDER]`. The shared requirement asks for stopping and drinking, plus an umbrella by the fountain. Base samples make drinking clearer; rewrite samples make the umbrella clearer. These are different aspects of fidelity. | Video axis / R_clip; P if checked | Action visibility and umbrella persistence represent different evaluation targets. |
 
 <details>
 <summary>base: all five agent messages, outputs, H3 payload and state records for fountain-arrival</summary>
@@ -823,6 +863,18 @@ Each arm uses fl2va with the last frame of **its own `fountain-arrival` clip** a
 | --- | --- |
 | <a href="../assets/media4.mp4#t=15.500000,20.666667"><img src="assets/11-town-fair-production/base_04_bakery-prep.webp" width="330" alt="base town-fair segment 4: Bakery preparation"></a> | <a href="../assets/media5.mp4#t=15.500000,20.666667"><img src="assets/11-town-fair-production/script-rewrite_04_bakery-prep.webp" width="330" alt="script-rewrite town-fair segment 4: Bakery preparation"></a> |
 
+**Generated script outputs: Base vs script rewrite**
+
+| Base script agent output | Script-rewrite script agent output |
+| --- | --- |
+| `[DGX-PLACEHOLDER]` Base `bakery-prep` `trajectory.script` | `[DGX-PLACEHOLDER]` Script rewrite `bakery-prep` `trajectory.script` |
+
+Fill these cells from the matched segment trajectories, not from system prompts or video. The expanded records below retain the corresponding output slots.
+
+| Human viewing perspective | Base clip | Script-rewrite clip | Base vs. rewritten scripts: relevant instructions and why they matter | Responsible metrics | Reasons why the metrics are related |
+| --- | --- | --- | --- | --- | --- |
+| Bakery action versus a return to the fountain | Samples show a baker carrying bread in a warm interior and a later view toward a red umbrella outside. | An earlier sample shows oven handling; a later sample shows the cyclist/fountain scene instead of the bakery. | Both generated scripts remain `[DGX-PLACEHOLDER]`. The shared requirement asks for bread removal and placement on a wooden counter. Returning to the fountain appears inconsistent with that local task; missing agent outputs are needed to trace the divergence. | Video axis / R_clip; F if checked | Bread evidence affects F; scene mismatch affects frame alignment. |
+
 <details>
 <summary>base: all five agent messages, outputs, H3 payload and state records for bakery-prep</summary>
 
@@ -1017,6 +1069,18 @@ Each arm uses fl2va with the last frame of **its own `bakery-prep` clip** as fir
 | Base | Script rewrite |
 | --- | --- |
 | <a href="../assets/media4.mp4#t=20.666667,25.833333"><img src="assets/11-town-fair-production/base_05_potter-opening.webp" width="330" alt="base town-fair segment 5: Pottery-stall opening"></a> | <a href="../assets/media5.mp4#t=20.666667,25.833333"><img src="assets/11-town-fair-production/script-rewrite_05_potter-opening.webp" width="330" alt="script-rewrite town-fair segment 5: Pottery-stall opening"></a> |
+
+**Generated script outputs: Base vs script rewrite**
+
+| Base script agent output | Script-rewrite script agent output |
+| --- | --- |
+| `[DGX-PLACEHOLDER]` Base `potter-opening` `trajectory.script` | `[DGX-PLACEHOLDER]` Script rewrite `potter-opening` `trajectory.script` |
+
+Fill these cells from the matched segment trajectories, not from system prompts or video. The expanded records below retain the corresponding output slots.
+
+| Human viewing perspective | Base clip | Script-rewrite clip | Base vs. rewritten scripts: relevant instructions and why they matter | Responsible metrics | Reasons why the metrics are related |
+| --- | --- | --- | --- | --- | --- |
+| Pottery task versus a return to the fountain | Samples show hands handling a clay vessel and a later interior view of the potter; shelf placement is not established. | An earlier sample shows a bowl on the wheel; a later sample returns to the cyclist/fountain scene. | Both generated scripts remain `[DGX-PLACEHOLDER]`. The shared requirement asks for lifting a small bowl onto a shelf. A bowl close-up does not prove that action; the rewrite also appears to lose the requested setting later. | Video axis / R_clip; F if checked | Bowl evidence affects F; scene mismatch affects frame alignment. |
 
 <details>
 <summary>base: all five agent messages, outputs, H3 payload and state records for potter-opening</summary>
@@ -1238,6 +1302,17 @@ R_project = 0.40 C + 0.20 F + 0.20 P + 0.20 H
 F is the confirmed-fact rate; P is the pass rate over payoff checks actually executed; H is mean adjacent last/first-frame similarity. Missing metrics follow the frozen policy. S_project drives project search; independent Promotion/Test evaluate their own held-out R_project values. The clip search objective S_clip is R_clip minus the short-clip axis-regression penalty; S_project aggregates raw clip reward via C, not mean(S_clip).
 
 **Matched town-fair S_project / R_project:** Base `[DGX-PLACEHOLDER]`; rewrite `[DGX-PLACEHOLDER]`, from each matched `outcome.json`. Page 12's Validation means (base S_project 0.7293 / R_project 0.7645; rewrite S_project 0.7436 / R_project 0.7698) average four Validation projects. They are not scores for these two town-fair Train videos. See [the score reference](../07-data-splits-and-scores.md).
+
+### Human interpretation across the five-clip project
+
+| Human viewing perspective | Base production | Script-rewrite production | Base vs. rewritten scripts and why they matter | Responsible metrics | Reasons why the metrics are related |
+| --- | --- | --- | --- | --- | --- |
+| Distinct segment tasks | Samples remain within bakery and pottery settings in segments 4 and 5. | Later samples from both segments return to the cyclist/fountain composition. | Both generated-script sets remain [DGX-PLACEHOLDER]. Compare scripts, storyboards and director outputs before assigning responsibility for scene drift. | Video axis / R_clip; F/P if checked | Local task fidelity differs from recurring visual similarity. |
+| Handoff and project continuity | Exact boundary similarity and judge results remain [DGX-PLACEHOLDER]. | Exact boundary similarity and judge results remain [DGX-PLACEHOLDER]. | Recover generated scripts and confirmed-state briefs to inspect prior-context effects; scripts alone do not determine boundary scores. | H -> S_project / R_project; F/P -> R_project | Boundary similarity and verified facts measure different continuity aspects. |
+
+A repeated fountain composition is not, by itself, successful longform storytelling. H measures adjacent boundary-frame similarity; it does not verify completion of bakery or pottery actions. These within-segment samples do not establish an H improvement either. A visible umbrella also does not establish a passed payoff check without its original judge record.
+
+Matched project scores remain unavailable. Page 12's higher mean Validation scores average four Validation projects; they cannot establish improvement in these displayed town-fair Train videos. The defensible conclusion here is mixed visual/task fidelity, with script-level causes and measured metric changes awaiting DGX records.
 
 ## 8. Instructions for the DGX agent
 

@@ -85,7 +85,25 @@ You are a Text-to-Video Script Specialist. Given a one-line idea and a target du
 Idea: A person in a yellow raincoat picks up a red umbrella on a wet street. Keep the same person and umbrella throughout. Include footsteps and dripping water.
 Target duration: 5s across 3 shots.
 ```
-**Recorded output: enhanced version 1, the script** (`trajectory.script`):
+**Recorded script outputs: Base vs script-rewrite harness.** Both use the user message above; their script system prompts differ. Each block is copied from its own recorded `trajectory.script` field.
+
+**Base harness output** ([source trajectory](../../evaluations/edb00ad03c2e77bc2b759d587f1a1f2c0706fcf90405d129cae6ee19daa4771b/trajectory.json)):
+
+```text
+**SHOT 1 (0:00-0:02)**
+Close-up on yellow boots stepping heavily on wet pavement. Water sloshes. The camera pans up to a person in a bright yellow raincoat, eyes fixed on a red umbrella lying on the curb.
+*SFX: Heavy footsteps. Distant city hum.*
+
+**SHOT 2 (0:02-0:04)**
+Over-the-shoulder shot. The person bends, knuckles white, and grabs the red handle. They pull it upright. A stream of water drips from the curved red canopy onto the asphalt.
+*SFX: Fabric creaking. Loud, rhythmic dripping.*
+
+**SHOT 3 (0:04-0:05)**
+Wide shot. The person stands tall, holding the red umbrella like a shield against the gray rain. They turn and walk away, yellow coat and red umbrella creating a stark, vivid contrast against the monochrome street.
+*SFX: Footsteps fade into the rain.*
+```
+
+**Script-rewrite harness output: enhanced version 1, the script** ([source trajectory](../../evaluations/0aa979018910a10da8a371e18edc03464f18690acf534c0948e629736dd44170/trajectory.json)):
 
 ```text
 **SHOT 1 (0.0s-1.67s)** A person in a bright yellow raincoat with black zippers walks forward on a slick cobblestone street at dusk; rain falls softly, puddles reflect the streetlights, and their boots make rhythmic splashing footsteps on the wet ground.
@@ -264,6 +282,17 @@ The recorded endpoint is `http://localhost:30010`. Hashing the endpoint and payl
 <a href="../../evaluations/0aa979018910a10da8a371e18edc03464f18690acf534c0948e629736dd44170/video.mp4"><img src="../../evaluations/0aa979018910a10da8a371e18edc03464f18690acf534c0948e629736dd44170/preview-lg.webp" width="720" alt="Script-rewrite train-001, candidate d58fde46: actual H3 video preview"></a>
 
 [Open the actual MP4 with sound](../../evaluations/0aa979018910a10da8a371e18edc03464f18690acf534c0948e629736dd44170/video.mp4). The clip contains 124 frames at 24 fps (about 5.17 s); the requested target is 5.0 s. The artifact records one H3 request, seed 0, and server video ID `60f98197-2be8-4e3a-8b1d-4c42c5ae6148`.
+
+### Human viewing comparison
+
+This interpretation uses sampled frames from both clips. Metric links describe what the evaluator can reflect, not measured attribution of the score gain. R_clip includes the video axis with weight 0.60; None means no direct verification of the complete action, although visible umbrella presence can affect frame alignment.
+
+| Human viewing perspective | Base clip | Script-rewrite clip | Base vs. rewritten scripts: relevant instructions and why they matter | Responsible metrics (Video axis/R_clip/None) | Reasons why the metrics are related |
+|---|---|---|---|---|---|
+| Environment and lighting | A dark, relatively sparse street; much of the scene falls into shadow. | More visible street depth, warm streetlights, cobblestone texture and reflections. It looks more deliberately composed. | **Base:** wet pavement, gray rain and a monochrome street. **Rewritten:** cobblestones at dusk, puddles reflecting streetlights, and warm light on wet pavement. The rewrite supplies more concrete texture and lighting cues, consistent with the richer setting observed. | Video axis / R_clip | Frame style and coherence contribute to weighted clip reward. |
+| Opening | Tight framing on yellow boots, followed by a reveal of the person. | Walking is framed within a richer street environment, although the opening still crops much of the person. | **Base:** explicitly requests a yellow-boots close-up and a pan up to the person. **Rewritten:** describes the raincoated person walking forward with splashing footsteps, without requiring that close-up. The Base crop follows its script; the rewrite allows broader framing but does not guarantee it. | Video axis / R_clip | Visible composition affects style; temporal reveal remains unverified. |
+| Umbrella action | The later images show the person holding the umbrella, but do not clearly establish the complete pickup action. | The middle images bring the red umbrella and the person's hand closer to the viewer. However, these images alone do not prove a clean, physically convincing pickup. | **Base:** the person bends, grabs the red handle and pulls the umbrella upright. **Rewritten:** the person lifts it from a shallow puddle, with upward splashes and dripping water. Both request a pickup; the rewrite adds visible water cues, but the frames do not establish complete action fidelity. | None | Sampled frames cannot verify complete pickup motion or physics. |
+| Ending | A distant figure with the red umbrella. | A similar ending, with stronger street perspective and warm lighting. | **Base:** a wide shot of the person turning and walking away, with yellow/red contrasting against a monochrome street. **Rewritten:** the person walks away beneath the umbrella, with steady drips and streetlights glowing on wet pavement. Both specify departure; the rewrite adds lighting and reflection cues consistent with the observed ending. | Video axis / R_clip | Visible subject alignment and style contribute to clip reward. |
 
 ## 8. Text critic: diagnostics after video generation
 
