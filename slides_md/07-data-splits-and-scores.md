@@ -22,7 +22,31 @@ Source: PPTX page 7 of 17.
 
 `R_clip` = 0.60 [video](09-short-clip-videos.md#metric-definitions) + 0.25 `story` + 0.15 `editing`
 
-`S_clip = R_clip - axis-regression penalty`
+$$
+S_{\mathrm{clip}} = R_{\mathrm{clip}} - P_{\mathrm{axis}}
+$$
+
+$$
+P_{\mathrm{axis}} =
+\begin{cases}
+\displaystyle \sum_{a \in A} w_a \max\!\left(0,\ b_a - c_a - \tau\right),
+& \text{if axis-regression protection is enabled},\\
+0, & \text{otherwise}.
+\end{cases}
+$$
+
+Here, $b_a$ and $c_a$ are the Base and candidate scores for axis $a$ on the **same task and seed**; $w_a$ is its frozen policy weight. $A$ contains positive-weight axes with both scores available; missing axes are skipped. $\tau$ is the allowed regression tolerance. If no Base reference is available, the penalty is zero.
+
+For the displayed short-clip run, protection is enabled, $\tau = 0$, and the weights are video 0.60, story 0.25 and editing 0.15:
+
+$$
+P_{\mathrm{axis}} =
+0.60\max(0,b_{\mathrm{video}}-c_{\mathrm{video}})
++0.25\max(0,b_{\mathrm{story}}-c_{\mathrm{story}})
++0.15\max(0,b_{\mathrm{editing}}-c_{\mathrm{editing}}).
+$$
+
+Only regressions add a penalty; improvements on another axis do not cancel it. This definition follows `VideoGEPAAdapter.search_score` in `rsi_harness/optimization/gepa_adapter.py`; invalid evaluations receive search score zero.
 
 For each Train/Validation evaluation, measure the current clip's `R_clip`, then derive `S_clip` from that same case. The penalty uses enabled quality-axis regressions against the base on the same case; it does not use Promotion/Test results. With protection disabled or no axis regression, `S_clip = R_clip`.
 

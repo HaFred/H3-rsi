@@ -2,6 +2,28 @@
 
 Source: PPTX page 6 of 17.
 
+### Frontier construction and maintenance
+
+In this project, GEPA's **instance-wise Pareto frontier** tracks the complete harnesses with the highest S_clip on each Validation case (val-001 and val-002), including ties. Its dimensions are Validation cases, not quality axes or harness components. Script, storyboard, director and memory rewrites all contribute to the same candidate pool and frontier.
+
+**Initialization.** Evaluate Base on the full Validation set. With no other candidates evaluated, each case's leader set is {Base}, so the initial frontier contains only Base and the first parent must be Base.
+
+**A new candidate joins the frontier if it beats or ties the best score on at least one Validation case.** It must first pass the Train parent/child comparison and receive full Validation scores. Update each case's leader set independently:
+
+| New candidate's S_clip on a Validation case | Update to that case's leader set |
+| --- | --- |
+| Higher than the current best | Replace the previous leaders with the new candidate |
+| Equal to the current best | Add the new candidate alongside the existing leaders |
+| Lower than the current best | Leave the leader set unchanged |
+
+The frontier candidates are the union of these per-case leader sets. A harness leaves the frontier when it no longer leads any case, but remains in the recorded candidate pool. Passing Train or improving the Validation mean alone does not guarantee frontier membership.
+
+For example, if val-001 is led by A at 0.80 and val-002 by B at 0.78, a new C scoring 0.82 / 0.75 replaces A only. The frontier becomes {B, C}; A remains recorded. These numbers are illustrative.
+
+**Parent selection versus final selection.** GEPA 0.1.4 prunes redundant tied leaders before parent sampling and weights surviving parents by the number of case-leader sets they occupy. The final winner is selected from the candidate pool by full-Validation mean S_clip; it need not lead an individual case. This per-case leadership structure is more selective than the general mathematical set of all nondominated score vectors. See the [versioned parent-selection implementation](https://github.com/gepa-ai/gepa/blob/v0.1.4/src/gepa/gepa_utils.py#L82).
+
+### GEPA search and promotion steps
+
 1. Sample a parent from the Pareto frontier according to its per-Validation-task S_clip leadership.
 2. Select script, storyboard, director, or memory with `round_robin`.
 3. Ask Qwen3.5-9B to rewrite the selected field using Train feedback only.
