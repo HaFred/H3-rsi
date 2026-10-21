@@ -11,16 +11,27 @@ Source: PPTX page 7 of 17.
 
 **Metric names specify both role and evaluation unit.** Use `R_clip` / `S_clip` for one generated clip, and `R_project` / `S_project` for a complete multi-clip project. R denotes underlying reward/reporting and S denotes the search objective; neither name identifies when a score first becomes available. The counts above describe short-clip tasks, not longform projects.
 
-| Metric | Unit | Meaning |
-| --- | --- | --- |
-| `R_clip` | One task/segment, harness and seed | Underlying weighted clip reward, measured during search and independent evaluation |
-| `S_clip` | The same clip evaluation | Search objective derived from that case's R_clip and enabled axis-regression penalty |
-| `S_project` | One complete project, harness and seed | Search objective built from project metrics, including mean(R_clip) |
-| `R_project` | The same complete-project evaluation | Reward/report score with additional state/payoff terms; used for independent project promotion |
+| Metric | Unit | Meaning | Who produces it? | Connection to [page 4](04-service-topology.md) |
+| --- | --- | --- | --- | --- |
+| `R_clip` | One task/segment, harness and seed | Underlying weighted clip reward, measured during search and independent evaluation | Local `RewardBuilder` combines video from UnifiedReward, story from Jev, and editing from a local storyboard heuristic. | Visual judge `:8090`, Decisions `:8085`, plus local code. |
+| `S_clip` | The same clip evaluation | Search objective derived from that case's R_clip and enabled axis-regression penalty | Local `VideoGEPAAdapter` subtracts the axis-regression penalty from `R_clip`. | No additional model call. |
+| `S_project` | One complete project, harness and seed | Search objective built from project metrics, including mean(R_clip) | Local project scorer combines mean `R_clip` (C) and locally calculated boundary-frame similarity (H). | Inherits the judges used for `R_clip`; H requires no model. |
+| `R_project` | The same complete-project evaluation | Reward/report score with additional state/payoff terms; used for independent project promotion | Local project scorer combines C, H, confirmed-fact rate (F), and payoff rate (P). | Adds evidence/payoff judgments from Visual judge `:8090`. |
 
 ### Short clips
 
 `R_clip` = 0.60 [video](09-short-clip-videos.md#metric-definitions) + 0.25 `story` + 0.15 `editing`
+
+The evaluation instructions below are fixed during the run, separate from the production agents' `prompts.*` system messages. RSI rewrites the production harness; the evaluators score its resulting artifacts.
+
+| Metric | Judge / implementation | Evaluation prompt or rule | Inputs |
+| --- | --- | --- | --- |
+| **Video** | UnifiedReward, `:8090` | Fixed `UNIFIED_REWARD_PROMPT`: rate alignment with caption, visual coherence and style, each 1-5. Sent as a user message, with no separate system message supplied by this scorer. | Sampled video frame + original task prompt as caption |
+| **Story: script quality (60%)** | Jev, `:8085`, `Score` request | 评估该剧本的剧情完整度、冲突强度与节奏。 ("Evaluate plot completeness, conflict strength and pacing.") Five levels: very weak to very strong. | Generated script |
+| **Story: key-event consistency (40%)** | Jev, `:8085`, `Noul` request | 生成描述是否完整兑现了剧本的关键事件？ ("Does the generation description fully realize the script's key events?") These are structured question instructions, rather than a harness system prompt. | Generated script + director prompt |
+| **Editing** | Local Python heuristic; no model | No prompt. Scores storyboard shot count, mean shot duration and duration variation. Uses `planning.max_shots` and `planning.min_shot_seconds`. | Generated storyboard's shot list and durations |
+
+Implementation sources in the sibling checkout: [video prompt, video_quality.py:14](../../rsi-1st-impl-design/rsi_harness/reward/video_quality.py#L14), [script-quality question, policies.py:64](../../rsi-1st-impl-design/rsi_harness/neohorse/policies.py#L64), [key-event consistency question, policies.py:75](../../rsi-1st-impl-design/rsi_harness/neohorse/policies.py#L75), and [editing heuristic, editing_quality.py:16](../../rsi-1st-impl-design/rsi_harness/reward/editing_quality.py#L16). The two story judgments are combined in [story_quality.py:35](../../rsi-1st-impl-design/rsi_harness/reward/story_quality.py#L35).
 
 $$
 S_{\mathrm{clip}} = R_{\mathrm{clip}} - P_{\mathrm{axis}}

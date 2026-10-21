@@ -19,7 +19,19 @@ flowchart LR
 | Promotion | Independently reevaluate Base/best using R_clip and quality axes; results do not feed back into this search |
 | Test | Report Base/best R_clip and axis scores; results do not influence selection |
 
-For short clips, `R_clip` is the weighted reward measured on every evaluated case, including Train/Validation; `S_clip = R_clip - axis-regression penalty` is derived from that same search case. Selection uses S_clip, then independent Promotion reevaluates the winner on held-out cases using their own R_clip and quality safeguards. This is a decision sequence, not a dependency on future promotion scores. The searched components are script, storyboard, director, and memory. Critic/editor remain fixed diagnostic components. See [the split and scoring definitions](07-data-splits-and-scores.md).
+### Why search and reporting use different scores
+
+| Stage | Question | Score |
+|---|---|---|
+| Search | Which harness should we explore and select, while discouraging quality regressions? | `S_clip = R_clip − penalty` |
+| Reporting | What quality did the selected harness actually achieve under the fixed evaluation rubric? | Raw `R_clip`, plus individual axes |
+| Promotion | Is the selected harness good enough to replace the champion on independent cases? | Held-out `R_clip` and explicit safeguards |
+
+For short clips, the penalty makes regressions more expensive during search; it guides selection without changing raw reward. Reporting `R_clip` preserves a fixed quality rubric across runs whose Base harnesses may differ. Report individual axes alongside it to expose tradeoffs. Both scores come from the current evaluation; search does not depend on future Promotion results.
+
+Reporting raw reward does not undo selection by `S_clip` or authorize deployment. Independent Promotion checks held-out performance, axis and per-case regressions, and quality floors; a search winner can still fail to become champion. See [the split and scoring definitions](07-data-splits-and-scores.md).
+
+The searched components are script, storyboard, director, and memory. Critic/editor remain fixed diagnostic components.
 
 ---
 
