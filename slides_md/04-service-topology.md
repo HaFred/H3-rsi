@@ -43,6 +43,65 @@ The short-clip run used **65 H3 requests**: 45 for search, 12 for promotion, and
 
 The two versions are Base and winner. Promotion/Test do not rewrite the Harness; eight Test requests do not mean eight search rounds. Each H3 request produces one clip: 124 frames, about 5.17 seconds, 1344 × 768, 24 fps, and 10 inference steps.
 
+**Segment prompt lifecycle (current implementation).** The main path below follows one longform segment from its original requirement to H3's output. Each production-text agent receives its own system prompt plus shared memory; its user message is assembled from the preceding task outputs. Solid arrows carry inputs or outputs. The dotted arrow marks execution order only: the text critic runs after generation but does not read the video.
+
+```mermaid
+flowchart TD
+  input(["segment user prompt"])
+  brief["Compose segment brief<br/>Segment requirement and purpose<br/>Project world and audio/visual policies<br/>Confirmed StoryState facts and handoff instruction"]
+  input --> brief
+
+  subgraph text_agents["Production text: neohorse-1-4B at :8000"]
+    script["Scriptwriter agent<br/>System: prompts.script + memory<br/>User: Idea = composed brief<br/>Target duration and planning.max_shots"]
+    script_out["Enhanced version 1: script<br/>Expanded actions and narrative"]
+    storyboard["Storyboard planner agent<br/>System: prompts.storyboard + memory<br/>User: script + target duration"]
+    storyboard_out["Enhanced version 2: storyboard JSON<br/>Shot index, seconds, size, camera and action"]
+    director["Director agent<br/>System: prompts.director + memory<br/>User: script + storyboard JSON<br/>Target duration, aspect ratio and generation mode"]
+    director_out["Enhanced version 3: final H3 prompt<br/>integrated_multimodal_description<br/>overall_soundscape<br/>non_diegetic_music"]
+
+    script --> script_out
+    script_out --> storyboard
+    storyboard --> storyboard_out
+    script_out --> director
+    storyboard_out --> director
+    director --> director_out
+  end
+
+  brief --> script
+  request["Build H3 generation request<br/>prompt = director output"]
+  settings["Generation settings and media conditions<br/>Mode, resolution, duration, fps, seed and steps<br/>Prior segment's last frame for later segments"]
+  director_out --> request
+  settings --> request
+  h3["Video generation service<br/>MiniMax-H3 at :30010<br/>First segment: t2va<br/>Later segments: first-frame-conditioned fl2va"]
+  request --> h3
+  video(["H3 inference output video"])
+  h3 --> video
+
+  subgraph diagnostics["After-generation text diagnostics: same production-text service"]
+    critic["Text critic agent<br/>System: prompts.critic + memory<br/>User: script + storyboard JSON + director text"]
+    report["Defect report"]
+    editor["Editing adviser agent<br/>System: prompts.editor + memory<br/>User: critic report + fixed editing instruction"]
+    advice["Editing advice recorded in trajectory"]
+    critic --> report
+    report --> editor
+    editor --> advice
+  end
+
+  script_out --> critic
+  storyboard_out --> critic
+  director_out --> critic
+  video -. "runs afterward; video is not a text-critic input" .-> critic
+
+  classDef agent fill:#eaf2ff,stroke:#4268a8,color:#172b4d
+  classDef artifact fill:#eef8ee,stroke:#478547,color:#183b18
+  class script,storyboard,director,critic,editor,h3 agent
+  class input,script_out,storyboard_out,director_out,video artifact
+```
+
+[Worked example: script rewrite for train-001](subdocs_examples/08-script-rewrite-prompt-lifecycle.md) traces actual prompts, intermediate outputs and the H3 video through this graph's single-clip path; longform brief composition and handoff do not apply to that case.
+
+Only the director's enhanced text becomes H3's generation prompt. Script and storyboard outputs influence it through the text pipeline. Critic/editor outputs remain diagnostics and do not trigger a revision of this video. The proposed Context-IR compiler described above is not part of this current execution path.
+
 ---
 
 [Contents](README.md) · [Previous](03-harness-workflow.md) · [Next](05-search-boundary.md)

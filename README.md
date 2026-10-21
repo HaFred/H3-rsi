@@ -4,6 +4,8 @@ This repository records two real H3 experiments. [Longform run `101704_1strun`](
 searches a harness by generating and scoring complete five-clip projects. [Single-clip run `101214_1strun`](#3-single-clip-rsi-101214_1strun)
 is the earlier promoted demo. Their scores use different evaluation units and policies; compare base and candidate within each run.
 
+**Metric notation:** `R_clip` is one clip reward and `S_clip` its search objective; `S_project` and `R_project` score complete projects, sharing `C = mean(R_clip)`. These names follow the implementation documentation. See the [score reference](slides_md/07-data-splits-and-scores.md) for formulas and split usage.
+
 **Contents**
 
 - [0. Design Walkthrough](slides_md/README.md)
@@ -84,7 +86,7 @@ The two project scores have different purposes:
 `F` is the fraction of declared facts visually confirmed; `P` is the fraction of executed payoff checks that pass;
 `H` is mean pixel similarity across adjacent last/first frames. Missing metrics are renormalized by the frozen
 [policy](longform/101704_1strun/calibration.json); the loop penalty is disabled.
-Project `R_project` and mean segment `R_clip` are distinct metrics. R is the underlying reward/report score, not a stage reserved for Promotion/Test. Both project scores can be measured on search cases; S drives selection, then independent Promotion measures R on separate held-out cases. For short clips, S_clip is derived from the same search case's R_clip, not a future promotion result. See the [score reference](slides_md/07-data-splits-and-scores.md).
+Project `R_project` and mean segment `R_clip` are distinct metrics. R_project is the underlying reward/report score, not a stage reserved for Promotion/Test. Both project scores can be measured on search cases; S_project drives selection, then independent Promotion measures R_project on separate held-out cases. For short clips, S_clip is derived from the same search case's R_clip, not a future promotion result. See the [score reference](slides_md/07-data-splits-and-scores.md).
 
 | Split | Evaluation cases per harness | Metric | Base | Search winner | Δ |
 | --- | --- | --- | --- | --- | --- |
@@ -143,26 +145,26 @@ Exact parameters, source-video metadata and SHA-256 hashes are in
 [`slides_md/previews/provenance.json`](slides_md/previews/provenance.json).
 Segments play in stitch order: `umbrella-arrival` → `kite-park` → `fountain-arrival` → `bakery-prep` → `potter-opening`.
 The [world setting and five segment requirements](slides_md/17-findings-and-pilot-prompts.md#town-fair-manually-constructed-five-segment-production-pilot)
-explain the intended actions. **S/R below are means over four Validation projects, not scores for these town-fair videos.**
+explain the intended actions. **S_project/R_project below are means over four Validation projects, not scores for these town-fair videos.**
 
-**Base** - `d16c2e95`, mean Validation S 0.7293 / R 0.7645
+**Base** - `d16c2e95`, mean Validation S_project 0.7293 / R_project 0.7645
 
 <a href="slides_md/assets/media4.mp4"><img src="slides_md/previews/town-fair_d16c2e95_base.webp" width="640" alt="Base harness d16c2e95: complete five-segment town-fair timeline"></a>
 
-**1. Script rewrite** - `c863aae2` (round 1), mean Validation S 0.7436 / R 0.7698
+**1. Script rewrite** - `c863aae2` (round 1), mean Validation S_project 0.7436 / R_project 0.7698
 
 <a href="slides_md/assets/media5.mp4"><img src="slides_md/previews/town-fair_c863aae2_script.webp" width="640" alt="Script rewrite c863aae2: complete five-segment town-fair timeline"></a>
 
-**2. Storyboard rewrite** - `3252791a` (round 7), mean Validation S 0.7477 / R 0.7834
+**2. Storyboard rewrite** - `3252791a` (round 7), mean Validation S_project 0.7477 / R_project 0.7834
 
 <a href="slides_md/assets/media6.mp4"><img src="slides_md/previews/town-fair_3252791a_storyboard.webp" width="640" alt="Storyboard rewrite 3252791a: complete five-segment town-fair timeline"></a>
 
-**3. Script rewrite again** - `c1912a62` (round 57), mean Validation S 0.7516 / R 0.7672
+**3. Script rewrite again** - `c1912a62` (round 57), mean Validation S_project 0.7516 / R_project 0.7672
 
 <a href="slides_md/assets/media7.mp4"><img src="slides_md/previews/town-fair_c1912a62_script-again.webp" width="640" alt="Further script rewrite c1912a62: complete five-segment town-fair timeline"></a>
 
 Each preview maps to one complete five-segment source movie, not to independently selected clips.
-The final rewrite increases mean Validation S while lowering R; the videos let readers inspect the motion and scene realization alongside those metrics.
+The final rewrite increases mean Validation S_project while lowering R_project; the videos let readers inspect the motion and scene realization alongside those metrics.
 Recorded source identities, following the [presentation's video mapping](slides_md/13-town-fair-videos.md#embedded-videos):
 
 | Stage | Harness hash prefix | Source MP4 extracted from the presentation |
@@ -172,7 +174,7 @@ Recorded source identities, following the [presentation's video mapping](slides_
 | Storyboard rewrite | `3252791a` | [`media6.mp4`](slides_md/assets/media6.mp4) |
 | Script rewrite again | `c1912a62` | [`media7.mp4`](slides_md/assets/media7.mp4) |
 
-**Which harness is best?** `c1912a62` is the **search winner**, selected by the highest mean Validation S (0.7516). Its R (0.7672) is **third-highest among these four**, not second; `3252791a` has the highest R (0.7834). Selection uses `S = 0.70 C + 0.30 H`, while report/gate score `R = 0.40 C + 0.20 F + 0.20 P + 0.20 H` also measures confirmed facts and payoff checks. Different weights and metrics can rank candidates differently. "Winner" means best under the search objective; independent promotion determines whether it is eligible to replace the base, and individual clips can still regress.
+**Which harness is best?** `c1912a62` is the **search winner**, selected by the highest mean Validation S_project (0.7516). Its R_project (0.7672) is **third-highest among these four**, not second; `3252791a` has the highest R_project (0.7834). Selection uses `S_project = 0.70 C + 0.30 H`, while report/gate score `R_project = 0.40 C + 0.20 F + 0.20 P + 0.20 H` also measures confirmed facts and payoff checks. Different weights and metrics can rank candidates differently. "Winner" means best under the search objective; independent promotion determines whether it is eligible to replace the base, and individual clips can still regress.
 
 The extracted MP4s do not establish the original per-video seed or project-directory hash; those identities are not inferred here.
 The original `101704` desert-caravan comparison remains in its [archived figure](longform/101704_1strun/figures/101704_1strun_base_vs_best.webp)
@@ -201,7 +203,7 @@ The `101704` winner was rejected by promotion, so that label does not establish 
 | `prompt` + `state_commit` | Specify the requested scene and the new facts it should establish; e.g. `tea: poured`. A declaration is a requirement, not proof. | The scene brief drives generation; proposed facts require visual confirmation before becoming shared state. |
 | `evidence.<fact>` | Ask whether the new fact is visible in this segment; L66 asks whether someone is pouring tea from a metal teapot. | The frozen visual judge checks sampled frames. At P(yes) >= 0.5, the declared value enters StoryState; otherwise it is withheld and any older value for that key is removed. Confirmed facts enter later segment briefs. |
 | `payoff.<fact>` | Ask whether an earlier confirmed fact remains visible; [L68](benchmarks/longform_desert_caravan_5clip_v1.yaml#L68) checks the green scarf established in `dune-walk`. | Runs only when the key is in the upstream confirmed state. Pass/fail contributes to `payoff_rate`, without changing state. A withheld upstream key is skipped and excluded from the denominator. |
-| Project evaluation | Summarize evidence as `F = state_confirmed_rate` and executed payoff checks as `P = payoff_rate`. | Both enter report/promotion/test score `R_project` with weight 0.20 each. Neither directly enters this run's search score `S_project = 0.70 C + 0.30 H`; state changes can still affect later generation and thus S indirectly. |
+| Project evaluation | Summarize evidence as `F = state_confirmed_rate` and executed payoff checks as `P = payoff_rate`. | Both enter report/promotion/test score `R_project` with weight 0.20 each. Neither directly enters this run's search score `S_project = 0.70 C + 0.30 H`; state changes can still affect later generation and thus S_project indirectly. |
 | Train feedback -> GEPA -> next harness | Expose weak checks alongside segment scores and transition diagnostics to explain what the current harness failed to realize. | Train-project feedback guides reflection on `script`, `storyboard`, `director` or `memory`. Validation selects the winner; promotion/test checks are held out from reflection. The questions themselves are not optimized. |
 
 A negative evidence/payoff answer alone does not invalidate or regenerate a segment. These checks control verified state, supply diagnostics, and contribute to project evaluation. They measure sampled visual presence: a passing scarf/camel question does not establish exact character identity or continuous visibility throughout the clip. See the [ProjectSpec field reference](benchmarks/README.md#projectspec-field-reference) for the input schema.
@@ -252,7 +254,7 @@ Run `101214_1strun`, 2026-10-12 14:20 → 16:54 UTC. **The optimized harness was
 | Promotion gate | 6 | 0.6107 | **0.6528** | +0.0421 |
 | Test (never used for any decision) | 4 | 0.5905 | **0.6393** | +0.0488 |
 
-These are mean **total R** per split; section 3.2 breaks R down and names the model behind each part.
+These are mean **R_clip** per split; section 3.2 breaks R_clip down and names the model behind each part.
 All numbers are only comparable **within this run** (same judge, same policy).
 
 ---
@@ -362,13 +364,13 @@ served model; `editing` is computed in code from the storyboard JSON and uses no
 
 | Column | Produced by | Endpoint | Formula |
 | --- | --- | --- | --- |
-| **Total R** | `rsi_harness/reward/builder.py` | none (aggregation) | `0.60·video + 0.25·story + 0.15·editing` (fixed weights, from the frozen evaluation policy) |
+| **R_clip** | `rsi_harness/reward/builder.py` | none (aggregation) | `0.60·video + 0.25·story + 0.15·editing` (fixed weights, from the frozen evaluation policy) |
 | **video** | `UnifiedReward-2.0-qwen3vl-2b` — the frame judge | `http://localhost:8090` | the clip is 124 frames (5.17 s @ 24 fps); every 24th frame is sampled → 6 frames; per frame the judge rates **alignment, coherence, style** each 1–5 → `((a+c+s)/3 − 1)/4` → mean over the 6 frames |
 | **story** | `NeoHorse-Jev-4B` — the decision model | `http://localhost:8085` | `0.6 · completeness(script) + 0.4 · consistency(script, director_prompt)` |
 | **editing** | `rsi_harness/reward/editing_quality.py` | **no model** | `0.45` base, `+0.20` if 2 ≤ shots ≤ max_shots+2, `+0.20` if mean shot length is in range, `+0.15` if `length_cv ≤ 0.35` (−0.15 if ≥ 0.8); clamped to 0–1 |
 | **last-frame alignment** | same judge, scalar diagnostic | `http://localhost:8090` | the raw 1–5 **Alignment** score of the **final sampled frame only** (the evaluator stores just the last judge response) — read it as a hint, not an aggregate |
 | **R_clip** (R0/R1 in the diagram) | `rsi_harness/reward/builder.py` + split mean | none (aggregation) | underlying clip reward averaged over Validation. R0 = (0.64337 + 0.674278)/2 = **0.6588** for the base; R1 = (0.657774 + 0.692103)/2 = **0.6749** for the winner |
-| **S_clip** (what GEPA optimizes) | `VideoGEPAAdapter.search_score` | none (aggregation) | current-case R_clip **minus an axis-regression penalty**: `R − Σ w_axis · max(0, base_axis − cand_axis)` per case, using `axis_weights` = the fixed policy weights (video .60, story .25, editing .15) |
+| **S_clip** (what GEPA optimizes) | `VideoGEPAAdapter.search_score` | none (aggregation) | current-case R_clip **minus an axis-regression penalty**: `R_clip − Σ w_axis · max(0, base_axis − cand_axis)` per case, using `axis_weights` = the fixed policy weights (video .60, story .25, editing .15) |
 
 The judge always compares the frames against the **original one-line task prompt** (`task.prompt`), never against
 the director's rewritten prompt. So the video axis measures "does this look like the task", not "does this match
@@ -376,14 +378,14 @@ the harness's own prose".
 
 #### 3.2.4. Short-clip reward R and search objective S
 
-R is the underlying reward, not a score that becomes available only after search. For each search evaluation, compute `R_clip = 0.60 video + 0.25 story + 0.15 editing`, then derive `S_clip` by subtracting the same case's axis-regression penalty. Train/Validation use S for search decisions. Promotion independently generates and evaluates held-out cases using their own R and quality safeguards; Test reports its own R. Search never needs future Promotion/Test results.
+R_clip is the underlying reward, not a score that becomes available only after search. For each search evaluation, compute `R_clip = 0.60 video + 0.25 story + 0.15 editing`, then derive `S_clip` by subtracting the same case's axis-regression penalty. Train/Validation use S_clip for search decisions. Promotion independently generates and evaluates held-out cases using their own R_clip and quality safeguards; Test reports its own R_clip. Search never needs future Promotion/Test results.
 
-R0/R1 in the diagram are raw Validation reward means. They also equal mean S for the displayed base and winner because their penalties are zero; that equality is specific to these candidates, not the definition of S. "Total R" in the short-clip tables denotes `R_clip`.
+R0/R1 in the diagram are raw Validation reward means. They also equal mean S_clip for the displayed base and winner because their penalties are zero; that equality is specific to these candidates, not the definition of S_clip. "R_clip" in the short-clip tables denotes `R_clip`.
 
 `run_config.resolved.yaml` for this run set `guard_axis_regression: true` with `axis_regression_tolerance: 0.0`,
-so per case GEPA sees `R − Σ w_axis·max(0, base_axis − cand_axis)`. The penalty discourages video gains accompanied by story regressions. The penalty reproduces GEPA's own logged per-case numbers exactly:
+so per case GEPA sees `R_clip − Σ w_axis·max(0, base_axis − cand_axis)`. The penalty discourages video gains accompanied by story regressions. The penalty reproduces GEPA's own logged per-case numbers exactly:
 
-| Candidate | Case | total R | penalty | what GEPA optimized |
+| Candidate | Case | R_clip | penalty | what GEPA optimized |
 | --- | --- | --- | --- | --- |
 | `script` v1 (`d58fde46`) | val-001 | 0.632439 | −0.012797 (story dipped) | 0.619642 |
 | `script` v1 (`d58fde46`) | val-002 | 0.693740 | 0 | 0.693740 |
@@ -391,12 +393,12 @@ so per case GEPA sees `R − Σ w_axis·max(0, base_axis − cand_axis)`. The pe
 | `storyboard` (`db013ff2`) | val-002 | 0.648248 | −0.034896 | 0.613352 |
 | **winner** (`4ddd73aa`) | both | 0.657774 / 0.692103 | 0 | 0.657774 / 0.692103 |
 
-The search metric S is derived from current-case clip reward R. Both can be recorded during search; R is also used for independent promotion and reporting. For the displayed base and winner, the raw and penalized Validation means coincide at **0.6588** and **0.6749**. A report field named `validation_mean` does not by itself identify raw R versus penalized S; interpret it using the frozen policy, adapter and per-case results.
+The search metric S_clip is derived from current-case clip reward R_clip. Both can be recorded during search; R_clip is also used for independent promotion and reporting. For the displayed base and winner, the raw and penalized Validation means coincide at **0.6588** and **0.6749**. A report field named `validation_mean` does not by itself identify raw R_clip versus penalized S_clip; interpret it using the frozen policy, adapter and per-case results.
 
 Because each metric has exactly one producer, naming the producer **inside the column header** says it for every
 row — a separate per-row "source" column would repeat identical text down the table.
 
-| Step | What RSI changed in the harness | What the harness then asked H3 for | Total R | video · *UnifiedReward* `:8090` | story · *Jev* `:8085` | editing · *local, no model* | last-frame alignment · 1–5 |
+| Step | What RSI changed in the harness | What the harness then asked H3 for | R_clip | video · *UnifiedReward* `:8090` | story · *Jev* `:8085` | editing · *local, no model* | last-frame alignment · 1–5 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | **0. Base** | — (seed harness) | 3 shots of **2.0 / 2.0 / 1.0 s** | 0.6348 | 0.477 | 0.793 | 1.000 | 2.87 |
 | **1. after `script`** | timed shot list instead of a free script | 3 shots of **1.67 / 1.67 / 1.67 s** | 0.6628 | 0.541 (**+0.064**) | 0.753 | 1.000 | 2.87 |
@@ -582,7 +584,7 @@ validation run, but was never the best on a validation task, so the champion's `
 
 The same progression repeats on `train-003` (`"A child in a green jacket catches a fallen paper kite…"`):
 
-| Step | Shot lengths | Total R | video · *UnifiedReward* | story · *Jev* | editing · *local* | last-frame alignment |
+| Step | Shot lengths | R_clip | video · *UnifiedReward* | story · *Jev* | editing · *local* | last-frame alignment |
 | --- | --- | --- | --- | --- | --- | --- |
 | Base | 2.0 / 1.0 / 2.0 s | 0.6348 | 0.533 | 0.661 | 1.000 | 2.87 |
 | after `script` | 1.6 / 1.6 / 1.8 s | 0.6664 | 0.547 | 0.753 | 1.000 | 3.00 |
@@ -628,7 +630,7 @@ two fields only.
 
 Every one of the six promotion tasks improved, and the gate required the **video** axis to gain:
 
-| Task | Base clip | Optimized clip | total R | video · *UnifiedReward* `:8090` | story · *Jev* `:8085` |
+| Task | Base clip | Optimized clip | R_clip | video · *UnifiedReward* `:8090` | story · *Jev* `:8085` |
 | --- | --- | --- | --- | --- | --- |
 | promotion-001 | <a href="https://github.com/HaFred/H3-rsi/blob/main/evaluations/ee06ed72226772933316f2622235b92f33d78d599504f40934105e3539f217a3/video.mp4"><img src="https://github.com/HaFred/H3-rsi/raw/main/evaluations/ee06ed72226772933316f2622235b92f33d78d599504f40934105e3539f217a3/preview.webp" width="170" alt="base"></a> | <a href="https://github.com/HaFred/H3-rsi/blob/main/evaluations/9d747a8a7c3bd2969a32c381f1028569f94103ba534b3a798352f7f4fae9db7f/video.mp4"><img src="https://github.com/HaFred/H3-rsi/raw/main/evaluations/9d747a8a7c3bd2969a32c381f1028569f94103ba534b3a798352f7f4fae9db7f/preview.webp" width="170" alt="optimized"></a> | 0.637 → 0.653 | 0.525 → 0.548 (+0.023) | 0.688 → 0.698 |
 | promotion-002 | <a href="https://github.com/HaFred/H3-rsi/blob/main/evaluations/8d0f9415cf512c7700575fb55ac5bc352a45b155218090862277f7479e7657d7/video.mp4"><img src="https://github.com/HaFred/H3-rsi/raw/main/evaluations/8d0f9415cf512c7700575fb55ac5bc352a45b155218090862277f7479e7657d7/preview.webp" width="170" alt="base"></a> | <a href="https://github.com/HaFred/H3-rsi/blob/main/evaluations/aeea3f5b03090fe0e176ffcc791fd692a04fa97d8e5ff382365c8e48961349ea/video.mp4"><img src="https://github.com/HaFred/H3-rsi/raw/main/evaluations/aeea3f5b03090fe0e176ffcc791fd692a04fa97d8e5ff382365c8e48961349ea/preview.webp" width="170" alt="optimized"></a> | 0.569 → 0.653 | 0.408 → 0.541 (**+0.133**) | 0.695 → 0.712 |
@@ -644,7 +646,7 @@ already strong and the rewrite traded a little story completeness for a small vi
 
 Test split, never used for any decision:
 
-| Task | Base clip | Optimized clip | total R |
+| Task | Base clip | Optimized clip | R_clip |
 | --- | --- | --- | --- |
 | test-001 | <a href="https://github.com/HaFred/H3-rsi/blob/main/evaluations/b5b924300fa39ee10c7b1359d7c17a4428a0e201681905b246661c872a6ebd95/video.mp4"><img src="https://github.com/HaFred/H3-rsi/raw/main/evaluations/b5b924300fa39ee10c7b1359d7c17a4428a0e201681905b246661c872a6ebd95/preview.webp" width="170" alt="base"></a> | <a href="https://github.com/HaFred/H3-rsi/blob/main/evaluations/998b4be4e3bc7ed0294ed65a9c7fe78dc79c8dbcd480970f849084bbd25565f3/video.mp4"><img src="https://github.com/HaFred/H3-rsi/raw/main/evaluations/998b4be4e3bc7ed0294ed65a9c7fe78dc79c8dbcd480970f849084bbd25565f3/preview.webp" width="170" alt="optimized"></a> | 0.646 → 0.688 |
 | test-002 | <a href="https://github.com/HaFred/H3-rsi/blob/main/evaluations/46da8e301312ae856e5e163fa6a14628358f86a5f4dea66074dd395b73090357/video.mp4"><img src="https://github.com/HaFred/H3-rsi/raw/main/evaluations/46da8e301312ae856e5e163fa6a14628358f86a5f4dea66074dd395b73090357/preview.webp" width="170" alt="base"></a> | <a href="https://github.com/HaFred/H3-rsi/blob/main/evaluations/4dc7b1061308e4d5524ce111e7a3a20a147b83d976334af78d8414cea3604235/video.mp4"><img src="https://github.com/HaFred/H3-rsi/raw/main/evaluations/4dc7b1061308e4d5524ce111e7a3a20a147b83d976334af78d8414cea3604235/preview.webp" width="170" alt="optimized"></a> | 0.509 → 0.607 |
@@ -694,7 +696,7 @@ This is the same run as §3.2, not a second one. The base → +`script` → +`di
 10** below: iteration 10 rewrote `director` on top of iteration 1's `script`, so the second edit builds on the
 first. Parents are read from the `reflective_dataset` events in [`events.jsonl`](https://github.com/HaFred/H3-rsi/blob/main/events.jsonl).
 
-| Iter | Parent | Component proposed | Minibatch | Full val | Val score: search / raw R | New program | Clip from that iteration |
+| Iter | Parent | Component proposed | Minibatch | Full val | Val score: search / raw R_clip | New program | Clip from that iteration |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 0 | — | — (base program) | — | yes | 0.6588 / 0.6588 | **0** · `d16c2e95` | <a href="https://github.com/HaFred/H3-rsi/blob/main/evaluations/2c86b2f9b7b60ba40a8e9a49bf815b70cdb0e4b4b27c365d2a386ef5107cd854/video.mp4"><img src="https://github.com/HaFred/H3-rsi/raw/main/evaluations/2c86b2f9b7b60ba40a8e9a49bf815b70cdb0e4b4b27c365d2a386ef5107cd854/preview.webp" width="190" alt="base val-001"></a><br><sub>base val-001</sub> |
 | 1 | 0 | `script` | **accepted** | yes | 0.6567 / 0.6631 | **1** · `d58fde46` | <a href="https://github.com/HaFred/H3-rsi/blob/main/evaluations/228a7fe756a8c04f2b7dc6d27c9a485d8eec263396087c8d909683d125afd3c9/video.mp4"><img src="https://github.com/HaFred/H3-rsi/raw/main/evaluations/228a7fe756a8c04f2b7dc6d27c9a485d8eec263396087c8d909683d125afd3c9/preview.webp" width="190" alt="script-v1 train-003"></a><br><sub>script-v1 train-003</sub> |
@@ -711,15 +713,15 @@ first. Parents are read from the `reflective_dataset` events in [`events.jsonl`]
 | 12 | 4 | `script` | skipped | no | — | — | — |
 | 13 | 4 | `storyboard` | skipped | no | — | — | — |
 
-"Search" is the score GEPA compares: total R minus the axis-regression penalty (see
-[Clip reward and search objective](#324-short-clip-reward-r-and-search-objective-s)). "Raw R" is the plain validation mean.
+"Search" is the score GEPA compares: R_clip minus the axis-regression penalty (see
+[Clip reward and search objective](#324-short-clip-reward-r-and-search-objective-s)). "Raw R_clip" is the plain validation mean.
 
 - 13 reflection calls, 5 candidates kept, 62 metric calls, 45 H3 requests (the remainder were cache hits on
   already-scored cases). Search took 2317 s (≈39 min).
 - Iterations 1, 4 and 7 passed the minibatch, but none beat the base's mean search score. They ended
   differently. The `storyboard` and `memory` candidates (programs 2 and 3) were not the best on either validation
   task, so GEPA never chose them as a parent: the loop discarding its own ideas. The `script` candidate (program
-  1) beat the base on `val-002` (0.6937 vs 0.6743), so it stayed on the Pareto front. On raw R it beat the base
+  1) beat the base on `val-002` (0.6937 vs 0.6743), so it stayed on the Pareto front. On raw R_clip it beat the base
   outright (0.6631 vs 0.6588); only the penalty for its story dip on `val-001` put its search score below.
 - The winner came from iteration 10, which rewrote `director` on top of program 1's `script`. Iterations 11–13
   tried to improve the winner further and none passed the minibatch, so the search ended there.

@@ -11,7 +11,7 @@ The same recursive lineage progresses from Base to script rewrite, storyboard re
 | `3252791a` | Round 7: storyboard | 0.7477 | 0.7834 |
 | `c1912a62` | Round 57: script again | 0.7516 | 0.7672 |
 
-S_project/R_project are means across **four Validation projects**, rather than town-fair scores. The final edge improves S_project while reducing R_project. Both are measured on the same Validation projects; S determines selection, while R is also available there as a diagnostic. Promotion would use newly measured R on separate held-out cases. The displayed `101416` run was interrupted before promotion/Test.
+S_project/R_project are means across **four Validation projects**, rather than town-fair scores. The final edge improves S_project while reducing R_project. Both are measured on the same Validation projects; S_project determines selection, while R_project is also available there as a diagnostic. Promotion would use newly measured R_project on separate held-out cases. The displayed `101416` run was interrupted before promotion/Test.
 
 The five intended segment scenes are red-umbrella arrival, park kite, fountain cyclist, bakery preparation, and pottery-stall opening. Each row's images correspond to the videos on [page 13](13-town-fair-videos.md), with one final frame per segment. Each project contains 5 × 124 frames, about 25.83 seconds.
 

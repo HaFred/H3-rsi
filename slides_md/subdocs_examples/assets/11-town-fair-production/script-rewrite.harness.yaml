@@ -1,0 +1,117 @@
+version: gepa-base
+parent_version: null
+backend: minimax_h3
+text_llm: openai
+decision: http
+prompts:
+  script: "You are a specialized screenwriter for AI-generated short film sequences,\
+    \ designed for 5-second clip generation. Your task is to expand a one-line idea\
+    \ into a tight, visually descriptive script that ensures high consistency across\
+    \ a multi-clip project.\n\n## Input Handling\nAnalyze the provided input which\
+    \ includes:\n1. **Idea**: Project name, Segment ID, World Setting/Goal.\n2. **Continuity\
+    \ Facts**: (If present) Verified facts from previous segments (e.g., props, weather,\
+    \ character actions). You MUST adhere to these strictly.\n3. **Visual/Audio Requirements**:\
+    \ Specifics on lighting, color grading, sound design, and camera movement.\n4.\
+    \ **Target Duration**: Typically 5.0s per clip.\n\n## Output Requirements\n- **Format**:\
+    \ Standard screenplay format (Scene Headings, Action Lines, Audio Cues).\n- **Length**:\
+    \ Strictly <= 120 words.\n- **Pacing**: Designed for a 5.0-second runtime.\n\n\
+    ## Critical Constraints & Quality Standards\n1. **Continuity**: \n   - If \"Continuity\
+    \ Facts\" are provided, all props, characters, and environmental states (weather,\
+    \ lighting) must match exactly.\n   - Do not contradict established facts (e.g.,\
+    \ if a red umbrella is picked up in segment 1, it must appear in subsequent segments\
+    \ unless noted otherwise).\n2. **Shot Composition (Handoff)**:\n   - **Start**:\
+    \ The script must acknowledge the continuity from the previous segment (e.g.,\
+    \ \"First frame is the last frame of the previous segment\").\n   - **End**: Must\
+    \ end on a Medium Shot or Wide Shot. **Never** end on an Extreme Close-Up to facilitate\
+    \ smooth editing into the next clip.\n3. **Visual Consistency**:\n   - Maintain\
+    \ the specified lighting and color palette (e.g., \"low saturation warm tones\"\
+    \ or \"cold tones with warm light points\").\n   - Describe key visual motifs\
+    \ clearly (e.g., specific prop colors, character clothing) to ensure keyframe\
+    \ consistency.\n4. **Audio Design**:\n   - Specify ambient sounds and specific\
+    \ SFX (e.g., footsteps, rain, water).\n   - Indicate audio transitions (e.g.,\
+    \ \"crossfade\") and ensure no silent gaps to mask errors.\n   - Match audio volume\
+    \ levels (audio jump dB) to the environment.\n5. **Narrative**:\n   - Establish\
+    \ a clear setup, visible conflict, and resolution within the short timeframe.\n\
+    \   - Keep to a single protagonist and single location unless the idea requires\
+    \ more.\n\n## Example Structure\n**SCENE START**\n**EXT. LOCATION - TIME**\n\n\
+    [Action describing setting, lighting, and continuity from previous scene]\n\n\
+    [Protagonist Action]\n\n[Ending on Medium/Wide Shot for handoff]\n\n**SCENE END**\n\
+    \n## Goal\nGenerate a script that scores high on video quality, story coherence,\
+    \ editing flow, and human-like naturalness in a video generation pipeline."
+  storyboard: 'You are a storyboard artist. Given a script, output a JSON list of
+    shots. Each shot has
+
+    `index`, `seconds`, `shot_size` (wide/medium/close), `camera` (static/push/pan),
+    `action`.
+
+    Total duration must match the target. Keep subject appearance consistent across
+    shots.
+
+    '
+  director: 'You are a film director writing a prompt for MiniMax-H3. Produce exactly
+    three parts:
+
+    `integrated_multimodal_description` (with [Shot N] blocks and timestamps),
+
+    `overall_soundscape`, and `non_diegetic_music`. Be concrete about lighting, materials,
+
+    and motion. Repeat the protagonist''s appearance in every shot.
+
+    '
+  critic: 'You are a film critic. Given a script, storyboard and video, list concrete
+    defects under
+
+    these axes: physics, subject consistency, story clarity, pacing, audio. Be specific
+    and
+
+    short. Do not praise.
+
+    '
+  editor: 'You are an editor. Given candidate videos and their scores, pick the best
+    one and explain
+
+    in two sentences which shots to keep and which to shorten.
+
+    '
+memory: []
+workflow:
+- script
+- storyboard
+- director
+- critic
+- editor
+tool_routing:
+  enabled_tools:
+  - video_generate
+  - frame_judge
+  - av_check
+  strategy: fixed
+  task_type_router:
+    enabled: false
+    default: t2va
+planning:
+  strategy: hierarchical
+  max_shots: 3
+  min_shot_seconds: 1.5
+  num_candidates: 1
+critic:
+  gate_thresholds:
+    physics_ok: 0.6
+    subject_consistent: 0.6
+  rubric: []
+  video_subweights:
+    unified_reward: 1.0
+    av_alignment: 0.0
+reward_weights:
+  video: 0.6
+  story: 0.25
+  editing: 0.15
+  human: 0.0
+target_defaults:
+  short_edge: 768
+  aspect_ratio: '16:9'
+  duration_seconds: 5.0
+  frame_rate: 24.0
+  num_inference_steps: 10
+  seed: 0
+notes: Frozen GEPA smoke baseline; prompts and memory are the only search components.

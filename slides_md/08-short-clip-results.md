@@ -2,7 +2,7 @@
 
 Source: PPTX page 8 of 17.
 
-The same task, `train-001`, is evaluated with three Harness versions. `R_clip` is the underlying clip reward measured on this Train task; search derives S from it as explained on [page 7](07-data-splits-and-scores.md).
+The same task, `train-001`, is evaluated with three Harness versions. `R_clip` is the underlying clip reward measured on this Train task; search derives S_clip from it as explained on [page 7](07-data-splits-and-scores.md).
 
 > A person in a yellow raincoat picks up a red umbrella on a wet street. Keep the same person and umbrella throughout. Include footsteps and dripping water.
 
@@ -11,6 +11,8 @@ The same task, `train-001`, is evaluated with three Harness versions. `R_clip` i
 | Base | 0.6348 | 0.477 |
 | Rewrite script | 0.6628 | 0.541 |
 | Then rewrite director | 0.6659 | 0.556 |
+
+[Worked example: the complete script-rewrite prompt lifecycle](subdocs_examples/08-script-rewrite-prompt-lifecycle.md) shows this row's actual task, five agents' system/user messages and saved outputs, H3 request, and video.
 
 The script rewrite adjusts shot timing. The director rewrite specifies the subject and appearance constraints more completely.
 

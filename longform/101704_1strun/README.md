@@ -23,7 +23,7 @@ All MP4 locations below are recorded server-side identities. No MP4s or dangling
 | [previews/](previews/) | Animated WebP previews derived from the recorded timelines and stitched segments, plus [provenance.json](previews/provenance.json) |
 | [checksums.json](checksums.json) | SHA-256 of copied source artifacts, including the untouched WebPs |
 
-R denotes underlying reward/reporting, not an evaluation stage. Both project scores can be recorded on Train/Validation; S selects the candidate, then Promotion independently measures R on its own held-out cases. Project reward R_project is distinct from the clip rewards R_clip used in C.
+Use R_clip for each segment reward and C = mean(R_clip) for their project-level mean. S_project drives project selection; R_project is the project reward/report score. Both project scores can be recorded on Train/Validation, while Promotion independently measures R_project on held-out projects. None of these names denotes a future evaluation stage.
 
 `S_project` is the search objective (0.70 segment quality + 0.30 handoff).
 `R_project` is the report/gate objective (0.40 segment quality + 0.20 confirmed state + 0.20 payoff + 0.20 handoff,

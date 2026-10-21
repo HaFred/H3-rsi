@@ -2,18 +2,18 @@
 
 Source: PPTX page 6 of 17.
 
-1. Sample a parent from the Pareto frontier according to its per-Validation-task S leadership.
+1. Sample a parent from the Pareto frontier according to its per-Validation-task S_clip leadership.
 2. Select script, storyboard, director, or memory with `round_robin`.
 3. Ask Qwen3.5-9B to rewrite the selected field using Train feedback only.
 4. Construct the child Harness by replacing that one field and retaining the other fields from the parent.
-5. Evaluate on the same two Train tasks. Continue only if the child's sum of S is strictly greater than the parent's; otherwise discard it and select a parent again.
+5. Evaluate on the same two Train tasks. Continue only if the child's sum of S_clip is strictly greater than the parent's; otherwise discard it and select a parent again.
 6. Evaluate the accepted child on the complete Validation set (`val-001`, `val-002`).
-7. Add it to the candidate pool and update the per-task Pareto frontier using S.
+7. Add it to the candidate pool and update the per-task Pareto frontier using S_clip.
 8. Repeat until the evaluation, H3-request, or wall-clock budget stops search.
-9. Select the winner with the highest full-Validation mean S.
-10. Independently reevaluate Base/winner on six Promotion tasks using R and quality axes. Require video-axis gain and regression safeguards.
+9. Select the winner with the highest full-Validation mean S_clip.
+10. Independently reevaluate Base/winner on six Promotion tasks using R_clip and quality axes. Require video-axis gain and regression safeguards.
 
-Every candidate/task evaluation reruns Script -> Storyboard -> Director and generates video with frozen H3. The evaluator measures the current clip reward `R_clip`; search derives `S_clip = R_clip - axis-regression penalty` from that same case. Promotion later generates and scores independent held-out cases using their own `R_clip` and quality safeguards. R is not confined to Promotion/Test, and search never uses their future scores. See [the scoring definitions](07-data-splits-and-scores.md).
+Every candidate/task evaluation reruns Script -> Storyboard -> Director and generates video with frozen H3. The evaluator measures the current clip reward `R_clip`; search derives `S_clip = R_clip - axis-regression penalty` from that same case. Promotion later generates and scores independent held-out cases using their own `R_clip` and quality safeguards. R_clip is not confined to Promotion/Test, and search never uses their future scores. See [the scoring definitions](07-data-splits-and-scores.md).
 
 If the gate accepts, promote the winner to champion and update `champion.txt`. If rejected, retain the existing champion; the search winner remains available without changing deployment. Champion inheritance as the seed of a later run is designed, but a second run was not demonstrated in this experiment.
 

@@ -29,9 +29,9 @@ Read pages 1–7 for the definition, architecture, search boundary, and evaluati
 ## Reading the evidence
 
 - Harness search is demonstrated with frozen H3 weights. Model-weight optimization and the four-combination gate are a proposed next stage.
-- R is the underlying reward/report score, measured on search cases too; S is the search objective. For clips, S_clip is current-case R_clip minus the axis-regression penalty. For projects, S_project and R_project weight project metrics differently and share C = mean(R_clip). Independent promotion uses newly measured held-out R and safeguards, not the search cases' R. See [page 7](07-data-splits-and-scores.md).
+- Use R_clip/S_clip for a single clip and R_project/S_project for a complete project. S_clip derives from the same search case's R_clip and axis penalty. Both project scores combine current project metrics and share C = mean(R_clip). Independent Promotion measures the appropriate reward on held-out cases; search never uses those future results. See [page 7](07-data-splits-and-scores.md).
 - Earlier runs completed promotion and Test. The displayed `101416` long-form lineage stopped because of a service interruption before those stages.
-- Long-form lineage S/R values are averages over four Validation projects, rather than scores for the displayed town-fair videos.
+- Long-form lineage S_project/R_project values are averages over four Validation projects, rather than scores for the displayed town-fair videos.
 - Repeated champion inheritance and cumulative gains on new works remain unverified. Test reports generalization evidence; it does not establish global optimality.
 
 ## Source and conversion
@@ -42,4 +42,4 @@ Text is translated and organized into prose, tables, and workflow steps. Page 7'
 
 Source speaker notes were used to retain important interpretation limits and clarify terminology; historical/repeated editing notes are not reproduced as narrative. Decorative diagram legends are represented through the component/role descriptions rather than repeated on every page.
 
-Page 9 includes a subsequent clarification of the video-axis metric: its three frame-level scoring dimensions, normalization, evaluation limits, and relationship to the composite R score. This clarification is also present in the revised presentation.
+Page 9 includes a subsequent clarification of the video-axis metric: its three frame-level scoring dimensions, normalization, evaluation limits, and relationship to the composite R_clip score. This clarification is also present in the revised presentation.
