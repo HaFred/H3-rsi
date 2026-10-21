@@ -77,7 +77,22 @@ Thus, using a search score before promotion describes the **decision order**. It
 
 `R_project = 0.40 C + 0.20 F + 0.20 P + 0.20 H`
 
-F is state confirmation, P is payoff, and H is visual handoff: similarity between adjacent last/first frames. Both project scores use the current project's metrics. The shared component C is the mean **raw clip reward**, not R_project or the penalized clip search score S_clip. The current longform implementation does not carry the short-clip axis-regression penalty into the project formula.
+**Project penalties.** S_project does not subtract the short-clip axis-regression penalty: C averages raw R_clip, not S_clip. The project scorer supports a separate within-clip loop-return penalty, but its weight is zero in the displayed run, so no penalty is subtracted from either project score here. Invalid projects receive score zero. See [ProjectScorePolicy](../../rsi-1st-impl-design/rsi_harness/optimization/project_adapter.py#L26).
+
+**Visual handoff H.** For each adjacent clip pair, compare the earlier clip's last frame $L_i$ with the later clip's first frame $B_{i+1}$:
+
+$$
+h_i = 1-\frac{1}{255D}\sum_{p=1}^{D}
+\left|L_i[p]-\widetilde{B}_{i+1}[p]\right|,
+\qquad
+H=\frac{1}{N-1}\sum_{i=1}^{N-1}h_i.
+$$
+
+$N$ is the number of clips; $D$ is the number of pixel-channel values in $L_i$ (height times width times three RGB channels). Pixel values range from 0 to 255. $\widetilde{B}_{i+1}$ is the next first frame, bilinearly resized to match $L_i$ if needed. A five-clip project averages four handoffs. The implementation rounds each $h_i$ to four decimals and averages available transition scores; if none are available, H is missing and the frozen missing-metric policy applies.
+
+H ranges from 0 to 1: identical boundary frames score 1. It measures pixel similarity, not semantic story continuity, motion correctness or audio smoothness. First-frame conditioning can therefore make H high even when the later clip fails its requested action. See [frame_similarity](../../rsi-1st-impl-design/rsi_harness/longform/evaluator.py#L104) and [transition aggregation](../../rsi-1st-impl-design/rsi_harness/longform/evaluator.py#L218).
+
+F is [state confirmation (state_confirmed_rate)](../../rsi-1st-impl-design/rsi_harness/longform/evaluator.py#L233), P is [payoff (payoff_rate)](../../rsi-1st-impl-design/rsi_harness/longform/evaluator.py#L235), and H is visual handoff: similarity between adjacent last/first frames. The [counting logic](../../rsi-1st-impl-design/rsi_harness/longform/evaluator.py#L194) computes F as confirmed facts / declared facts and P as passed / executed payoff checks, using a confirmation threshold of 0.5. Both project scores use the current project's metrics. The current longform implementation does not carry the short-clip axis-regression penalty into the project formula.
 
 Train/Validation use `S_project` for project search. Independent Promotion uses newly evaluated held-out `R_project` and safeguards; Test reports its own `R_project`. R_project can also be recorded on search projects as a diagnostic without driving selection.
 

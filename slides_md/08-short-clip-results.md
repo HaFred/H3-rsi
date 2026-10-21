@@ -20,7 +20,7 @@ The Harness consists of reusable system prompts and memory. Scripts, storyboards
 
 Still images are provided below. The original animated preview links are retained separately from the local media.
 
-### Source images
+### Source images (idx 48 just for vis)
 
 ![Page 8, image 1](assets/image2.png)
 
@@ -30,9 +30,9 @@ Still images are provided below. The original animated preview links are retaine
 
 ### Original animated previews
 
-- [Preview 1](https://raw.githubusercontent.com/HaFred/H3-rsi/main/evaluations/0aa979018910a10da8a371e18edc03464f18690acf534c0948e629736dd44170/preview-lg.webp)
-- [Preview 2](https://raw.githubusercontent.com/HaFred/H3-rsi/main/evaluations/93d21889efd4bd045da797839dc3add5758da0c7d097d3ca06c15a666ff43810/preview-lg.webp)
-- [Preview 3](https://raw.githubusercontent.com/HaFred/H3-rsi/main/evaluations/edb00ad03c2e77bc2b759d587f1a1f2c0706fcf90405d129cae6ee19daa4771b/preview-lg.webp)
+- [Base](https://raw.githubusercontent.com/HaFred/H3-rsi/main/evaluations/edb00ad03c2e77bc2b759d587f1a1f2c0706fcf90405d129cae6ee19daa4771b/preview-lg.webp)
+- [Script rewrite](https://raw.githubusercontent.com/HaFred/H3-rsi/main/evaluations/0aa979018910a10da8a371e18edc03464f18690acf534c0948e629736dd44170/preview-lg.webp)
+- [Then rewrite director](https://raw.githubusercontent.com/HaFred/H3-rsi/main/evaluations/93d21889efd4bd045da797839dc3add5758da0c7d097d3ca06c15a666ff43810/preview-lg.webp)
 
 ---
 

@@ -32,7 +32,7 @@ Definition checked against `rsi_harness/reward/video_quality.py`, `rsi_harness/r
 
 Each clip contains 124 frames, lasts about 5.17 seconds, and retains its original audio. The extracted MP4 links below preserve the embedded video; playback depends on the Markdown viewer.
 
-### Source images
+### Source images (idx 0 just for vis)
 
 ![Page 9, image 1](assets/image4.png)
 

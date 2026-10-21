@@ -108,9 +108,9 @@ scores. The winner is selected by `S_project`, which explains why it can have a 
 ![Validation search score for the three child candidates, with the base reference](longform/101704_1strun/figures/101704_1strun_search.webp)
 
 **Promotion required both** mean `R_project` gain ≥ 0.02 and no individual project×seed regression beyond 0.05,
-with no loss of validity. All promotion and test timelines were valid for both harnesses. Nevertheless,
-`tea-farm`, seed 0 fell **0.82632 → 0.75158 (−0.07474)**, and the overall promotion gain was below 0.02.
-The recorded reason names the tea-farm regression; both numerical criteria fail. **No new champion was promoted.**
+with no loss of validity. All promotion and test timelines were valid for both harnesses.
+
+Nevertheless, for the case below, `tea-farm`, seed 0 fell **0.82632 → 0.75158 (−0.07474)**, and the overall promotion gain was below 0.02. The recorded reason names the tea-farm regression; both numerical criteria fail. **No new champion was promoted.**
 The positive test mean does not override that decision.
 
 <details>
