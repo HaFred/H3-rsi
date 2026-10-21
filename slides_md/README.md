@@ -33,7 +33,7 @@ Read pages 1–7 for the definition, architecture, search boundary, and evaluati
 | 04, 07-10: agent inputs, clip scores, videos and prompt propagation | [Single-clip script rewrite: prompts, agent outputs, Base/rewrite H3 payloads and videos](subdocs_examples/08-script-rewrite-prompt-lifecycle.md) |
 | 04, 07, 11-14: segment lifecycle, project scores, state, handoff and stitching | [Five-clip town-fair production: Base vs Script rewrite](subdocs_examples/11-town-fair-longform-production.md) |
 
-The town-fair example includes source snapshots and segment previews; unavailable original DGX traces and results are marked as DGX placeholders.
+The town-fair example includes source snapshots, segment previews and the recovered DGX traces, H3 requests and project scores for both arms.
 
 ## Reading the evidence
 

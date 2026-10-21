@@ -1,21 +1,28 @@
 {
   "schema_version": 1,
-  "status": "DGX trace placeholders pending",
+  "records_doc": "slides_md/subdocs_examples/11-town-fair-longform-production.md",
+  "records_run": "outputs/longform_rsi/101416_1strun",
+  "status": "captured DGX records for both arms; seeds resolved by byte identity",
   "inputs": {
     "base.harness.yaml": {
-      "source": "D:\\fredcode\\rsi-1st-impl-design\\benchmarks\\longform_example\\101416_1strun\\base.yaml",
-      "sha256": "8913e2010fe14eeb856779a1dc4c0eb2f27eb67122b9bc917110e6f5c0bf88d5"
+      "repo_source": "RSI_1st_impl/benchmarks/longform_example/101416_1strun/base.yaml",
+      "sha256": "c642f4c1854a54127e6ae2f00a87a3d9b4f4b090e89782e821bdd896e1ebb5a9",
+      "matches_asset_byte_for_byte": true,
+      "candidate_hash_recomputed": "d16c2e959f5bed4c8d2e8a5f911fd061363d02b0c2c4b1e7f425fb035658e122"
     },
     "script-rewrite.harness.yaml": {
-      "source": "D:\\fredcode\\rsi-1st-impl-design\\benchmarks\\longform_example\\101416_1strun\\harnesses\\round1_c863aae2047f.yaml",
-      "sha256": "b33ea46b79522e1f4c832c20d7ae83edd2bc9cda723fd8a5072d8240573cf876"
+      "repo_source": "RSI_1st_impl/benchmarks/longform_example/101416_1strun/harnesses/round1_c863aae2047f.yaml",
+      "sha256": "2db8fd29aca36ae28dbd770f07666f664d479d252fe6314bc0cb04eacb068195",
+      "matches_asset_byte_for_byte": true,
+      "candidate_hash_recomputed": "c863aae2047f1fd10c58607efe2f7fa8d0aba784dc5211e41fb669e2241d5709"
     },
     "town-fair.project.yaml": {
-      "source": "D:\\fredcode\\H3-rsi\\benchmarks\\longform_town_fair_5clip_v1.yaml",
+      "repo_source": "RSI_1st_impl/benchmarks/longform_town_fair_5clip_v1.yaml",
       "sha256": "01784a9533aa15e78822577afc0391569807d16ae6e5fc53bb31493010f1670d",
+      "matches_asset_byte_for_byte": true,
       "run_manifest_sha256": "01784a9533aa15e78822577afc0391569807d16ae6e5fc53bb31493010f1670d",
-      "lf_normalized_sha256": "01784a9533aa15e78822577afc0391569807d16ae6e5fc53bb31493010f1670d",
-      "matches_run_manifest_after_lf_normalization": true
+      "project_json_sha256": "fe4607ac136765e67b165bd4595e12b189016bec0bce3df22a002b6bd7e5f0a4",
+      "project_json_delta": "loader defaults only: stitch.loudness_target_lufs=-23.0, empty depends_on/payoff on segment 1, and state_commit lists merged into dicts; no authored value differs"
     }
   },
   "arms": {
@@ -95,9 +102,9 @@
           "valid": true
         }
       ],
-      "matched_project_dir": "[DGX-PLACEHOLDER]",
-      "matched_seed": "[DGX-PLACEHOLDER]",
-      "matching_evidence": "[DGX-PLACEHOLDER]",
+      "matched_project_dir": "outputs/longform_rsi/101416_1strun/projects/e51364b4275d90a511b9599c4827e8ec6a7c09cda5804d81853712d1a561386b",
+      "matched_seed": 1,
+      "matching_evidence": "sha256(timeline.mp4) == sha256(slides_md/assets/media4.mp4) == 629240f030c92c314e700d874f39f976805b3ade93caaa79eccd38c8fa5917a7; byte-identical, so no remux or re-encode occurred. Cross-checks: the other base run (seed 0) hashes to 8159671e...f1941, and the per-segment harness_hash 6840390c... differs from artifact.harness_hash 2e347be9... because policy.apply(seed=1) changes the config.",
       "candidate_hash": "d16c2e959f5bed4c8d2e8a5f911fd061363d02b0c2c4b1e7f425fb035658e122"
     },
     "script-rewrite": {
@@ -176,9 +183,9 @@
           "valid": true
         }
       ],
-      "matched_project_dir": "[DGX-PLACEHOLDER]",
-      "matched_seed": "[DGX-PLACEHOLDER]",
-      "matching_evidence": "[DGX-PLACEHOLDER]",
+      "matched_project_dir": "outputs/longform_rsi/101416_1strun/projects/51e22c0d5bb51b4d9a29ba3d6f01054e4d405a4ceb52c83e7d1ef0abfb49d96d",
+      "matched_seed": 0,
+      "matching_evidence": "sha256(timeline.mp4) == sha256(slides_md/assets/media5.mp4) == 9905483d9076add66ee1f8bbf980416700eccf2f76c874a94ec59e10f436f99d; byte-identical, so no remux or re-encode occurred. Cross-checks: the other script-rewrite run (seed 1) hashes to 6a9dd098...18d6, and the per-segment harness_hash 6a870d38... equals artifact.harness_hash because policy.apply(seed=0) leaves the config unchanged.",
       "candidate_hash": "c863aae2047f1fd10c58607efe2f7fa8d0aba784dc5211e41fb669e2241d5709"
     }
   },

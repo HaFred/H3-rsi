@@ -13,7 +13,7 @@ Each video is the five-segment town-fair production associated with the correspo
 
 Use the local MP4 links below to inspect motion and sound. The S_project/R_project Validation averages on page 12 should not be read as scores for these particular town-fair videos. R_project is available on Validation too; the later promotion decision would use independent held-out evaluations.
 
-[Detailed production comparison for Base and the first Script rewrite](subdocs_examples/11-town-fair-longform-production.md) follows these two videos through all five segments, with source snapshots and [DGX-PLACEHOLDER] slots for original runtime traces.
+[Detailed production comparison for Base and the first Script rewrite](subdocs_examples/11-town-fair-longform-production.md) follows these two videos through all five segments, with source snapshots and the recovered runtime traces for both arms.
 
 ### Source images
 

@@ -16,7 +16,7 @@ Project and confirmed facts → current-segment brief → sequential H3 generati
 
 A negative fact judgment affects context and does not cause regeneration. RewardBuilder computes R_clip independently for each segment.
 
-For the inner loop, the [worked town-fair production example](subdocs_examples/11-town-fair-longform-production.md#3-production-loop-repeat-independently-for-each-harness) expands execution across five segments; its [evaluation section](subdocs_examples/11-town-fair-longform-production.md#7-clip-rewards-and-project-evaluation) maps segment rewards to project scores. Missing original runtime records remain marked as DGX placeholders.
+For the inner loop, the [worked town-fair production example](subdocs_examples/11-town-fair-longform-production.md#3-production-loop-repeat-independently-for-each-harness) expands execution across five segments; its [evaluation section](subdocs_examples/11-town-fair-longform-production.md#7-clip-rewards-and-project-evaluation) maps segment rewards to project scores. Its per-segment records and project scores were recovered from the 10x run.
 
 Only Train-project feedback reaches reflection: segment quality, unconfirmed facts, cut/handoff metrics, and component inputs/outputs. Fact diagnostics can inform reflection even though they are excluded from scalar S_project.
 

@@ -137,8 +137,9 @@ These are **animated WebP previews decoded from the recorded videos**; click a p
 Each timeline preview plays the complete five-segment movie (620 video frames at 24 fps, about 25.83 s) of the same
 [**town-fair production pilot**](benchmarks/longform_town_fair_5clip_v1.yaml), across the base and three successive harness rewrites shown on
 [Design Walkthrough page 13](slides_md/13-town-fair-videos.md). This is the earlier **`101416` presentation lineage**, separate from the
-`101704_1strun` search and promotion results above. The source slide notes say Train seeds differ across the displayed rows;
-these are lineage examples, not a controlled same-seed comparison.
+`101704_1strun` search and promotion results above. The displayed rows ran at different Train seeds: byte identity resolves the
+base to seed 1 and the first script rewrite to seed 0 ([proof](slides_md/subdocs_examples/11-town-fair-longform-production.md#81-resolve-the-two-original-production-identities)),
+so these are lineage examples, not a controlled same-seed comparison.
 
 Previews are downsampled for the README (640 px wide, 8 fps, audio dropped, no overlaid labels).
 Exact parameters, source-video metadata and SHA-256 hashes are in
@@ -196,7 +197,7 @@ The `101704` winner was rejected by promotion, so that label does not establish 
 | desert-caravan, seed 1 · `sandstorm`, payoff `camels`: camels visible · recorded P(yes) 0.00 → 0.99 | <img src="longform/101704_1strun/previews/101704_1strun_evidence_desert-caravan_seed1_sandstorm_base.webp" width="330" alt="Base sandstorm segment, seed 1"> | <img src="longform/101704_1strun/previews/101704_1strun_evidence_desert-caravan_seed1_sandstorm_best.webp" width="330" alt="Winner sandstorm segment, seed 1"> |
 | harbor-dawn, seed 0 · `sun-up`, evidence `time`: sunrise over the harbor · recorded P(yes) 0.99 → 0.00 | <img src="longform/101704_1strun/previews/101704_1strun_evidence_harbor-dawn_seed0_sun-up_base.webp" width="330" alt="Base sun-up segment, harbor-dawn seed 0"> | <img src="longform/101704_1strun/previews/101704_1strun_evidence_harbor-dawn_seed0_sun-up_best.webp" width="330" alt="Winner sun-up segment, harbor-dawn seed 0"> |
 
-**How these questions participate in RSI.** Each `segments[index]` carries fixed case requirements and visual checks; RSI rewrites the harness, while these questions stay fixed. The town-fair row illustrates the action behind `kite-park.evidence.kite` in its [ProjectSpec](benchmarks/longform_town_fair_5clip_v1.yaml); its per-video seeds are not established by the extracted MP4s. The recorded camel check corresponds to [`sandstorm.payoff.camels`](benchmarks/longform_desert_caravan_5clip_v1.yaml#L46), and the sunrise check uses the separate harbor-dawn case. The probability arrows compare base with the `101704` search winner on the same case and seed, rather than showing successive RSI iterations. The tea and scarf questions below are further schema examples, not probability claims about the town-fair videos.
+**How these questions participate in RSI.** Each `segments[index]` carries fixed case requirements and visual checks; RSI rewrites the harness, while these questions stay fixed. The town-fair row illustrates the action behind `kite-park.evidence.kite` in its [ProjectSpec](benchmarks/longform_town_fair_5clip_v1.yaml); the per-video seeds are established by byte identity in the [worked production example](slides_md/subdocs_examples/11-town-fair-longform-production.md#81-resolve-the-two-original-production-identities) (base seed 1, first script rewrite seed 0). The recorded camel check corresponds to [`sandstorm.payoff.camels`](benchmarks/longform_desert_caravan_5clip_v1.yaml#L46), and the sunrise check uses the separate harbor-dawn case. The probability arrows compare base with the `101704` search winner on the same case and seed, rather than showing successive RSI iterations. The tea and scarf questions below are further schema examples, not probability claims about the town-fair videos.
 
 | Input / stage | High-level role | Effect in this RSI run |
 | --- | --- | --- |

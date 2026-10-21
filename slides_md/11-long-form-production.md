@@ -11,7 +11,7 @@ A project generates five segments sequentially. The visual judge controls which 
 5. Continue through segment five, normalize with ffmpeg, and concatenate to `timeline.mp4`.
 6. Independently compute each segment's R_clip with RewardBuilder (video/story/editing), aggregate C = mean(R_clip), handoff, confirmed-state and payoff metrics into S_project/R_project, and archive video, state, and costs.
 
-[Detailed five-clip example: town-fair base vs script rewrite](subdocs_examples/11-town-fair-longform-production.md) expands all five segments, agent messages, H3 requests, state handoff and stitching, with missing DGX records marked [DGX-PLACEHOLDER].
+[Detailed five-clip example: town-fair base vs script rewrite](subdocs_examples/11-town-fair-longform-production.md) expands all five segments, agent messages, H3 requests, state handoff and stitching, with the recovered DGX trajectories, H3 requests, state versions and stitch manifests for both arms.
 
 A negative evidence judgment only withholds a fact. It does not fail or regenerate the segment. Payoff judgments score previously confirmed facts without adding or deleting facts.
 
