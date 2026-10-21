@@ -20,7 +20,7 @@ Source: PPTX page 7 of 17.
 
 ### Short clips
 
-`R_clip = 0.60 video + 0.25 story + 0.15 editing`
+`R_clip` = 0.60 [video](09-short-clip-videos.md#metric-definitions) + 0.25 `story` + 0.15 `editing`
 
 `S_clip = R_clip - axis-regression penalty`
 
