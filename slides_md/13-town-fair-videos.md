@@ -11,7 +11,7 @@ The four embedded videos compare:
 
 Each video is the five-segment town-fair production associated with the corresponding image row on [page 12](12-town-fair-lineage.md). The full translated world setting and segment prompts appear on [page 17](17-findings-and-pilot-prompts.md).
 
-Use the local MP4 links below to inspect motion and sound. Validation averages should not be read as scores for these particular town-fair videos.
+Use the local MP4 links below to inspect motion and sound. The S_project/R_project Validation averages on page 12 should not be read as scores for these particular town-fair videos. R_project is available on Validation too; the later promotion decision would use independent held-out evaluations.
 
 ### Source images
 

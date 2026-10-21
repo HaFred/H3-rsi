@@ -19,7 +19,7 @@ flowchart LR
 | Promotion | Independently reevaluate Base/best using R and quality axes; results do not feed back into this search |
 | Test | Report Base/best R and axis scores; results do not influence selection |
 
-For short clips, R is the weighted quality score and `S = R − axis-regression penalty`. The searched components are script, storyboard, director, and memory. Critic/editor remain fixed diagnostic components. See [the split and scoring definitions](07-data-splits-and-scores.md).
+For short clips, `R_clip` is the weighted reward measured on every evaluated case, including Train/Validation; `S_clip = R_clip - axis-regression penalty` is derived from that same search case. Selection uses S, then independent Promotion reevaluates the winner on held-out cases using their own R and quality safeguards. This is a decision sequence, not a dependency on future promotion scores. The searched components are script, storyboard, director, and memory. Critic/editor remain fixed diagnostic components. See [the split and scoring definitions](07-data-splits-and-scores.md).
 
 ---
 

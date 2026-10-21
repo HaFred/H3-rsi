@@ -29,7 +29,7 @@ Read pages 1–7 for the definition, architecture, search boundary, and evaluati
 ## Reading the evidence
 
 - Harness search is demonstrated with frozen H3 weights. Model-weight optimization and the four-combination gate are a proposed next stage.
-- S selects candidates during search. R and quality safeguards determine promotion and reporting. Improved S does not guarantee improved R.
+- R is the underlying reward/report score, measured on search cases too; S is the search objective. For clips, S_clip is current-case R_clip minus the axis-regression penalty. For projects, S_project and R_project weight project metrics differently and share C = mean(R_clip). Independent promotion uses newly measured held-out R and safeguards, not the search cases' R. See [page 7](07-data-splits-and-scores.md).
 - Earlier runs completed promotion and Test. The displayed `101416` long-form lineage stopped because of a service interruption before those stages.
 - Long-form lineage S/R values are averages over four Validation projects, rather than scores for the displayed town-fair videos.
 - Repeated champion inheritance and cumulative gains on new works remain unverified. Test reports generalization evidence; it does not establish global optimality.

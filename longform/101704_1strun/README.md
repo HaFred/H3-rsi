@@ -1,6 +1,6 @@
 # Longform run `101704_1strun`: archived evidence and figure provenance
 
-This archive accompanies the [longform section of the repository README](../../README.md#longform-rsi-five-clips-searched-as-one-project).
+This archive accompanies the [longform section of the repository README](../../README.md#2-longform-rsi-five-clips-searched-as-one-project).
 The run completed; its search winner was **rejected** by the independent promotion gate.
 All MP4 locations below are recorded server-side identities. No MP4s or dangling video links are included.
 
@@ -22,6 +22,8 @@ All MP4 locations below are recorded server-side identities. No MP4s or dangling
 | [figure_video_map.json](figure_video_map.json) | Explicit machine-readable mapping for all six original WebPs |
 | [previews/](previews/) | Animated WebP previews derived from the recorded timelines and stitched segments, plus [provenance.json](previews/provenance.json) |
 | [checksums.json](checksums.json) | SHA-256 of copied source artifacts, including the untouched WebPs |
+
+R denotes underlying reward/reporting, not an evaluation stage. Both project scores can be recorded on Train/Validation; S selects the candidate, then Promotion independently measures R on its own held-out cases. Project reward R_project is distinct from the clip rewards R_clip used in C.
 
 `S_project` is the search objective (0.70 segment quality + 0.30 handoff).
 `R_project` is the report/gate objective (0.40 segment quality + 0.20 confirmed state + 0.20 payoff + 0.20 handoff,

@@ -13,7 +13,7 @@ Source: PPTX page 6 of 17.
 9. Select the winner with the highest full-Validation mean S.
 10. Independently reevaluate Base/winner on six Promotion tasks using R and quality axes. Require video-axis gain and regression safeguards.
 
-Every candidate/task evaluation reruns Script → Storyboard → Director, generates video with the frozen H3 model using the director output as its prompt, and computes R and S. For short clips, `S = R − axis-regression penalty`.
+Every candidate/task evaluation reruns Script -> Storyboard -> Director and generates video with frozen H3. The evaluator measures the current clip reward `R_clip`; search derives `S_clip = R_clip - axis-regression penalty` from that same case. Promotion later generates and scores independent held-out cases using their own `R_clip` and quality safeguards. R is not confined to Promotion/Test, and search never uses their future scores. See [the scoring definitions](07-data-splits-and-scores.md).
 
 If the gate accepts, promote the winner to champion and update `champion.txt`. If rejected, retain the existing champion; the search winner remains available without changing deployment. Champion inheritance as the seed of a later run is designed, but a second run was not demonstrated in this experiment.
 

@@ -2,11 +2,11 @@
 
 Source: PPTX page 8 of 17.
 
-The same task, `train-001`, is evaluated with three Harness versions.
+The same task, `train-001`, is evaluated with three Harness versions. `R_clip` is the underlying clip reward measured on this Train task; search derives S from it as explained on [page 7](07-data-splits-and-scores.md).
 
 > A person in a yellow raincoat picks up a red umbrella on a wet street. Keep the same person and umbrella throughout. Include footsteps and dripping water.
 
-| Version | R | Video axis |
+| Version | R_clip | Video axis |
 |---|---:|---:|
 | Base | 0.6348 | 0.477 |
 | Rewrite script | 0.6628 | 0.541 |

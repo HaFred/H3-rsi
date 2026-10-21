@@ -19,7 +19,7 @@ is the earlier promoted demo. Their scores use different evaluation units and po
     - [3.2.1. What gets rewritten: text components](#321-what-gets-rewritten-text-components)
     - [3.2.2. What does the searching: GEPA](#322-what-does-the-searching-gepa)
     - [3.2.3. Where each number comes from](#323-where-each-number-comes-from)
-    - [3.2.4. S is total R — but GEPA searches a penalized form of it](#324-s-is-total-r--but-gepa-searches-a-penalized-form-of-it)
+    - [3.2.4. Short-clip reward R and search objective S](#324-short-clip-reward-r-and-search-objective-s)
   - [3.3. The two edits behind the win](#33-the-two-edits-behind-the-win)
     - [3.3.1. The result on unseen data](#331-the-result-on-unseen-data)
     - [3.3.2. Where the prompts live](#332-where-the-prompts-live)
@@ -84,7 +84,7 @@ The two project scores have different purposes:
 `F` is the fraction of declared facts visually confirmed; `P` is the fraction of executed payoff checks that pass;
 `H` is mean pixel similarity across adjacent last/first frames. Missing metrics are renormalized by the frozen
 [policy](longform/101704_1strun/calibration.json); the loop penalty is disabled.
-Project `R_project` and mean segment `R_clip` are distinct metrics.
+Project `R_project` and mean segment `R_clip` are distinct metrics. R is the underlying reward/report score, not a stage reserved for Promotion/Test. Both project scores can be measured on search cases; S drives selection, then independent Promotion measures R on separate held-out cases. For short clips, S_clip is derived from the same search case's R_clip, not a future promotion result. See the [score reference](slides_md/07-data-splits-and-scores.md).
 
 | Split | Evaluation cases per harness | Metric | Base | Search winner | Δ |
 | --- | --- | --- | --- | --- | --- |
@@ -331,7 +331,7 @@ it on real H3 clips and update the front. This run took 13 iterations; the per-i
 The mechanism in one picture. RSI is a loop around H3; it never changes H3, only the text H3 is called with:
 
 ```text
-   base harness text ──H3──▶ video V0 ──frozen policy──▶ S0 = 0.6588  (mean total R, validation split)
+   base harness text ──H3──▶ video V0 ──frozen policy──▶ R0 = 0.6588  (mean total R, validation split)
         ▲                                                       │
         │                                            per-case feedback:
         │                                            judge scores, shot pacing,
@@ -339,8 +339,8 @@ The mechanism in one picture. RSI is a loop around H3; it never changes H3, only
         │                                                       ▼
    new harness text ◀──── GEPA + reflection LM (Qwen3.5-9B) rewrites ONE component
         │
-        └──H3──▶ video V1 ──frozen policy──▶ S1
-                       S1 > S0 ?  yes → becomes the new best, iterate from it
+        └──H3──▶ video V1 ──frozen policy──▶ R1
+                       mean S_clip improves? yes → becomes the new best, iterate from it
                                   no  → discard, propose a different component
                                                   │
                           search ends ────────────┘
@@ -348,8 +348,7 @@ The mechanism in one picture. RSI is a loop around H3; it never changes H3, only
                        6 unseen tasks → promotion gate → champion `gepa-base.1`
 ```
 
-GEPA compares candidates on `S − Σ w_axis·max(0, base_axis − cand_axis)` so that video gains cannot be bought
-with story losses; S itself is the plain mean of total R. See [S is total R](#324-s-is-total-r--but-gepa-searches-a-penalized-form-of-it).
+GEPA compares candidates using `S_clip = R_clip - axis-regression penalty` on each current search case. `R_clip` is the underlying weighted clip reward, measured on Train/Validation too; R0/R1 in the diagram are its raw Validation means. Independent Promotion later measures its own held-out `R_clip` and quality axes. See [Clip reward and search objective](#324-short-clip-reward-r-and-search-objective-s).
 
 The clips below are the **same task** (`train-001`: *"A person in a yellow raincoat picks up a red umbrella on a
 wet street. Keep the same person and umbrella throughout. Include footsteps and dripping water."*), rendered
@@ -368,22 +367,21 @@ served model; `editing` is computed in code from the storyboard JSON and uses no
 | **story** | `NeoHorse-Jev-4B` — the decision model | `http://localhost:8085` | `0.6 · completeness(script) + 0.4 · consistency(script, director_prompt)` |
 | **editing** | `rsi_harness/reward/editing_quality.py` | **no model** | `0.45` base, `+0.20` if 2 ≤ shots ≤ max_shots+2, `+0.20` if mean shot length is in range, `+0.15` if `length_cv ≤ 0.35` (−0.15 if ≥ 0.8); clamped to 0–1 |
 | **last-frame alignment** | same judge, scalar diagnostic | `http://localhost:8090` | the raw 1–5 **Alignment** score of the **final sampled frame only** (the evaluator stores just the last judge response) — read it as a hint, not an aggregate |
-| **S** (S0/S1 in the diagram) | `rsi_harness/optimization/gepa_adapter.py` | none (aggregation) | mean of total R over the validation split. S0 = (0.64337 + 0.674278)/2 = **0.6588** for the base; S1 = (0.657774 + 0.692103)/2 = **0.6749** for the winner |
-| **search score** (what GEPA optimizes) | `VideoGEPAAdapter.search_score` | none (aggregation) | total R **minus an axis-regression penalty**: `R − Σ w_axis · max(0, base_axis − cand_axis)` per case, using `axis_weights` = the fixed policy weights (video .60, story .25, editing .15) |
+| **R_clip** (R0/R1 in the diagram) | `rsi_harness/reward/builder.py` + split mean | none (aggregation) | underlying clip reward averaged over Validation. R0 = (0.64337 + 0.674278)/2 = **0.6588** for the base; R1 = (0.657774 + 0.692103)/2 = **0.6749** for the winner |
+| **S_clip** (what GEPA optimizes) | `VideoGEPAAdapter.search_score` | none (aggregation) | current-case R_clip **minus an axis-regression penalty**: `R − Σ w_axis · max(0, base_axis − cand_axis)` per case, using `axis_weights` = the fixed policy weights (video .60, story .25, editing .15) |
 
 The judge always compares the frames against the **original one-line task prompt** (`task.prompt`), never against
 the director's rewritten prompt. So the video axis measures "does this look like the task", not "does this match
 the harness's own prose".
 
-#### 3.2.4. S is total R — but GEPA searches a penalized form of it
+#### 3.2.4. Short-clip reward R and search objective S
 
-This distinction is easy to miss, so it is worth stating plainly. S0/S1 in the diagram **are** means of total R,
-and for this run they are also exactly what GEPA recorded, because the base program trivially has zero penalty
-and the winning candidate happened to regress no axis. But GEPA's search is not driven by raw total R.
+R is the underlying reward, not a score that becomes available only after search. For each search evaluation, compute `R_clip = 0.60 video + 0.25 story + 0.15 editing`, then derive `S_clip` by subtracting the same case's axis-regression penalty. Train/Validation use S for search decisions. Promotion independently generates and evaluates held-out cases using their own R and quality safeguards; Test reports its own R. Search never needs future Promotion/Test results.
+
+R0/R1 in the diagram are raw Validation reward means. They also equal mean S for the displayed base and winner because their penalties are zero; that equality is specific to these candidates, not the definition of S. "Total R" in the short-clip tables denotes `R_clip`.
 
 `run_config.resolved.yaml` for this run set `guard_axis_regression: true` with `axis_regression_tolerance: 0.0`,
-so per case GEPA sees `R − Σ w_axis·max(0, base_axis − cand_axis)`. It cannot buy video score by sacrificing
-story score. The penalty reproduces GEPA's own logged per-case numbers exactly:
+so per case GEPA sees `R − Σ w_axis·max(0, base_axis − cand_axis)`. The penalty discourages video gains accompanied by story regressions. The penalty reproduces GEPA's own logged per-case numbers exactly:
 
 | Candidate | Case | total R | penalty | what GEPA optimized |
 | --- | --- | --- | --- | --- |
@@ -393,10 +391,7 @@ story score. The penalty reproduces GEPA's own logged per-case numbers exactly:
 | `storyboard` (`db013ff2`) | val-002 | 0.648248 | −0.034896 | 0.613352 |
 | **winner** (`4ddd73aa`) | both | 0.657774 / 0.692103 | 0 | 0.657774 / 0.692103 |
 
-So: total R is the reporting metric and the promotion metric; the search metric is total R with axis regressions
-charged against it. Reported search scores in `search_report.json` (`base_validation_mean`,
-`best_validation_mean`) are raw total R means taken from the evaluator's outcomes, which is why they read as the
-S0/S1 values in the diagram.
+The search metric S is derived from current-case clip reward R. Both can be recorded during search; R is also used for independent promotion and reporting. For the displayed base and winner, the raw and penalized Validation means coincide at **0.6588** and **0.6749**. A report field named `validation_mean` does not by itself identify raw R versus penalized S; interpret it using the frozen policy, adapter and per-case results.
 
 Because each metric has exactly one producer, naming the producer **inside the column header** says it for every
 row — a separate per-row "source" column would repeat identical text down the table.
@@ -717,7 +712,7 @@ first. Parents are read from the `reflective_dataset` events in [`events.jsonl`]
 | 13 | 4 | `storyboard` | skipped | no | — | — | — |
 
 "Search" is the score GEPA compares: total R minus the axis-regression penalty (see
-[S is total R](#324-s-is-total-r--but-gepa-searches-a-penalized-form-of-it)). "Raw R" is the plain validation mean.
+[Clip reward and search objective](#324-short-clip-reward-r-and-search-objective-s)). "Raw R" is the plain validation mean.
 
 - 13 reflection calls, 5 candidates kept, 62 metric calls, 45 H3 requests (the remainder were cache hits on
   already-scored cases). Search took 2317 s (≈39 min).

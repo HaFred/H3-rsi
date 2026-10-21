@@ -4,7 +4,7 @@ Source: PPTX page 9 of 17.
 
 Compare full actions, camera movement, and sound for the same `train-001` task. A static final frame cannot replace the video.
 
-| Version | R | Video axis |
+| Version | R_clip | Video axis |
 |---|---:|---:|
 | Base | 0.6348 | 0.477 |
 | Rewrite script | 0.6628 | 0.541 |
@@ -20,11 +20,11 @@ Compare full actions, camera movement, and sound for the same `train-001` task. 
 
 For each valid frame, the three scores are averaged and normalized with `(mean − 1) / 4`. V is the mean of these normalized scores across valid sampled frames. This is frame-based evaluation; it does not assess audio or establish complete motion/physics correctness. Coherence here refers to visual consistency within a frame, rather than a direct temporal-coherence measurement.
 
-**R** is the short-clip composite reporting score:
+**R_clip** is the underlying weighted clip reward, computed on search cases as well as Promotion/Test:
 
-`R = 0.60 × V + 0.25 × story + 0.15 × editing`
+`R_clip = 0.60 × V + 0.25 × story + 0.15 × editing`
 
-Story is a script-quality/consistency proxy; editing is a storyboard shot-count/timing proxy. V is therefore one component of R, rather than a second name for the same score. See [page 7](07-data-splits-and-scores.md) for how R and S are used across data splits.
+Story is a script-quality/consistency proxy; editing is a storyboard shot-count/timing proxy. V is therefore one component of R_clip, rather than a second name for the same score. See [page 7](07-data-splits-and-scores.md) for how R_clip and S_clip are used across data splits.
 
 Definition checked against `rsi_harness/reward/video_quality.py`, `rsi_harness/reward/builder.py`, and `docs/04_reward_builder_zh.md` in the implementation repository. This section is also added to page 9 of the revised presentation.
 

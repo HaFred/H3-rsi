@@ -87,6 +87,8 @@ One long-form case is one project × one generation seed for one Harness. Increa
 
 The same 12 YAML files were already published under [longform/101704_1strun/projects/](../longform/101704_1strun/projects/). This directory adds a common source-data entry point matching the implementation's `benchmarks/` paths. Every YAML here has the same content as that archived copy and matches its recorded hash in the [long-form manifest](../longform/101704_1strun/manifest.json). Windows checkout CRLF endings are normalized to LF to recover the exact recorded run bytes. Keep the run archive as the provenance record for that run.
 
+For score notation, `R_clip` is the underlying weighted clip reward and `S_clip` is its search form after any axis-regression penalty. At project level, `C = mean(R_clip)` contributes to both `S_project` and `R_project` with different weights. These metrics can be measured during search; independent Promotion/Test use their own held-out evaluations. See the [split and score reference](../slides_md/07-data-splits-and-scores.md).
+
 ## Integrity and use
 
 [checksums.json](checksums.json) records SHA-256 for all 13 source files, source paths, and the archived long-form locations. Local Git attributes preserve the snapshot bytes. The original YAML language is retained; these source files are not translated slide summaries.
