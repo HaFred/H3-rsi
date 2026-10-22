@@ -2,16 +2,12 @@
 
 This expands the [five-segment production flow on page 11](../11-long-form-production.md) using the first two videos on [page 13](../13-town-fair-videos.md): **base `d16c2e95`** and **script rewrite `c863aae2`**. It follows the [single-clip worked example](08-script-rewrite-prompt-lifecycle.md), repeated over five clips with state verification, first-frame handoff and stitching added.
 
-**DGX record status.** Both harnesses, the ProjectSpec and the stitched videos are in this checkout. The per-segment trajectories, state histories, H3 requests and stitch manifests were recovered from the DGX H800 run `outputs/longform_rsi/101416_1strun` in the sibling `RSI_1st_impl` checkout and are reproduced below from those files; the only rebuilt pieces are the agent user messages, which are labelled as reconstructions. Every record names its source project directory and the SHA-256 of each state file and generated clip it cites; each H3 request hash was recomputed from the recorded payload and matches the value the run stored; the two embedded MP4s are byte-identical to the run's `timeline.mp4`. Section 8 records the identity proof, the verification counts and the few fields the run never wrote.
-
 ## 1. The productions and available evidence
 
 | Arm | Candidate | Full source video | Matched original seed / project directory |
 | --- | --- | --- | --- |
 | Base | `d16c2e95` | [media4.mp4](../assets/media4.mp4) | seed **1**, `projects/e51364b4275d90a511b9599c4827e8ec6a7c09cda5804d81853712d1a561386b` |
 | Script rewrite, round 1 | `c863aae2` | [media5.mp4](../assets/media5.mp4) | seed **0**, `projects/51e22c0d5bb51b4d9a29ba3d6f01054e4d405a4ceb52c83e7d1ef0abfb49d96d` |
-
-Both seeds of both candidates exist in the run index, so the mapping was resolved from bytes, not appearance. `timeline.mp4` of the base seed-1 project hashes to `629240f0…5917a7`, exactly the SHA-256 of `media4.mp4`; the script-rewrite seed-0 project hashes to `9905483d…36f99d`, exactly the SHA-256 of `media5.mp4`. Nothing was remuxed or re-encoded between `timeline.mp4` and the embedded files. Section 8.1 lists the full proof. Each arm has its own independent state, handoff assets and media references.
 
 **Base: complete five-clip timeline**
 
@@ -34,7 +30,7 @@ The ProjectSpec and base-harness links point to the existing benchmark and run-a
 
 ## 2. Shared project context and initial state
 
-World and audio/visual policies are fixed project requirements, distinct from agent system prompts. The current brief composer does not separately inject `recurring_motifs` metadata.
+**The YAML below is fixed input shared by both harnesses; RSI does not search or modify it.** The brief composer does not separately inject `recurring_motifs` metadata.
 
 ```yaml
 project_id: town-fair-5clip-v1
@@ -87,7 +83,7 @@ Both arms start with their own empty state. The following is the initial state r
 
 **Recorded initial states:** both productions read `state/state_v0.json`, and the two files are byte-identical (SHA-256 `70c458d08be27536919b84a132da428a04de25c1637cf3634599c66634196a6f`). Each contains exactly the object above: empty `facts`, empty `withheld`, no committed segments, `handoff: null`, `version: 0`. A state version identifies history, not search score S_project.
 
-## 3. Production loop: repeat independently for each harness
+## 3. Production loop diagram: repeat independently for each harness
 
 ```mermaid
 flowchart TD

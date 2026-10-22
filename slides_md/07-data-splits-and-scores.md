@@ -64,8 +64,10 @@ For each Train/Validation evaluation, measure the current clip's `R_clip`, then 
 | Decision stage | Evaluation data | Score used |
 | --- | --- | --- |
 | Search and selection | Train comparisons and Validation ranking | Compute current-case R_clip, derive S_clip, and use S_clip for decisions |
-| Independent promotion | Fresh Base/winner evaluations on held-out Promotion tasks | Use their newly measured R_clip and quality-axis safeguards |
+| Independent promotion | Fresh Base/winner evaluations on held-out Promotion tasks | Gate the single selected winner using newly measured R_clip and quality-axis safeguards; it becomes **champion** only after acceptance and a successful store update |
 | Final reporting | Independent Test tasks | Report their R_clip and axes; no feedback to selection |
+
+Promotion retains the selected winner's harness content; it does not combine multiple winners or search a new harness. If promotion fails, the existing champion remains. See the [promotion implementation](../../rsi-1st-impl-design/rsi_harness/optimization/promotion.py#L156).
 
 Thus, using a search score before promotion describes the **decision order**. It does not mean search needs a future promotion reward. Story and editing are text/planning proxies, not direct measurements of finished-film quality.
 

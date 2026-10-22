@@ -193,7 +193,7 @@ Declarations such as `leaves: picked` are proposed state updates, not proof. Evi
 
 The winner's third brief is identical because both arms had confirmed `basket`, `weather` and `leaves: picked` by then. They diverge only after the third segment, where the winner's `leaves: withering` update is rejected and the key disappears from its context.
 
-## 3. Production loop: repeat independently for each harness
+## 3. Production loop diagram: repeat independently for each harness
 
 ```mermaid
 flowchart TD
