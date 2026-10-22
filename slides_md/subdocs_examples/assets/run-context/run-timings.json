@@ -1,0 +1,37 @@
+{
+  "display_timezone": "Asia/Shanghai",
+  "runs": {
+    "101214_1strun": {
+      "start_source": "manifest.json:created_at",
+      "finish_source": "events.jsonl:last evaluation",
+      "started_at_or_first_event": "2026-10-12T14:20:22+00:00",
+      "finished_at_or_last_event": "2026-10-12T16:54:05+00:00",
+      "timestamp_span_seconds": 9223.0
+    },
+    "101416_1strun": {
+      "source_checkout": "D:\\fredcode\\rsi-1st-impl-design\\benchmarks\\longform_example\\101416_1strun",
+      "start_source": "events.jsonl:first project_done (already in progress)",
+      "finish_source": "events.jsonl:last run_finished",
+      "includes_interruptions": true,
+      "full_duration_is_lower_bound": true,
+      "final_cache_replay_session": {
+        "started_at": "2026-10-16T06:34:12+00:00",
+        "finished_at": "2026-10-16T06:55:08+00:00",
+        "elapsed_seconds": 1256.2,
+        "restored_by": "cache_replay"
+      },
+      "started_at_or_first_event": "2026-10-14T16:51:22+00:00",
+      "finished_at_or_last_event": "2026-10-16T06:55:09+00:00",
+      "timestamp_span_seconds": 137027.0,
+      "net_active_session_seconds": null,
+      "net_duration_status": "DGX_PLACEHOLDER: recover original start, all resume/session ends, and sum non-overlapping active wall-clock intervals excluding inter-session downtime; first local event is project completion and 2026-10-16T03:05:12Z recovery lacks explicit end."
+    },
+    "101704_1strun": {
+      "source": "longform/101704_1strun/report.json",
+      "reported_elapsed_seconds": 68299.6,
+      "started_at_or_first_event": "2026-10-17T04:57:17+00:00",
+      "finished_at_or_last_event": "2026-10-17T23:55:37+00:00",
+      "timestamp_span_seconds": 68300.0
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "source_checkout": "D:\\fredcode\\rsi-1st-impl-design\\benchmarks\\longform_example\\101416_1strun",
+  "run_id": "101416_1strun",
+  "files": {
+    "base.yaml": {
+      "sha256": "8913e2010fe14eeb856779a1dc4c0eb2f27eb67122b9bc917110e6f5c0bf88d5",
+      "byte_identical_to_source": true
+    },
+    "best.yaml": {
+      "sha256": "a536ed9175ed7f09d2afb5a800230ca11197bb320a0c5cbfc1367220e962b2b8",
+      "byte_identical_to_source": true
+    },
+    "budget.json": {
+      "sha256": "041299171b761b3d63c51315e5ac13aac837da1407e75bc7cc68f04eb0dede1f",
+      "byte_identical_to_source": true
+    },
+    "calibration.json": {
+      "sha256": "3040901b9f8cfa82714e385473bc5bf56b212961cf1fbd75bbcc8d5852f82209",
+      "byte_identical_to_source": true
+    },
+    "manifest.json": {
+      "sha256": "5d89ceaaf83baf0d8cf9e79c881190a846817530f9f3ca3495a6fca900721381",
+      "byte_identical_to_source": true
+    },
+    "report.json": {
+      "sha256": "6246cacfa98f8ab82a9f2d7ceafe9a6c96d6735616fff1d28215a8d0180b9fdf",
+      "byte_identical_to_source": true
+    },
+    "search.json": {
+      "sha256": "1f3f1f1e6d31e4545c9631501a14d3ace46eead9ba53ca314d000f01c4caeb32",
+      "byte_identical_to_source": true
+    },
+    "videos.json": {
+      "sha256": "ba5055683d4ca74a9d8861ea420cd1d3772326ba1eeeccea6bc1eeae121ac8c3",
+      "byte_identical_to_source": true
+    },
+    "promotion/decision.json": {
+      "sha256": "1a542408e714d532a050bcf3107327cadd791ce25fa6788a08bad13bd8ffefa6",
+      "byte_identical_to_source": true
+    }
+  }
+}

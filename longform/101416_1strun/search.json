@@ -1,0 +1,534 @@
+{
+  "base_candidate_hash": "d16c2e959f5bed4c8d2e8a5f911fd061363d02b0c2c4b1e7f425fb035658e122",
+  "best_candidate_hash": "c1912a62c4111a6a666289d89febb720f5bba377bd722ba9e9df9e1d980eb9e3",
+  "best_changed_components": [
+    "script",
+    "storyboard"
+  ],
+  "candidates": [
+    {
+      "candidate_hash": "04c6944eb0f270cae11b85f92ae6a55b2a2a195fc4b030a54a2b624b706b0f5a",
+      "changed_components": [
+        "script",
+        "storyboard"
+      ],
+      "scores": {
+        "train:lighthouse-storm-5clip-v1:seed0": 0.76067,
+        "train:lighthouse-storm-5clip-v1:seed1": 0.75239,
+        "train:town-fair-5clip-v1:seed0": 0.74652,
+        "train:town-fair-5clip-v1:seed1": 0.73939,
+        "validation:mountain-bus-5clip-v1:seed0": 0.74199,
+        "validation:night-market-close-5clip-v1:seed0": 0.7387,
+        "validation:rooftop-garden-5clip-v1:seed0": 0.75548,
+        "validation:snow-postman-5clip-v1:seed0": 0.74625
+      },
+      "validation_mean": 0.745605
+    },
+    {
+      "candidate_hash": "17f8c87bbf87a0ab0e9317a404848c69930852a2b2a3eb70a049d394d0a7e4f5",
+      "changed_components": [
+        "script",
+        "storyboard"
+      ],
+      "scores": {
+        "train:lighthouse-storm-5clip-v1:seed0": 0.75788,
+        "train:lighthouse-storm-5clip-v1:seed1": 0.75287,
+        "train:town-fair-5clip-v1:seed0": 0.73719,
+        "train:town-fair-5clip-v1:seed1": 0.74019,
+        "validation:mountain-bus-5clip-v1:seed0": 0.74067,
+        "validation:night-market-close-5clip-v1:seed0": 0.73794,
+        "validation:rooftop-garden-5clip-v1:seed0": 0.75755,
+        "validation:snow-postman-5clip-v1:seed0": 0.74266
+      },
+      "validation_mean": 0.744705
+    },
+    {
+      "candidate_hash": "22343e65ce3d2574d04e9f25c4a229d12064781612a1de0a02f73993ef5a88e2",
+      "changed_components": [
+        "script",
+        "storyboard"
+      ],
+      "scores": {
+        "train:lighthouse-storm-5clip-v1:seed0": 0.75762,
+        "train:lighthouse-storm-5clip-v1:seed1": 0.74553,
+        "train:town-fair-5clip-v1:seed0": 0.7399,
+        "train:town-fair-5clip-v1:seed1": 0.76138
+      },
+      "validation_mean": null
+    },
+    {
+      "candidate_hash": "2596b5a01108dd7be9c8c932115be3f7e259ce8b36025d045ba6af1634ba2492",
+      "changed_components": [
+        "script",
+        "storyboard"
+      ],
+      "scores": {
+        "train:lighthouse-storm-5clip-v1:seed0": 0.7579,
+        "train:lighthouse-storm-5clip-v1:seed1": 0.75769,
+        "train:town-fair-5clip-v1:seed0": 0.71995,
+        "train:town-fair-5clip-v1:seed1": 0.73662
+      },
+      "validation_mean": null
+    },
+    {
+      "candidate_hash": "3252791af4aa46d059001c17da8f776528bc90830929defd8001361831c74364",
+      "changed_components": [
+        "script",
+        "storyboard"
+      ],
+      "scores": {
+        "train:lighthouse-storm-5clip-v1:seed0": 0.75639,
+        "train:lighthouse-storm-5clip-v1:seed1": 0.75181,
+        "train:town-fair-5clip-v1:seed0": 0.74138,
+        "train:town-fair-5clip-v1:seed1": 0.73713,
+        "validation:mountain-bus-5clip-v1:seed0": 0.74708,
+        "validation:night-market-close-5clip-v1:seed0": 0.73681,
+        "validation:rooftop-garden-5clip-v1:seed0": 0.75249,
+        "validation:snow-postman-5clip-v1:seed0": 0.75447
+      },
+      "validation_mean": 0.747713
+    },
+    {
+      "candidate_hash": "40552c6ab572a12aaeee599ac457a9da558a2e5a93adb9c4a996b298018d076c",
+      "changed_components": [
+        "script",
+        "storyboard"
+      ],
+      "scores": {
+        "train:lighthouse-storm-5clip-v1:seed0": 0.75507,
+        "train:lighthouse-storm-5clip-v1:seed1": 0.0,
+        "train:town-fair-5clip-v1:seed0": 0.73777,
+        "train:town-fair-5clip-v1:seed1": 0.74489
+      },
+      "validation_mean": null
+    },
+    {
+      "candidate_hash": "4c7563e3bce2da173083bc2b8cafb57a0343c059b191a4f61b7bc81b7fae8ae6",
+      "changed_components": [
+        "script",
+        "storyboard"
+      ],
+      "scores": {
+        "train:lighthouse-storm-5clip-v1:seed0": 0.76026,
+        "train:lighthouse-storm-5clip-v1:seed1": 0.75998,
+        "train:town-fair-5clip-v1:seed0": 0.72923,
+        "train:town-fair-5clip-v1:seed1": 0.74734,
+        "validation:mountain-bus-5clip-v1:seed0": 0.73949,
+        "validation:night-market-close-5clip-v1:seed0": 0.74,
+        "validation:rooftop-garden-5clip-v1:seed0": 0.75117,
+        "validation:snow-postman-5clip-v1:seed0": 0.75157
+      },
+      "validation_mean": 0.745557
+    },
+    {
+      "candidate_hash": "592af80cbc365f2dfd3f940fc76cd1d4f3d4775e59c5472591580a37b141dade",
+      "changed_components": [
+        "script",
+        "storyboard"
+      ],
+      "scores": {
+        "train:lighthouse-storm-5clip-v1:seed0": 0.75609,
+        "train:lighthouse-storm-5clip-v1:seed1": 0.75943,
+        "train:town-fair-5clip-v1:seed0": 0.73127,
+        "train:town-fair-5clip-v1:seed1": 0.73272
+      },
+      "validation_mean": null
+    },
+    {
+      "candidate_hash": "63addfde66f01ca48d832b40cedf225ac29e15c1585c641efaef5b2e78f4e1c1",
+      "changed_components": [
+        "storyboard"
+      ],
+      "scores": {
+        "train:lighthouse-storm-5clip-v1:seed0": 0.73996,
+        "train:lighthouse-storm-5clip-v1:seed1": 0.74436,
+        "train:town-fair-5clip-v1:seed0": 0.72291,
+        "train:town-fair-5clip-v1:seed1": 0.0
+      },
+      "validation_mean": null
+    },
+    {
+      "candidate_hash": "6ce1d46e42ebd2673834ff370879b5351b3965653430eace89c6a32bb5b84747",
+      "changed_components": [
+        "script",
+        "storyboard"
+      ],
+      "scores": {
+        "train:lighthouse-storm-5clip-v1:seed0": 0.76182,
+        "train:lighthouse-storm-5clip-v1:seed1": 0.75351,
+        "train:town-fair-5clip-v1:seed0": 0.72615,
+        "train:town-fair-5clip-v1:seed1": 0.73947,
+        "validation:mountain-bus-5clip-v1:seed0": 0.73622,
+        "validation:night-market-close-5clip-v1:seed0": 0.72971,
+        "validation:rooftop-garden-5clip-v1:seed0": 0.7524,
+        "validation:snow-postman-5clip-v1:seed0": 0.74242
+      },
+      "validation_mean": 0.740187
+    },
+    {
+      "candidate_hash": "6f63fe9662a39ddf4ceed879ee11277cbfdb32f48d818541fbe24e450288368c",
+      "changed_components": [
+        "script",
+        "storyboard"
+      ],
+      "scores": {
+        "train:lighthouse-storm-5clip-v1:seed0": 0.76117,
+        "train:lighthouse-storm-5clip-v1:seed1": 0.74875,
+        "train:town-fair-5clip-v1:seed0": 0.73364,
+        "train:town-fair-5clip-v1:seed1": 0.7371
+      },
+      "validation_mean": null
+    },
+    {
+      "candidate_hash": "771eb061ed8351f1fa1a13cbe2cec8c694fda446dea843a1360bbb18373ee51b",
+      "changed_components": [
+        "script",
+        "storyboard"
+      ],
+      "scores": {
+        "train:lighthouse-storm-5clip-v1:seed0": 0.75236,
+        "train:lighthouse-storm-5clip-v1:seed1": 0.74911,
+        "train:town-fair-5clip-v1:seed0": 0.73549,
+        "train:town-fair-5clip-v1:seed1": 0.74233
+      },
+      "validation_mean": null
+    },
+    {
+      "candidate_hash": "7a26b74b9e30d4787fdbb513ec749d7799985e85016fd10823235ff2e822fb31",
+      "changed_components": [
+        "script",
+        "storyboard"
+      ],
+      "scores": {
+        "train:lighthouse-storm-5clip-v1:seed0": 0.0,
+        "train:lighthouse-storm-5clip-v1:seed1": 0.74635,
+        "train:town-fair-5clip-v1:seed0": 0.74022,
+        "train:town-fair-5clip-v1:seed1": 0.74432
+      },
+      "validation_mean": null
+    },
+    {
+      "candidate_hash": "92670bd668b3539b08db51b4a2a9860590e42e1da3aa615a6b61052b500aada3",
+      "changed_components": [
+        "script",
+        "storyboard"
+      ],
+      "scores": {
+        "train:lighthouse-storm-5clip-v1:seed0": 0.75475,
+        "train:lighthouse-storm-5clip-v1:seed1": 0.75696,
+        "train:town-fair-5clip-v1:seed0": 0.73091,
+        "train:town-fair-5clip-v1:seed1": 0.74226
+      },
+      "validation_mean": null
+    },
+    {
+      "candidate_hash": "9b73a9fcf93849331b569fcdd8ff3c4ae084e97ca4fd108a20ba8fba4cbd2fb9",
+      "changed_components": [
+        "script",
+        "storyboard"
+      ],
+      "scores": {
+        "train:lighthouse-storm-5clip-v1:seed0": 0.75519,
+        "train:lighthouse-storm-5clip-v1:seed1": 0.75979,
+        "train:town-fair-5clip-v1:seed0": 0.72822,
+        "train:town-fair-5clip-v1:seed1": 0.73593
+      },
+      "validation_mean": null
+    },
+    {
+      "candidate_hash": "af65fddd91f2260a138c71dc3e017a643a2a820a38f09b4dd61b5a969c5737aa",
+      "changed_components": [
+        "script",
+        "storyboard"
+      ],
+      "scores": {
+        "train:lighthouse-storm-5clip-v1:seed0": 0.76084,
+        "train:lighthouse-storm-5clip-v1:seed1": 0.76108,
+        "train:town-fair-5clip-v1:seed0": 0.73604,
+        "train:town-fair-5clip-v1:seed1": 0.74106,
+        "validation:mountain-bus-5clip-v1:seed0": 0.73518,
+        "validation:night-market-close-5clip-v1:seed0": 0.74798,
+        "validation:rooftop-garden-5clip-v1:seed0": 0.76085,
+        "validation:snow-postman-5clip-v1:seed0": 0.7543
+      },
+      "validation_mean": 0.749578
+    },
+    {
+      "candidate_hash": "c1912a62c4111a6a666289d89febb720f5bba377bd722ba9e9df9e1d980eb9e3",
+      "changed_components": [
+        "script",
+        "storyboard"
+      ],
+      "scores": {
+        "train:lighthouse-storm-5clip-v1:seed0": 0.75758,
+        "train:lighthouse-storm-5clip-v1:seed1": 0.74898,
+        "train:town-fair-5clip-v1:seed0": 0.74276,
+        "train:town-fair-5clip-v1:seed1": 0.75554,
+        "validation:mountain-bus-5clip-v1:seed0": 0.747,
+        "validation:night-market-close-5clip-v1:seed0": 0.74155,
+        "validation:rooftop-garden-5clip-v1:seed0": 0.75787,
+        "validation:snow-postman-5clip-v1:seed0": 0.76008
+      },
+      "validation_mean": 0.751625
+    },
+    {
+      "candidate_hash": "c863aae2047f1fd10c58607efe2f7fa8d0aba784dc5211e41fb669e2241d5709",
+      "changed_components": [
+        "script"
+      ],
+      "scores": {
+        "train:lighthouse-storm-5clip-v1:seed0": 0.75093,
+        "train:lighthouse-storm-5clip-v1:seed1": 0.75855,
+        "train:town-fair-5clip-v1:seed0": 0.72819,
+        "train:town-fair-5clip-v1:seed1": 0.73692,
+        "validation:mountain-bus-5clip-v1:seed0": 0.73944,
+        "validation:night-market-close-5clip-v1:seed0": 0.72492,
+        "validation:rooftop-garden-5clip-v1:seed0": 0.75696,
+        "validation:snow-postman-5clip-v1:seed0": 0.75328
+      },
+      "validation_mean": 0.74365
+    },
+    {
+      "candidate_hash": "ca0063821c010d7bf2b552ec152cc4d309cd5543137f1718ddf2b0e06bf2ddea",
+      "changed_components": [
+        "script",
+        "storyboard"
+      ],
+      "scores": {
+        "train:lighthouse-storm-5clip-v1:seed0": 0.74898,
+        "train:lighthouse-storm-5clip-v1:seed1": 0.74167,
+        "train:town-fair-5clip-v1:seed0": 0.72874,
+        "train:town-fair-5clip-v1:seed1": 0.72789
+      },
+      "validation_mean": null
+    },
+    {
+      "candidate_hash": "d16c2e959f5bed4c8d2e8a5f911fd061363d02b0c2c4b1e7f425fb035658e122",
+      "changed_components": [],
+      "scores": {
+        "train:lighthouse-storm-5clip-v1:seed0": 0.73621,
+        "train:lighthouse-storm-5clip-v1:seed1": 0.75436,
+        "train:town-fair-5clip-v1:seed0": 0.73815,
+        "train:town-fair-5clip-v1:seed1": 0.72352,
+        "validation:mountain-bus-5clip-v1:seed0": 0.71765,
+        "validation:night-market-close-5clip-v1:seed0": 0.7346,
+        "validation:rooftop-garden-5clip-v1:seed0": 0.74003,
+        "validation:snow-postman-5clip-v1:seed0": 0.72511
+      },
+      "validation_mean": 0.729348
+    },
+    {
+      "candidate_hash": "d23f5e6de03593553daf0992c26086951d950b0942594a7f4a910b1a750ebb3e",
+      "changed_components": [
+        "script",
+        "storyboard"
+      ],
+      "scores": {
+        "train:lighthouse-storm-5clip-v1:seed0": 0.74609,
+        "train:lighthouse-storm-5clip-v1:seed1": 0.75596,
+        "train:town-fair-5clip-v1:seed0": 0.74117,
+        "train:town-fair-5clip-v1:seed1": 0.73113
+      },
+      "validation_mean": null
+    },
+    {
+      "candidate_hash": "fab614d1359a0a74d1c7bfc6ea07778f11c6f7c22c350eebdb6428fcf363dfcc",
+      "changed_components": [
+        "script"
+      ],
+      "scores": {
+        "train:lighthouse-storm-5clip-v1:seed0": 0.75307,
+        "train:lighthouse-storm-5clip-v1:seed1": 0.75723,
+        "train:town-fair-5clip-v1:seed0": 0.72918,
+        "train:town-fair-5clip-v1:seed1": 0.72765
+      },
+      "validation_mean": null
+    }
+  ],
+  "failure": null,
+  "missing_evaluations": 60,
+  "num_candidates": 22,
+  "restored_by": "cache_replay",
+  "scores": {
+    "04c6944eb0f270cae11b85f92ae6a55b2a2a195fc4b030a54a2b624b706b0f5a": {
+      "train:lighthouse-storm-5clip-v1:seed0": 0.76067,
+      "train:lighthouse-storm-5clip-v1:seed1": 0.75239,
+      "train:town-fair-5clip-v1:seed0": 0.74652,
+      "train:town-fair-5clip-v1:seed1": 0.73939,
+      "validation:mountain-bus-5clip-v1:seed0": 0.74199,
+      "validation:night-market-close-5clip-v1:seed0": 0.7387,
+      "validation:rooftop-garden-5clip-v1:seed0": 0.75548,
+      "validation:snow-postman-5clip-v1:seed0": 0.74625
+    },
+    "17f8c87bbf87a0ab0e9317a404848c69930852a2b2a3eb70a049d394d0a7e4f5": {
+      "train:lighthouse-storm-5clip-v1:seed0": 0.75788,
+      "train:lighthouse-storm-5clip-v1:seed1": 0.75287,
+      "train:town-fair-5clip-v1:seed0": 0.73719,
+      "train:town-fair-5clip-v1:seed1": 0.74019,
+      "validation:mountain-bus-5clip-v1:seed0": 0.74067,
+      "validation:night-market-close-5clip-v1:seed0": 0.73794,
+      "validation:rooftop-garden-5clip-v1:seed0": 0.75755,
+      "validation:snow-postman-5clip-v1:seed0": 0.74266
+    },
+    "22343e65ce3d2574d04e9f25c4a229d12064781612a1de0a02f73993ef5a88e2": {
+      "train:lighthouse-storm-5clip-v1:seed0": 0.75762,
+      "train:lighthouse-storm-5clip-v1:seed1": 0.74553,
+      "train:town-fair-5clip-v1:seed0": 0.7399,
+      "train:town-fair-5clip-v1:seed1": 0.76138
+    },
+    "2596b5a01108dd7be9c8c932115be3f7e259ce8b36025d045ba6af1634ba2492": {
+      "train:lighthouse-storm-5clip-v1:seed0": 0.7579,
+      "train:lighthouse-storm-5clip-v1:seed1": 0.75769,
+      "train:town-fair-5clip-v1:seed0": 0.71995,
+      "train:town-fair-5clip-v1:seed1": 0.73662
+    },
+    "3252791af4aa46d059001c17da8f776528bc90830929defd8001361831c74364": {
+      "train:lighthouse-storm-5clip-v1:seed0": 0.75639,
+      "train:lighthouse-storm-5clip-v1:seed1": 0.75181,
+      "train:town-fair-5clip-v1:seed0": 0.74138,
+      "train:town-fair-5clip-v1:seed1": 0.73713,
+      "validation:mountain-bus-5clip-v1:seed0": 0.74708,
+      "validation:night-market-close-5clip-v1:seed0": 0.73681,
+      "validation:rooftop-garden-5clip-v1:seed0": 0.75249,
+      "validation:snow-postman-5clip-v1:seed0": 0.75447
+    },
+    "40552c6ab572a12aaeee599ac457a9da558a2e5a93adb9c4a996b298018d076c": {
+      "train:lighthouse-storm-5clip-v1:seed0": 0.75507,
+      "train:lighthouse-storm-5clip-v1:seed1": 0.0,
+      "train:town-fair-5clip-v1:seed0": 0.73777,
+      "train:town-fair-5clip-v1:seed1": 0.74489
+    },
+    "4c7563e3bce2da173083bc2b8cafb57a0343c059b191a4f61b7bc81b7fae8ae6": {
+      "train:lighthouse-storm-5clip-v1:seed0": 0.76026,
+      "train:lighthouse-storm-5clip-v1:seed1": 0.75998,
+      "train:town-fair-5clip-v1:seed0": 0.72923,
+      "train:town-fair-5clip-v1:seed1": 0.74734,
+      "validation:mountain-bus-5clip-v1:seed0": 0.73949,
+      "validation:night-market-close-5clip-v1:seed0": 0.74,
+      "validation:rooftop-garden-5clip-v1:seed0": 0.75117,
+      "validation:snow-postman-5clip-v1:seed0": 0.75157
+    },
+    "592af80cbc365f2dfd3f940fc76cd1d4f3d4775e59c5472591580a37b141dade": {
+      "train:lighthouse-storm-5clip-v1:seed0": 0.75609,
+      "train:lighthouse-storm-5clip-v1:seed1": 0.75943,
+      "train:town-fair-5clip-v1:seed0": 0.73127,
+      "train:town-fair-5clip-v1:seed1": 0.73272
+    },
+    "63addfde66f01ca48d832b40cedf225ac29e15c1585c641efaef5b2e78f4e1c1": {
+      "train:lighthouse-storm-5clip-v1:seed0": 0.73996,
+      "train:lighthouse-storm-5clip-v1:seed1": 0.74436,
+      "train:town-fair-5clip-v1:seed0": 0.72291,
+      "train:town-fair-5clip-v1:seed1": 0.0
+    },
+    "6ce1d46e42ebd2673834ff370879b5351b3965653430eace89c6a32bb5b84747": {
+      "train:lighthouse-storm-5clip-v1:seed0": 0.76182,
+      "train:lighthouse-storm-5clip-v1:seed1": 0.75351,
+      "train:town-fair-5clip-v1:seed0": 0.72615,
+      "train:town-fair-5clip-v1:seed1": 0.73947,
+      "validation:mountain-bus-5clip-v1:seed0": 0.73622,
+      "validation:night-market-close-5clip-v1:seed0": 0.72971,
+      "validation:rooftop-garden-5clip-v1:seed0": 0.7524,
+      "validation:snow-postman-5clip-v1:seed0": 0.74242
+    },
+    "6f63fe9662a39ddf4ceed879ee11277cbfdb32f48d818541fbe24e450288368c": {
+      "train:lighthouse-storm-5clip-v1:seed0": 0.76117,
+      "train:lighthouse-storm-5clip-v1:seed1": 0.74875,
+      "train:town-fair-5clip-v1:seed0": 0.73364,
+      "train:town-fair-5clip-v1:seed1": 0.7371
+    },
+    "771eb061ed8351f1fa1a13cbe2cec8c694fda446dea843a1360bbb18373ee51b": {
+      "train:lighthouse-storm-5clip-v1:seed0": 0.75236,
+      "train:lighthouse-storm-5clip-v1:seed1": 0.74911,
+      "train:town-fair-5clip-v1:seed0": 0.73549,
+      "train:town-fair-5clip-v1:seed1": 0.74233
+    },
+    "7a26b74b9e30d4787fdbb513ec749d7799985e85016fd10823235ff2e822fb31": {
+      "train:lighthouse-storm-5clip-v1:seed0": 0.0,
+      "train:lighthouse-storm-5clip-v1:seed1": 0.74635,
+      "train:town-fair-5clip-v1:seed0": 0.74022,
+      "train:town-fair-5clip-v1:seed1": 0.74432
+    },
+    "92670bd668b3539b08db51b4a2a9860590e42e1da3aa615a6b61052b500aada3": {
+      "train:lighthouse-storm-5clip-v1:seed0": 0.75475,
+      "train:lighthouse-storm-5clip-v1:seed1": 0.75696,
+      "train:town-fair-5clip-v1:seed0": 0.73091,
+      "train:town-fair-5clip-v1:seed1": 0.74226
+    },
+    "9b73a9fcf93849331b569fcdd8ff3c4ae084e97ca4fd108a20ba8fba4cbd2fb9": {
+      "train:lighthouse-storm-5clip-v1:seed0": 0.75519,
+      "train:lighthouse-storm-5clip-v1:seed1": 0.75979,
+      "train:town-fair-5clip-v1:seed0": 0.72822,
+      "train:town-fair-5clip-v1:seed1": 0.73593
+    },
+    "af65fddd91f2260a138c71dc3e017a643a2a820a38f09b4dd61b5a969c5737aa": {
+      "train:lighthouse-storm-5clip-v1:seed0": 0.76084,
+      "train:lighthouse-storm-5clip-v1:seed1": 0.76108,
+      "train:town-fair-5clip-v1:seed0": 0.73604,
+      "train:town-fair-5clip-v1:seed1": 0.74106,
+      "validation:mountain-bus-5clip-v1:seed0": 0.73518,
+      "validation:night-market-close-5clip-v1:seed0": 0.74798,
+      "validation:rooftop-garden-5clip-v1:seed0": 0.76085,
+      "validation:snow-postman-5clip-v1:seed0": 0.7543
+    },
+    "c1912a62c4111a6a666289d89febb720f5bba377bd722ba9e9df9e1d980eb9e3": {
+      "train:lighthouse-storm-5clip-v1:seed0": 0.75758,
+      "train:lighthouse-storm-5clip-v1:seed1": 0.74898,
+      "train:town-fair-5clip-v1:seed0": 0.74276,
+      "train:town-fair-5clip-v1:seed1": 0.75554,
+      "validation:mountain-bus-5clip-v1:seed0": 0.747,
+      "validation:night-market-close-5clip-v1:seed0": 0.74155,
+      "validation:rooftop-garden-5clip-v1:seed0": 0.75787,
+      "validation:snow-postman-5clip-v1:seed0": 0.76008
+    },
+    "c863aae2047f1fd10c58607efe2f7fa8d0aba784dc5211e41fb669e2241d5709": {
+      "train:lighthouse-storm-5clip-v1:seed0": 0.75093,
+      "train:lighthouse-storm-5clip-v1:seed1": 0.75855,
+      "train:town-fair-5clip-v1:seed0": 0.72819,
+      "train:town-fair-5clip-v1:seed1": 0.73692,
+      "validation:mountain-bus-5clip-v1:seed0": 0.73944,
+      "validation:night-market-close-5clip-v1:seed0": 0.72492,
+      "validation:rooftop-garden-5clip-v1:seed0": 0.75696,
+      "validation:snow-postman-5clip-v1:seed0": 0.75328
+    },
+    "ca0063821c010d7bf2b552ec152cc4d309cd5543137f1718ddf2b0e06bf2ddea": {
+      "train:lighthouse-storm-5clip-v1:seed0": 0.74898,
+      "train:lighthouse-storm-5clip-v1:seed1": 0.74167,
+      "train:town-fair-5clip-v1:seed0": 0.72874,
+      "train:town-fair-5clip-v1:seed1": 0.72789
+    },
+    "d16c2e959f5bed4c8d2e8a5f911fd061363d02b0c2c4b1e7f425fb035658e122": {
+      "train:lighthouse-storm-5clip-v1:seed0": 0.73621,
+      "train:lighthouse-storm-5clip-v1:seed1": 0.75436,
+      "train:town-fair-5clip-v1:seed0": 0.73815,
+      "train:town-fair-5clip-v1:seed1": 0.72352,
+      "validation:mountain-bus-5clip-v1:seed0": 0.71765,
+      "validation:night-market-close-5clip-v1:seed0": 0.7346,
+      "validation:rooftop-garden-5clip-v1:seed0": 0.74003,
+      "validation:snow-postman-5clip-v1:seed0": 0.72511
+    },
+    "d23f5e6de03593553daf0992c26086951d950b0942594a7f4a910b1a750ebb3e": {
+      "train:lighthouse-storm-5clip-v1:seed0": 0.74609,
+      "train:lighthouse-storm-5clip-v1:seed1": 0.75596,
+      "train:town-fair-5clip-v1:seed0": 0.74117,
+      "train:town-fair-5clip-v1:seed1": 0.73113
+    },
+    "fab614d1359a0a74d1c7bfc6ea07778f11c6f7c22c350eebdb6428fcf363dfcc": {
+      "train:lighthouse-storm-5clip-v1:seed0": 0.75307,
+      "train:lighthouse-storm-5clip-v1:seed1": 0.75723,
+      "train:town-fair-5clip-v1:seed0": 0.72918,
+      "train:town-fair-5clip-v1:seed1": 0.72765
+    }
+  },
+  "status": "succeeded",
+  "validation_mean": {
+    "04c6944eb0f270cae11b85f92ae6a55b2a2a195fc4b030a54a2b624b706b0f5a": 0.745605,
+    "17f8c87bbf87a0ab0e9317a404848c69930852a2b2a3eb70a049d394d0a7e4f5": 0.744705,
+    "3252791af4aa46d059001c17da8f776528bc90830929defd8001361831c74364": 0.747713,
+    "4c7563e3bce2da173083bc2b8cafb57a0343c059b191a4f61b7bc81b7fae8ae6": 0.745557,
+    "6ce1d46e42ebd2673834ff370879b5351b3965653430eace89c6a32bb5b84747": 0.740187,
+    "af65fddd91f2260a138c71dc3e017a643a2a820a38f09b4dd61b5a969c5737aa": 0.749578,
+    "c1912a62c4111a6a666289d89febb720f5bba377bd722ba9e9df9e1d980eb9e3": 0.751625,
+    "c863aae2047f1fd10c58607efe2f7fa8d0aba784dc5211e41fb669e2241d5709": 0.74365,
+    "d16c2e959f5bed4c8d2e8a5f911fd061363d02b0c2c4b1e7f425fb035658e122": 0.729348
+  }
+}

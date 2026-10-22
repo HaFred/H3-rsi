@@ -1,0 +1,1033 @@
+{
+  "base_candidate_hash": "d16c2e959f5bed4c8d2e8a5f911fd061363d02b0c2c4b1e7f425fb035658e122",
+  "base_validation_mean": 0.729348,
+  "best_candidate_hash": "c1912a62c4111a6a666289d89febb720f5bba377bd722ba9e9df9e1d980eb9e3",
+  "best_changed_components": [
+    "script",
+    "storyboard"
+  ],
+  "best_validation_mean": 0.751625,
+  "budget": {
+    "limits": {
+      "promotion": 120,
+      "search": 1000,
+      "test": 50
+    },
+    "reservations": {},
+    "used": {
+      "promotion": 80,
+      "search": 615,
+      "test": 21
+    }
+  },
+  "calibration": {
+    "loop_threshold": 0.9331,
+    "multi_project_calibrated": false,
+    "note": "weights are the frozen defaults; only loop_threshold is derived from train base runs",
+    "policy": {
+      "calibrated": true,
+      "loop_penalty_weight": 0.0,
+      "loop_threshold": 0.9331,
+      "renormalize_missing": true,
+      "weights": {
+        "payoff_rate": 0.2,
+        "segment_score_mean": 0.4,
+        "state_confirmed_rate": 0.2,
+        "visual_handoff_mean": 0.2
+      }
+    },
+    "search_policy": {
+      "calibrated": true,
+      "loop_penalty_weight": 0.0,
+      "loop_threshold": 0.9331,
+      "renormalize_missing": true,
+      "weights": {
+        "segment_score_mean": 0.7,
+        "visual_handoff_mean": 0.3
+      }
+    },
+    "source": "base runs on train projects only",
+    "t2va_keyframe_return": [
+      0.8012,
+      0.8144,
+      0.8831,
+      0.8601
+    ],
+    "train_projects": [
+      "lighthouse-storm-5clip-v1",
+      "lighthouse-storm-5clip-v1",
+      "town-fair-5clip-v1",
+      "town-fair-5clip-v1"
+    ]
+  },
+  "calibration_threshold": 0.9331,
+  "elapsed_seconds": 1256.2,
+  "failure": null,
+  "finished_at": "2026-10-16T06:55:08+00:00",
+  "media_dir": "outputs/longform_rsi/101416_1strun",
+  "promotion": {
+    "accepted": true,
+    "base": {
+      "candidate_hash": "d16c2e959f5bed4c8d2e8a5f911fd061363d02b0c2c4b1e7f425fb035658e122",
+      "mean": 0.792667,
+      "per_project": {
+        "promotion:desert-caravan-5clip-v1:seed0": {
+          "errors": [],
+          "metrics": {
+            "audio_jump_db_max": 43.3,
+            "generation_seconds": 300.38,
+            "h3_requests": 5,
+            "keyframe_return_max": 0.8056,
+            "palette_similarity_mean": 0.8417,
+            "payoff": "4/4",
+            "payoff_rate": 1.0,
+            "segment_score_mean": 0.6301,
+            "segment_score_min": 0.6088,
+            "segments_committed": 5,
+            "segments_total": 5,
+            "state_confirmed": "5/6",
+            "state_confirmed_rate": 0.8333,
+            "timeline_seconds": 25.833333,
+            "timeline_valid": true,
+            "visual_handoff_mean": 0.9859
+          },
+          "project_dir": "outputs/longform_rsi/101416_1strun/projects/c47e28cc1dbf9805d2ecb7b04ffe129da0c8d1dc05e18163dee09941e7aa9f3e",
+          "score": 0.81588,
+          "valid": true
+        },
+        "promotion:desert-caravan-5clip-v1:seed1": {
+          "errors": [],
+          "metrics": {
+            "audio_jump_db_max": 14.53,
+            "generation_seconds": 302.33,
+            "h3_requests": 5,
+            "keyframe_return_max": 0.7811,
+            "palette_similarity_mean": 0.8897,
+            "payoff": "4/4",
+            "payoff_rate": 1.0,
+            "segment_score_mean": 0.6247,
+            "segment_score_min": 0.5805,
+            "segments_committed": 5,
+            "segments_total": 5,
+            "state_confirmed": "5/6",
+            "state_confirmed_rate": 0.8333,
+            "timeline_seconds": 25.833333,
+            "timeline_valid": true,
+            "visual_handoff_mean": 0.986
+          },
+          "project_dir": "outputs/longform_rsi/101416_1strun/projects/293338f109885a3b2ba5d365763dded1c7ddd9d1ce2787b5e3f65792005d6eb2",
+          "score": 0.81374,
+          "valid": true
+        },
+        "promotion:harbor-dawn-5clip-v1:seed0": {
+          "errors": [],
+          "metrics": {
+            "audio_jump_db_max": 16.14,
+            "generation_seconds": 301.47,
+            "h3_requests": 5,
+            "keyframe_return_max": 0.7411,
+            "palette_similarity_mean": 0.8797,
+            "payoff": "4/4",
+            "payoff_rate": 1.0,
+            "segment_score_mean": 0.6162,
+            "segment_score_min": 0.5556,
+            "segments_committed": 5,
+            "segments_total": 5,
+            "state_confirmed": "6/6",
+            "state_confirmed_rate": 1.0,
+            "timeline_seconds": 25.833333,
+            "timeline_valid": true,
+            "visual_handoff_mean": 0.9865
+          },
+          "project_dir": "outputs/longform_rsi/101416_1strun/projects/4d01c61594f4af27239c175754606228a24d0c828f8bedfe2b3f19870e35d285",
+          "score": 0.84378,
+          "valid": true
+        },
+        "promotion:harbor-dawn-5clip-v1:seed1": {
+          "errors": [],
+          "metrics": {
+            "audio_jump_db_max": 9.31,
+            "generation_seconds": 303.04,
+            "h3_requests": 5,
+            "keyframe_return_max": 0.8116,
+            "palette_similarity_mean": 0.7685,
+            "payoff": "3/4",
+            "payoff_rate": 0.75,
+            "segment_score_mean": 0.6433,
+            "segment_score_min": 0.608,
+            "segments_committed": 5,
+            "segments_total": 5,
+            "state_confirmed": "4/6",
+            "state_confirmed_rate": 0.6667,
+            "timeline_seconds": 25.833333,
+            "timeline_valid": true,
+            "visual_handoff_mean": 0.9859
+          },
+          "project_dir": "outputs/longform_rsi/101416_1strun/projects/31b16e0826ea8bb1be05345c3addccc088ade68d1b47607df60b4c5d96d12699",
+          "score": 0.73784,
+          "valid": true
+        },
+        "promotion:science-fair-5clip-v1:seed0": {
+          "errors": [],
+          "metrics": {
+            "audio_jump_db_max": 18.44,
+            "generation_seconds": 301.84,
+            "h3_requests": 5,
+            "keyframe_return_max": 0.9694,
+            "palette_similarity_mean": 0.8566,
+            "payoff": "2/3",
+            "payoff_rate": 0.6667,
+            "segment_score_mean": 0.6255,
+            "segment_score_min": 0.5832,
+            "segments_committed": 5,
+            "segments_total": 5,
+            "state_confirmed": "5/6",
+            "state_confirmed_rate": 0.8333,
+            "timeline_seconds": 25.833333,
+            "timeline_valid": true,
+            "visual_handoff_mean": 0.9877
+          },
+          "project_dir": "outputs/longform_rsi/101416_1strun/projects/7b3ef5b90b2bb73c0edb57952f820c4ce8657a0e65348e613157eb3abd98d7d8",
+          "score": 0.74774,
+          "valid": true
+        },
+        "promotion:science-fair-5clip-v1:seed1": {
+          "errors": [],
+          "metrics": {
+            "audio_jump_db_max": 6.27,
+            "generation_seconds": 302.17,
+            "h3_requests": 5,
+            "keyframe_return_max": 0.6865,
+            "palette_similarity_mean": 0.8337,
+            "payoff": "1/1",
+            "payoff_rate": 1.0,
+            "segment_score_mean": 0.6039,
+            "segment_score_min": 0.5473,
+            "segments_committed": 5,
+            "segments_total": 5,
+            "state_confirmed": "3/6",
+            "state_confirmed_rate": 0.5,
+            "timeline_seconds": 25.833333,
+            "timeline_valid": true,
+            "visual_handoff_mean": 0.986
+          },
+          "project_dir": "outputs/longform_rsi/101416_1strun/projects/a3f2a7d665adf4770e1cc38771c67f8baa50b1667f806476de5b825e7be3fc09",
+          "score": 0.73876,
+          "valid": true
+        },
+        "promotion:tea-farm-5clip-v1:seed0": {
+          "errors": [],
+          "metrics": {
+            "audio_jump_db_max": 33.65,
+            "generation_seconds": 300.26,
+            "h3_requests": 5,
+            "keyframe_return_max": 0.8917,
+            "palette_similarity_mean": 0.851,
+            "payoff": "2/2",
+            "payoff_rate": 1.0,
+            "segment_score_mean": 0.6555,
+            "segment_score_min": 0.6308,
+            "segments_committed": 5,
+            "segments_total": 5,
+            "state_confirmed": "5/6",
+            "state_confirmed_rate": 0.8333,
+            "timeline_seconds": 25.833333,
+            "timeline_valid": true,
+            "visual_handoff_mean": 0.9826
+          },
+          "project_dir": "outputs/longform_rsi/101416_1strun/projects/7239464780dbe7989a117c0cb17180d089aef7c613c63a56181400f8691d9679",
+          "score": 0.82538,
+          "valid": true
+        },
+        "promotion:tea-farm-5clip-v1:seed1": {
+          "errors": [],
+          "metrics": {
+            "audio_jump_db_max": 38.53,
+            "generation_seconds": 302.86,
+            "h3_requests": 5,
+            "keyframe_return_max": 0.8512,
+            "palette_similarity_mean": 0.7878,
+            "payoff": "2/2",
+            "payoff_rate": 1.0,
+            "segment_score_mean": 0.6372,
+            "segment_score_min": 0.5212,
+            "segments_committed": 5,
+            "segments_total": 5,
+            "state_confirmed": "5/6",
+            "state_confirmed_rate": 0.8333,
+            "timeline_seconds": 25.833333,
+            "timeline_valid": true,
+            "visual_handoff_mean": 0.9834
+          },
+          "project_dir": "outputs/longform_rsi/101416_1strun/projects/b8aa5b83bdf1c2dd9cabac80059f10a4a8791a2ea8ecfaf8af89f6e2d7072b64",
+          "score": 0.81822,
+          "valid": true
+        }
+      },
+      "valid_mean": 0.792667,
+      "valid_rate": 1.0
+    },
+    "best": {
+      "candidate_hash": "c1912a62c4111a6a666289d89febb720f5bba377bd722ba9e9df9e1d980eb9e3",
+      "mean": 0.824728,
+      "per_project": {
+        "promotion:desert-caravan-5clip-v1:seed0": {
+          "errors": [],
+          "metrics": {
+            "audio_jump_db_max": 25.3,
+            "generation_seconds": 297.81,
+            "h3_requests": 5,
+            "keyframe_return_max": 0.9562,
+            "palette_similarity_mean": 0.8988,
+            "payoff": "4/4",
+            "payoff_rate": 1.0,
+            "segment_score_mean": 0.6431,
+            "segment_score_min": 0.6305,
+            "segments_committed": 5,
+            "segments_total": 5,
+            "state_confirmed": "5/6",
+            "state_confirmed_rate": 0.8333,
+            "timeline_seconds": 25.833333,
+            "timeline_valid": true,
+            "visual_handoff_mean": 0.9803
+          },
+          "project_dir": "outputs/longform_rsi/101416_1strun/projects/b303a4ac129f7be32aecac7f1d2e3c42fc3ec66ad4cf39b64c90d5ea4abd92c1",
+          "score": 0.81996,
+          "valid": true
+        },
+        "promotion:desert-caravan-5clip-v1:seed1": {
+          "errors": [],
+          "metrics": {
+            "audio_jump_db_max": 9.63,
+            "generation_seconds": 293.41,
+            "h3_requests": 5,
+            "keyframe_return_max": 0.8553,
+            "palette_similarity_mean": 0.8598,
+            "payoff": "4/4",
+            "payoff_rate": 1.0,
+            "segment_score_mean": 0.6627,
+            "segment_score_min": 0.6248,
+            "segments_committed": 5,
+            "segments_total": 5,
+            "state_confirmed": "6/6",
+            "state_confirmed_rate": 1.0,
+            "timeline_seconds": 25.833333,
+            "timeline_valid": true,
+            "visual_handoff_mean": 0.9836
+          },
+          "project_dir": "outputs/longform_rsi/101416_1strun/projects/d56f926ec2ebacb50ebc5ed111b21751c1c9117b43ab39ea9a8ed46255618e66",
+          "score": 0.8618,
+          "valid": true
+        },
+        "promotion:harbor-dawn-5clip-v1:seed0": {
+          "errors": [],
+          "metrics": {
+            "audio_jump_db_max": 16.39,
+            "generation_seconds": 300.82,
+            "h3_requests": 5,
+            "keyframe_return_max": 0.9154,
+            "palette_similarity_mean": 0.8524,
+            "payoff": "3/3",
+            "payoff_rate": 1.0,
+            "segment_score_mean": 0.6426,
+            "segment_score_min": 0.622,
+            "segments_committed": 5,
+            "segments_total": 5,
+            "state_confirmed": "5/6",
+            "state_confirmed_rate": 0.8333,
+            "timeline_seconds": 25.833333,
+            "timeline_valid": true,
+            "visual_handoff_mean": 0.9819
+          },
+          "project_dir": "outputs/longform_rsi/101416_1strun/projects/35cdf3a9474d5aba2070c3dada82a1086ca616d32c38b8c0c7dfb0864dd5ee0e",
+          "score": 0.82008,
+          "valid": true
+        },
+        "promotion:harbor-dawn-5clip-v1:seed1": {
+          "errors": [],
+          "metrics": {
+            "audio_jump_db_max": 29.63,
+            "generation_seconds": 301.05,
+            "h3_requests": 5,
+            "keyframe_return_max": 0.9449,
+            "palette_similarity_mean": 0.9483,
+            "payoff": "4/4",
+            "payoff_rate": 1.0,
+            "segment_score_mean": 0.6727,
+            "segment_score_min": 0.6444,
+            "segments_committed": 5,
+            "segments_total": 5,
+            "state_confirmed": "6/6",
+            "state_confirmed_rate": 1.0,
+            "timeline_seconds": 25.833333,
+            "timeline_valid": true,
+            "visual_handoff_mean": 0.9793
+          },
+          "project_dir": "outputs/longform_rsi/101416_1strun/projects/a0694cfcf88e4b54e94f29ad7f4ce5185d3f7e4824a14e7e6e1719d714600d7f",
+          "score": 0.86494,
+          "valid": true
+        },
+        "promotion:science-fair-5clip-v1:seed0": {
+          "errors": [],
+          "metrics": {
+            "audio_jump_db_max": 10.75,
+            "generation_seconds": 301.39,
+            "h3_requests": 5,
+            "keyframe_return_max": 0.831,
+            "palette_similarity_mean": 0.9483,
+            "payoff": "3/3",
+            "payoff_rate": 1.0,
+            "segment_score_mean": 0.6576,
+            "segment_score_min": 0.6285,
+            "segments_committed": 5,
+            "segments_total": 5,
+            "state_confirmed": "5/6",
+            "state_confirmed_rate": 0.8333,
+            "timeline_seconds": 25.833333,
+            "timeline_valid": true,
+            "visual_handoff_mean": 0.9815
+          },
+          "project_dir": "outputs/longform_rsi/101416_1strun/projects/ac77824043bf72e277109d8a8d448f6998d6ff0bb47bb987cecdd5470ef928f3",
+          "score": 0.826,
+          "valid": true
+        },
+        "promotion:science-fair-5clip-v1:seed1": {
+          "errors": [],
+          "metrics": {
+            "audio_jump_db_max": 11.12,
+            "generation_seconds": 303.65,
+            "h3_requests": 5,
+            "keyframe_return_max": 0.7773,
+            "palette_similarity_mean": 0.8999,
+            "payoff": "2/3",
+            "payoff_rate": 0.6667,
+            "segment_score_mean": 0.6401,
+            "segment_score_min": 0.6121,
+            "segments_committed": 5,
+            "segments_total": 5,
+            "state_confirmed": "5/6",
+            "state_confirmed_rate": 0.8333,
+            "timeline_seconds": 25.833333,
+            "timeline_valid": true,
+            "visual_handoff_mean": 0.9817
+          },
+          "project_dir": "outputs/longform_rsi/101416_1strun/projects/82b47ac3c87ebc2b91a2fe3611ed8dc2ca647d718f555ce0982566fdfc116b1e",
+          "score": 0.75238,
+          "valid": true
+        },
+        "promotion:tea-farm-5clip-v1:seed0": {
+          "errors": [],
+          "metrics": {
+            "audio_jump_db_max": 17.33,
+            "generation_seconds": 301.88,
+            "h3_requests": 5,
+            "keyframe_return_max": 0.8861,
+            "palette_similarity_mean": 0.8587,
+            "payoff": "2/2",
+            "payoff_rate": 1.0,
+            "segment_score_mean": 0.6583,
+            "segment_score_min": 0.6383,
+            "segments_committed": 5,
+            "segments_total": 5,
+            "state_confirmed": "6/6",
+            "state_confirmed_rate": 1.0,
+            "timeline_seconds": 25.833333,
+            "timeline_valid": true,
+            "visual_handoff_mean": 0.9805
+          },
+          "project_dir": "outputs/longform_rsi/101416_1strun/projects/34b1f0095ba34eddbd87fbf70b4d2bf0a94fcfb28007ea02484e085b2b0390cf",
+          "score": 0.85942,
+          "valid": true
+        },
+        "promotion:tea-farm-5clip-v1:seed1": {
+          "errors": [],
+          "metrics": {
+            "audio_jump_db_max": 36.6,
+            "generation_seconds": 298.04,
+            "h3_requests": 5,
+            "keyframe_return_max": 0.9132,
+            "palette_similarity_mean": 0.8518,
+            "payoff": "2/2",
+            "payoff_rate": 1.0,
+            "segment_score_mean": 0.6586,
+            "segment_score_min": 0.6411,
+            "segments_committed": 5,
+            "segments_total": 5,
+            "state_confirmed": "4/6",
+            "state_confirmed_rate": 0.6667,
+            "timeline_seconds": 25.833333,
+            "timeline_valid": true,
+            "visual_handoff_mean": 0.9823
+          },
+          "project_dir": "outputs/longform_rsi/101416_1strun/projects/1c927c1d63252d603647ced140c6a010b619d58efc6b568e5995c7a793f970e5",
+          "score": 0.79324,
+          "valid": true
+        }
+      },
+      "valid_mean": 0.824728,
+      "valid_rate": 1.0
+    },
+    "details": {
+      "compared_projects": [
+        "promotion:desert-caravan-5clip-v1:seed0",
+        "promotion:desert-caravan-5clip-v1:seed1",
+        "promotion:harbor-dawn-5clip-v1:seed0",
+        "promotion:harbor-dawn-5clip-v1:seed1",
+        "promotion:science-fair-5clip-v1:seed0",
+        "promotion:science-fair-5clip-v1:seed1",
+        "promotion:tea-farm-5clip-v1:seed0",
+        "promotion:tea-farm-5clip-v1:seed1"
+      ],
+      "excluded_invalid": [],
+      "mean_delta": 0.03206,
+      "per_project_delta": {
+        "promotion:desert-caravan-5clip-v1:seed0": 0.00408,
+        "promotion:desert-caravan-5clip-v1:seed1": 0.04806,
+        "promotion:harbor-dawn-5clip-v1:seed0": -0.0237,
+        "promotion:harbor-dawn-5clip-v1:seed1": 0.1271,
+        "promotion:science-fair-5clip-v1:seed0": 0.07826,
+        "promotion:science-fair-5clip-v1:seed1": 0.01362,
+        "promotion:tea-farm-5clip-v1:seed0": 0.03404,
+        "promotion:tea-farm-5clip-v1:seed1": -0.02498
+      },
+      "valid_rate": {
+        "base": 1.0,
+        "best": 1.0
+      }
+    },
+    "reason": "mean delta +0.0321 >= 0.02, no project regression",
+    "store_note": "store champion gepa-base.1 is not this run's base gepa-base; the gate verdict is recorded but the store champion is left untouched"
+  },
+  "restored_by": "cache_replay",
+  "run_id": "101416_1strun",
+  "search": {
+    "base_candidate_hash": "d16c2e959f5bed4c8d2e8a5f911fd061363d02b0c2c4b1e7f425fb035658e122",
+    "candidates": [
+      {
+        "candidate_hash": "04c6944eb0f270cae11b85f92ae6a55b2a2a195fc4b030a54a2b624b706b0f5a",
+        "changed_components": [
+          "script",
+          "storyboard"
+        ],
+        "scores": {
+          "train:lighthouse-storm-5clip-v1:seed0": 0.76067,
+          "train:lighthouse-storm-5clip-v1:seed1": 0.75239,
+          "train:town-fair-5clip-v1:seed0": 0.74652,
+          "train:town-fair-5clip-v1:seed1": 0.73939,
+          "validation:mountain-bus-5clip-v1:seed0": 0.74199,
+          "validation:night-market-close-5clip-v1:seed0": 0.7387,
+          "validation:rooftop-garden-5clip-v1:seed0": 0.75548,
+          "validation:snow-postman-5clip-v1:seed0": 0.74625
+        },
+        "validation_mean": 0.745605
+      },
+      {
+        "candidate_hash": "17f8c87bbf87a0ab0e9317a404848c69930852a2b2a3eb70a049d394d0a7e4f5",
+        "changed_components": [
+          "script",
+          "storyboard"
+        ],
+        "scores": {
+          "train:lighthouse-storm-5clip-v1:seed0": 0.75788,
+          "train:lighthouse-storm-5clip-v1:seed1": 0.75287,
+          "train:town-fair-5clip-v1:seed0": 0.73719,
+          "train:town-fair-5clip-v1:seed1": 0.74019,
+          "validation:mountain-bus-5clip-v1:seed0": 0.74067,
+          "validation:night-market-close-5clip-v1:seed0": 0.73794,
+          "validation:rooftop-garden-5clip-v1:seed0": 0.75755,
+          "validation:snow-postman-5clip-v1:seed0": 0.74266
+        },
+        "validation_mean": 0.744705
+      },
+      {
+        "candidate_hash": "22343e65ce3d2574d04e9f25c4a229d12064781612a1de0a02f73993ef5a88e2",
+        "changed_components": [
+          "script",
+          "storyboard"
+        ],
+        "scores": {
+          "train:lighthouse-storm-5clip-v1:seed0": 0.75762,
+          "train:lighthouse-storm-5clip-v1:seed1": 0.74553,
+          "train:town-fair-5clip-v1:seed0": 0.7399,
+          "train:town-fair-5clip-v1:seed1": 0.76138
+        },
+        "validation_mean": null
+      },
+      {
+        "candidate_hash": "2596b5a01108dd7be9c8c932115be3f7e259ce8b36025d045ba6af1634ba2492",
+        "changed_components": [
+          "script",
+          "storyboard"
+        ],
+        "scores": {
+          "train:lighthouse-storm-5clip-v1:seed0": 0.7579,
+          "train:lighthouse-storm-5clip-v1:seed1": 0.75769,
+          "train:town-fair-5clip-v1:seed0": 0.71995,
+          "train:town-fair-5clip-v1:seed1": 0.73662
+        },
+        "validation_mean": null
+      },
+      {
+        "candidate_hash": "3252791af4aa46d059001c17da8f776528bc90830929defd8001361831c74364",
+        "changed_components": [
+          "script",
+          "storyboard"
+        ],
+        "scores": {
+          "train:lighthouse-storm-5clip-v1:seed0": 0.75639,
+          "train:lighthouse-storm-5clip-v1:seed1": 0.75181,
+          "train:town-fair-5clip-v1:seed0": 0.74138,
+          "train:town-fair-5clip-v1:seed1": 0.73713,
+          "validation:mountain-bus-5clip-v1:seed0": 0.74708,
+          "validation:night-market-close-5clip-v1:seed0": 0.73681,
+          "validation:rooftop-garden-5clip-v1:seed0": 0.75249,
+          "validation:snow-postman-5clip-v1:seed0": 0.75447
+        },
+        "validation_mean": 0.747713
+      },
+      {
+        "candidate_hash": "40552c6ab572a12aaeee599ac457a9da558a2e5a93adb9c4a996b298018d076c",
+        "changed_components": [
+          "script",
+          "storyboard"
+        ],
+        "scores": {
+          "train:lighthouse-storm-5clip-v1:seed0": 0.75507,
+          "train:lighthouse-storm-5clip-v1:seed1": 0.0,
+          "train:town-fair-5clip-v1:seed0": 0.73777,
+          "train:town-fair-5clip-v1:seed1": 0.74489
+        },
+        "validation_mean": null
+      },
+      {
+        "candidate_hash": "4c7563e3bce2da173083bc2b8cafb57a0343c059b191a4f61b7bc81b7fae8ae6",
+        "changed_components": [
+          "script",
+          "storyboard"
+        ],
+        "scores": {
+          "train:lighthouse-storm-5clip-v1:seed0": 0.76026,
+          "train:lighthouse-storm-5clip-v1:seed1": 0.75998,
+          "train:town-fair-5clip-v1:seed0": 0.72923,
+          "train:town-fair-5clip-v1:seed1": 0.74734,
+          "validation:mountain-bus-5clip-v1:seed0": 0.73949,
+          "validation:night-market-close-5clip-v1:seed0": 0.74,
+          "validation:rooftop-garden-5clip-v1:seed0": 0.75117,
+          "validation:snow-postman-5clip-v1:seed0": 0.75157
+        },
+        "validation_mean": 0.745557
+      },
+      {
+        "candidate_hash": "592af80cbc365f2dfd3f940fc76cd1d4f3d4775e59c5472591580a37b141dade",
+        "changed_components": [
+          "script",
+          "storyboard"
+        ],
+        "scores": {
+          "train:lighthouse-storm-5clip-v1:seed0": 0.75609,
+          "train:lighthouse-storm-5clip-v1:seed1": 0.75943,
+          "train:town-fair-5clip-v1:seed0": 0.73127,
+          "train:town-fair-5clip-v1:seed1": 0.73272
+        },
+        "validation_mean": null
+      },
+      {
+        "candidate_hash": "63addfde66f01ca48d832b40cedf225ac29e15c1585c641efaef5b2e78f4e1c1",
+        "changed_components": [
+          "storyboard"
+        ],
+        "scores": {
+          "train:lighthouse-storm-5clip-v1:seed0": 0.73996,
+          "train:lighthouse-storm-5clip-v1:seed1": 0.74436,
+          "train:town-fair-5clip-v1:seed0": 0.72291,
+          "train:town-fair-5clip-v1:seed1": 0.0
+        },
+        "validation_mean": null
+      },
+      {
+        "candidate_hash": "6ce1d46e42ebd2673834ff370879b5351b3965653430eace89c6a32bb5b84747",
+        "changed_components": [
+          "script",
+          "storyboard"
+        ],
+        "scores": {
+          "train:lighthouse-storm-5clip-v1:seed0": 0.76182,
+          "train:lighthouse-storm-5clip-v1:seed1": 0.75351,
+          "train:town-fair-5clip-v1:seed0": 0.72615,
+          "train:town-fair-5clip-v1:seed1": 0.73947,
+          "validation:mountain-bus-5clip-v1:seed0": 0.73622,
+          "validation:night-market-close-5clip-v1:seed0": 0.72971,
+          "validation:rooftop-garden-5clip-v1:seed0": 0.7524,
+          "validation:snow-postman-5clip-v1:seed0": 0.74242
+        },
+        "validation_mean": 0.740187
+      },
+      {
+        "candidate_hash": "6f63fe9662a39ddf4ceed879ee11277cbfdb32f48d818541fbe24e450288368c",
+        "changed_components": [
+          "script",
+          "storyboard"
+        ],
+        "scores": {
+          "train:lighthouse-storm-5clip-v1:seed0": 0.76117,
+          "train:lighthouse-storm-5clip-v1:seed1": 0.74875,
+          "train:town-fair-5clip-v1:seed0": 0.73364,
+          "train:town-fair-5clip-v1:seed1": 0.7371
+        },
+        "validation_mean": null
+      },
+      {
+        "candidate_hash": "771eb061ed8351f1fa1a13cbe2cec8c694fda446dea843a1360bbb18373ee51b",
+        "changed_components": [
+          "script",
+          "storyboard"
+        ],
+        "scores": {
+          "train:lighthouse-storm-5clip-v1:seed0": 0.75236,
+          "train:lighthouse-storm-5clip-v1:seed1": 0.74911,
+          "train:town-fair-5clip-v1:seed0": 0.73549,
+          "train:town-fair-5clip-v1:seed1": 0.74233
+        },
+        "validation_mean": null
+      },
+      {
+        "candidate_hash": "7a26b74b9e30d4787fdbb513ec749d7799985e85016fd10823235ff2e822fb31",
+        "changed_components": [
+          "script",
+          "storyboard"
+        ],
+        "scores": {
+          "train:lighthouse-storm-5clip-v1:seed0": 0.0,
+          "train:lighthouse-storm-5clip-v1:seed1": 0.74635,
+          "train:town-fair-5clip-v1:seed0": 0.74022,
+          "train:town-fair-5clip-v1:seed1": 0.74432
+        },
+        "validation_mean": null
+      },
+      {
+        "candidate_hash": "92670bd668b3539b08db51b4a2a9860590e42e1da3aa615a6b61052b500aada3",
+        "changed_components": [
+          "script",
+          "storyboard"
+        ],
+        "scores": {
+          "train:lighthouse-storm-5clip-v1:seed0": 0.75475,
+          "train:lighthouse-storm-5clip-v1:seed1": 0.75696,
+          "train:town-fair-5clip-v1:seed0": 0.73091,
+          "train:town-fair-5clip-v1:seed1": 0.74226
+        },
+        "validation_mean": null
+      },
+      {
+        "candidate_hash": "9b73a9fcf93849331b569fcdd8ff3c4ae084e97ca4fd108a20ba8fba4cbd2fb9",
+        "changed_components": [
+          "script",
+          "storyboard"
+        ],
+        "scores": {
+          "train:lighthouse-storm-5clip-v1:seed0": 0.75519,
+          "train:lighthouse-storm-5clip-v1:seed1": 0.75979,
+          "train:town-fair-5clip-v1:seed0": 0.72822,
+          "train:town-fair-5clip-v1:seed1": 0.73593
+        },
+        "validation_mean": null
+      },
+      {
+        "candidate_hash": "af65fddd91f2260a138c71dc3e017a643a2a820a38f09b4dd61b5a969c5737aa",
+        "changed_components": [
+          "script",
+          "storyboard"
+        ],
+        "scores": {
+          "train:lighthouse-storm-5clip-v1:seed0": 0.76084,
+          "train:lighthouse-storm-5clip-v1:seed1": 0.76108,
+          "train:town-fair-5clip-v1:seed0": 0.73604,
+          "train:town-fair-5clip-v1:seed1": 0.74106,
+          "validation:mountain-bus-5clip-v1:seed0": 0.73518,
+          "validation:night-market-close-5clip-v1:seed0": 0.74798,
+          "validation:rooftop-garden-5clip-v1:seed0": 0.76085,
+          "validation:snow-postman-5clip-v1:seed0": 0.7543
+        },
+        "validation_mean": 0.749578
+      },
+      {
+        "candidate_hash": "c1912a62c4111a6a666289d89febb720f5bba377bd722ba9e9df9e1d980eb9e3",
+        "changed_components": [
+          "script",
+          "storyboard"
+        ],
+        "scores": {
+          "train:lighthouse-storm-5clip-v1:seed0": 0.75758,
+          "train:lighthouse-storm-5clip-v1:seed1": 0.74898,
+          "train:town-fair-5clip-v1:seed0": 0.74276,
+          "train:town-fair-5clip-v1:seed1": 0.75554,
+          "validation:mountain-bus-5clip-v1:seed0": 0.747,
+          "validation:night-market-close-5clip-v1:seed0": 0.74155,
+          "validation:rooftop-garden-5clip-v1:seed0": 0.75787,
+          "validation:snow-postman-5clip-v1:seed0": 0.76008
+        },
+        "validation_mean": 0.751625
+      },
+      {
+        "candidate_hash": "c863aae2047f1fd10c58607efe2f7fa8d0aba784dc5211e41fb669e2241d5709",
+        "changed_components": [
+          "script"
+        ],
+        "scores": {
+          "train:lighthouse-storm-5clip-v1:seed0": 0.75093,
+          "train:lighthouse-storm-5clip-v1:seed1": 0.75855,
+          "train:town-fair-5clip-v1:seed0": 0.72819,
+          "train:town-fair-5clip-v1:seed1": 0.73692,
+          "validation:mountain-bus-5clip-v1:seed0": 0.73944,
+          "validation:night-market-close-5clip-v1:seed0": 0.72492,
+          "validation:rooftop-garden-5clip-v1:seed0": 0.75696,
+          "validation:snow-postman-5clip-v1:seed0": 0.75328
+        },
+        "validation_mean": 0.74365
+      },
+      {
+        "candidate_hash": "ca0063821c010d7bf2b552ec152cc4d309cd5543137f1718ddf2b0e06bf2ddea",
+        "changed_components": [
+          "script",
+          "storyboard"
+        ],
+        "scores": {
+          "train:lighthouse-storm-5clip-v1:seed0": 0.74898,
+          "train:lighthouse-storm-5clip-v1:seed1": 0.74167,
+          "train:town-fair-5clip-v1:seed0": 0.72874,
+          "train:town-fair-5clip-v1:seed1": 0.72789
+        },
+        "validation_mean": null
+      },
+      {
+        "candidate_hash": "d16c2e959f5bed4c8d2e8a5f911fd061363d02b0c2c4b1e7f425fb035658e122",
+        "changed_components": [],
+        "scores": {
+          "train:lighthouse-storm-5clip-v1:seed0": 0.73621,
+          "train:lighthouse-storm-5clip-v1:seed1": 0.75436,
+          "train:town-fair-5clip-v1:seed0": 0.73815,
+          "train:town-fair-5clip-v1:seed1": 0.72352,
+          "validation:mountain-bus-5clip-v1:seed0": 0.71765,
+          "validation:night-market-close-5clip-v1:seed0": 0.7346,
+          "validation:rooftop-garden-5clip-v1:seed0": 0.74003,
+          "validation:snow-postman-5clip-v1:seed0": 0.72511
+        },
+        "validation_mean": 0.729348
+      },
+      {
+        "candidate_hash": "d23f5e6de03593553daf0992c26086951d950b0942594a7f4a910b1a750ebb3e",
+        "changed_components": [
+          "script",
+          "storyboard"
+        ],
+        "scores": {
+          "train:lighthouse-storm-5clip-v1:seed0": 0.74609,
+          "train:lighthouse-storm-5clip-v1:seed1": 0.75596,
+          "train:town-fair-5clip-v1:seed0": 0.74117,
+          "train:town-fair-5clip-v1:seed1": 0.73113
+        },
+        "validation_mean": null
+      },
+      {
+        "candidate_hash": "fab614d1359a0a74d1c7bfc6ea07778f11c6f7c22c350eebdb6428fcf363dfcc",
+        "changed_components": [
+          "script"
+        ],
+        "scores": {
+          "train:lighthouse-storm-5clip-v1:seed0": 0.75307,
+          "train:lighthouse-storm-5clip-v1:seed1": 0.75723,
+          "train:town-fair-5clip-v1:seed0": 0.72918,
+          "train:town-fair-5clip-v1:seed1": 0.72765
+        },
+        "validation_mean": null
+      }
+    ],
+    "failure": null,
+    "missing_evaluations": 60,
+    "num_candidates": 22,
+    "status": "succeeded"
+  },
+  "seeds": {
+    "promotion": [
+      0,
+      1
+    ],
+    "test": [
+      0
+    ],
+    "train": [
+      0,
+      1
+    ],
+    "validation": [
+      0
+    ]
+  },
+  "splits": {
+    "promotion": [
+      "desert-caravan-5clip-v1",
+      "desert-caravan-5clip-v1",
+      "harbor-dawn-5clip-v1",
+      "harbor-dawn-5clip-v1",
+      "science-fair-5clip-v1",
+      "science-fair-5clip-v1",
+      "tea-farm-5clip-v1",
+      "tea-farm-5clip-v1"
+    ],
+    "test": [
+      "autumn-orchard-5clip-v1",
+      "subway-musician-5clip-v1"
+    ],
+    "train": [
+      "lighthouse-storm-5clip-v1",
+      "lighthouse-storm-5clip-v1",
+      "town-fair-5clip-v1",
+      "town-fair-5clip-v1"
+    ],
+    "validation": [
+      "mountain-bus-5clip-v1",
+      "night-market-close-5clip-v1",
+      "rooftop-garden-5clip-v1",
+      "snow-postman-5clip-v1"
+    ]
+  },
+  "started_at": "2026-10-16T06:34:12+00:00",
+  "status": "succeeded",
+  "termination": {
+    "condition": "completed",
+    "detail": null,
+    "meaning": "搜索、promotion、test 全部跑完，正常结束",
+    "per_iteration_h3": 60,
+    "phase_at_stop": "test",
+    "search_stop": "restored_from_cache",
+    "status": "succeeded"
+  },
+  "test": {
+    "base": {
+      "candidate_hash": "d16c2e959f5bed4c8d2e8a5f911fd061363d02b0c2c4b1e7f425fb035658e122",
+      "mean": 0.71506,
+      "per_project": {
+        "test:autumn-orchard-5clip-v1:seed0": {
+          "errors": [],
+          "metrics": {
+            "audio_jump_db_max": 37.15,
+            "generation_seconds": 300.65,
+            "h3_requests": 5,
+            "keyframe_return_max": 0.8123,
+            "palette_similarity_mean": 0.8652,
+            "payoff": "1/1",
+            "payoff_rate": 1.0,
+            "segment_score_mean": 0.6336,
+            "segment_score_min": 0.5643,
+            "segments_committed": 5,
+            "segments_total": 5,
+            "state_confirmed": "3/6",
+            "state_confirmed_rate": 0.5,
+            "timeline_seconds": 25.833333,
+            "timeline_valid": true,
+            "visual_handoff_mean": 0.9835
+          },
+          "project_dir": "outputs/longform_rsi/101416_1strun/projects/37542fe003546e090ca791aa2fdacaabd6c64b89567275e46af35d38681dee30",
+          "score": 0.75014,
+          "valid": true
+        },
+        "test:subway-musician-5clip-v1:seed0": {
+          "errors": [],
+          "metrics": {
+            "audio_jump_db_max": 9.39,
+            "generation_seconds": 305.37,
+            "h3_requests": 5,
+            "keyframe_return_max": 0.969,
+            "palette_similarity_mean": 0.8404,
+            "payoff": "2/3",
+            "payoff_rate": 0.6667,
+            "segment_score_mean": 0.6254,
+            "segment_score_min": 0.5947,
+            "segments_committed": 5,
+            "segments_total": 5,
+            "state_confirmed": "3/6",
+            "state_confirmed_rate": 0.5,
+            "timeline_seconds": 25.833333,
+            "timeline_valid": true,
+            "visual_handoff_mean": 0.9824
+          },
+          "project_dir": "outputs/longform_rsi/101416_1strun/projects/41a674d9e23b3199cb0ea81ab63fa1c90d653dd3436ff3a00a502365f7b4d1e5",
+          "score": 0.67998,
+          "valid": true
+        }
+      },
+      "valid_mean": 0.71506,
+      "valid_rate": 1.0
+    },
+    "best": {
+      "candidate_hash": "c1912a62c4111a6a666289d89febb720f5bba377bd722ba9e9df9e1d980eb9e3",
+      "mean": 0.72286,
+      "per_project": {
+        "test:autumn-orchard-5clip-v1:seed0": {
+          "errors": [],
+          "metrics": {
+            "audio_jump_db_max": 30.48,
+            "generation_seconds": 304.89,
+            "h3_requests": 5,
+            "keyframe_return_max": 0.9632,
+            "palette_similarity_mean": 0.9585,
+            "payoff": "2/2",
+            "payoff_rate": 1.0,
+            "segment_score_mean": 0.6426,
+            "segment_score_min": 0.6268,
+            "segments_committed": 5,
+            "segments_total": 5,
+            "state_confirmed": "3/6",
+            "state_confirmed_rate": 0.5,
+            "timeline_seconds": 25.833333,
+            "timeline_valid": true,
+            "visual_handoff_mean": 0.9739
+          },
+          "project_dir": "outputs/longform_rsi/101416_1strun/projects/b53876661f001a27db2d8ab249a51e99aeec25c70db2a558321bae8ac3685f07",
+          "score": 0.75182,
+          "valid": true
+        },
+        "test:subway-musician-5clip-v1:seed0": {
+          "errors": [],
+          "metrics": {
+            "audio_jump_db_max": 21.27,
+            "generation_seconds": 301.92,
+            "h3_requests": 5,
+            "keyframe_return_max": 0.9772,
+            "palette_similarity_mean": 0.8571,
+            "payoff": "3/4",
+            "payoff_rate": 0.75,
+            "segment_score_mean": 0.619,
+            "segment_score_min": 0.6092,
+            "segments_committed": 5,
+            "segments_total": 5,
+            "state_confirmed": "3/6",
+            "state_confirmed_rate": 0.5,
+            "timeline_seconds": 25.833333,
+            "timeline_valid": true,
+            "visual_handoff_mean": 0.9815
+          },
+          "project_dir": "outputs/longform_rsi/101416_1strun/projects/01c59773bf4a967dfa094d3554255be88414e8d5bf0e02900692628520591831",
+          "score": 0.6939,
+          "valid": true
+        }
+      },
+      "valid_mean": 0.72286,
+      "valid_rate": 1.0
+    }
+  },
+  "test_summary": {
+    "base": 0.71506,
+    "best": 0.72286
+  },
+  "test_valid_summary": {
+    "base": {
+      "valid_mean": 0.71506,
+      "valid_rate": 1.0
+    },
+    "best": {
+      "valid_mean": 0.72286,
+      "valid_rate": 1.0
+    }
+  }
+}
