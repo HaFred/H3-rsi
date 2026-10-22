@@ -10,21 +10,72 @@
     },
     "101416_1strun": {
       "source_checkout": "D:\\fredcode\\rsi-1st-impl-design\\benchmarks\\longform_example\\101416_1strun",
-      "start_source": "events.jsonl:first project_done (already in progress)",
-      "finish_source": "events.jsonl:last run_finished",
-      "includes_interruptions": true,
-      "full_duration_is_lower_bound": true,
+      "start_source": "manifest.json:created_at, written when the run initialised; it predates the first logged event (2026-10-14T16:51:22+00:00, the first Train calibration project_done)",
+      "finish_source": "events.jsonl:last run_finished (status succeeded)",
+      "spans_multiple_processes": true,
+      "downtime_excluded": true,
+      "sessions": [
+        {
+          "index": 1,
+          "started_at": "2026-10-14T16:46:17+00:00",
+          "finished_at": "2026-10-15T03:13:06+00:00",
+          "elapsed_seconds": 37609.0,
+          "start_evidence": "manifest.json:created_at; 20:36 later calibration finished and search started, with budget.used.search=20 already spent on the four Train base projects",
+          "end_evidence": "events.jsonl run_finished status=interrupted, condition=service_failure, detail='service failure during search: umbrella-arrival: pipeline: TimeoutError: timed out'",
+          "work": "base calibration (4 Train projects, 20 requests) then search; Search ledger 595 of 1,000 on exit"
+        },
+        {
+          "index": 2,
+          "started_at": "2026-10-15T10:33:04+00:00",
+          "finished_at": "2026-10-15T10:55:12+00:00",
+          "elapsed_seconds": 1328.0,
+          "start_evidence": "events.jsonl calibrated + search_started at the same second, i.e. process start with calibration restored from cache (budget.used.search=595)",
+          "end_evidence": "events.jsonl run_finished status=interrupted, condition=service_failure after search_finished (best candidate d16c2e95)",
+          "work": "finished search, wrote report; promotion ladder aborted on unreachable text LLM"
+        },
+        {
+          "index": 3,
+          "started_at": "2026-10-16T03:05:12+00:00",
+          "finished_at": "2026-10-16T04:28:11+00:00",
+          "elapsed_seconds": 4979.0,
+          "start_evidence": "events.jsonl search_replayed + search_restored at the same second; restore to promotion took 1 s in session 4, so process start is within about a second of this timestamp",
+          "end_evidence": "last event in this session: project_done promotion:tea-farm-5clip-v1:seed1. There is no run_finished or session-end record before the next restore, so the process died after its final logged evaluation; the counted end is the last recorded activity, not a recorded exit",
+          "end_is_lower_bound": true,
+          "work": "16 promotion project evaluations (8 cases x 2 arms); Promotion ledger 1 -> 80 of 120; the gate verdict itself was not written"
+        },
+        {
+          "index": 4,
+          "started_at": "2026-10-16T06:34:12+00:00",
+          "finished_at": "2026-10-16T06:55:08+00:00",
+          "elapsed_seconds": 1256.2,
+          "start_evidence": "events.jsonl search_restored (cache replay); promotion verdict accepted 1 s later at 06:34:13",
+          "end_evidence": "events.jsonl run_finished status=succeeded at 06:55:09; report.json records 1256.2 s for this cache-replay session",
+          "work": "gate verdict from restored state, then Test; Test ledger 1 -> 21 of 50"
+        }
+      ],
+      "downtime_seconds": {
+        "between_session_1_and_2": 26398.0,
+        "between_session_2_and_3": 58200.0,
+        "between_session_3_and_4": 7561.0,
+        "total": 92159.0
+      },
+      "net_active_session_seconds": 45172.2,
+      "net_active_session_is_lower_bound": true,
+      "net_active_session_upper_bound_seconds": 52733.2,
+      "net_active_session_upper_bound_condition": "only if session 3 stayed alive but idle from its last logged event (04:28:11) until the next restore (06:34:12); the log contains no activity in that interval",
+      "timestamp_span_seconds": 137331.2,
+      "timestamp_span_from": "manifest.json:created_at",
+      "timestamp_span_from_first_event_seconds": 137027.0,
       "final_cache_replay_session": {
         "started_at": "2026-10-16T06:34:12+00:00",
         "finished_at": "2026-10-16T06:55:08+00:00",
         "elapsed_seconds": 1256.2,
         "restored_by": "cache_replay"
       },
-      "started_at_or_first_event": "2026-10-14T16:51:22+00:00",
+      "started_at_or_first_event": "2026-10-14T16:46:17+00:00",
       "finished_at_or_last_event": "2026-10-16T06:55:09+00:00",
-      "timestamp_span_seconds": 137027.0,
-      "net_active_session_seconds": null,
-      "net_duration_status": "DGX_PLACEHOLDER: recover original start, all resume/session ends, and sum non-overlapping active wall-clock intervals excluding inter-session downtime; first local event is project completion and 2026-10-16T03:05:12Z recovery lacks explicit end."
+      "net_duration_status": "recovered and reconciled: four process sessions are delimited by the manifest creation timestamp and the six session events in events.jsonl (2x calibrated, 2x search_started, 1x search_replayed, 3x search_restored, 3x run_finished). 45,172.2 s of recorded active wall time; the only uncertainty is the unrecorded tail of session 3, which died without a finish record and contributes at most 7,561 s.",
+      "timestamp_span_note": "manifest created_at -> 2026-10-16T06:55:08.2 (report value for the final session); the run_finished event is logged at 06:55:09, a 0.8 s difference between the report's elapsed value and the event second"
     },
     "101704_1strun": {
       "source": "longform/101704_1strun/report.json",

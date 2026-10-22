@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "animated_preview",
   "source_mapping": "slides_md/13-town-fair-videos.md; stage labels and validation means from slides_md/12-town-fair-lineage.md",
-  "scope": "Presentation town-fair lineage associated with 101416, separate from 101704 results. Means cover four validation projects, not these videos. Source slide notes say Train seeds differ; per-video seeds and original project-directory hashes are not established by the extracted MP4s.",
+  "scope": "Presentation town-fair lineage associated with 101416, separate from 101704 results. Means cover four validation projects, not these videos. Each preview is one Train production, resolved by byte identity between its source MP4 and the matched project's timeline.mp4: base Train seed 1, script rewrite Train seed 0, storyboard Train seed 1, final winner Train seed 1. The seed-0 alternatives of the storyboard and final-winner candidates hash to different timelines.",
   "encode": {
     "tool": "ffmpeg version 7.0.1-essentials_build-www.gyan.dev Copyright (c) 2000-2024 the FFmpeg developers",
     "width_px": 640,
@@ -74,7 +74,14 @@
         "-loop",
         "0",
         "slides_md/previews/town-fair_d16c2e95_base.webp"
-      ]
+      ],
+      "resolved_source": {
+        "case_id": "train:town-fair-5clip-v1:seed1",
+        "seed": 1,
+        "project_dir": "e51364b4275d90a511b9599c4827e8ec6a7c09cda5804d81853712d1a561386b",
+        "run_timeline_path": "outputs/longform_rsi/101416_1strun/projects/e51364b4275d90a511b9599c4827e8ec6a7c09cda5804d81853712d1a561386b/timeline.mp4",
+        "proof": "sha256(source mp4) == sha256(project timeline.mp4)"
+      }
     },
     {
       "stage": "script",
@@ -136,7 +143,14 @@
         "-loop",
         "0",
         "slides_md/previews/town-fair_c863aae2_script.webp"
-      ]
+      ],
+      "resolved_source": {
+        "case_id": "train:town-fair-5clip-v1:seed0",
+        "seed": 0,
+        "project_dir": "51e22c0d5bb51b4d9a29ba3d6f01054e4d405a4ceb52c83e7d1ef0abfb49d96d",
+        "run_timeline_path": "outputs/longform_rsi/101416_1strun/projects/51e22c0d5bb51b4d9a29ba3d6f01054e4d405a4ceb52c83e7d1ef0abfb49d96d/timeline.mp4",
+        "proof": "sha256(source mp4) == sha256(project timeline.mp4)"
+      }
     },
     {
       "stage": "storyboard",
@@ -198,7 +212,14 @@
         "-loop",
         "0",
         "slides_md/previews/town-fair_3252791a_storyboard.webp"
-      ]
+      ],
+      "resolved_source": {
+        "case_id": "train:town-fair-5clip-v1:seed1",
+        "seed": 1,
+        "project_dir": "e17b3a0dc1ceeb5e722a67ba0a36eb066123aaa742959d48b5833b259abb4585",
+        "run_timeline_path": "outputs/longform_rsi/101416_1strun/projects/e17b3a0dc1ceeb5e722a67ba0a36eb066123aaa742959d48b5833b259abb4585/timeline.mp4",
+        "proof": "sha256(source mp4) == sha256(project timeline.mp4)"
+      }
     },
     {
       "stage": "script-again",
@@ -260,7 +281,14 @@
         "-loop",
         "0",
         "slides_md/previews/town-fair_c1912a62_script-again.webp"
-      ]
+      ],
+      "resolved_source": {
+        "case_id": "train:town-fair-5clip-v1:seed1",
+        "seed": 1,
+        "project_dir": "b068f9914c4e79d03497ebb4c6bbb96fe13a29ac15232ce0d6f4e9347f2ea667",
+        "run_timeline_path": "outputs/longform_rsi/101416_1strun/projects/b068f9914c4e79d03497ebb4c6bbb96fe13a29ac15232ce0d6f4e9347f2ea667/timeline.mp4",
+        "proof": "sha256(source mp4) == sha256(project timeline.mp4)"
+      }
     }
   ],
   "segment_previews": [

@@ -15,7 +15,7 @@ S_project/R_project are means across **four Validation projects**, rather than t
 
 The five intended segment scenes are red-umbrella arrival, park kite, fountain cyclist, bakery preparation, and pottery-stall opening. Each row's images correspond to the videos on [page 13](13-town-fair-videos.md), with one final frame per segment. Each project contains 5 × 124 frames, about 25.83 seconds.
 
-Final frames show endings, rather than complete actions or proof that each intended scene was fulfilled. Train seeds differ across these rows; the worked example resolves the first two by byte identity (base seed 1, script rewrite seed 0).
+Final frames show endings, rather than complete actions or proof that each intended scene was fulfilled. Train seeds differ across these rows: base, storyboard and script-again are seed 1, and the first script rewrite is seed 0. The worked example resolves all four by byte identity — base seed 1 and script rewrite seed 0 in [§8.1](subdocs_examples/11-town-fair-longform-production.md#81-resolve-the-two-original-production-identities), storyboard and final winner in [§8.2](subdocs_examples/11-town-fair-longform-production.md#82-storyboard-and-final-winner-identities).
 
 The [detailed five-clip production comparison](subdocs_examples/11-town-fair-longform-production.md) expands the Base and first Script rewrite into segment briefs, agent calls, H3 requests, state transitions and stitching. Its runtime records were recovered from the 10x run; the comparison does not cover the later two rewrites.
 

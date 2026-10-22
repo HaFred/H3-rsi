@@ -10,6 +10,8 @@ Source: PPTX page 14 of 17.
 4. Discard children without strict Train-score improvement. Evaluate passing children on the full Validation set and update the Pareto frontier.
 5. At search completion, select the winner by mean Validation S_project, then submit it to the independent Promotion Gate.
 
+One iteration here costs 20 H3 requests per proposed child (40 if accepted) plus a fixed base of 40, because one project generation is five clips; the accounting derives from `G·[m·(P+1) + v·(A+1)]` in [page 6](06-gepa-loops.md#what-one-iteration-costs).
+
 ### Inner loop: execute five segments sequentially
 
 Project and confirmed facts → current-segment brief → sequential H3 generation (text for the first, first-frame conditioning thereafter) → visual evidence/payoff judgments → update context, withholding unconfirmed facts → concatenate and evaluate `timeline.mp4` and project metrics.

@@ -37,6 +37,21 @@ For example, if val-001 is led by A at 0.80 and val-002 by B at 0.78, a new C sc
 
 Every candidate/task evaluation reruns Script -> Storyboard -> Director and generates video with frozen H3. The evaluator measures the current clip reward `R_clip`; search derives `S_clip = R_clip - axis-regression penalty` from that same case. Promotion later generates and scores independent held-out cases using their own `R_clip` and quality safeguards. R_clip is not confined to Promotion/Test, and search never uses their future scores. See [the scoring definitions](07-data-splits-and-scores.md).
 
+### What one iteration costs
+
+An iteration is one parent selection plus at most one reflective mutation, so **candidates ≤ iterations** (counting children, excluding Base): `101416` ran 70 iterations for 21 candidates, `101704` 73 for 43. H3 spend follows candidates, not iterations.
+
+| Step of one iteration | H3 requests (long-form: G = 5 clips, m = 4 Train cases, v = 4 Validation cases) |
+| --- | --- |
+| Parent re-scored on the Train minibatch | **0** — cached per (candidate, case); still counted as metric calls |
+| Reflection call to Qwen3.5-9B | **0** — text only |
+| Child generated on every Train case (this *is* the accept test) | **G·m = 20** |
+| Child generated on Validation, accepted children only | **G·v = 20** |
+
+So an iteration costs **0** H3 requests if reflection is killed, **20** if a child is proposed, **40** if that child is accepted. The budget reserves the worst case, `G(2m+v) = 60`, which is where "~16 iterations per 1,000 requests" comes from. Short-clip tasks have m = v = 2 and G = 1, so the same rule gives 2 or 4.
+
+`H3_search = G·[m·(P+1) + v·(A+1)]` for P proposals and A acceptances: `101416` 5(4·22 + 4·9) = 620 recorded as 615, `101704` 5(4·44 + 4·4) = 960 recorded as 950. The Train and Validation case counts are the 88 + 36 and 176 + 16 rows of the [long-form comparison table](subdocs_examples/README.md). Because a killed iteration still spends 4 metric calls on its parent, the metric-call cap can bite before the H3 budget: `101416` stopped at 400 metric calls having used only 615/1,000 requests, whereas `101704` reached 480 metric calls and 950/1,000 requests.
+
 If the gate accepts, promote the winner to champion and update `champion.txt`. If rejected, retain the existing champion; the search winner remains available without changing deployment. Champion inheritance as the seed of a later run is designed, but a second run was not demonstrated in this experiment.
 
 ---

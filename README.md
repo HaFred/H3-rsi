@@ -29,7 +29,7 @@ The original generation requirements are available in [benchmarks/](benchmarks/R
 
 Run **`101416_1strun`** searches a harness by generating complete five-clip projects. Its final winner, **`c1912a62`**, improves mean Validation search score and **passes the independent promotion gate**. The champion store nevertheless stays unchanged because its current champion does not match this run's expected base. The town-fair videos below illustrate the same run's recursive rewrite lineage, with remaining failures visible alongside the score gains.
 
-**Net run duration: [DGX_PLACEHOLDER].** Recover and sum active-session wall time across the original process and all resumes, excluding inter-session downtime. The local report's 20 min 56 s covers only the final cache-replay session. [Timing evidence and recovery instructions](slides_md/subdocs_examples/README.md#how-search-and-promotion-relate).
+**Net run duration: 12 h 33 min** of recorded active-session wall time (**45,172 s**, lower bound) across **four processes**, with **25 h 36 min** of downtime between sessions excluded. The report's 20 min 56 s covers only the final cache-replay session. [Session table, calculation and timing evidence](slides_md/subdocs_examples/README.md#how-search-and-promotion-relate).
 
 ### 2.1. What one evaluation generates
 
@@ -107,34 +107,48 @@ The final edit increases S_project while reducing R_project relative to `3252791
 
 These **animated WebP previews** play the complete five-segment [town-fair production](benchmarks/longform_town_fair_5clip_v1.yaml), about 25.83 s each. Click a preview for the source MP4 with sound. All four harnesses belong to **`101416_1strun`**, the same search summarized above; these particular videos are **Train productions**, not the held-out Promotion movies.
 
-The displayed rows use different Train seeds. Byte identity establishes base seed **1** and first Script rewrite seed **0** in the [worked example](slides_md/subdocs_examples/11-town-fair-longform-production.md#81-resolve-the-two-original-production-identities). **[DGX_PLACEHOLDER]** Resolve the original case/seed/project-directory identities for `3252791a` and `c1912a62` by matching `media6.mp4`/`media7.mp4` hashes to the run's timelines. Do not infer seed from appearance. These are lineage illustrations, not a controlled same-seed comparison.
+The four rows are single Train productions, not held-out cases, and they do not all share one seed: base `d16c2e95`, storyboard `3252791a` and final winner `c1912a62` are the Train **seed 1** production, while the first Script rewrite `c863aae2` is Train **seed 0**. All four identities were resolved from bytes, not appearance: each MP4 is byte-identical to exactly one of the index's 149 stitched timelines, and the other seed of the same candidate hashes differently. See [§8.1](slides_md/subdocs_examples/11-town-fair-longform-production.md#81-resolve-the-two-original-production-identities) and [§8.2](slides_md/subdocs_examples/11-town-fair-longform-production.md#82-storyboard-and-final-winner-identities) of the worked example. Base, storyboard and final winner form a same-seed lineage, and the storyboard-versus-winner pair is directly comparable; the Script rewrite differs in seed as well as in prompt.
+
+<details>
+<summary>Source identity of each preview: case, seed, project directory and byte proof</summary>
+
+| Stage | Harness | Case id | Seed | Project directory | `sha256(timeline.mp4)` = `sha256(mediaN.mp4)` |
+| --- | --- | --- | ---: | --- | --- |
+| Base | `d16c2e95` | `train:town-fair-5clip-v1:seed1` | 1 | `e51364b4275d90a511b9599c4827e8ec6a7c09cda5804d81853712d1a561386b` | `629240f030c92c314e700d874f39f976805b3ade93caaa79eccd38c8fa5917a7` |
+| Script rewrite | `c863aae2` | `train:town-fair-5clip-v1:seed0` | 0 | `51e22c0d5bb51b4d9a29ba3d6f01054e4d405a4ceb52c83e7d1ef0abfb49d96d` | `9905483d9076add66ee1f8bbf980416700eccf2f76c874a94ec59e10f436f99d` |
+| Storyboard rewrite | `3252791a` | `train:town-fair-5clip-v1:seed1` | 1 | `e17b3a0dc1ceeb5e722a67ba0a36eb066123aaa742959d48b5833b259abb4585` | `561588f7ac43b59101a1a175843511d3d7a71dbc7a2f47d08f9b8668ac342c3c` |
+| Script rewrite again | `c1912a62` | `train:town-fair-5clip-v1:seed1` | 1 | `b068f9914c4e79d03497ebb4c6bbb96fe13a29ac15232ce0d6f4e9347f2ea667` | `4637eb7034927e08fab07e03efbe66b8ea6588255cb517ad8dfa6ec4318e8700` |
+
+Rejected alternatives under `outputs/longform_rsi/101416_1strun/projects/`: base seed 0 `0a3c683f…` hashes to `8159671e…f1941`; script rewrite seed 1 `37320791…` to `6a9dd098…18d6`; storyboard seed 0 `bbb388da…` to `16456132…4247e8c5`; final winner seed 0 `634dd89b…` to `dd2e52c1…42da2d6c`. Each matched `run.json` records the full candidate hash, the case id and seed, and the code and policy hashes; `videos.json` lists the same rows as `valid: true`. As an independent check that does not use the video bytes, all four seed-0 projects have a per-segment `harness_hash` equal to their project-level `artifact.harness_hash`, and all four seed-1 projects have a per-segment hash that differs (`6840390c…`, `7856b9f7…`, `09417f66…`, `0e7800c1…`), because `policy.apply(config, seed=1)` alters the hashed config.
+
+</details>
 
 Previews are 640 px wide at 8 fps, without audio or overlaid labels; [preview provenance](slides_md/previews/provenance.json) records the encoding and media hashes. Segments play in order: `umbrella-arrival` → `kite-park` → `fountain-arrival` → `bakery-prep` → `potter-opening`. The [world setting and segment requirements](slides_md/17-findings-and-pilot-prompts.md#town-fair-manually-constructed-five-segment-production-pilot) explain the intended actions. **Scores beside the four previews are means over four Validation projects, not scores for these town-fair videos.**
 
-**Base** - `d16c2e95`, mean Validation S_project 0.7293 / R_project 0.7645
+**Base** - `d16c2e95`, Train seed 1 preview; mean Validation S_project 0.7293 / R_project 0.7645
 
 <a href="slides_md/assets/media4.mp4"><img src="slides_md/previews/town-fair_d16c2e95_base.webp" width="640" alt="Base harness d16c2e95: complete five-segment town-fair timeline"></a>
 
-**1. Script rewrite** - `c863aae2` (round 1), mean Validation S_project 0.7436 / R_project 0.7698
+**1. Script rewrite** - `c863aae2` (round 1), Train seed 0 preview; mean Validation S_project 0.7436 / R_project 0.7698
 
 <a href="slides_md/assets/media5.mp4"><img src="slides_md/previews/town-fair_c863aae2_script.webp" width="640" alt="Script rewrite c863aae2: complete five-segment town-fair timeline"></a>
 
-**2. Storyboard rewrite** - `3252791a` (round 7), mean Validation S_project 0.7477 / R_project 0.7834
+**2. Storyboard rewrite** - `3252791a` (round 7), Train seed 1 preview; mean Validation S_project 0.7477 / R_project 0.7834
 
 <a href="slides_md/assets/media6.mp4"><img src="slides_md/previews/town-fair_3252791a_storyboard.webp" width="640" alt="Storyboard rewrite 3252791a: complete five-segment town-fair timeline"></a>
 
-**3. Script rewrite again** - `c1912a62` (round 57), mean Validation S_project 0.7516 / R_project 0.7672
+**3. Script rewrite again** - `c1912a62` (round 57), Train seed 1 preview; mean Validation S_project 0.7516 / R_project 0.7672
 
 <a href="slides_md/assets/media7.mp4"><img src="slides_md/previews/town-fair_c1912a62_script-again.webp" width="640" alt="Further script rewrite c1912a62: complete five-segment town-fair timeline"></a>
 
 Each preview maps to one complete project, rather than independently selected clips. `c1912a62` is the search winner by mean Validation S_project; `3252791a` has the highest Validation R_project among these four. The independent gate result above concerns the final `c1912a62` winner on held-out projects, not any intermediate rewrite's Train video.
 
-| Stage | Harness SHA prefix | Source MP4 |
-| --- | --- | --- |
-| Base | `d16c2e95` | [media4.mp4](slides_md/assets/media4.mp4) |
-| Script rewrite | `c863aae2` | [media5.mp4](slides_md/assets/media5.mp4) |
-| Storyboard rewrite | `3252791a` | [media6.mp4](slides_md/assets/media6.mp4) |
-| Script rewrite again | `c1912a62` | [media7.mp4](slides_md/assets/media7.mp4) |
+| Stage | Harness SHA prefix | Train seed | Source MP4 |
+| --- | --- | ---: | --- |
+| Base | `d16c2e95` | 1 | [media4.mp4](slides_md/assets/media4.mp4) |
+| Script rewrite | `c863aae2` | 0 | [media5.mp4](slides_md/assets/media5.mp4) |
+| Storyboard rewrite | `3252791a` | 1 | [media6.mp4](slides_md/assets/media6.mp4) |
+| Script rewrite again | `c1912a62` | 1 | [media7.mp4](slides_md/assets/media7.mp4) |
 
 <details>
 <summary>Selected action, fixed visual checks and the detailed production comparison</summary>
@@ -165,7 +179,7 @@ The recovered [budget ledger](longform/101416_1strun/budget.json) records **716 
 
 The score has useful but limited signals: story/editing assess generated text plans, H can be high because the next clip is conditioned on the previous last frame, and payoff checks can be skipped when upstream facts were not confirmed. The recovered town-fair pair still shows later bakery/pottery scenes drifting toward the cyclist/fountain composition, fails the bowl check in both arms, and has a worse maximum audio jump in the rewrite (**14.24 → 33.98 dB**). Higher project scores do not establish uniformly better storytelling or sound.
 
-The [101416 archive](longform/101416_1strun/README.md) contains byte-identical copies of the frozen base/winner, scoring policy, budget, search/report records, gate decision and video index, with [source hashes](longform/101416_1strun/provenance.json). The presentation MP4s and WebP previews are linked in section 2.3; the [worked example](slides_md/subdocs_examples/11-town-fair-longform-production.md) preserves recovered segment traces and the media identity proof for the first two rows. The earlier presentation snapshot described an interrupted run; the recovered final report and gate record establish the completed outcome summarized here. Net active-session duration and the last two displayed videos' exact source identities remain explicitly marked for DGX recovery.
+The [101416 archive](longform/101416_1strun/README.md) contains byte-identical copies of the frozen base/winner, scoring policy, budget, search/report records, gate decision and video index, with [source hashes](longform/101416_1strun/provenance.json). The presentation MP4s and WebP previews are linked in section 2.3; the [worked example](slides_md/subdocs_examples/11-town-fair-longform-production.md) preserves recovered segment traces and the media identity proof for the first two rows, with [§8.2](slides_md/subdocs_examples/11-town-fair-longform-production.md#82-storyboard-and-final-winner-identities) resolving the other two. The earlier presentation snapshot described an interrupted run; the recovered final report and gate record establish the completed outcome summarized here. Active-session duration is recovered in section 2 (12 h 33 min across four processes), and every displayed video now has a recorded case, seed and project directory.
 
 ---
 

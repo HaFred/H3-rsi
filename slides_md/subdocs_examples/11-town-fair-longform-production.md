@@ -2530,9 +2530,31 @@ The run index holds these four directories under `outputs/longform_rsi/101416_1s
 
 **Resolved mapping and proof:** base = seed **1**, `e51364b4275d90a511b9599c4827e8ec6a7c09cda5804d81853712d1a561386b`; rewrite = seed **0**, `51e22c0d5bb51b4d9a29ba3d6f01054e4d405a4ceb52c83e7d1ef0abfb49d96d`. Proof: `sha256(timeline.mp4)` equals `sha256(media4.mp4)` = `629240f030c92c314e700d874f39f976805b3ade93caaa79eccd38c8fa5917a7` for the base arm, and `sha256(media5.mp4)` = `9905483d9076add66ee1f8bbf980416700eccf2f76c874a94ec59e10f436f99d` for the rewrite arm. Full byte equality means no remux or re-encode happened, so decoded-frame comparison is unnecessary. The alternatives are ruled out by the same test: seed-0 base hashes to `8159671e…f1941` and seed-1 rewrite to `6a9dd098…18d6`. Each matched project's `run.json` pins the full candidate hash (`d16c2e95…e122` / `c863aae2…5709`), the case/seed, and the code and policy hashes; `project.json` (sha `fe4607ac…`) is the loader's JSON form of the same spec; the available-records manifest records the byte-identical YAML snapshot and the exact default-filling delta.
 
-### 8.2. Recovered file layout
+### 8.2. Storyboard and final-winner identities
 
-Both matched projects have this layout:
+The other two displayed previews resolve the same way. The run index holds both seeds for both candidates under the same `projects/` root:
+
+| Harness | Seed | Project directory hash | `sha256(timeline.mp4)` | Media |
+| --- | ---: | --- | --- | --- |
+| storyboard `3252791a` | 0 | `bbb388daa05693f85751be85765aa4f5f6dbff203179f42eec0ef69858d7c999` | `164561323e29f4fa83759e699530446994d39a9d7cbd03a936ba1eac4247e8c5` | — |
+| storyboard `3252791a` | 1 | `e17b3a0dc1ceeb5e722a67ba0a36eb066123aaa742959d48b5833b259abb4585` | `561588f7ac43b59101a1a175843511d3d7a71dbc7a2f47d08f9b8668ac342c3c` | `media6.mp4` |
+| final winner `c1912a62` | 0 | `634dd89b835239c4c59ebb25ad7d0ed555f99dd98686b2c53a39ee7c778b6f0c` | `dd2e52c179b3d10523772c2b7dae90172d115c4e8bfb29dac07970e442da2d6c` | — |
+| final winner `c1912a62` | 1 | `b068f9914c4e79d03497ebb4c6bbb96fe13a29ac15232ce0d6f4e9347f2ea667` | `4637eb7034927e08fab07e03efbe66b8ea6588255cb517ad8dfa6ec4318e8700` | `media7.mp4` |
+
+**Resolved mapping:** storyboard `3252791a` = Train seed **1**, `e17b3a0d…bb4585`; final winner `c1912a62` = Train seed **1**, `b068f991…f2ea667`. Proof is the same byte test used in 8.1: `sha256(media6.mp4)` = `561588f7…ac342c3c` equals the `timeline.mp4` of `e17b3a0d…` and of no other project in the run index (149 stitched timelines compared), and `sha256(media7.mp4)` = `4637eb70…e8700` equals the `timeline.mp4` of `b068f991…` and of no other project. The seed-0 alternatives are excluded by the same measurement: their timelines hash to `16456132…4247e8c5` and `dd2e52c1…42da2d6c`. Two independent checks agree. First, the `videos.json` rows for these directories record `case_id: train:town-fair-5clip-v1:seed1` with candidate hashes `3252791a…1c74364` and `c1912a62…d980eb9e3`, both `valid: true`. Second, the seed fingerprint from 8.4 reproduces: for seed 0 the per-segment `harness_hash` equals the project-level `artifact.harness_hash` (`6cd6fade…`, `e6a2b9f8…`), whereas for seed 1 they differ (`09417f66…` and `0e7800c1…`).
+
+**What this changes about the four-row comparison.** Three of the four previews are the Train **seed 1** production — base `d16c2e95`, storyboard `3252791a`, final winner `c1912a62` — and only the first Script rewrite `c863aae2` is seed 0. Base, storyboard and final winner are therefore directly comparable as a same-seed lineage, and the storyboard-versus-winner pair is a same-seed pair.
+
+| Displayed production | Case | C | F | P | H | S_project | R_project |
+| --- | --- | ---: | --- | --- | ---: | ---: | ---: |
+| `3252791a`, seed 1 | `train:town-fair-5clip-v1:seed1` | 0.6324 | 9/11 | 6/6 | 0.9815 | 0.73713 | 0.81290 |
+| `c1912a62`, seed 1 | `train:town-fair-5clip-v1:seed1` | 0.6596 | 8/11 | 5/5 | 0.9794 | 0.75554 | 0.80518 |
+
+These are single Train productions, not Validation means; the means beside the previews in the [main README](../../README.md#23-five-clip-visual-evidence-and-its-video-mapping) average four Validation projects. On this shared seed the ordering matches the Validation means in both objectives: the final winner has the higher `S_project` while the storyboard round has the higher `R_project`. The final winner's clip quality is better (C 0.6596 versus 0.6324), but it confirms one fewer fact (8/11 versus 9/11), and F carries 0.20 of `R_project` against C's 0.40, so the storyboard round stays ahead on R by 0.00772.
+
+### 8.3. Recovered file layout
+
+Each matched project has this layout:
 
 ```text
 <matched-project-dir>/
@@ -2557,14 +2579,14 @@ Both matched projects have this layout:
 
 The run used `state/`, singular, as listed; six state files cover versions 0–5. All paths in the records above are relative to the `RSI_1st_impl` checkout; the H3 `conditions` URIs are kept as the absolute `file://` values that were submitted, because the request hash covers them.
 
-### 8.3. What is in the records, and what the run never wrote
+### 8.4. What is in the records, and what the run never wrote
 
 - The exact composed brief, all five recorded outputs, evidence strings and state files are copied verbatim; the system prompts and the empty memory (`[]`) come from each project's `harness.yaml`. Awkward model text is preserved, including the `RED UMBREA` typo and the editor's references to candidate videos that were never generated (`num_candidates = 1`).
 - User messages are rebuilt from the run's own templates and the recorded outputs. They are labelled reconstructions: the stored storyboard is the parsed list, so original key order and any raw completion text are gone.
 - The H3 payloads are the submitted requests. All ten hashes were recomputed from `json.dumps({"endpoint": base, "payload": payload}, sort_keys=True, ensure_ascii=False, separators=(",", ":"))` and match; `ensure_ascii=False` matters because several prompts contain typographic non-ASCII characters such as em dashes. `num_frames` is absent because the backend's `send_extended_fields` defaulted to false; the recorded probe shows the 124-frame result.
 - Evidence and payoff probabilities, the one skip reason (`bread`, base `potter-opening`), R_clip, axis scores, critic gate probabilities and both state versions are copied verbatim.
 - The stitch manifests, per-clip loudness, final state, C/F/P/H and S/R are reproduced in sections 6 and 7.
-- The per-segment `harness_hash` is the config hash after `policy.apply(config, seed=…)`. The base arm ran seed 1, so its per-segment hash (`6840390c…`) differs from the project-level `artifact.harness_hash` (`2e347be9…`); the rewrite arm ran seed 0, which leaves the config unchanged, so both values are `6a870d38…`. This independently corroborates the seed mapping in 8.1.
+- The per-segment `harness_hash` is the config hash after `policy.apply(config, seed=…)`. The base arm ran seed 1, so its per-segment hash (`6840390c…`) differs from the project-level `artifact.harness_hash` (`2e347be9…`); the rewrite arm ran seed 0, which leaves the config unchanged, so both values are `6a870d38…`. This independently corroborates the seed mappings in 8.1 and 8.2.
 - Not stored anywhere in the run: the literal ffmpeg argv, raw LLM completions (only parsed storyboards), and per-request timestamps finer than a segment's `elapsed_seconds`.
 
 **DGX completion status and notes:** complete for both arms. 10/10 request hashes reproduce, 10/10 segment file SHA-256 values match, 2/2 timelines equal the presentation media byte-for-byte, 5/5 segments committed per arm with `timeline_valid = true`. No placeholder remains in this document.
