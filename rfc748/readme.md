@@ -1,18 +1,20 @@
-**Contents**
+ # Single-clip RSI: 101214_1strun
 
-- [3.1. What was serving](#31-what-was-serving)
-- [3.2. How RSI improves the harness — watch these clips in order](#32-how-rsi-improves-the-harness--watch-these-clips-in-order)
-  - [3.2.1. What gets rewritten: text components](#321-what-gets-rewritten-text-components)
-  - [3.2.2. What does the searching: GEPA](#322-what-does-the-searching-gepa)
-  - [3.2.3. Where each number comes from](#323-where-each-number-comes-from)
-  - [3.2.4. Short-clip reward R and search objective S](#324-short-clip-reward-r-and-search-objective-s)
-- [3.3. The two edits behind the win](#33-the-two-edits-behind-the-win)
-  - [3.3.1. The result on unseen data](#331-the-result-on-unseen-data)
-  - [3.3.2. Where the prompts live](#332-where-the-prompts-live)
-- [3.4. The loop in detail (13 iterations)](#34-the-loop-in-detail-13-iterations)
-- [3.5. Validity guard in action](#35-validity-guard-in-action)
-- [3.6. Reproduce](#36-reproduce)
-- [3.7. Caveats](#37-caveats)
+**Contents**
+- [Single-clip RSI: 101214\_1strun](#single-clip-rsi-101214_1strun)
+    - [3.1. What was serving](#31-what-was-serving)
+    - [3.2. How RSI improves the harness — watch these clips in order](#32-how-rsi-improves-the-harness--watch-these-clips-in-order)
+      - [3.2.1. What gets rewritten: text components](#321-what-gets-rewritten-text-components)
+      - [3.2.2. What does the searching: GEPA](#322-what-does-the-searching-gepa)
+      - [3.2.3. Where each number comes from](#323-where-each-number-comes-from)
+      - [3.2.4. Short-clip reward R and search objective S](#324-short-clip-reward-r-and-search-objective-s)
+    - [3.3. The two edits behind the win](#33-the-two-edits-behind-the-win)
+      - [3.3.1. The result on unseen data](#331-the-result-on-unseen-data)
+      - [3.3.2. Where the prompts live](#332-where-the-prompts-live)
+    - [3.4. The loop in detail (13 iterations)](#34-the-loop-in-detail-13-iterations)
+    - [3.5. Validity guard in action](#35-validity-guard-in-action)
+    - [3.6. Reproduce](#36-reproduce)
+    - [3.7. Caveats](#37-caveats)
 
 This run shows the full loop, on real hardware:
 
