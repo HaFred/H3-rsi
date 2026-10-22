@@ -86,7 +86,9 @@ The final edit increases S_project while reducing R_project relative to `3252791
 **Gate accepted; champion store unchanged.** The saved store note says the current champion was `gepa-base.1`, whereas this run's expected base was `gepa-base`. The accepted verdict was recorded, but the store update was not applied. Gate acceptance must not be reported as a successful champion replacement.
 
 <details>
-<summary>Every Promotion/Test case, using R_project</summary>
+<summary>Winner: Evaluated with Promotion/Test case, using R_project</summary>
+
+The per-case results show that the winner improves six of eight Promotion cases, keeps both regressions within the allowed 0.05, and improves both report-only Test cases, supporting gate acceptance without implying a win on every project.
 
 | Split | Project | Seed | Base | Winner | Δ |
 | --- | --- | --- | ---: | ---: | ---: |
