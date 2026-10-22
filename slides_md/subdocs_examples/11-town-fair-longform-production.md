@@ -93,6 +93,7 @@ Both arms start with their own empty state. The following is the initial state r
 flowchart TD
   spec["Fixed ProjectSpec: five requirements"] --> brief
   state["Own empty state, version 0"] --> brief
+  subgraph segment_loop["5x segments before stitching"]
   brief["Compose current brief: world, purpose, original prompt, policies<br/>Only confirmed facts and handoff instruction"] --> agents
   harness["Chosen base or script-rewrite harness<br/>Same harness for all five segments"] --> agents
   agents["Script -> storyboard -> director<br/>Each uses system prompt plus memory"] --> h3
@@ -105,6 +106,7 @@ flowchart TD
   commit["Commit confirmed facts, withhold rejected facts<br/>Save last-frame keyframe; increment state version"] --> more
   more{"More segments?"} -->|"yes: updated state and next requirement"| brief
   commit -->|"keyframe conditions next generation"| h3
+  end
   more -->|"no: all five committed"| stitch
   stitch["Normalize all five clips<br/>Hard video cuts plus audio crossfades"] --> timeline
   timeline(["timeline.mp4: 620 video frames"]) --> metrics
