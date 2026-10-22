@@ -42,9 +42,11 @@ Each clip contains 124 frames, lasts about 5.17 seconds, and retains its origina
 
 ### Embedded videos
 
-- [Base](assets/media1.mp4)
-- [Script rewrite](assets/media2.mp4)
-- [Director rewrite](assets/media3.mp4)
+These links reuse the original evaluation videos; duplicate presentation exports were removed after byte comparison. [Original media names and SHA-256 mapping](assets/short-clip-video-mapping.json).
+
+- [Base](../evaluations/edb00ad03c2e77bc2b759d587f1a1f2c0706fcf90405d129cae6ee19daa4771b/video.mp4)
+- [Script rewrite](../evaluations/0aa979018910a10da8a371e18edc03464f18690acf534c0948e629736dd44170/video.mp4)
+- [Director rewrite](../evaluations/93d21889efd4bd045da797839dc3add5758da0c7d097d3ca06c15a666ff43810/video.mp4)
 
 ---
 

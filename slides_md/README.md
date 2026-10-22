@@ -28,10 +28,13 @@ Read pages 1–7 for the definition, architecture, search boundary, and evaluati
 
 ## Worked examples
 
+Start with the [run and harness index](subdocs_examples/README.md) for candidate identities, inheritance, durations and promotion outcomes.
+
 | Related pages | Detailed example |
 | --- | --- |
 | 04, 07-10: agent inputs, clip scores, videos and prompt propagation | [Single-clip script rewrite: prompts, agent outputs, Base/rewrite H3 payloads and videos](subdocs_examples/08-script-rewrite-prompt-lifecycle.md) |
 | 04, 07, 11-14: segment lifecycle, project scores, state, handoff and stitching | [Five-clip town-fair production: Base vs Script rewrite](subdocs_examples/11-town-fair-longform-production.md) |
+| 07, 11-14: held-out regression, memory changes and promotion safeguards | [Five-clip tea-farm production: Base vs memory rewrite](subdocs_examples/11-tea-farm-longform-production.md) |
 
 The town-fair example includes source snapshots, segment previews and the recovered DGX traces, H3 requests and project scores for both arms.
 
@@ -39,7 +42,7 @@ The town-fair example includes source snapshots, segment previews and the recove
 
 - Harness search is demonstrated with frozen H3 weights. Model-weight optimization and the four-combination gate are a proposed next stage.
 - Use R_clip/S_clip for a single clip and R_project/S_project for a complete project. S_clip derives from the same search case's R_clip and axis penalty. Both project scores combine current project metrics and share C = mean(R_clip). Independent Promotion measures the appropriate reward on held-out cases; search never uses those future results. See [page 7](07-data-splits-and-scores.md).
-- Earlier runs completed promotion and Test. The displayed `101416` long-form lineage stopped because of a service interruption before those stages.
+- The recovered `101416` run completed Promotion and Test after interruption and resume. Its final winner passed the gate, but the champion store stayed unchanged because its current champion did not match the expected base. The original presentation predates that completed outcome; see the [run summary](subdocs_examples/README.md#how-search-and-promotion-relate).
 - Long-form lineage S_project/R_project values are averages over four Validation projects, rather than scores for the displayed town-fair videos.
 - Repeated champion inheritance and cumulative gains on new works remain unverified. Test reports generalization evidence; it does not establish global optimality.
 
@@ -47,7 +50,7 @@ The town-fair example includes source snapshots, segment previews and the recove
 
 Source: `RSI_MiniMax_H3_RFC748_zh_white_v17_updated.pptx`, as supplied locally after duplicate-page removal. The PowerPoint file is not copied into this repository.
 
-Text is translated and organized into prose, tables, and workflow steps. Page 7's chart numbers are transcribed from its native chart data. Embedded images and MP4s are extracted without modification into `assets/`; images remain in their original visual form, and local video playback depends on the viewer. Preview links supplied by the presentation are preserved without asserting their current remote availability. Video and preview ordering follows presentation drawing/relationship order; the visible candidate labels and comparison tables provide context.
+Text is translated and organized into prose, tables, and workflow steps. Page 7's chart numbers are transcribed from its native chart data. Embedded images and MP4s were extracted without modification. Longform presentation media remains in `assets/`; byte-identical short-clip videos use the existing evaluation files linked on page 9. Images remain in their original visual form, and local video playback depends on the viewer. Preview links supplied by the presentation are preserved without asserting their current remote availability. Video and preview ordering follows presentation drawing/relationship order; the visible candidate labels and comparison tables provide context.
 
 Source speaker notes were used to retain important interpretation limits and clarify terminology; historical/repeated editing notes are not reproduced as narrative. Decorative diagram legends are represented through the component/role descriptions rather than repeated on every page.
 

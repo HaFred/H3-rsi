@@ -4,7 +4,7 @@ Source: PPTX page 17 of 17.
 
 ### Evidence and remaining questions
 
-Earlier short-clip and long-form runs completed promotion and Test. The displayed `101416` run improved Validation S_project but stopped because of a service interruption before promotion/Test. Cumulative gains across runs seeded from a previous champion remain untested; this does not establish that improvement is ineffective.
+Earlier short-clip and long-form runs completed Promotion and Test. The recovered `101416` run improved Validation S_project and completed Promotion/Test after resuming; the final winner passed the gate, but a base mismatch prevented the champion-store update. See the [run summary](subdocs_examples/README.md#how-search-and-promotion-relate). Cumulative gains across runs seeded from a previous champion remain untested; this does not establish that improvement is ineffective.
 
 S_project/R_project gains on current dummy data do not establish that the Harness has acquired distinctive, effective, transferable knowledge. Further work needs concrete business data, such as e-commerce, advertising, or short dramas designed around attention-grabbing moments.
 

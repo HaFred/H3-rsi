@@ -1,0 +1,23 @@
+{
+  "description": "Original presentation MP4s were byte-identical to the indexed evaluation videos; docs use the canonical evaluation files.",
+  "videos": [
+    {
+      "presentation_export_name": "media1.mp4",
+      "canonical_file": "evaluations/edb00ad03c2e77bc2b759d587f1a1f2c0706fcf90405d129cae6ee19daa4771b/video.mp4",
+      "sha256": "53174d2e760b1f59e291a61f78e6a11c9a83ca4148c5d853d9d4d3d76d67e6fe",
+      "removed_duplicate_bytes": 1327118
+    },
+    {
+      "presentation_export_name": "media2.mp4",
+      "canonical_file": "evaluations/0aa979018910a10da8a371e18edc03464f18690acf534c0948e629736dd44170/video.mp4",
+      "sha256": "2f97f30953b5762094f8405083619d04062b7432dd2803cd4078f4f90cb27097",
+      "removed_duplicate_bytes": 1391681
+    },
+    {
+      "presentation_export_name": "media3.mp4",
+      "canonical_file": "evaluations/93d21889efd4bd045da797839dc3add5758da0c7d097d3ca06c15a666ff43810/video.mp4",
+      "sha256": "ef028f576a047974f0715d315455a8fac635869873b8236d446d9d8eb6f57218",
+      "removed_duplicate_bytes": 1188203
+    }
+  ]
+}

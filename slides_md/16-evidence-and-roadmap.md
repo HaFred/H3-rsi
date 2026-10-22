@@ -8,7 +8,7 @@ Source: PPTX page 16 of 17.
 - Validation, Promotion, and Test have independent roles.
 - A winning version was promoted to `gepa-base.1`.
 
-These results refer to completed earlier runs. The displayed `101416` lineage did not reach promotion/Test after its service interruption.
+These results include the recovered `101416` run, which completed Promotion and Test after interruption and resume. Its final winner passed the gate, but the champion store was not updated because its current champion did not match the expected base. The `gepa-base.1` promotion above refers to the earlier single-clip run. See the [run summary](subdocs_examples/README.md#how-search-and-promotion-relate).
 
 ### Next stage
 

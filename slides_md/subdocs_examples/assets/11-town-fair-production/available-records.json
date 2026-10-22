@@ -4,25 +4,31 @@
   "records_run": "outputs/longform_rsi/101416_1strun",
   "status": "captured DGX records for both arms; seeds resolved by byte identity",
   "inputs": {
-    "base.harness.yaml": {
+    "longform/101416_1strun/base.yaml": {
       "repo_source": "RSI_1st_impl/benchmarks/longform_example/101416_1strun/base.yaml",
       "sha256": "c642f4c1854a54127e6ae2f00a87a3d9b4f4b090e89782e821bdd896e1ebb5a9",
-      "matches_asset_byte_for_byte": true,
-      "candidate_hash_recomputed": "d16c2e959f5bed4c8d2e8a5f911fd061363d02b0c2c4b1e7f425fb035658e122"
+      "candidate_hash_recomputed": "d16c2e959f5bed4c8d2e8a5f911fd061363d02b0c2c4b1e7f425fb035658e122",
+      "local_path": "longform/101416_1strun/base.yaml",
+      "sha256_representation": "source file with LF line endings; Windows checkout may use CRLF",
+      "matches_source_after_lf_normalization": true
     },
-    "script-rewrite.harness.yaml": {
+    "slides_md/subdocs_examples/assets/11-town-fair-production/script-rewrite.harness.yaml": {
       "repo_source": "RSI_1st_impl/benchmarks/longform_example/101416_1strun/harnesses/round1_c863aae2047f.yaml",
       "sha256": "2db8fd29aca36ae28dbd770f07666f664d479d252fe6314bc0cb04eacb068195",
-      "matches_asset_byte_for_byte": true,
-      "candidate_hash_recomputed": "c863aae2047f1fd10c58607efe2f7fa8d0aba784dc5211e41fb669e2241d5709"
+      "candidate_hash_recomputed": "c863aae2047f1fd10c58607efe2f7fa8d0aba784dc5211e41fb669e2241d5709",
+      "local_path": "slides_md/subdocs_examples/assets/11-town-fair-production/script-rewrite.harness.yaml",
+      "sha256_representation": "source file with LF line endings; Windows checkout may use CRLF",
+      "matches_source_after_lf_normalization": true
     },
-    "town-fair.project.yaml": {
+    "benchmarks/longform_town_fair_5clip_v1.yaml": {
       "repo_source": "RSI_1st_impl/benchmarks/longform_town_fair_5clip_v1.yaml",
       "sha256": "01784a9533aa15e78822577afc0391569807d16ae6e5fc53bb31493010f1670d",
-      "matches_asset_byte_for_byte": true,
       "run_manifest_sha256": "01784a9533aa15e78822577afc0391569807d16ae6e5fc53bb31493010f1670d",
       "project_json_sha256": "fe4607ac136765e67b165bd4595e12b189016bec0bce3df22a002b6bd7e5f0a4",
-      "project_json_delta": "loader defaults only: stitch.loudness_target_lufs=-23.0, empty depends_on/payoff on segment 1, and state_commit lists merged into dicts; no authored value differs"
+      "project_json_delta": "loader defaults only: stitch.loudness_target_lufs=-23.0, empty depends_on/payoff on segment 1, and state_commit lists merged into dicts; no authored value differs",
+      "local_path": "benchmarks/longform_town_fair_5clip_v1.yaml",
+      "sha256_representation": "source file with LF line endings; Windows checkout may use CRLF",
+      "matches_source_after_lf_normalization": true
     }
   },
   "arms": {
@@ -241,7 +247,7 @@
         124,
         247
       ],
-      "file": "slides_md/subdocs_examples/assets/11-town-fair-production/base_02_kite-park.webp",
+      "file": "slides_md/previews/town-fair_d16c2e95_kite-park.webp",
       "sha256": "dd1222b01a8d58bf3fc95c6c69be653a5a11a78cc7b7beee82063e86f8af1b71",
       "bytes": 447664,
       "preview": {
@@ -270,7 +276,7 @@
         "4",
         "-loop",
         "0",
-        "slides_md/subdocs_examples/assets/11-town-fair-production/base_02_kite-park.webp"
+        "slides_md/previews/town-fair_d16c2e95_kite-park.webp"
       ],
       "scope": "Crop of normalized stitched presentation video; not asserted to be original pre-stitch generation bytes."
     },

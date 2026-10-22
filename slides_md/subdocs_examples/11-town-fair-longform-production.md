@@ -25,12 +25,12 @@ Click for sound. Each timeline contains 620 video frames at 24 fps: **25.8333 s 
 
 | Available source | What it establishes |
 | --- | --- |
-| [ProjectSpec](assets/11-town-fair-production/town-fair.project.yaml) | Five prompts, proposed facts, questions, dependencies and declared stitch settings |
-| [Base harness](assets/11-town-fair-production/base.harness.yaml) | Original system prompts and empty memory |
+| [ProjectSpec](../../benchmarks/longform_town_fair_5clip_v1.yaml) | Five prompts, proposed facts, questions, dependencies and declared stitch settings |
+| [Base harness](../../longform/101416_1strun/base.yaml) | Original system prompts and empty memory |
 | [Script-rewrite harness](assets/11-town-fair-production/script-rewrite.harness.yaml) | Rewritten Script prompt; other four prompts remain unchanged |
 | [Available-records manifest](assets/11-town-fair-production/available-records.json) | Input/media hashes, four candidate seed records, preview recipes and the resolved seed/project mapping for both arms |
 
-Snapshots are copied byte-for-byte from the available files, and both candidate hashes were recomputed from the snapshot prompt components with `codec.encode` + `codec.candidate_hash`. The ProjectSpec snapshot hashes to the run manifest's copy. The matched productions' own `project.json` is the loader's JSON form of that same spec: it differs only by merged `state_commit` dicts and loader defaults (`loudness_target_lufs: -23.0`, empty `depends_on`/`payoff` on segment 1), and no authored value changed.
+The ProjectSpec and base-harness links point to the existing benchmark and run-archive files; no duplicate copies are kept in this example's assets. The Script-rewrite harness is retained here because it has no identical copy elsewhere in this repository. Both candidate hashes were recomputed from the linked harness prompt components with `codec.encode` + `codec.candidate_hash`. The benchmark ProjectSpec hashes to the run manifest's copy. The matched productions' own `project.json` is the loader's JSON form of that same spec: it differs only by merged `state_commit` dicts and loader defaults (`loudness_target_lufs: -23.0`, empty `depends_on`/`payoff` on segment 1), and no authored value changed.
 
 ## 2. Shared project context and initial state
 
@@ -675,7 +675,7 @@ Each arm uses fl2va with the last frame of **its own `umbrella-arrival` clip** a
 
 | Base | Script rewrite |
 | --- | --- |
-| <a href="../assets/media4.mp4#t=5.166667,10.333333"><img src="assets/11-town-fair-production/base_02_kite-park.webp" width="330" alt="base town-fair segment 2: Park kite"></a> | <a href="../assets/media5.mp4#t=5.166667,10.333333"><img src="assets/11-town-fair-production/script-rewrite_02_kite-park.webp" width="330" alt="script-rewrite town-fair segment 2: Park kite"></a> |
+| <a href="../assets/media4.mp4#t=5.166667,10.333333"><img src="../previews/town-fair_d16c2e95_kite-park.webp" width="330" alt="base town-fair segment 2: Park kite"></a> | <a href="../assets/media5.mp4#t=5.166667,10.333333"><img src="assets/11-town-fair-production/script-rewrite_02_kite-park.webp" width="330" alt="script-rewrite town-fair segment 2: Park kite"></a> |
 
 **Generated script outputs: Base vs script rewrite**
 

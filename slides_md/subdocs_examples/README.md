@@ -40,7 +40,7 @@ Excluded downtime is 7 h 20 min, 16 h 10 min and 2 h 6 min between the sessions 
 
 **The bridge between the two longform examples:** the `101704` [base snapshot's adoption notes](../../longform/101704_1strun/base.yaml) say it combines `101416` winner `c1912a62`'s script/storyboard with 12 memory heuristics carried from `gepa-base.1` after `101318_1strun`. That combination becomes `gepa-base.2`, hash `531468a1`. It is a new frozen configuration, not the earlier `c863aae2` candidate renamed. The `101704` memory search then produces `1d079e4c`, `04f60f24` and `f22f8b8a`, among other candidates.
 
-The town-fair presentation describes an earlier interrupted snapshot; the recovered `101416` report and gate record establish the later completed outcome above. Gate acceptance and a successful champion-store update are separate events. The relevant recovered gate record is [copied here](assets/run-context/101416-promotion-decision.json); the base snapshot independently records the adoption and store mismatch.
+The town-fair presentation describes an earlier interrupted snapshot; the recovered `101416` report and gate record establish the later completed outcome above. Gate acceptance and a successful champion-store update are separate events. The relevant recovered gate record is [in the run archive](../../longform/101416_1strun/promotion/decision.json); the base snapshot independently records the adoption and store mismatch.
 
 ## Harnesses referenced by these examples
 

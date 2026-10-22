@@ -12,7 +12,7 @@ In this project, RSI means using execution evidence to modify reusable generatio
 
 Remembering experience is a capability; verifying and inheriting a more effective strategy closes the improvement loop. This is an operational definition for this project, rather than a universal definition or a claim that OpenClaw cannot support such extensions.
 
-Earlier short-clip and long-form runs completed independent promotion and Test. The displayed `101416` run stopped after a service interruption before promotion or Test. Repeated gains on fresh works after inheriting a previous champion remain unverified; missing evidence does not establish that improvement is ineffective.
+Earlier short-clip and long-form runs completed independent Promotion and Test. The recovered `101416` records also establish completion after interruption and resume: the final winner passed the gate, but the champion store was not updated because its current champion did not match the expected base. See the [run summary](subdocs_examples/README.md#how-search-and-promotion-relate). Repeated gains on fresh works after inheriting a previous champion remain unverified; missing evidence does not establish that improvement is ineffective.
 
 ---
 
