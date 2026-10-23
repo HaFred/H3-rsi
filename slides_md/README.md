@@ -1,8 +1,8 @@
 # RSI × MiniMax-H3: Implementation Introduction
 
-This directory presents the supplied presentation as an English introduction to the H3-rsi implementation. Each of the 17 pages has its own Markdown file, in the current presentation order. The accidental duplicate formerly at page 4 was removed from the source before this export.
+This directory presents the supplied presentation as an English introduction to the H3-rsi implementation. Each of the original 17 pages has its own Markdown file, in the presentation order; page 18 is a later research analysis supplement. The accidental duplicate formerly at page 4 was removed from the source before this export.
 
-Read pages 1–7 for the definition, architecture, search boundary, and evaluation protocol; pages 8–10 for short-clip evidence; pages 11–14 for long-form execution and evidence; and pages 15–17 for the proposed joint-optimization design, limitations, and pilot prompts.
+Read pages 1–7 for the definition, architecture, search boundary, and evaluation protocol; pages 8–10 for short-clip evidence; pages 11–14 for long-form execution and evidence; pages 15–17 for the proposed joint-optimization design, limitations, and pilot prompts; and the supplemental page 18 for RSI levels, related work and the research roadmap.
 
 ## Contents
 
@@ -25,6 +25,7 @@ Read pages 1–7 for the definition, architecture, search boundary, and evaluati
 | 15 | [Harness and Model RSI: Parallel Optimization](15-joint-optimization.md) |
 | 16 | [Experimental Boundaries and Implementation Roadmap](16-evidence-and-roadmap.md) |
 | 17 | [Initial Findings, Data Limitations, and Pilot Prompts](17-findings-and-pilot-prompts.md) |
+| 18 (supplement) | [Video RSI Levels, L3/L4 Comparisons, and the H3-rsi Roadmap](18-rsi-levels-comparison-and-roadmap.md) |
 
 ## Worked examples
 

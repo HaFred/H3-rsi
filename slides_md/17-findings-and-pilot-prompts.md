@@ -42,4 +42,4 @@ Full inputs: [single-clip JSONL](../benchmarks/tasks_gepa_v1.jsonl) and [all fiv
 
 ---
 
-[Contents](README.md) · [Previous](16-evidence-and-roadmap.md)
+[Contents](README.md) · [Previous](16-evidence-and-roadmap.md) · [Next: RSI Levels and Research Roadmap](18-rsi-levels-comparison-and-roadmap.md)
